@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  background-color: #ff7c33;
+  padding: 3%;
+  flex-direction: column;
+}
+
+.container > .titulo > h1 {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  left: 218px;
+  margin-bottom: 3%;
+}
+
+.infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.sociais {
+  position: relative;
+  left: 212px;
+  margin-top: 1%;
+  margin-bottom: 4%;
+}
+
+.sociais > span {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.atendimento > .itens > span {
+  margin-top: 10px;
+  margin-left: 1px;
+}
+
+.institucional > .itens > span {
+  margin-top: 10px;
+  margin-left: 1px;
+}
+
+.solucao > .itens > span {
+  margin-top: 10px;
+  margin-left: 1px;
+}
+
+.solucao {
+  display: flex;
+  flex-direction: column;
+  margin-left: 220px;
+}
+
+.solucao > .itens {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.atendimento > .itens {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.institucional > .itens {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.atendimento {
+  display: flex;
+  flex-direction: column;
+  margin-left: 120px;
+  position: relative;
+  top: -13px;
+}
+
+.institucional {
+  display: flex;
+  flex-direction: column;
+  margin-left: 120px;
+}
+
+.backHome {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 100%;
+  margin-left: 220px;
+  padding: 2%;
+}
+
+.backHome > i {
+  color: #757575;
+}
+
+.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.back > span {
+  position: relative;
+  left: 300px;
+  bottom: -25px;
+}
+
+.logo {
+  position: relative;
+  left: 215px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
