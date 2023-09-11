@@ -6,6 +6,10 @@
 }
  body{
     overflow: scroll;
+    
+}
+a{
+    text-decoration: none;
 }
 #nav{
     padding: 20px;
@@ -78,7 +82,17 @@ hr{
     justify-content: center;
     text-align: center;
 }
-
+.buttonDuck{
+    background-color: #ffffff;
+    color: #565656;
+    border-radius: 7px;
+    border-style: none;
+    height: 40px;
+    width: 80px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 @media(max-width: 690px){
     
@@ -538,7 +552,7 @@ hr{
         list-style-type: none;
         font-size: 18px;
       }
-      .footerList li::before {
+      #listaSolucao li::before {
         content: '•';
         color: #FF7C33;
         display: inline-block;
@@ -755,6 +769,9 @@ hr{
     #buttonsMenu #buttonContato{
         display: none;
     }
+    #listaMenu a {
+        text-decoration: none;
+    }
 
 }
 
@@ -907,6 +924,9 @@ hr{
         gap: 20px;
         margin-bottom: 35px;
     }
+    #listaMenu a {
+        text-decoration: none;
+    }
 }
 
 
@@ -948,6 +968,9 @@ hr{
         list-style: none;
         color: #757575;
         height: fit-content;
+    }
+    #listaMenu a {
+        text-decoration: none;
     }
     #listaMenu li {
         list-style: none;
@@ -1328,7 +1351,8 @@ hr{
         list-style: none;
         list-style-type: none;
       }
-    li::before {
+    #listaSolucao li::before {
+        content: '•';
         color: #FF7C33;
         display: inline-block;
         height: 4px;
