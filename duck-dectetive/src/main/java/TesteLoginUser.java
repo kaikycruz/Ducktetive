@@ -15,7 +15,7 @@ public class TesteLoginUser {
 
         senhas.add("123");
         senhas.add("2077");
-        senhas.add("joia12");
+        senhas.add("senha123");
 
         System.out.println("Digite seu Login: ");
         String login = Scannerlogin.nextLine().toUpperCase();
