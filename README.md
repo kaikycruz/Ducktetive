@@ -78,7 +78,7 @@ Toda atividade que esteja na raia "Em Andamento", para ser transferida para o st
   </tr>
 </table>
 
-# Bibliotecas utulizadas:
+### Bibliotecas utulizadas:
 
 <table>
   <tr>
