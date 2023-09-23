@@ -6,3 +6,76 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
+
+/* Side-bar */
+
+hr{
+    background-color: #D9D9D9;
+    height: 2px;
+    border: none;
+}
+
+.dashboard-main{
+    display: flex;
+}
+
+.aside-bar-menu{
+    background-color: #FFFFFF;
+    height: 100vh;
+}
+
+.aside-bar-menu #logo-ducktetive{
+    margin: 30px;
+}
+
+.aside-bar-menu #logo-ducktetive #duck-logo-dashboard{
+    height: 50px;
+}
+
+.dashboard-main #user-data{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.dashboard-main #userData #user-picture{
+    height: 90px;
+    width: 90px;
+}
+
+#user-name{
+    font-weight: bold;
+    color: #313131;
+    font-size: 20px;
+}
+
+#user-role{
+    font-weight: bold;
+    color: #757575;
+}
+
+#dashboard-menu{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#dashboard-menu #dash-title{
+    color: #757575;
+    font-weight: bold;
+}
+
+
+
+/* Final Side-bar */
+
+.dashboard-content{
+    background-color: #FF7C33;
+    background-color: rgba(255,124,51,0.11);
+    width: 100%;
+}
