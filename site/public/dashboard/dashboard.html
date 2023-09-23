@@ -43,17 +43,145 @@
             <div id="dashboard-menu">
                 <span id="dash-title">Navegação principal</span>
                 <div class="dash-item">
-                    <img src="" alt="">
-                    <p class="item-text">Dashboard</p>
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/home-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Dashboard</p>
+                    </div>
                 </div>
+                <div class="dash-item">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/cpu-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">CPU</p>
+                    </div>
+                </div>
+                <div class="dash-item">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu" id="ram-icon">
+                        </div>
+                        <p class="item-text">RAM</p>
+                    </div>
+                </div>
+                <div class="dash-item">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Armazenamento</p>
+                    </div>
+                </div>
+            </div>
+            <div id="alerts">
+                <span id="dash-title">Alertas</span>
+                <div id="alert-list">
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
+                    <div class="content-alert">
+                        <div>
+                            <div id="alert-status"></div>
+                            <span id="component" class="alert-title">CPU</span> 
+                            <span class="alert-title"> - </span>
+                            <span id="status" class="alert-title"> Critico</span>
+                        </div>
+                        <div>
+                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
+                        </div>
+                    </div>
 
+                    
+
+
+                </div>
             </div>
 
 
         </aside>
-        <section class="dashboard-content">
+        <section class="dashboard-content" id="dashboard-home">
             <h2 class="dashboard-title">Overview California_Server</h2>
         </section>
+        <section class="dashboard-content" id="dashboard-CPU">
+            <h2 class="dashboard-title">Overview California_Server</h2>
+        </section>
+        
     </main>
 
 
@@ -296,5 +424,9 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
+    }
+
+    function mudarAbaDashboard(){
+        document.getElementById("dashboard-CPU").style.display = "none";
     }
 </script>

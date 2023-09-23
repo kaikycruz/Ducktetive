@@ -7,6 +7,23 @@
     font-family: 'Roboto', sans-serif;
 }
 
+*::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #d9d9d9;        /* color of the tracking area */
+    border-radius: 5px;
+
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #FF7C33;    /* color of the scroll thumb */
+  /* creates padding around scroll thumb */
+  border-radius: 5px;
+
+  }
+
 /* Side-bar */
 
 hr{
@@ -22,10 +39,12 @@ hr{
 .aside-bar-menu{
     background-color: #FFFFFF;
     height: 100vh;
+    width: 300px;
 }
 
 .aside-bar-menu #logo-ducktetive{
     margin: 30px;
+    text-align: center;
 }
 
 .aside-bar-menu #logo-ducktetive #duck-logo-dashboard{
@@ -63,13 +82,124 @@ hr{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
-
-#dashboard-menu #dash-title{
+#dash-title{
     color: #757575;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
+#dashboard-menu .dash-item{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.dash-item :hover{
+    background-color: rgba(255,124,51,0.11);
+
+}
+
+#dashboard-menu .dash-item .menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    height: 100%;
+
+}
+
+#dashboard-menu .dash-item .menu .icon {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+}
+
+#dashboard-menu .dash-item .icon .icon-menu{
+    height: 19px;
+}
+
+#ram-icon{
+    width: 19px;
+
+}
+
+
+#dashboard-menu .dash-item .item-text{
+    color: #757575;
+    font-weight: bold;
+    width: 75%;
+    text-align: start;
+}
+
+
+#alerts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+}
+
+#alert-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 273px;
+    width: 100%;
+    display: block;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.content-alert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,124,51,0.11);
+    height: 80px;
+    width: 75%;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.content-alert div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content; 
+    
+
+}
+
+.content-alert #alert-status{
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: red;
+    margin-right: 10px;
+}
+
+.alert-title{
+    font-weight: bold;
+    color: #757575;
+}
+
+.alert-message{
+    color: #757575;
+    font-size: 14px;
+    margin-top: 10px;
+}
 
 
 /* Final Side-bar */
@@ -77,5 +207,6 @@ hr{
 .dashboard-content{
     background-color: #FF7C33;
     background-color: rgba(255,124,51,0.11);
+    display: flex;
     width: 100%;
 }
