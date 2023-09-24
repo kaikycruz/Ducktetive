@@ -188,7 +188,21 @@ hr{
 
 }
 
-.content-alert #alert-status{
+.content-alert #alert-status-healthy{
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: rgb(0, 255, 0);
+    margin-right: 10px;
+}
+.content-alert #alert-status-attention{
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: yellow;
+    margin-right: 10px;
+}
+.content-alert #alert-status-critic{
     height: 20px;
     width: 20px;
     border-radius: 20px;
