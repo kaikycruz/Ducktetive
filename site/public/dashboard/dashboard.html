@@ -42,7 +42,7 @@
             <hr>
             <div id="dashboard-menu">
                 <span id="dash-title">Navegação principal</span>
-                <div class="dash-item">
+                <div class="dash-item" onclick="mudarAbaDashboard()">
                     <div class="menu">
                         <div class="icon">
                             <img src="../src/images/Dashboard/icons/home-icon.png" alt="" class="icon-menu">
@@ -50,7 +50,7 @@
                         <p class="item-text">Dashboard</p>
                     </div>
                 </div>
-                <div class="dash-item">
+                <div class="dash-item" onclick="mudarAbaCPU()">
                     <div class="menu">
                         <div class="icon">
                             <img src="../src/images/Dashboard/icons/cpu-icon.png" alt="" class="icon-menu">
@@ -58,7 +58,7 @@
                         <p class="item-text">CPU</p>
                     </div>
                 </div>
-                <div class="dash-item">
+                <div class="dash-item" onclick="mudarAbaRAM()">
                     <div class="menu">
                         <div class="icon">
                             <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu" id="ram-icon">
@@ -66,7 +66,7 @@
                         <p class="item-text">RAM</p>
                     </div>
                 </div>
-                <div class="dash-item">
+                <div class="dash-item" onclick="mudarAbaHD()">
                     <div class="menu">
                         <div class="icon">
                             <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
@@ -175,11 +175,17 @@
 
 
         </aside>
-        <section class="dashboard-content" id="dashboard-home">
-            <h2 class="dashboard-title">Overview California_Server</h2>
+        <section class="dashboard-content" id="dashboard-home" style="display: block;">
+            <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
         </section>
-        <section class="dashboard-content" id="dashboard-CPU">
-            <h2 class="dashboard-title">Overview California_Server</h2>
+        <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - CPU</h2>
+        </section>
+        <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - RAM</h2>
+        </section>
+        <section class="dashboard-content" id="dashboard-HD" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - HD</h2>
         </section>
         
     </main>
@@ -427,6 +433,29 @@
     }
 
     function mudarAbaDashboard(){
+        document.getElementById("dashboard-home").style.display = "block";
         document.getElementById("dashboard-CPU").style.display = "none";
+        document.getElementById("dashboard-RAM").style.display = "none";
+        document.getElementById("dashboard-HD").style.display = "none";
     }
+    function mudarAbaCPU(){
+        document.getElementById("dashboard-home").style.display = "none";
+        document.getElementById("dashboard-CPU").style.display = "block";
+        document.getElementById("dashboard-RAM").style.display = "none";
+        document.getElementById("dashboard-HD").style.display = "none";
+    }
+    function mudarAbaRAM(){
+        document.getElementById("dashboard-home").style.display = "none";
+        document.getElementById("dashboard-CPU").style.display = "none";
+        document.getElementById("dashboard-RAM").style.display = "block";
+        document.getElementById("dashboard-HD").style.display = "none";
+    }
+    function mudarAbaHD(){
+        document.getElementById("dashboard-home").style.display = "none";
+        document.getElementById("dashboard-CPU").style.display = "none";
+        document.getElementById("dashboard-RAM").style.display = "none";
+        document.getElementById("dashboard-HD").style.display = "block";
+    }
+
+    
 </script>
