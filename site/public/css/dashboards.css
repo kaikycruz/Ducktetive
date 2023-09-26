@@ -230,6 +230,22 @@ hr{
     display: flex;
     width: 100%;
     position: relative;
-    padding-left: 200px;
+    padding-left: 45vh;
     height: 100vh;
 }
+
+/*Graficos CPU*/
+
+.campo-grafico{
+    width: 15vw;
+    height: 20vh;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#dashboard-CPU {
+    color: #757575;
+}
+
+/* dash de rede */
+

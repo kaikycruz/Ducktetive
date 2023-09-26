@@ -74,6 +74,14 @@
                         <p class="item-text">Armazenamento</p>
                     </div>
                 </div>
+                <div class="dash-item" onclick="mudarAbaRede()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Rede</p>
+                    </div>
+                </div>
             </div>
             <div id="alerts">
                 <span id="dash-title">Alertas</span>
@@ -181,12 +189,30 @@
         <!-- Kaiky -->
         <section class="dashboard-content" id="dashboard-CPU" style="display: none;"> 
             <h2 class="dashboard-title">Overview California_Server - CPU</h2>
+            <div class="cpu-content">
+            <h3>AMD Ryzen 5 5500U- 8 cores 8 threads</h3>
+            <div class="campo-grafico" id="campo_grafico">
+                <div class="graficos">
+                    <canvas id="grafico_cpu"></canvas>
+                </div>
+            </div>
+        </div>
+
         </section>
         <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - RAM</h2>
         </section>
         <section class="dashboard-content" id="dashboard-HD" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - HD</h2>
+        </section>
+        <section class="dashboard-content" id="dashboard-REDE" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - REDE</h2>
+            <div class="dash-uso-rede">
+                <canvas id="grafico-rede"></canvas>
+            </div>
+            <div>
+                
+            </div>
         </section>
         
     </main>
@@ -197,6 +223,60 @@
 </html>
 
 <script>
+    
+    const rede = document.getElementById('grafico-rede');
+    
+    new Chart(rede, {
+    type: 'line',
+    data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+          y: {
+              beginAtZero: true
+        }
+    }
+    }
+});
+
+
+const cpu = document.getElementById('grafico_cpu');
+
+new Chart(cpu, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '12:05', '12:10', '12:15'],
+      datasets: [{
+        label: 'Core 1',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  var array = [1,2,3,4,5,6,7,8,9,10,];
+
+  for (let i = 0; i < array.length; i++) {
+    const graficos= array[i];
+    campo_grafico.innerHTML += `<div class="graficos">
+                    <canvas id="grafico-cpu"></canvas>
+                </div>`;
+  }
+  
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
@@ -310,7 +390,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGraficoCPU(resposta, idAquario) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -321,8 +401,8 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
-                data: [],
+                label: 'Core 1',
+                data: [20,30,10,24,23,45,50],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
@@ -438,11 +518,13 @@
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "none";
+        document.getElementById("dashboard-REDE").style.display = "none";
     }
     function mudarAbaCPU(){
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "block";
         document.getElementById("dashboard-RAM").style.display = "none";
+        document.getElementById("dashboard-REDE").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "none";
     }
     function mudarAbaRAM(){
@@ -450,12 +532,21 @@
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "block";
         document.getElementById("dashboard-HD").style.display = "none";
+        document.getElementById("dashboard-REDE").style.display = "none";
     }
     function mudarAbaHD(){
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "block";
+        document.getElementById("dashboard-REDE").style.display = "none";
+    }
+    function mudarAbaRede(){
+        document.getElementById("dashboard-home").style.display = "none";
+        document.getElementById("dashboard-CPU").style.display = "none";
+        document.getElementById("dashboard-RAM").style.display = "none";
+        document.getElementById("dashboard-HD").style.display = "none";
+        document.getElementById("dashboard-REDE").style.display = "block";
     }
 
     
