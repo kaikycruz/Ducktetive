@@ -1,42 +1,46 @@
 /* pagina mural */
 
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
 
 *::-webkit-scrollbar {
-    width: 5px;               /* width of the entire scrollbar */
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: #d9d9d9;        /* color of the tracking area */
+    width: 5px;
+    /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: #d9d9d9;
+    /* color of the tracking area */
     border-radius: 5px;
 
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    background-color: #FF7C33;    /* color of the scroll thumb */
-  /* creates padding around scroll thumb */
-  border-radius: 5px;
+}
 
-  }
+*::-webkit-scrollbar-thumb {
+    background-color: #FF7C33;
+    /* color of the scroll thumb */
+    /* creates padding around scroll thumb */
+    border-radius: 5px;
+
+}
 
 /* Side-bar */
 
-hr{
+hr {
     background-color: #D9D9D9;
     height: 2px;
     border: none;
 }
 
-.dashboard-main{
+.dashboard-main {
     display: flex;
 }
 
-.aside-bar-menu{
+.aside-bar-menu {
     background-color: #FFFFFF;
     height: 100vh;
     width: 300px;
@@ -47,16 +51,16 @@ hr{
     z-index: 999;
 }
 
-.aside-bar-menu #logo-ducktetive{
+.aside-bar-menu #logo-ducktetive {
     margin: 30px;
     text-align: center;
 }
 
-.aside-bar-menu #logo-ducktetive #duck-logo-dashboard{
+.aside-bar-menu #logo-ducktetive #duck-logo-dashboard {
     height: 50px;
 }
 
-.dashboard-main #user-data{
+.dashboard-main #user-data {
     margin: 20px 0px;
     display: flex;
     flex-direction: column;
@@ -65,23 +69,23 @@ hr{
     gap: 7px;
 }
 
-.dashboard-main #userData #user-picture{
+.dashboard-main #userData #user-picture {
     height: 90px;
     width: 90px;
 }
 
-#user-name{
+#user-name {
     font-weight: bold;
     color: #313131;
     font-size: 20px;
 }
 
-#user-role{
+#user-role {
     font-weight: bold;
     color: #757575;
 }
 
-#dashboard-menu{
+#dashboard-menu {
     margin: 20px 0px;
     display: flex;
     flex-direction: column;
@@ -89,13 +93,14 @@ hr{
     align-items: center;
     width: 100%;
 }
-#dash-title{
+
+#dash-title {
     color: #757575;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-#dashboard-menu .dash-item{
+#dashboard-menu .dash-item {
     display: flex;
     height: 50px;
     width: 100%;
@@ -104,12 +109,12 @@ hr{
     margin-top: 5px;
 }
 
-.dash-item :hover{
-    background-color: rgba(255,124,51,0.11);
+.dash-item :hover {
+    background-color: rgba(255, 124, 51, 0.11);
 
 }
 
-#dashboard-menu .dash-item .menu{
+#dashboard-menu .dash-item .menu {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,17 +132,17 @@ hr{
 
 }
 
-#dashboard-menu .dash-item .icon .icon-menu{
+#dashboard-menu .dash-item .icon .icon-menu {
     height: 19px;
 }
 
-#ram-icon{
+#ram-icon {
     width: 19px;
 
 }
 
 
-#dashboard-menu .dash-item .item-text{
+#dashboard-menu .dash-item .item-text {
     color: #757575;
     font-weight: bold;
     width: 75%;
@@ -146,7 +151,7 @@ hr{
 
 
 
-#alerts{
+#alerts {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,7 +159,7 @@ hr{
     margin: 15px;
 }
 
-#alert-list{
+#alert-list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,12 +171,12 @@ hr{
     scroll-behavior: smooth;
 }
 
-.content-alert{
+.content-alert {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255,124,51,0.11);
+    background-color: rgba(255, 124, 51, 0.11);
     height: 80px;
     width: 75%;
     border-radius: 25px;
@@ -179,30 +184,32 @@ hr{
     padding: 20px;
 }
 
-.content-alert div{
+.content-alert div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: fit-content; 
-    
+    height: fit-content;
+
 
 }
 
-.content-alert #alert-status-healthy{
+.content-alert #alert-status-healthy {
     height: 20px;
     width: 20px;
     border-radius: 20px;
     background-color: rgb(0, 255, 0);
     margin-right: 10px;
 }
-.content-alert #alert-status-attention{
+
+.content-alert #alert-status-attention {
     height: 20px;
     width: 20px;
     border-radius: 20px;
     background-color: yellow;
     margin-right: 10px;
 }
-.content-alert #alert-status-critic{
+
+.content-alert #alert-status-critic {
     height: 20px;
     width: 20px;
     border-radius: 20px;
@@ -210,12 +217,12 @@ hr{
     margin-right: 10px;
 }
 
-.alert-title{
+.alert-title {
     font-weight: bold;
     color: #757575;
 }
 
-.alert-message{
+.alert-message {
     color: #757575;
     font-size: 14px;
     margin-top: 10px;
@@ -224,28 +231,122 @@ hr{
 
 /* Final Side-bar */
 
-.dashboard-content{
+.dashboard-content {
     background-color: #FF7C33;
-    background-color: rgba(255,124,51,0.11);
+    background-color: rgba(255, 124, 51, 0.11);
     display: flex;
     width: 100%;
     position: relative;
     padding-left: 45vh;
-    height: 100vh;
+    /* height: 100vh; */
+    /* comentamos o codigo acima para que a tela fique adaptiva*/
 }
 
 /*Graficos CPU*/
+.cpu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-.campo-grafico{
+.campo-grafico {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+}
+
+.graficos {
     width: 15vw;
     height: 20vh;
     background-color: #fff;
     border-radius: 20px;
+    margin: 10px;
 }
 
 #dashboard-CPU {
     color: #757575;
 }
 
-/* dash de rede */
+.uso-cpu {
+    display: flex;
+    justify-content: space-between;
+    width: 65vw;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 2vh;
+}
 
+.grafico-detalhes {
+    width: 60%;
+}
+
+.utilizacao-velocidade {
+    display: flex;
+    justify-content: space-between;
+}
+
+.utilizacao-velocidade span{
+    display: flex;
+    flex-direction: column;
+}
+
+.uso-cpu #div_kpi_cpu span div {
+    display: flex;
+    flex-direction: column;
+}
+
+span div span{
+    display: flex;
+    justify-content: space-between;
+}
+
+span div span b{
+    margin-left: 2vh;
+}
+
+/* dash de rede */
+.dash-uso-rede {
+    display: flex;
+    width: 75vw;
+    justify-content: space-between;
+}
+
+.dash-uso-rede div {
+    background-color: #FFf;
+    border-radius: 5vh;
+    height: 50vh;
+    width: 70vw;
+    padding: 5vh;
+    margin: 2vh;
+}
+
+.dash-uso-rede #div_kpi_rede {
+    width: 30vw;
+    height: 80vh;
+    background-color: #FFf;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dash-uso-rede #div_kpi_rede span {
+    display: flex;
+    justify-content: center;
+}
+
+.dash-uso-rede #div_kpi_rede span div {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+    width: 20vh;
+}
+
+.dash-uso-rede #div_kpi_rede span div p{
+    margin: 0;
+}

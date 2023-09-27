@@ -61,7 +61,8 @@
                 <div class="dash-item" onclick="mudarAbaRAM()">
                     <div class="menu">
                         <div class="icon">
-                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu" id="ram-icon">
+                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu"
+                                id="ram-icon">
                         </div>
                         <p class="item-text">RAM</p>
                     </div>
@@ -89,7 +90,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -100,7 +101,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-healthy"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -111,7 +112,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -122,7 +123,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -133,7 +134,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -144,7 +145,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -155,7 +156,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -166,7 +167,7 @@
                     <div class="content-alert">
                         <div>
                             <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span> 
+                            <span id="component" class="alert-title">CPU</span>
                             <span class="alert-title"> - </span>
                             <span id="status" class="alert-title"> Critico</span>
                         </div>
@@ -175,7 +176,7 @@
                         </div>
                     </div>
 
-                    
+
 
 
                 </div>
@@ -187,16 +188,79 @@
             <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
         </section>
         <!-- Kaiky -->
-        <section class="dashboard-content" id="dashboard-CPU" style="display: none;"> 
+        <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - CPU</h2>
             <div class="cpu-content">
-            <h3>AMD Ryzen 5 5500U- 8 cores 8 threads</h3>
-            <div class="campo-grafico" id="campo_grafico">
-                <div class="graficos">
-                    <canvas id="grafico_cpu"></canvas>
+                <h3>AMD Ryzen 5 5500U- 8 cores 8 threads</h3>
+                <div class="campo-grafico" id="campo_grafico">
+                    <div class="graficos">
+                        <canvas id="grafico_cpu"></canvas>
+                    </div>
+                </div>
+                <div class="uso-cpu">
+                    <div id="div_kpi_cpu">
+                        <h1>Detalhes da Cpu</h1>
+                        <div class="utilizacao-velocidade">
+                            <span>
+                                <p>
+                                    Utilização:
+                                </p> 
+                                <h3>20%</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Velocidade:
+                                </p> 
+                                <h3>2.71 Ghz</h3>
+                            </span>
+
+                        </div>
+                        <p>
+                            Processos:
+                        <h3>244</h3>
+                        </p>
+                        <p>
+                            Tempo Ligado:
+                        <h3>1:12:31:28</h3>
+                        </p>
+                        <span>
+                            <div>
+                                <span>
+                                    <p>Velocidade base</p>
+                                    <p><b>2.10 Ghz</b></p>
+                                </span>
+                                <span>
+                                    <p>Cores</p>
+                                    <p><b>8</b></p>
+                                </span>
+
+                                <span>
+                                    <p>Threads</p>
+                                    <p><b>8</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L1 Cache</p>
+                                    <p><b>384 KB</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L2 Cache</p>
+                                    <p><b>3.0 MB</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L3 Cache</p>
+                                    <p><b>8.0 MB</b></p>
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="grafico-detalhes">
+                        <canvas id="detalhes_cpu"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
 
         </section>
         <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
@@ -208,74 +272,73 @@
         <section class="dashboard-content" id="dashboard-REDE" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - REDE</h2>
             <div class="dash-uso-rede">
-                <canvas id="grafico-rede"></canvas>
-            </div>
-            <div>
-                
+                <div id="div_kpi_rede">
+                    <h2>Detalhes da rede</h2>
+                    <p>
+                        Frequência:
+                    <h3>5.0 Ghz</h3>
+                    </p>
+                    <p>
+                        Tipo de conexão:
+                    <h3>Ethernet</h3>
+                    </p>
+                    <p>
+                        Velocidade de Download:
+                    <h3>5000Mb/ps</h3>
+                    </p>
+                    <p>
+                        Velociade de Upload:
+                    <h3>4000Mb/ps</h3>
+                    </p>
+                    <h2>Dados</h2>
+                    <span>
+                        <div>
+                            <p>Enviados:</p>
+                            <h3>3500Mb/ps</h3>
+                        </div>
+                        <div>
+                            <p>Recebidos:</p>
+                            <h3>4300Mb/ps</h3>
+                        </div>
+                    </span>
+                </div>
+                <div>
+                    <canvas id="grafico-rede" class="canvas-rede"></canvas>
+                </div>
             </div>
         </section>
-        
+
     </main>
 
-
+    <script src="../js/graficos.js"></script>
 </body>
 
 </html>
 
 <script>
-    
+
     const rede = document.getElementById('grafico-rede');
-    
+
     new Chart(rede, {
-    type: 'line',
-    data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-          y: {
-              beginAtZero: true
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-    }
-    }
-});
+    });
 
 
-const cpu = document.getElementById('grafico_cpu');
-
-new Chart(cpu, {
-    type: 'line',
-    data: {
-      labels: ['12:00', '12:05', '12:10', '12:15'],
-      datasets: [{
-        label: 'Core 1',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  var array = [1,2,3,4,5,6,7,8,9,10,];
-
-  for (let i = 0; i < array.length; i++) {
-    const graficos= array[i];
-    campo_grafico.innerHTML += `<div class="graficos">
-                    <canvas id="grafico-cpu"></canvas>
-                </div>`;
-  }
-  
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -402,7 +465,7 @@ new Chart(cpu, {
             labels: labels,
             datasets: [{
                 label: 'Core 1',
-                data: [20,30,10,24,23,45,50],
+                data: [20, 30, 10, 24, 23, 45, 50],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
@@ -513,35 +576,35 @@ new Chart(cpu, {
 
     }
 
-    function mudarAbaDashboard(){
+    function mudarAbaDashboard() {
         document.getElementById("dashboard-home").style.display = "block";
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "none";
     }
-    function mudarAbaCPU(){
+    function mudarAbaCPU() {
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "block";
         document.getElementById("dashboard-RAM").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "none";
     }
-    function mudarAbaRAM(){
+    function mudarAbaRAM() {
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "block";
         document.getElementById("dashboard-HD").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "none";
     }
-    function mudarAbaHD(){
+    function mudarAbaHD() {
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "none";
         document.getElementById("dashboard-HD").style.display = "block";
         document.getElementById("dashboard-REDE").style.display = "none";
     }
-    function mudarAbaRede(){
+    function mudarAbaRede() {
         document.getElementById("dashboard-home").style.display = "none";
         document.getElementById("dashboard-CPU").style.display = "none";
         document.getElementById("dashboard-RAM").style.display = "none";
@@ -549,5 +612,5 @@ new Chart(cpu, {
         document.getElementById("dashboard-REDE").style.display = "block";
     }
 
-    
+
 </script>
