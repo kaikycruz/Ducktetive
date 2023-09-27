@@ -204,13 +204,13 @@
                             <span>
                                 <p>
                                     Utilização:
-                                </p> 
+                                </p>
                                 <h3>20%</h3>
                             </span>
                             <span>
                                 <p>
                                     Velocidade:
-                                </p> 
+                                </p>
                                 <h3>2.71 Ghz</h3>
                             </span>
 
@@ -265,6 +265,73 @@
         </section>
         <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - RAM</h2>
+            <div class="conteudo-ram">
+                <div class="area-grafico-ram">
+                    <h3>Uso da memória</h3>
+                    <div class="grafico-ram">
+                        <canvas id="grafico-ram" style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="indicadores-grafico-ram">
+                    <div class="indicadores-ram">
+                        <h3>Detalhes da memória</h3>
+                        <div class="indicadores-medicao">
+                        <span>
+                            <p>
+                                Capacidade:
+                            </p>
+                            <h3>128 GB</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Em uso:
+                            </p>
+                            <h3>102,4 GB</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Disponível:
+                            </p>
+                            <h3>25,6 GB</h3>
+                        </span>
+                        </div>
+                            <span>
+                                <p>
+                                    Em cache:
+                                </p>
+                                <h3>12,3 GB</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Processos em fila:
+                                </p>
+                                <h3>2500</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Frequência:
+                                </p>
+                                <h3>6400 Mhz</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Porcentagem de uso:
+                                </p>
+                                <h3>80%</h3>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="grafico-barra-individual1">
+                        <span>Memória 1:</span>
+                        <canvas id="grafico1-ram-barra" style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                    </div>
+                    <div class="grafico-barra-individual2">
+                        <span>Memória 2:</span>
+                        <canvas id="grafico2-ram-barra" style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
         </section>
         <section class="dashboard-content" id="dashboard-HD" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - HD</h2>
@@ -336,6 +403,123 @@
                 }
             }
         }
+    });
+
+    const ram1 = document.getElementById('grafico-ram');
+
+    new Chart(ram1, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            datasets: [{
+                label: 'Uso atual',
+                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ram2 = document.getElementById('grafico1-ram-barra');
+    
+    new Chart(ram2, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [{
+                label: '',
+                data: [100],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
+                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
+                borderWidth: 1,
+            },
+            {
+                data: [80],
+                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
+                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
+                borderWidth: 1,
+            }]
+        },
+        options: {
+        plugins: {
+            legend: {
+                display: false  // Remove a legenda
+            }
+        },
+        scales: {
+            x: {
+                display: false  // Remove os rótulos do eixo X
+            },
+            y: {
+                display: false  // Remove os rótulos do eixo Y
+            }
+        },
+        indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
+            barPercentage: -4,  // Ajuste para sobrepor as barras
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+    }
+    });
+
+    const ram3 = document.getElementById('grafico2-ram-barra');
+
+    new Chart(ram3, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [{
+                label: '',
+                data: [100],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
+                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
+                borderWidth: 1,
+            },
+            {
+                data: [80],
+                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
+                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
+                borderWidth: 1,
+            }]
+        },
+        options: {
+        plugins: {
+            legend: {
+                display: false  // Remove a legenda
+            }
+        },
+        scales: {
+            x: {
+                display: false  // Remove os rótulos do eixo X
+            },
+            y: {
+                display: false  // Remove os rótulos do eixo Y
+            }
+        },
+        indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
+            barPercentage: -4,  // Ajuste para sobrepor as barras
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+    }
     });
 
 

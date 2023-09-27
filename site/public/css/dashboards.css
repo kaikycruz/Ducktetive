@@ -351,3 +351,72 @@ span div span b{
 .dash-uso-rede #div_kpi_rede span div p{
     margin: 0;
 }
+
+/* Dashboard memória RAM - Zapatta */
+
+.conteudo-ram {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 100vw;
+}
+
+.area-grafico-ram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    width: 70vw;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.grafico-ram {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.indicadores-grafico-ram {
+    display: flex;
+    justify-content: space-between;
+    color: #757575;
+    font-size: 125%;
+    font-weight: 400;
+    height: 50vh;
+    width: 70vw;
+}
+
+.indicadores-ram {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 3%;
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 82%;
+    width: 42%;
+}
+
+.indicadores-medicao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.grafico-barra-individual1,
+.grafico-barra-individual2 {
+    display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+    border-radius: 30px;
+    height: 82%;
+    width: 17%;
+}
+
