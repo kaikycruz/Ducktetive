@@ -457,22 +457,27 @@ span div span b{
     width: 28vw;
 }
 
-.indicadores-armazenamento01 {
+.indicadores-armazenamento {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    background-color: #ffffff;
-    margin-top: 5%;
-    padding-top: 3%;
-    padding-left: 3%;
-    padding-bottom: 2%;
     border-radius: 30px;
-    height: 100%;
-    width: 12vw;
+    height: 20vh;
+    width: 28vw;
 }
 
-.indicadores-armazenamento02 {
+.indicadores-titulo {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: 3vh;
+    width: 28vw;
+}
+
+.dados-indicadores {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     background-color: #ffffff;
@@ -482,7 +487,7 @@ span div span b{
     padding-bottom: 2%;
     border-radius: 30px;
     height: 100%;
-    width: 12vw;
+    width: 28vw;
 }
 
 .area-grafico03-armazenamento {
