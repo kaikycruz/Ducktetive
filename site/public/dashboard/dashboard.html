@@ -187,7 +187,7 @@
         <section class="dashboard-content" id="dashboard-home" style="display: block;">
             <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
         </section>
-        <!-- Kaiky -->
+        <!-- CPU - KAIKY -->
         <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - CPU</h2>
             <div class="cpu-content">
@@ -263,79 +263,171 @@
             </div>
 
         </section>
+
+        <!-- RAM - ZAPATTA -->
         <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - RAM</h2>
             <div class="conteudo-ram">
                 <div class="area-grafico-ram">
                     <h3>Uso da memória</h3>
                     <div class="grafico-ram">
-                        <canvas id="grafico-ram" style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
+                        <canvas id="grafico-ram"
+                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
                     </div>
                 </div>
                 <div class="indicadores-grafico-ram">
                     <div class="indicadores-ram">
                         <h3>Detalhes da memória</h3>
                         <div class="indicadores-medicao">
-                        <span>
-                            <p>
-                                Capacidade:
-                            </p>
-                            <h3>128 GB</h3>
-                        </span>
-                        <span>
-                            <p>
-                                Em uso:
-                            </p>
-                            <h3>102,4 GB</h3>
-                        </span>
-                        <span>
-                            <p>
-                                Disponível:
-                            </p>
-                            <h3>25,6 GB</h3>
-                        </span>
+                            <span>
+                                <p>
+                                    Capacidade:
+                                </p>
+                                <h3>128 GB</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Em uso:
+                                </p>
+                                <h3>102,4 GB</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Disponível:
+                                </p>
+                                <h3>25,6 GB</h3>
+                            </span>
                         </div>
-                            <span>
-                                <p>
-                                    Em cache:
-                                </p>
-                                <h3>12,3 GB</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Processos em fila:
-                                </p>
-                                <h3>2500</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Frequência:
-                                </p>
-                                <h3>6400 Mhz</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Porcentagem de uso:
-                                </p>
-                                <h3>80%</h3>
-                            </span>
+                        <span>
+                            <p>
+                                Em cache:
+                            </p>
+                            <h3>12,3 GB</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Processos em fila:
+                            </p>
+                            <h3>2500</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Frequência:
+                            </p>
+                            <h3>6400 Mhz</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Porcentagem de uso:
+                            </p>
+                            <h3>80%</h3>
+                        </span>
                         </span>
                     </div>
                     <div class="grafico-barra-individual1">
                         <span>Memória 1:</span>
-                        <canvas id="grafico1-ram-barra" style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                        <canvas id="grafico1-ram-barra"
+                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
                     </div>
                     <div class="grafico-barra-individual2">
                         <span>Memória 2:</span>
-                        <canvas id="grafico2-ram-barra" style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                        <canvas id="grafico2-ram-barra"
+                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
                     </div>
                 </div>
             </div>
 
         </section>
+
+        <!-- ARMAZENAMENTO - ZAPATTA -->
         <section class="dashboard-content" id="dashboard-HD" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - HD</h2>
+            <div class="conteudo-armazenamento">
+                <div class="area-grafico01-armazenamento">
+                    <h2>Uso do armazenamento</h2>
+                    <div class="armazenamento-grafico01">
+                        <canvas id="grafico01-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="area-grafico02-armazenamento">
+                    <h2>Taxa de transferência de disco</h2>
+                    <div class="armazenamento-grafico02">
+                        <canvas id="grafico02-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 100px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="area-bottom-indicadores-grafico03">
+                    <div class="indicadores">
+                        <div class="indicadores-titulo">
+                            <h2>Detalhes do armazenamento</h2>
+                        </div>
+                        <div class="indicadores-armazenamento">
+                            <div class="indicadores-armazenamento01">
+                                <span>
+                                    <p>
+                                        Capacidade:
+                                    </p>
+                                    <h3>9.768 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Em uso:
+                                    </p>
+                                    <h3>7.170 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Disponível:
+                                    </p>
+                                    <h3>73,4% / 2.598 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Tempo de atividade:
+                                    </p>
+                                    <h3>70%</h3>
+                                </span>
+                            </div>
+                            <div class="indicadores-armazenamento02">
+                                <span>
+                                    <p>
+                                        Taxa de transferência:
+                                    </p>
+                                    <h3>600 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Velocidade de leitura:
+                                    </p>
+                                    <h3>30 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Velogicade de gravação:
+                                    </p>
+                                    <h3>472 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Tipo:
+                                    </p>
+                                    <h3>SSD M.2 NVMe</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-grafico03-armazenamento">
+                        <h2>Taxa de transferência de disco</h2>
+                        <canvas id="grafico03-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 200px; width: 700px;"></canvas>
+                    </div>
+                </div>
+
+            </div>
         </section>
+
+        <!-- REDE - GUSTAVO -->
         <section class="dashboard-content" id="dashboard-REDE" style="display: none;">
             <h2 class="dashboard-title">Overview California_Server - REDE</h2>
             <div class="dash-uso-rede">
@@ -427,7 +519,7 @@
     });
 
     const ram2 = document.getElementById('grafico1-ram-barra');
-    
+
     new Chart(ram2, {
         type: 'bar',
         data: {
@@ -447,20 +539,20 @@
             }]
         },
         options: {
-        plugins: {
-            legend: {
-                display: false  // Remove a legenda
-            }
-        },
-        scales: {
-            x: {
-                display: false  // Remove os rótulos do eixo X
+            plugins: {
+                legend: {
+                    display: false  // Remove a legenda
+                }
             },
-            y: {
-                display: false  // Remove os rótulos do eixo Y
-            }
-        },
-        indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
+            scales: {
+                x: {
+                    display: false  // Remove os rótulos do eixo X
+                },
+                y: {
+                    display: false  // Remove os rótulos do eixo Y
+                }
+            },
+            indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
             barPercentage: -4,  // Ajuste para sobrepor as barras
             scales: {
                 x: {
@@ -471,7 +563,7 @@
                     max: 100
                 }
             }
-    }
+        }
     });
 
     const ram3 = document.getElementById('grafico2-ram-barra');
@@ -495,20 +587,20 @@
             }]
         },
         options: {
-        plugins: {
-            legend: {
-                display: false  // Remove a legenda
-            }
-        },
-        scales: {
-            x: {
-                display: false  // Remove os rótulos do eixo X
+            plugins: {
+                legend: {
+                    display: false  // Remove a legenda
+                }
             },
-            y: {
-                display: false  // Remove os rótulos do eixo Y
-            }
-        },
-        indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
+            scales: {
+                x: {
+                    display: false  // Remove os rótulos do eixo X
+                },
+                y: {
+                    display: false  // Remove os rótulos do eixo Y
+                }
+            },
+            indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
             barPercentage: -4,  // Ajuste para sobrepor as barras
             scales: {
                 x: {
@@ -519,10 +611,98 @@
                     max: 100
                 }
             }
-    }
+        }
     });
 
+    const armazenamento01 = document.getElementById('grafico01-armazenamento');
 
+    new Chart(armazenamento01, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            datasets: [{
+                label: 'Uso atual',
+                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const armazenamento02 = document.getElementById('grafico02-armazenamento');
+
+    new Chart(armazenamento02, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [{
+                label: '',
+                data: [100],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
+                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
+                borderWidth: 1,
+            },
+            {
+                data: [80],
+                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
+                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false  // Remove a legenda
+                }
+            },
+            scales: {
+                x: {
+                    display: false  // Remove os rótulos do eixo X
+                },
+                y: {
+                    display: false  // Remove os rótulos do eixo Y
+                }
+            },
+            indexAxis: 'y',  // Mudança para o eixo y para sobrepor as barras
+            barPercentage: -4,  // Ajuste para sobrepor as barras
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    const armazenamento03 = document.getElementById('grafico03-armazenamento');
+
+    new Chart(armazenamento03, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            datasets: [{
+                label: 'Uso atual',
+                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 

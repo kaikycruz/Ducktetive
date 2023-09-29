@@ -242,7 +242,8 @@ hr {
     /* comentamos o codigo acima para que a tela fique adaptiva*/
 }
 
-/*Graficos CPU*/
+/* Graficos CPU */
+/* Kaiky */
 .cpu-content {
     display: flex;
     flex-direction: column;
@@ -308,59 +309,14 @@ span div span b{
     margin-left: 2vh;
 }
 
-/* dash de rede */
-/* gustavo*/
-.dash-uso-rede {
-    display: flex;
-    width: 75vw;
-    justify-content: space-between;
-}
-
-.dash-uso-rede div {
-    background-color: #FFf;
-    border-radius: 5vh;
-    height: 50vh;
-    width: 70vw;
-    padding: 5vh;
-    margin: 2vh;
-}
-
-.dash-uso-rede #div_kpi_rede {
-    width: 30vw;
-    height: 80vh;
-    background-color: #FFf;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.dash-uso-rede #div_kpi_rede span {
-    display: flex;
-    justify-content: center;
-}
-
-.dash-uso-rede #div_kpi_rede span div {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 5vh;
-    width: 20vh;
-}
-
-.dash-uso-rede #div_kpi_rede span div p{
-    margin: 0;
-}
-
-/* Dashboard memória RAM - Zapatta */
-
+/* Dashboard memória RAM */
+/* Zapatta */
 .conteudo-ram {
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-content: space-evenly;
     height: 100vh;
-    width: 100vw;
 }
 
 .area-grafico-ram {
@@ -418,5 +374,165 @@ span div span b{
     border-radius: 30px;
     height: 82%;
     width: 17%;
+}
+
+/* Dashboard armazenamento */
+/* Zapatta*/
+
+.conteudo-armazenamento {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.area-grafico01-armazenamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    width: 70vw;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.armazenamento-grafico01 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.area-grafico02-armazenamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 16vh;
+    width: 70vw;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.armazenamento-grafico02 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.area-bottom-indicadores-grafico03 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 30vh;
+    width: 70vw;
+}
+
+.indicadores {
+    height: 100%;
+    width: 28vw;
+}
+
+.indicadores-armazenamento {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    height: 20vh;
+    width: 28vw;
+}
+
+.indicadores-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: 3vh;
+    width: 28vw;
+}
+
+.indicadores-armazenamento01 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-top: 5%;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    border-radius: 30px;
+    height: 100%;
+    width: 12vw;
+}
+
+.indicadores-armazenamento02 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-top: 5%;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    border-radius: 30px;
+    height: 100%;
+    width: 12vw;
+}
+
+.area-grafico03-armazenamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 29vh;
+    width: 40vw;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+
+/* dash de rede */
+/* gustavo*/
+.dash-uso-rede {
+    display: flex;
+    width: 75vw;
+    justify-content: space-between;
+}
+
+.dash-uso-rede div {
+    background-color: #FFf;
+    border-radius: 5vh;
+    height: 50vh;
+    width: 70vw;
+    padding: 5vh;
+    margin: 2vh;
+}
+
+.dash-uso-rede #div_kpi_rede {
+    width: 30vw;
+    height: 80vh;
+    background-color: #FFf;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dash-uso-rede #div_kpi_rede span {
+    display: flex;
+    justify-content: center;
+}
+
+.dash-uso-rede #div_kpi_rede span div {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+    width: 20vh;
+}
+
+.dash-uso-rede #div_kpi_rede span div p{
+    margin: 0;
 }
 
