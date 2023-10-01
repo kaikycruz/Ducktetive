@@ -2,7 +2,7 @@
 
 # Ducktetive
 
-### A Ducktetive é um sistema de monitoramento de servidores para mitigar instabilidades e ataques DDoS.
+### A Ducktetive é um sistema de monitoramento de servidores para prevenir instabilidades e ataques DDoS.
 
 Nosso sistema contem algumas features como:
 
