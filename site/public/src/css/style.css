@@ -10,7 +10,21 @@
 }
 a{
     text-decoration: none;
+    color: black;
 }
+
+#aCadastre{
+    color: white;
+}
+
+#aCadastro2{
+    color: white;
+}
+
+#aCadastro2:hover{
+    color: #FF7C33;
+}
+
 #nav{
     padding: 20px;
 }
@@ -193,7 +207,16 @@ hr{
         color: #FF7C33;
         border: 2px solid #FF7C33;
         padding: 8px 15px;
-        border-radius: 15px; 
+        border-radius: 15px;
+    }
+
+    #buttonEntrarDesktop:hover{
+        cursor: pointer;
+        text-decoration: #FF7C33;
+    }
+
+    #aEntrar{
+        text-decoration: none;
     }
 
     
