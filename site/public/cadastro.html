@@ -1,112 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>DuckTetive | Cadastro</title>
-
-    <script src="./js/sessao.js"></script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="src\images\ducktetive.png">
-    <link rel="stylesheet" href="./css/estilo.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <title>Ducktetive | Cadastro</title>
+
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
 
-  <body onload="listar()">
-    <!--header inicio-->
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li>
-            <a href="index.html">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li class="agora">
-            <a href="#">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!--header fim-->
+<body>
+    <header class="header-top">
+        <nav class="navegation">
+            <ul class="nav-ul">
+                <li class="list-ul" ><a  id="ESCONDIDO1" href="index.html">Página Inicial</a></li>
+            </ul>
+            <ul class="nav-ul" id="logoCadastro">
+                <li class="list-ul"><a href="index.html"><img src="../public/assets/patozo-removebg-preview.png" alt="LOGO" class="list-logo" style="width: 376px; height: 146px;"></a></li>
+            </ul>
+            <ul class="nav-ul">
+                <li class="list-ul"><a id="login-forma" href="login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="section-banner">
+        <main class="container">
+            <div class="img-banner">
+                <h1>Cadastro</h1>
+                <img src="src/images/images_login_registro/logoBlackFont.png" alt="">
+            </div>
+            <div class="login-form">
+                <div class="container-form">
+                    <div class="form">
+                        <label for="nome">Nome Fantasia</label>
+                        <input class="input-text" type="text" id="nome_fantasia" >
+                        <br>
+                        <label for="email">Razão Social</label>
+                        <input class="input-text" type="razao_social" id="razao_social" >
+                        <br>
+                        <label for="senha">Email</label>
+                        <input class="input-text" id="email_input" >
+                        <label for="senha">CNPJ</label>
+                        <input class="input-text" id="CNPJ" >
+                        <br>
+                        <label for="Senha">Senha</label>
+                        <input class="input-text" type="password" id="Senha" >
+                        <br>
+                        <label for="confirmarSenha">Confirmar Senha</label>
+                        <input class="input-text" type="password" id="confirmarSenha" >
+                        <br>
+                        <label for="privilegioAdmin">Permissões do usuário</label>
+                        <select class="input-text" name="privilegioAdmin" id="privilegioAdmin">
+                            <option value="1">Admin</option>
+                        </select>
+                        <div class="buttons-form">
+                            <button class="button button-register" onclick="cadastrar()">Cadastrar</button>
+                        </div>
+                        
+                    </div>
 
-    <div class="login">
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-          <span id="mensagem_erro"></span>
+                    
+                </div>
+            </div>
+        </main>
+        <!-- Botão flutuante de suporte -->
+        <div id="floatButton">
+            <a>
+                <img src="../public/assets/duck.jpg" id="supportIcon" style="border-radius: 25px;">
+            </a>
         </div>
-      </div>
-      <div class="container">
-        <div class="card card-cadastro">
-          <h2>Bem-vindo!</h2>
-          <div class="formulario">
-            <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
+    </section>
 
-            <div class="campo">
-              <span>Nome:</span>
-              <input id="nome_input" type="text" placeholder="Seu nome" />
-            </div>
-            <div class="campo">
-              <span>E-mail:</span>
-              <input
-                id="email_input"
-                type="text"
-                placeholder="meuemail@provedor.com"
-              />
-            </div>
-            <div class="campo">
-              <span>Senha:</span>
-              <input id="senha_input" type="password" placeholder="******" />
-            </div>
-            <div class="campo">
-              <span>Empresa:</span>
-              <select name="empresas" id="listaEmpresas">
-                <option selected>Selecione uma empresa</option>
-              </select>
-            </div>
-            <div class="campo">
-              <span>Confirmação da Senha:</span>
-              <input
-                id="confirmacao_senha_input"
-                type="password"
-                placeholder="******"
-              />
-            </div>
-            <button class="botao" onclick="cadastrar()">Cadastrar</button>
-          </div>
-          <div id="div_aguardar" class="loading-div">
-            <img src="./assets/circle-loading.gif" id="loading-gif" />
-          </div>
 
-          <div id="div_erros_login"></div>
+
+    <footer class="footer">
+        <div class="container_rodape">
+            <div class="contato">
+                <p>Contato</p>
+                
+                <div class="infos">                                        
+                    <ul>
+                        <li><img src="../public/assets/telefone.png" alt="telefone-icon" id="img-footer-telefone">(11) 9999-9999</li>
+                        <li><img src="../public/assets/pato-de-borracha.png" alt="mail-icon" id="img-footer-mail">contato@ducktetive.com.br</li>
+                        <li><img src="" alt="" id="img-footer-home"><a id="home" style="text-decoration: none; color: white;" href="index.html">A Ducktetive</a></li>
+                    </ul>
+                </div>
+        
+            </div>
+            <div class="section">
+                <a href="#">
+                    <div class="back-top">
+                    <img src="../public/assets/arrow-up.png" alt="" class="seta-icon">
+                    </div>
+                </a>
+            </div>
+            
         </div>
-      </div>
-    </div>
+    </footer>
+</body>
 
-    <!--footer inicio-->
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-    <!--footer fim-->
-  </body>
 </html>
 
 <script>
@@ -115,17 +118,20 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
+    var nomeFantasiaVar = nome_fantasia.value;
+    var razaoSocialVar = razao_social.value
+    var cnpjVar = CNPJ.value
     var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
+    var senhaVar = Senha.value;
+    var confirmacaoSenhaVar = confirmarSenha.value;
+    var permissao = permissao.value
     if (
-      nomeVar == "" ||
+      nomeFantasiaVar == "" ||
+      razaoSocialVar == "" ||
+      cnpjVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
