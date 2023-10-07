@@ -4,36 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
-    <link rel="stylesheet" href="../public/src/css/styIe.css">
     <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
 </head>
 <body>
 
-    <div class="banner">    </div>
-
-    <div class="container">
-        <div class="conteudo">
-            <div class="banner">
-                <img src="../public/assets/patozo-removebg-preview.png" alt="Banner">
+    <main id="main">
+        <section id="card-form">
+            <div id="central-logo">
+                <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
             </div>
-            <div id="interacoes">
-            <input type="text" class="campo" placeholder="E-mail">
-            <input type="password" class="campo" placeholder="Senha">
-            <button class="botao">Entrar</button>
+            <div class="form">
+                <div class="field-form">
+                    <label class="form-title" for="email" >Email</label><br>
+                    <input type="email" id="email" class="form-field" required>
+                </div>
+                <div class="field-form" id="password-login">
+                    <label class="form-title" for="password">Senha</label><br>
+                    <input type="password" id="password" class="form-field" required>
+                </div>
+                <div class="form-forgot-password">
+                    <a href="" id="forgot-anchor"><p id="forgot-password">Esqueceu a senha?</p></a>
+                </div>
+                <div class="form-remember-me">
+                    <input type="checkbox" id="remember" id="remember-checkbox">
+                    <p id="checkbox-text" id="remember" >Lembrar de mim</p>
+                </div>
+                <button class="button" onclick="entrar()">Entrar</button>
+                <br>
+                <div class="terms-of-use">
+                    <p>Ao fazer login você aceita os <span><a href="">Termos de Uso e reconhece a Política de Privacidade e a Política de Cookies.</a></span></p>
+                </div>
+                <br>
+                <div class="already-account-or-not">
+                    <p>Não tem uma conta ainda?  <span><a href="registro.html">Registrar agora</a></span></p>
+                </div>
             </div>
-        </div>
-    </div>
-
-
-    <footer>
-        <div class="footer-content">
-            <span id="duckSpan">A Ducktetive</span>
-            <span>Evite o pato</span>
-            <span>Sobre Nós</span>
-            <span>A Equipe</span>
-            <span>Nossa solução</span>
-        </div>
-    </footer>
+        </section>
+    </main>
+        <footer class="footer">
+            <ul id="footer-list">
+                <li class="list"><a href="index.html"><span>A Ducktetive</span></a></li>
+                <li class="list"><a href="">Evite o Pato</a></li>
+                <li class="list"><a href="">Sobré Nós</a></li>
+                <li class="list"><a href="">A Equipe</a></li>
+                <li class="list"><a href="">Nossa Solução</a></li>
+            </ul>
+        </footer>
 
 </body>
 </html>
