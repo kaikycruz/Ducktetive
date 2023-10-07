@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+
+    <main id="main">
+        <div id="central-logo">
+            <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
+        </div>
+        <h2 class="titulo-do-formulario">REDEFINIÇÃO DE SENHA</h2>
+        <div class="form">
+
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="email" >Email</label><br>
+                    <input type="email" id="email" class="form-field" required>
+            </div>
+
+            <div class="field-form field-margin">
+                <label class="form-title" for="perguntaDeSeguranca">Pergunta de segurança</label><br>
+                <select name="perguntaDeSeguranca" id="perguntaDeSeguranca" class="form-field">
+                    <option value="">Selecione uma opção...</option>
+                    <option value="diretor">Nome de solteiro da sua mãe</option>
+                    <option value="gerente">Cidade em que nasceu</option>
+                    <option value="estagiario">Nome do primeiro animal de estimação que teve</option>
+                </select>
+            </div>
+
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="password">Nova senha</label><br>
+                <input type="password" id="password" class="form-field" required>
+                <p class="form-tips">O comprimento minimo da senha é de 8 digitos.</p>
+            </div>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="password">Confirmar senha</label><br>
+                <input type="password" id="password" class="form-field" required>
+            </div>
+            <br>
+            <button class="button">Entrar</button>
+            <br>
+        </div>
+    </main>
+        <footer class="footer">
+            <ul id="footer-list">
+                <li class="list"><a href="index.html"><span>A Ducktetive</span></a></li>
+                <li class="list"><a href="">Evite o Pato</a></li>
+                <li class="list"><a href="">Sobré Nós</a></li>
+                <li class="list"><a href="">A Equipe</a></li>
+                <li class="list"><a href="">Nossa Solução</a></li>
+            </ul>
+        </footer>
+
+</body>
+</html>
+
+
+</html>
+
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
