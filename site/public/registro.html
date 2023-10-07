@@ -6,6 +6,11 @@
     <title>Tela de Login</title>
     <link rel="icon" href="src\images\ducktetive.png">
     <link rel="stylesheet" href="css/formulario.css">
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
 </head>
 <body>
 
@@ -108,7 +113,7 @@
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_cargo">Cargo</label><br>
-                        <select name="cargo" id="input_cargo" class="form-field half">
+                        <select name="cargo" id="input_cargo" class="form-field half blocked" >
                             <option value="">Selecione uma opção...</option>
                             <option value="diretor">Diretor</option>
                             <option value="gerente">Gerente</option>
@@ -139,8 +144,8 @@
                 <p class="form-tips">O comprimento minimo da senha é de 8 digitos.</p>
             </div>
             <div class="field-form" id="password-login">
-                <label class="form-title" for="input_password">Confirmar senha</label><br>
-                <input type="password" id="input_password" class="form-field" required>
+                <label class="form-title" for="input_confirm_password">Confirmar senha</label><br>
+                <input type="password" id="input_confirm_password" class="form-field" required>
             </div>
             <br>
             <button class="button" onclick="cadastrar()">Criar conta</button>
@@ -175,6 +180,7 @@
     function cadastrar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
+      var idEmpresaServer = 
       var razaoSocialVar = input_razao_social.value
       var nomeFantasiaVar = input_nome_fantasia.value
       var cnpjVar = input_cnpj.value
@@ -192,10 +198,9 @@
       var telefoneVar = input_telefone.value
       var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
       var senhaVar = input_password.value
-      var confirmacaoSenhaVar = input_password.value
+      var confirmacaoSenhaVar = input_confirm_password.value
       
 
-      alert(razaoSocialVar + " - " + nomeFantasiaVar + " - " + cnpjVar+ " - " +cepVar+ " - " +enderecoVar+ " - " +numeroVar+ " - " +bairroVar+ " - " +cidadeVar+ " - " +estadoVar+ " - " +complementoVar+ " - " +nomeUsuarioVar+ " - " +sobrenomeUsuarioVar+ " - " +emailVar+ " - " +cargoVar+ " - " +telefoneVar+ " - " +perguntaDeSegurancaVar+ " - " +senhaVar+ " - " +confirmacaoSenhaVar)
       if (
         razaoSocialVar == "" ||
         nomeFantasiaVar == "" ||
@@ -216,14 +221,10 @@
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
       ) {
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para todos os campos em branco)";
+        alertify.error('Escreva os dados em todos os campos');
   
-        finalizarAguardar();
         return false;
-      } else {
-        setInterval(sumirMensagem, 5000);
-      }
+      } 
   
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
@@ -257,24 +258,22 @@
           console.log("resposta: ", resposta);
   
           if (resposta.ok) {
-            cardErro.style.display = "block";
+
   
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-  
+            alertify.success('Cadastro realizado com sucesso! Redirecionando para tela de Login...');
+
             setTimeout(() => {
               window.location = "login.html";
             }, "2000");
   
-            limparFormulario();
-            finalizarAguardar();
+
           } else {
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
         })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
+
         });
   
       return false;
