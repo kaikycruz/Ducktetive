@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+}
+
+main{
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1300px;
+    min-height: 700px;
+    margin: auto;
+}
+
+
+#central-logo #top-logo{
+    height: 150px;
+}
+
+#central-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+
+.titulo-do-formulario{
+    text-align: center;
+    color: #FF7C33;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-form{
+    margin-bottom: 20px;
+}
+
+.form-title{
+    font-weight: bold;
+    color: #FF7C33;
+}
+
+.form-field{
+    width: 433px;
+    height: 30px;
+    border: #FF7C33 1px solid;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0px 10px;
+    color: #757575;
+}
+
+.half{
+    width: 185px;
+}
+
+#cargo{
+    width: 207px;
+}
+
+.field-father{
+    display: flex;
+    justify-content: space-between;
+    width: 455px;
+}
+
+#password-login{
+    margin-bottom: 5px;
+
+} 
+
+.form-forgot-password{
+    width: 455px;
+}
+
+.form-forgot-password #forgot-password{
+    text-align: end;
+}
+
+.form-tips{
+    color: #757575;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+}
+
+#forgot-anchor{
+    color: #757575;
+    font-weight: 400;
+}
+
+#forgot-anchor:hover{
+    color: #FF7C33;
+    font-weight: 400;
+}
+
+a{
+    color: #FF7C33;
+    text-decoration: none;
+}
+
+.form-remember-me{
+    width: 455px;
+    display: flex;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+#checkbox-text{
+    font-size: 14px;
+    color: #757575;
+}
+
+.button{
+    background-color: #FF7C33;
+    width: 455px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.button:hover{
+    background-color: #ee7432;
+
+}
+
+.terms-of-use{
+    width: 455px;
+    font-size: 14px;
+    color: #757575;
+    margin: 20px 0;
+}
+
+.terms-of-use p span{
+    color: #FF7C33;
+    text-decoration: underline;
+}
+
+.terms-of-use p span :hover{
+    color: #ee7432;
+
+}
+
+.already-account-or-not{
+    text-align: center;
+    width: 465px;
+    font-size: 14px;
+    color: #757575;
+
+}
+
+.already-account-or-not p span{
+    color: #FF7C33;
+}
+
+.already-account-or-not p span :hover{
+    color: #ee7432;
+
+}
+
+.footer{
+    display: flex;
+    align-items: flex-end;
+    color: #757575;
+    font-weight: 700;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0  30px;
+    height: 5vh;
+    justify-content: start;
+    max-width: 1300px;
+    margin: auto;
+    border-top: #d9d9d9 1px solid;
+}
+
+#footer-list{
+    display: flex;
+    gap: 20px;
+}
+
+#footer-list a{
+    color: #757575;
+}
+
+#footer-list span{
+    color: #FF7C33;
+}
+
+#footer-list .list{
+    list-style: none;
+}
