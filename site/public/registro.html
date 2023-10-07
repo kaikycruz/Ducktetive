@@ -9,12 +9,82 @@
 </head>
 <body>
 
-    <main id="main">
+    <main id="main-register-empresa">
         <div id="central-logo">
             <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
         </div>
-        <h2 class="titulo-do-formulario">CADASTRO DE USUÁRIO</h2>
+        
         <div class="form">
+            <h2 class="sub-titulo">Dados da empresa</h2>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="email" >Razão Social</label><br>
+                    <input type="email" id="email" class="form-field" required>
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome">Nome Fantasia</label><br>
+                        <input type="text" name="nome" id="nome" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="sobrenome">CNPJ</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome">CEP</label><br>
+                        <input type="text" name="nome" id="nome" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="sobrenome">Endereço</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome">Número</label><br>
+                        <input type="text" name="nome" id="nome" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="sobrenome">Bairro</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome">Cidade</label><br>
+                        <input type="text" name="nome" id="nome" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="sobrenome">Estado</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome">Complemento</label><br>
+                        <input type="text" name="nome" id="nome" class="form-field half">
+                    </div>
+
+                </div>
+                
+            </div>
+
+
+            <h2 class="sub-titulo">Dados do usuário</h2>
             <div class="field-form">
                 <div class="field-father">
                     <div class="fild-child">
@@ -73,13 +143,13 @@
                 <input type="password" id="password" class="form-field" required>
             </div>
             <br>
-            <button class="button">Entrar</button>
+            <button class="button" onclick="cadastrar()">Criar conta</button>
             <br>
             <div class="terms-of-use">
                 <p>Ao fazer login você aceita os <span><a href="">Termos de Uso e reconhece a Política de Privacidade e a Política de Cookies.</a></span></p>
             </div>
             <br>
-            <div class="already-account-or-not">
+            <div class="already-account-or-not" >
                 <p>Já tem uma conta? <span><a href="login.html">Entrar</a></span></p>
             </div>
             <br><br>
@@ -102,75 +172,92 @@
 </html>
 
 <script>
-
-
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
+    function cadastrar() {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nomeFantasiaVar = nome_fantasia.value;
+      var razaoSocialVar = razao_social.value
+      var cnpjVar = CNPJ.value
+      var emailVar = email_input.value;
+      var senhaVar = Senha.value;
+      var confirmacaoSenhaVar = confirmarSenha.value;
+      var permissao = permissao.value
+      if (
+        nomeFantasiaVar == "" ||
+        razaoSocialVar == "" ||
+        cnpjVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+      ) {
+        mensagem_erro.innerHTML =
+          "(Mensagem de erro para todos os campos em branco)";
+  
+        finalizarAguardar();
         return false;
+      } else {
+        setInterval(sumirMensagem, 5000);
+      }
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          empresaServer: empresaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            cardErro.style.display = "block";
+  
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+  
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+  
+            limparFormulario();
+            finalizarAguardar();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+  
+      return false;
     }
-
+  
+    function listar() {
+      fetch("/empresas/listar", {
+        method: "GET",
+      })
+        .then(function (resposta) {
+          resposta.json().then((empresas) => {
+            empresas.forEach((empresa) => {
+              listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+            });
+          });
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    }
+  
     function sumirMensagem() {
-        cardErro.style.display = "none"
+      cardErro.style.display = "none";
     }
-
-</script>
+  </script>
