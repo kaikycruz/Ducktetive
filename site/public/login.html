@@ -6,6 +6,12 @@
     <title>Tela de Login</title>
     <link rel="icon" href="src\images\ducktetive.png">
     <link rel="stylesheet" href="css/formulario.css">
+
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
 </head>
 <body>
 
@@ -17,11 +23,11 @@
             <div class="form">
                 <div class="field-form">
                     <label class="form-title" for="email" >Email</label><br>
-                    <input type="email" id="email" class="form-field" required>
+                    <input type="email" id="email_input" class="form-field" required>
                 </div>
                 <div class="field-form" id="password-login">
                     <label class="form-title" for="password">Senha</label><br>
-                    <input type="password" id="password" class="form-field" required>
+                    <input type="password" id="senha_input" class="form-field" required>
                 </div>
                 <div class="form-forgot-password">
                     <a href="redefinirSenha.html" id="forgot-anchor"><p id="forgot-password">Esqueceu a senha?</p></a>
@@ -62,20 +68,14 @@
 
 
     function entrar() {
-        aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            alertify.error('Preencha todos os campos');
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -91,7 +91,6 @@
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
-
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -104,7 +103,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
+                        window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -115,6 +114,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
+                    alertify.error('Houve um erro ao tentar realizar o login!');
                     finalizarAguardar(texto);
                 });
             }
@@ -126,8 +126,5 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
 
 </script>

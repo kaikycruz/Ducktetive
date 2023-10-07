@@ -21,6 +21,15 @@ main{
     align-items: center;
 }
 
+#main-register{
+    height: 105vh;
+}
+
+#main-register-empresa{
+    height: 130vh;
+
+}
+
 
 #central-logo #top-logo{
     height: 150px;
@@ -49,6 +58,12 @@ main{
     color: #FF7C33;
     margin-top: -20px;
     margin-bottom: 30px;
+}
+
+.sub-titulo{
+    color: #FF7C33;
+    width: 100%;
+    margin: 20px 0px;
 }
 
 .form{
