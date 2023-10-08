@@ -115,8 +115,8 @@
                         <label class="form-title" for="input_cargo">Cargo</label><br>
                         <select name="cargo" id="input_cargo" class="form-field half blocked" >
                             <option value="">Selecione uma opção...</option>
-                            <option value="diretor">Diretor</option>
-                            <option value="gerente">Gerente</option>
+                            <option value="dono">Dono</option>
+                            <option value="analista">Analista</option>
                             <option value="estagiario">Estagiario</option>
                         </select>
                     </div>
@@ -130,12 +130,14 @@
 
             <div class="field-form">
                 <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" id="input_pergunta_de_seguranca" class="form-field">
+                <select name="perguntaDeSeguranca" class="form-field">
                     <option value="">Selecione uma opção...</option>
-                    <option value="diretor">Nome de solteiro da sua mãe</option>
-                    <option value="gerente">Cidade em que nasceu</option>
-                    <option value="estagiario">Nome do primeiro animal de estimação que teve</option>
+                    <option value="">Nome de solteiro da sua mãe</option>
+                    <option value="">Cidade em que nasceu</option>
+                    <option value="">Nome do primeiro animal de estimação que teve</option>
                 </select>
+                <br>
+                <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
             </div>
 
             <div class="field-form" id="password-login">
@@ -180,10 +182,11 @@
     function cadastrar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
-      var idEmpresaServer = 
       var razaoSocialVar = input_razao_social.value
       var nomeFantasiaVar = input_nome_fantasia.value
       var cnpjVar = input_cnpj.value
+
+
       var cepVar = input_cep.value
       var enderecoVar = input_endereco.value
       var numeroVar = input_numero.value
@@ -191,6 +194,8 @@
       var cidadeVar = input_cidade.value
       var estadoVar = input_estado.value
       var complementoVar = input_complemento.value
+
+
       var nomeUsuarioVar = input_nome_usuario.value
       var sobrenomeUsuarioVar = input_sobrenome_usuario.value
       var emailVar = input_email.value
@@ -198,6 +203,7 @@
       var telefoneVar = input_telefone.value
       var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
       var senhaVar = input_password.value
+
       var confirmacaoSenhaVar = input_confirm_password.value
       
 
@@ -235,23 +241,38 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
-          razaoServer: razaoSocialVar,
-          nomeFantasiaServer: nomeFantasiaVar,
-          cnpjServer: cnpjVar,
-          cepServer: cepVar,
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
           enderecoServer: enderecoVar,
           numeroServer: numeroVar,
           bairroServer: bairroVar,
+          cepServer: cepVar,
+          complementoServer: complementoVar,
           cidadeServer: cidadeVar,
           estadoServer: estadoVar,
-          complementoServer: complementoVar,
+
+          razaoSocialServer: razaoSocialVar,
+          nomeFantasiaServer: nomeFantasiaVar,
+          cnpjServer: cnpjVar,
+
           nomeUsuarioServer: nomeUsuarioVar,
           sobrenomeUsuarioServer: sobrenomeUsuarioVar,
           emailServer: emailVar,
-          cargoServer: 'Dono',
+          cargoServer: cargoVar,
           telefoneServer: telefoneVar,
           perguntaDeSegurancaServer: perguntaDeSegurancaVar,
           senhaServer: senhaVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
         }),
       })
         .then(function (resposta) {
@@ -268,7 +289,8 @@
   
 
           } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
+            console.log('teste')
+            throw alertify.error('Usuário já cadastrado, verifique o CNPJ da sua empresa ou o seu email');
           }
         })
         .catch(function (resposta) {

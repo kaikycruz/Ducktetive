@@ -53,10 +53,9 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idEmpresa = req.body.idEmpresaServer;
-    var razao = req.body.razaoServer;
-    var nomeFantasia = req.body.nomeFantasiaServer;
-    var cnpj = req.body.cnpjServer;
+    
+
+
     var cep = req.body.cepServer;
     var endereco = req.body.enderecoServer;
     var numero = req.body.numeroServer;
@@ -64,23 +63,23 @@ function cadastrar(req, res) {
     var cidade = req.body.cidadeServer;
     var estado = req.body.estadoServer;
     var complemento = req.body.complementoServer;
-    var nomeUsuario = req.body.nomeUsuarioServer;
-    var sobrenomeUsuario = req.body.sobrenomeUsuarioServer;
-    var email = req.body.emailServer;
-    var cargo = req.body.cargoServer;
-    var telefone = req.body.telefoneServer;
-    var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
-    var senha = req.body.senhaServer;
+
+    var razaoSocial = req.body.razaoSocialServer;
+    var nomeFantasia = req.body.nomeFantasiaServer;
+    var cnpj = req.body.cnpjServer;
+
+    var nomeUsuario = req.body.nomeUsuarioServer
+    var sobrenomeUsuario = req.body.sobrenomeUsuarioServer
+    var email = req.body.emailServer
+    var cargo = req.body.cargoServer
+    var telefone = req.body.telefoneServer
+    var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer
+    var senha = req.body.senhaServer
+
 
 
     // Faça as validações dos valores
-    if (razao == undefined) {
-        res.status(400).send("Seu razao está undefined!");
-    } else if (nomeFantasia == undefined) {
-        res.status(400).send("Seu nomeFantasia está undefined!");
-    } else if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
-    } else if (cep == undefined) {
+    if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
     } else if (endereco == undefined) {
         res.status(400).send("Seu endereco está undefined!");
@@ -94,26 +93,37 @@ function cadastrar(req, res) {
         res.status(400).send("Seu estado está undefined!");
     } else if (complemento == undefined) {
         res.status(400).send("Seu complemento está undefined!");
-    } else if (nomeUsuario == undefined) {
-        res.status(400).send("Seu nomeUsuario está undefined!");
-    } else if (sobrenomeUsuario == undefined) {
-        res.status(400).send("Seu sobrenomeUsuario está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (cargo == undefined) {
-        res.status(400).send("Seu cargo está undefined!");
-    } else if (telefone == undefined) {
-        res.status(400).send("Seu telefone está undefined!");
-    } else if (perguntaDeSeguranca == undefined) {
-        res.status(400).send("Seu perguntaDeSeguranca está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-    }
+    } 
+    
+    else if (razaoSocial == undefined) {
+        res.status(400).send("Seu razao está undefined!");
+    } else if (nomeFantasia == undefined) {
+        res.status(400).send("Seu nomeFantasia está undefined!");
+    } else if (cnpj == undefined) {
+      res.status(400).send("Seu cnpj está undefined!");
+    } 
+
+
+     else if (nomeUsuario == undefined) {
+         res.status(400).send("Seu nomeUsuario está undefined!");
+     } else if (sobrenomeUsuario == undefined) {
+         res.status(400).send("Seu sobrenomeUsuario está undefined!");
+     } else if (email == undefined) {
+         res.status(400).send("Seu email está undefined!");
+     } else if (cargo == undefined) {
+         res.status(400).send("Seu cargo está undefined!");
+     } else if (telefone == undefined) {
+         res.status(400).send("Seu telefone está undefined!");
+     } else if (perguntaDeSeguranca == undefined) {
+         res.status(400).send("Seu perguntaDeSeguranca está undefined!");
+     } else if (senha == undefined) {
+         res.status(400).send("Seu senha está undefined!");
+     }
 
 
 
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrar(idEmpresa, razaoSocial, nomeFantasia, cnpj, cep, endereco, numero, bairro, cidade, estado, complemento, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha)
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+    usuarioModel.cadastrar(endereco, numero, bairro, cep, complemento, cidade, estado, razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, telefone, email, senha, cargo, perguntaDeSeguranca)
         .then(
             function (resultado) {
                 res.json(resultado);
