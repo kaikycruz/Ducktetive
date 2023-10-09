@@ -23,11 +23,11 @@
             <div class="form">
                 <div class="field-form">
                     <label class="form-title" for="email" >Email</label><br>
-                    <input type="email" id="email_input" class="form-field" required>
+                    <input type="email" id="input_email" class="form-field" required>
                 </div>
                 <div class="field-form" id="password-login">
                     <label class="form-title" for="password">Senha</label><br>
-                    <input type="password" id="senha_input" class="form-field" required>
+                    <input type="password" id="input_senha" class="form-field" required>
                 </div>
                 <div class="form-forgot-password">
                     <a href="redefinirSenha.html" id="forgot-anchor"><p id="forgot-password">Esqueceu a senha?</p></a>
@@ -57,7 +57,6 @@
                 <li class="list"><a href="">Nossa Solução</a></li>
             </ul>
         </footer>
-
 </body>
 </html>
 
@@ -66,19 +65,14 @@
 
 <script>
 
-
     function entrar() {
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
             alertify.error('Preencha todos os campos');
             return false;
         }
-
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -90,40 +84,27 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-            if (resposta.ok) {
-                console.log(resposta);
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+            alertify.success('login realizado com sucesso! Redirecionando para Dashboard...');
 
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
+            setTimeout(() => {
+              window.location = "./dashboard/dashboard.html";
+            }, 2000);
+  
 
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    alertify.error('Houve um erro ao tentar realizar o login!');
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
+          } else {
+            console.log('teste')
+            throw alertify.error('Erro ao realizar login, verifique suas credenciais');
+          }
         })
-
-        return false;
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+  
+      return false;
     }
 
 
