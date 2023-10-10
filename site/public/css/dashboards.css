@@ -42,8 +42,7 @@ hr {
 
 .aside-bar-menu {
     background-color: #FFFFFF;
-    height: 100vh;
-    width: 300px;
+    width: 35vh;
     height: 100vh;  
     position: fixed;
     top: 0;
@@ -57,7 +56,7 @@ hr {
     pointer-events: none;
 }
 .aside-bar-menu #logo-ducktetive {
-    margin: 30px;
+    margin: 1vh;
     text-align: center;
 }
 
@@ -66,7 +65,7 @@ hr {
 }
 
 .dashboard-main #user-data {
-    margin: 20px 0px;
+    margin: 1vh 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,7 +81,7 @@ hr {
 #user-name {
     font-weight: bold;
     color: #313131;
-    font-size: 20px;
+    font-size: 2.8vh;
 }
 
 #user-role {
@@ -91,23 +90,24 @@ hr {
 }
 
 #dashboard-menu {
-    margin: 20px 0px;
+    margin-top: 1.5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    font-size: 2vh;
 }
 
 #dash-title {
     color: #757575;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 1vh;
 }
 
 #dashboard-menu .dash-item {
     display: flex;
-    height: 50px;
+    height: 5vh;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -161,7 +161,7 @@ hr {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 15px;
+    margin: 0px 2vh;
 }
 
 #alert-list {
@@ -169,7 +169,7 @@ hr {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 273px;
+    height: 30vh;
     width: 100%;
     display: block;
     overflow-y: scroll;
@@ -182,11 +182,11 @@ hr {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 124, 51, 0.11);
-    height: 80px;
+    height: 10vh;
     width: 75%;
     border-radius: 25px;
-    margin-bottom: 10px;
-    padding: 20px;
+    margin-bottom: 1vh;
+    padding: 2vh;
 }
 
 .content-alert div {
