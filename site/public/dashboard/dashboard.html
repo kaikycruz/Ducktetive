@@ -224,7 +224,7 @@
                     <div class="cpuCharts">
                         <div class="cpu-use" style="width: 764px;">
                             <span>Uso de CPU</span>
-                            <canvas id="uso_cpu" ></canvas>
+                            <canvas id="uso_cpu" style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
                         </div>
 
                     </div>
@@ -259,11 +259,12 @@
                     <span>Uso de RAM</span>
 
                     <div class="ram-use" style="width: 764px;">
-                        <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+                        <canvas id="uso_ramBarra" style="display: block; box-sizing: border-box; height: 200px; width: 1500px;"></canvas>
                     </div>
                     <span>Uso de RAM</span>
 
                     <div class="ram-use" style="width: 764px">
+                        <canvas id="uso_ramLinha" style="display: block; box-sizing: border-box; height: 200px; width: 1500px;"></canvas>
                     </div>
 
                 </div>
@@ -306,8 +307,8 @@
                     </div>
                     <div class="cpuCharts">
                         <div class="cpu-use" style="width: 764px;">
-                            <span>Uso de CPU</span>
-                            <canvas id="uso_cpu" ></canvas>
+                            <span>Uso de Disco</span>
+                            <canvas id="uso_disco" style="display: block; box-sizing: border-box; height: 550px; width: 1350px;"></canvas>
                         </div>
 
                     </div>
@@ -337,8 +338,8 @@
                     </div>
                     <div class="cpuCharts">
                         <div class="cpu-use" style="width: 764px;">
-                            <span>Uso de CPU</span>
-                            <canvas id="uso_cpu" ></canvas>
+                            <span>Uso de Rede</span>
+                            <canvas id="uso_rede" style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
                         </div>
 
                     </div>
@@ -625,7 +626,7 @@
 
     </main>
 
- <!-- <script src="../js/graficos.js"></script>-->
+  <script src="../js/graficos.js"></script>
 </body>
 
 </html>
@@ -1131,39 +1132,4 @@
         document.getElementById("dashboard-HD").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "block";
     }
-
-
-const usoCpu = document.getElementById('uso_cpu');
-
-new Chart(usoCpu, {
-  type: 'line',
-  data: {
-    labels: ['12:00','12:30','13:00'],
-    datasets: [{
-        label: 'core 1',
-        data: [12, 13, 20, 21, 36],
-        borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Grafico CPU'
-      }
-    },
-    scales: {
-        y: {
-            beginAtZero: true
-        }
-    }
-  }
-});
-
-    
-
 </script>
