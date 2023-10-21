@@ -234,3 +234,41 @@ a{
 #footer-list .list{
     list-style: none;
 }
+
+
+@media(max-width: 690px){
+    .form-field, .button, .form-forgot-password, .form-remember-me, .terms-of-use{
+        width: 250px;
+    }
+
+    #footer-list a{
+        font-size: 12px;
+    }
+
+
+    #footer-list{
+        gap: 8px;
+    }
+
+    #card-form{
+        max-width: 390px;
+    }
+
+    .field-father{
+        display: block;
+        width: fit-content;
+    }
+    .fild-child{
+        width: fit-content;
+    }
+    .sub-titulo{
+    }
+
+    .form{
+        display: block;
+        width: 300px;
+    }
+    .already-account-or-not{
+        width: 300px;
+    }
+}
