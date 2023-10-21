@@ -285,10 +285,22 @@ hr {
 
 /* CPU */
 
-.cpu-use{
-    height: 800px;
-    width: 1000px;
-    background-color: #313131;
+.cpu-use, .ram-use{
+    height: 200px;
+    width: 300px;
+    background-color: #d9d9d9;
+    margin: 20px;
+}
+
+#bar-total{
+    background-color: green;
+    height: 40px;
+}
+
+#bar-uso{
+    background-color: #FF7C33;
+    height: 40px;
+
 }
 
 /* Kaiky */

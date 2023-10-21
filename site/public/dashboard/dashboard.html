@@ -218,7 +218,26 @@
             </div>
             <div class="cpuCharts">
                 <div class="cpu-use">
-                    <canvas id="uso-cpu"></canvas>
+                    <span>Uso de CPU</span>
+                    <canvas id="uso_cpu" style="width: 100px; height: 200px;"></canvas>
+                </div>
+
+            </div>
+
+            <div class="ramCharts">
+                <div class="ram-use">
+                    <span>Uso de RAM</span>
+                    <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+                </div>
+
+                <div class="ram-use">
+                    <span>Uso de RAM - grafico de barra</span>
+                    <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+                </div>
+
+                <div class="ram-use">
+                    <div id="bar-total">Total: 8 Gb</div>
+                    <div id="bar-uso">Em uso: 4 Gb</div>
                 </div>
 
             </div>
@@ -503,14 +522,14 @@
 
     </main>
 
-    <script src="../js/graficos.js"></script>
+ <!-- <script src="../js/graficos.js"></script>-->
 </body>
 
 </html>
 
 <script>
 
-    const rede = document.getElementById('grafico-rede');
+   /* const rede = document.getElementById('grafico-rede');
 
     new Chart(rede, {
         type: 'line',
@@ -1009,12 +1028,19 @@
         document.getElementById("dashboard-HD").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "block";
     }
+*/
+const usoCpu = document.getElementById('uso_cpu');
 
-    const usoCpu = document.getElementById('uso-cpu');
-
-    usoCpu = {
+new Chart(usoCpu, {
   type: 'line',
-  data: data,
+  data: {
+    labels: ['12:00','12:30','13:00'],
+    datasets: [{
+        label: 'core 1',
+        data: [12, 13, 20, 21, 36],
+        borderWidth: 1
+    }]
+  },
   options: {
     responsive: true,
     plugins: {
@@ -1023,11 +1049,16 @@
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart'
+        text: 'Grafico CPU'
       }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
     }
-  },
-};
+  }
+});
 
     
 
