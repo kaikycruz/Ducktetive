@@ -1,3 +1,4 @@
+//CPU
 var array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 
 for (let i = 0; i <= array.length; i++) {
@@ -412,6 +413,39 @@ new Chart(detalhes, {
       y: {
         beginAtZero: true
       }
+    }
+  }
+});
+
+
+//Uso Cpu
+const usoCpu = document.getElementById('uso_cpu');
+
+new Chart(usoCpu, {
+  type: 'line',
+  data: {
+    labels: ['12:00','12:30','13:00'],
+    datasets: [{
+        label: 'core 1',
+        data: [12, 13, 20, 21, 36],
+        borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Grafico CPU'
+      }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
     }
   }
 });

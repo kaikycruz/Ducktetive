@@ -29,7 +29,7 @@
 <body>
 
     <main class="dashboard-main">
-        <aside class="aside-bar-menu">
+        <aside class="aside-bar-menu" style="">
             <div id="logo-ducktetive">
                 <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard">
             </div>
@@ -187,59 +187,162 @@
         <section class="dashboard-content" id="dashboard-home" style="display: block;">
             <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
             <div class="dados-do-servidor">
-                <span><p>Intel core I5 11400f - Rocket Lake </h3></span>
-                <span><p>Intel Family</p></span>
-            </div>
-            <div class="KPI-cards">
-                <div class="CPU-cards">
-                    <span class="card-title">
-                        PROCESSADORES LÓGICOS
-                    </span>
-                    <span class="card-content">
-                        4
-                    </span>
-                </div>
-                <div class="CPU-cards">
-                    <span class="card-title">
-                        PROCESSADORES FÍSICOS
-                    </span>
-                    <span class="card-content">
-                        2
-                    </span>
-                </div>
-                <div class="CPU-cards" id="cpu-frequency">
-                    <span class="card-title">
-                        FREQUÊNCIA
-                    </span>
-                    <span class="card-content">
-                        2,71 GHZ
-                    </span>
-            </div>
-            </div>
-            <div class="cpuCharts">
-                <div class="cpu-use">
-                    <span>Uso de CPU</span>
-                    <canvas id="uso_cpu" style="width: 100px; height: 200px;"></canvas>
-                </div>
-
+                <span id="nomeCPU"><p>Intel core I5 11400f - Rocket Lake </h3> <span id="fabricanteCPU"><p>Intel Family</p></span></span> 
+                
             </div>
 
-            <div class="ramCharts">
-                <div class="ram-use">
+            <div id="cards">
+
+            
+                <div class="cpu-cards">
+                    <div class="KPI-cards">
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                PROCESSADORES LÓGICOS
+                            </span>
+                            <span class="kpi-content">
+                                4
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                PROCESSADORES FÍSICOS
+                            </span>
+                            <span class="kpi-content">
+                                2
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi" id="cpu-frequency">
+                            <span class="kpi-title">
+                                FREQUÊNCIA
+                            </span>
+                            <span class="kpi-content">
+                                2,71 GHZ
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cpuCharts">
+                        <div class="cpu-use" style="width: 764px;">
+                            <span>Uso de CPU</span>
+                            <canvas id="uso_cpu" ></canvas>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ramCharts">
+                    <div class="KPI-ram">
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                Total
+                            </span>
+                            <span class="kpi-content">
+                                19.8GB
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                Em uso
+                            </span>
+                            <span class="kpi-content">
+                                10.2GB
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi" id="cpu-frequency">
+                            <span class="kpi-title">
+                                Percentual de uso
+                            </span>
+                            <span class="kpi-content">
+                                49%
+                            </span>
+                        </div>
+                    </div>  
                     <span>Uso de RAM</span>
-                    <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+
+                    <div class="ram-use" style="width: 764px;">
+                        <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+                    </div>
+                    <span>Uso de RAM</span>
+
+                    <div class="ram-use" style="width: 764px">
+                    </div>
+
                 </div>
 
-                <div class="ram-use">
-                    <span>Uso de RAM - grafico de barra</span>
-                    <canvas id="uso_ram" style="width: 100px; height: 200px;"></canvas>
+                <div class="discoCharts">
+                    <div class="KPI-cards">
+                        <div class="disco-cards-kpi">
+                            <span class="kpi-content read-write">
+                                Leitura : 4.2 MB/s
+                            </span>
+                            <span class="kpi-content read-write">
+                                Escrita : 4.2 MB/s
+                            </span>
+                        </div>
+                        <div class="disco-cards-kpi">
+                            <span class="kpi-content read-write">
+                                Total : 1 TB
+                            </span>
+                            <span class="kpi-content read-write">
+                                Disponivel : 354 GBs
+                            </span>
+                            <span class="kpi-content read-write">
+                                Percentual de uso: 35%
+                            </span>
+                            
+                            
+                        </div>
+                        <div class="disco-cards-kpi" id="cpu-frequency">
+                            <span class="kpi-title">
+                                Baseado em seu uso 
+                            </span>
+                            <span class="kpi-title">
+                                Disco vai estourar em 
+                            </span>
+                            <span class="kpi-content">
+                                10 dias
+                            </span>
+                    </div>
+                    
+                    </div>
+                    <div class="cpuCharts">
+                        <div class="cpu-use" style="width: 764px;">
+                            <span>Uso de CPU</span>
+                            <canvas id="uso_cpu" ></canvas>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="ram-use">
-                    <div id="bar-total">Total: 8 Gb</div>
-                    <div id="bar-uso">Em uso: 4 Gb</div>
-                </div>
+                <div class="redeCharts">
+                    <div class="KPI-cards">
+                        <div class="disco-cards-kpi">
+                            <span class="kpi-content read-write">
+                                Nome Rede:
+                            </span>
+                            <span class="kpi-content read-write">
+                                Starbucks
+                            </span>
+                        </div>
+                        
+                        <div class="disco-cards-kpi" id="cpu-frequency">
+                            <span class="kpi-title">
+                                Pacotes Recebidos 
+                            </span>
+                            <span class="kpi-content">
+                                369 
+                            </span>
+                    </div>
+                    
+                    </div>
+                    <div class="cpuCharts">
+                        <div class="cpu-use" style="width: 764px;">
+                            <span>Uso de CPU</span>
+                            <canvas id="uso_cpu" ></canvas>
+                        </div>
 
+                    </div>
+                </div>
             </div>
         </section>
         <!-- CPU - KAIKY -->
@@ -529,7 +632,7 @@
 
 <script>
 
-   /* const rede = document.getElementById('grafico-rede');
+   const rede = document.getElementById('grafico-rede');
 
     new Chart(rede, {
         type: 'line',
@@ -1028,7 +1131,8 @@
         document.getElementById("dashboard-HD").style.display = "none";
         document.getElementById("dashboard-REDE").style.display = "block";
     }
-*/
+
+
 const usoCpu = document.getElementById('uso_cpu');
 
 new Chart(usoCpu, {
