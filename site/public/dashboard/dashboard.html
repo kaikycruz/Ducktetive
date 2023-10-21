@@ -186,6 +186,42 @@
         </aside>
         <section class="dashboard-content" id="dashboard-home" style="display: block;">
             <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
+            <div class="dados-do-servidor">
+                <span><p>Intel core I5 11400f - Rocket Lake </h3></span>
+                <span><p>Intel Family</p></span>
+            </div>
+            <div class="KPI-cards">
+                <div class="CPU-cards">
+                    <span class="card-title">
+                        PROCESSADORES LÓGICOS
+                    </span>
+                    <span class="card-content">
+                        4
+                    </span>
+                </div>
+                <div class="CPU-cards">
+                    <span class="card-title">
+                        PROCESSADORES FÍSICOS
+                    </span>
+                    <span class="card-content">
+                        2
+                    </span>
+                </div>
+                <div class="CPU-cards" id="cpu-frequency">
+                    <span class="card-title">
+                        FREQUÊNCIA
+                    </span>
+                    <span class="card-content">
+                        2,71 GHZ
+                    </span>
+            </div>
+            </div>
+            <div class="cpuCharts">
+                <div class="cpu-use">
+                    <canvas id="uso-cpu"></canvas>
+                </div>
+
+            </div>
         </section>
         <!-- CPU - KAIKY -->
         <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
@@ -974,5 +1010,25 @@
         document.getElementById("dashboard-REDE").style.display = "block";
     }
 
+    const usoCpu = document.getElementById('uso-cpu');
+
+    usoCpu = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart'
+      }
+    }
+  },
+};
+
+    
 
 </script>
