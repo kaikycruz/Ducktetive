@@ -6,19 +6,20 @@ public class Metrica {
     private Date dataHora;
     private String tipo;
     private String nome;
+    private Double parametroMaximo;
 
 
     public Metrica() {
     }
 
-    public Metrica(Integer idMetrica, Double valor, Date dataHora, String tipo, String nome) {
+    public Metrica(Integer idMetrica, Double valor, Date dataHora, String tipo, String nome, Double maximo) {
         this.idMetrica = idMetrica;
         this.valor = valor;
         this.dataHora = dataHora;
         this.tipo = tipo;
         this.nome = nome;
+        this.parametroMaximo = maximo;
     }
-
 
     public Integer getIdMetrica() {
         return idMetrica;
@@ -60,6 +61,13 @@ public class Metrica {
         this.nome = nome;
     }
 
+    public Double getMaximo() {
+        return parametroMaximo;
+    }
+
+    public void setMaximo(Double maximo) {
+        this.parametroMaximo = maximo;
+    }
 
     @Override
     public String toString() {
@@ -67,12 +75,13 @@ public class Metrica {
                 ------------------
                 |    Metrica     |
                 +----------------+
-                | ID: %d         
-                | Valor: %.2f    
-                | Data: %s      
-                | Tipo: %s       
+                | ID: %d  
+                | Tipo: %s
                 | Nome: %s       
+                | Valor: %.2f   
+                | Maximo: %.2f 
+                | Data: %s      
                 +----------------+
-                """.formatted(idMetrica, valor, dataHora, tipo, nome);
+                """.formatted(idMetrica, tipo, nome, valor, parametroMaximo, dataHora );
     }
 }

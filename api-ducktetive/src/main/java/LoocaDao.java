@@ -16,8 +16,9 @@ public class LoocaDao {
         con.update(sql, idComponente, valor, data, tipo);
     };
 
+
     void exibirMetricas (String nome){
-        List<Metrica>metricasDoBanco = con.query("SELECT idMetrica, valor, dataHora, tipo, nome  FROM metrica join componente  on idComponente = fkComponenteMetrica WHERE DATE(dataHora) = CURDATE() AND HOUR(dataHora) = HOUR(NOW()) and nome like ?",
+        List<Metrica>metricasDoBanco = con.query("SELECT m.idMetrica, c.nome, m.dataHora, m.tipo, m.valor, p.maximo FROM metrica m JOIN componente c ON m.fkComponenteMetrica = c.idComponente JOIN parametro p ON p.fkComponenteParametro = c.idComponente WHERE m.valor > p.maximo and DATE(dataHora) = CURDATE() AND HOUR(dataHora) = HOUR(NOW()) and nome like ?",
                 new BeanPropertyRowMapper<>(Metrica.class),  nome);
 
         for (Metrica metrica: metricasDoBanco) {

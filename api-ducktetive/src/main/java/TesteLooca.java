@@ -115,10 +115,10 @@ public class TesteLooca {
                             +---------------------------------+
                             |     MONITORAMENTO DE DADOS      |
                             +---------------------------------+
-                            | 1) Ultimas horas - RAM          |
-                            | 2) Ultimas horas - CPU          |
-                            | 3) Ultimas horas - DISCO        |
-                            | 4) Ultimas horas - REDE         |
+                            | 1) Ultima hora - RAM            |
+                            | 2) Ultima hora - CPU            |
+                            | 3) Ultima hora - DISCO          |
+                            | 4) Ultima hora - REDE           |
                             | 5) Inovação                     |
                             | 6) Sair                         |
                             +---------------------------------+
