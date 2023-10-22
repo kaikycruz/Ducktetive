@@ -1,3 +1,5 @@
+import com.github.britooo.looca.api.util.Conversor;
+
 import java.util.Date;
 
 public class Metrica {
