@@ -61,6 +61,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
 .field-form{
@@ -233,6 +234,13 @@ a{
 
 #footer-list .list{
     list-style: none;
+}
+
+.titulo-formulario-campos {
+    display: flex;
+    color: #FF7C33;
+    padding-top: 5%;
+    padding-bottom: 2%;
 }
 
 
