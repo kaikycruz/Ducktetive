@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar servidor</title>
+    <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+</head>
+<body>
+
+    <main id="main">
+        <div id="central-logo">
+            <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
+        </div>
+        <div>
+            <h2>CADASTRAR SERVIDOR</h2>
+        </div>
+        <div class="content">
+            <div class="nomeServer">
+                <span class="tilte">Nome do servidor</span>
+                <input type="text" id="NomeServidor">
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações do processador</h3>
+                <div>
+                    <span>
+                        Maximo temperatura
+                        <input placeholder="00.00" id="inputValorMax">
+                    </span>
+                    <span>
+                        Minimo temperatura
+                        <input placeholder="00.00" id="inputValorMin">
+                    </span>
+                </div>
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações da Memoria ram</h3>
+                <div>
+                    <span>
+                        Maximo de uso
+                        <input placeholder="0000Mbps" id="inputValorMax">
+                    </span>
+                    <span>
+                        Minimo de uso
+                        <input placeholder="0000Mbps" id="inputValorMin">
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+        <footer class="footer">
+            <ul id="footer-list">
+                <li class="list"><a href="index.html"><span>A Ducktetive</span></a></li>
+                <li class="list"><a href="">Evite o Pato</a></li>
+                <li class="list"><a href="">Sobré Nós</a></li>
+                <li class="list"><a href="">A Equipe</a></li>
+                <li class="list"><a href="">Nossa Solução</a></li>
+            </ul>
+        </footer>
+
+</body>
+</html>
+
+
+</html>
+
+<script>
+
+    function alertar(){
+        alertify.success('Success message');
+        alertify.warning('Warning message');
+        alertify.error('Error message');
+    }
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

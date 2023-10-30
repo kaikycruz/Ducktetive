@@ -280,3 +280,64 @@ a{
         width: 300px;
     }
 }
+
+/* tela de adicionar servidor */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nomeServer {
+    display: flex;
+    flex-direction: column;
+}
+
+.content div{
+    margin-bottom: 3vh;
+}
+
+.content span{
+    font-weight: bold;
+    color: #FF7C33;
+}
+
+.content .dadosComponente{
+    width: 50vh;
+    margin-bottom: 1vh;
+}
+
+.content .dadosComponente div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .dadosComponente h3{
+    color: #FF7C33; 
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.content .dadosComponente span{
+    display: flex;
+    flex-direction: column;
+}
+
+.content input{
+    border: solid #FF7C33 1px;
+    border-radius: 5px; 
+    height: 4vh;
+    width: 23vh;
+    margin-top: 0.5rem;
+}
+
+.content #NomeServidor{
+    width: 50vh;
+}
+
+#main div h2{
+    color: #FF7C33;
+    text-align: center;
+    margin-bottom: 2vh;
+}
