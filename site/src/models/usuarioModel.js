@@ -79,7 +79,40 @@ async function cadastrar(
   await database.executar(instrucao3);
 }
 
+async function redefinir(
+  email,
+  novaSenha,
+  perguntaDeSeguranca,
+  opcoesPerguntaDeSeguranca
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaUsuario = `
+        select * from usuario where email = '${email}' and resposta_seguranca = '${perguntaDeSeguranca}' and fkPergunta = '${opcoesPerguntaDeSeguranca}';
+    `;
+  const resultadoUsuario = await database.executar(verificaUsuario);
+
+  if (resultadoUsuario.length < 1) {
+    throw new Error("Ocorreu um erro");
+  }
+
+
+
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucao1 = `
+        UPDATE usuario JOIN ( SELECT idUsuario FROM usuario WHERE email = '${email}' AND resposta_seguranca = '${perguntaDeSeguranca}' AND fkPergunta = '${opcoesPerguntaDeSeguranca}' ) subquery ON usuario.idUsuario = subquery.idUsuario SET usuario.senha = '${novaSenha}';
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+}
+
 module.exports = {
   autenticar,
   cadastrar,
+  redefinir
 };
