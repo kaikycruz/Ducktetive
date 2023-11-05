@@ -21,14 +21,17 @@
                     <input type="email" id="email" class="form-field" required>
             </div>
 
-            <div class="field-form field-margin">
-                <label class="form-title" for="perguntaDeSeguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" id="perguntaDeSeguranca" class="form-field">
+
+            <div class="field-form">
+                <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
+                <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
                     <option value="">Selecione uma opção...</option>
-                    <option value="diretor">Nome de solteiro da sua mãe</option>
-                    <option value="gerente">Cidade em que nasceu</option>
-                    <option value="estagiario">Nome do primeiro animal de estimação que teve</option>
+                    <option value="1">Nome do primeiro animal de estimação que teve</option>
+                    <option value="2">Nome de solteiro da sua mãe</option>
+                    <option value="3">Cidade em que nasceu</option>
                 </select>
+                <br>
+                <input type="text" id="input_pergunta_de_seguranca" class="form-field" placeholder="Insira sua resposta" required>
             </div>
 
             <div class="field-form" id="password-login">
@@ -63,72 +66,99 @@
 
 <script>
 
+function cadastrar() {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var emailVar = input_email.value
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+      var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
+      var senhaVar = input_password.value
+      var confirmacaoSenhaVar = input_confirm_password.value
+      
 
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
+      if (
+        emailVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
+        perguntaDeSegurancaVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+  
         return false;
-    }
+      } 
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
 
+          
+          
+          enderecoServer: enderecoVar,
+          numeroServer: numeroVar,
+          bairroServer: bairroVar,
+          cepServer: cepVar,
+          complementoServer: complementoVar,
+          cidadeServer: cidadeVar,
+          estadoServer: estadoVar,
+
+          razaoSocialServer: razaoSocialVar,
+          nomeFantasiaServer: nomeFantasiaVar,
+          cnpjServer: cnpjVar,
+
+          nomeUsuarioServer: nomeUsuarioVar,
+          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+          emailServer: emailVar,
+          cargoServer: cargoVar,
+          telefoneServer: telefoneVar,
+          opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+          senhaServer: senhaVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+
+  
+            alertify.success('Cadastro realizado com sucesso! Redirecionando para tela de Login...');
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+  
+
+          } else {
+            console.log('teste')
+            throw alertify.error('Usuário já cadastrado, verifique o CNPJ da sua empresa ou o seu email');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
+  
+    
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
