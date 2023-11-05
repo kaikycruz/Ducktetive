@@ -7,7 +7,7 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-        SELECT usuario_id, primeiro_nome, email, empresa_id as loginUsuario FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idUsuario, primeiro_nome, email, fkEmpresa as loginUsuario FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -31,7 +31,8 @@ async function cadastrar(
   email,
   senha,
   cargo,
-  perguntaDeSeguranca
+  perguntaDeSeguranca,
+  opcoesPerguntaDeSeguranca
 ) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
@@ -65,14 +66,14 @@ async function cadastrar(
   await database.executar(instrucao1);
 
   var instrucao2 = `
-         INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, endereco_id) VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', ${"(SELECT COUNT(*) AS total_cadastros FROM Endereco)"});
+         INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, fkEndereco) VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', ${"(SELECT COUNT(*) AS total_cadastros FROM Endereco)"});
        
     `;
   console.log("Executando a instrução SQL: \n" + instrucao2);
   await database.executar(instrucao2);
 
   var instrucao3 = `
-        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, cargo, pergunta_seguranca, empresa_id) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${cargo}','${perguntaDeSeguranca}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
+        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, cargo, resposta_seguranca, fkPergunta, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${cargo}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
     `;
   console.log("Executando a instrução SQL: \n" + instrucao3);
   await database.executar(instrucao3);
