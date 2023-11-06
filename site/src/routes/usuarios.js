@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/alterarUsuario", function (req, res) {
+    usuarioController.alterarUsuario(req, res);
+}) 
+
 module.exports = router;

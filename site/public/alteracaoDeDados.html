@@ -26,18 +26,18 @@
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="nome">Nome</label><br>
-                        <input type="text" name="nome" id="nome" class="form-field half">
+                        <input type="text" name="nome" id="novo_nome" class="form-field half">
                     </div>
                     <div class="fild-child">
                         <label class="form-title" for="sobrenome">Sobrenome</label><br>
-                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                        <input type="text" name="sobrenome" id="novo_sobrenome" class="form-field half">
                     </div>
                 </div>
                 
             </div>
             <div class="field-form" id="password-login">
                 <label class="form-title" for="email" >Email</label><br>
-                    <input type="email" id="email" class="form-field" required>
+                    <input type="email" id="novo_email" class="form-field" required>
                     <p class="form-tips">Recomendamos um endereço de e-mail comercial.</p>
             </div>
 
@@ -46,7 +46,7 @@
                     <div class="fild-child">
                         <label class="form-title" for="cargo">Cargo</label><br>
                         <select name="cargo" id="cargo" class="form-field half blocked" disabled="">
-                            <option value="">NOME_DO_CARGO</option>
+                            <option value="" id="cargo_usuario">NOME_DO_CARGO</option>
                             <option value="diretor">Diretor</option>
                             <option value="gerente">Gerente</option>
                             <option value="estagiario">Estagiario</option>
@@ -62,7 +62,7 @@
 
             <div class="field-form">
                 <label class="form-title" for="perguntaDeSeguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" id="perguntaDeSeguranca" class="form-field">
+                <select name="perguntaDeSeguranca" id="nova_perguntaDeSeguranca" class="form-field">
                     <option value="">Selecione uma opção...</option>
                     <option value="diretor">Nome de solteiro da sua mãe</option>
                     <option value="gerente">Cidade em que nasceu</option>
@@ -97,6 +97,60 @@
 <script>
 
     function alertar(){
+        var novoNomeVar = novo_nome.value;
+        var novoSobrenomeVar = novo_sobrenome.value;
+        var novoEmailVar = novo_email.value;
+        var novaPerguntaDeSeguranca = nova_perguntaDeSeguranca.value;
+        
+    fetch("/usuarios/alterarUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        novoNomeServer: novoNomeVar,
+        novoSobrenomeServer: novoSobrenomeVar,
+        novoEmailServer: novoEmailVar,
+        novaPerguntaDeSegurancaServer: novaPerguntaDeSeguranca
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            cardErro.style.display = "block";
+
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.primeiro_nome;
+            sessionStorage.ID_USUARIO = json.usuario_id;
+            sessionStorage.CARGO_USUARIO = json.cargo;
+
+            limparFormulario();
+            finalizarAguardar();
+          });
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  
         alertify.success('Success message');
         alertify.warning('Warning message');
         alertify.error('Error message');
@@ -139,8 +193,9 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.NOME_USUARIO = json.primeiro_nome;
+                    sessionStorage.ID_USUARIO = json.usuario_id;
+                    sessionStorage.CARGO_USUARIO = json.cargo;
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {

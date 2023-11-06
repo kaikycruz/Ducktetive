@@ -51,19 +51,19 @@ public class TesteLooca {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String dataFormatada = sdf.format(data);
 
-                double valorMemoria = (double) memoria.getEmUso();
+                double valorMemoria = (double) memoria.getEmUso() / 1000000000;
                 loocaDao.cadastrarMetricas(1, valorMemoria, dataFormatada, "Uso");
                 loocaDao.cadastrarMetricas(2, processador.getUso(), dataFormatada, "Uso");
 
                 for (RedeInterface r : redeInterfaceGroup.getInterfaces()) {
                     if (r.getPacotesRecebidos() != 0) {
-                        double valorRede = (double) r.getPacotesRecebidos();
+                        double valorRede = (double) r.getPacotesRecebidos() / 1000000;
                         loocaDao.cadastrarMetricas(4, valorRede, dataFormatada, "QtdRecebidos");
 
                     }
                 }
                 for (Disco disco : grupoDeDiscos.getDiscos()) {
-                    double valorDisco = (double) disco.getBytesDeEscritas();
+                    double valorDisco = (double) disco.getBytesDeEscritas() / 1000000000;
                     loocaDao.cadastrarMetricas(3, valorDisco, dataFormatada, "Uso");
                 }
 

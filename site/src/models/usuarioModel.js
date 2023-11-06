@@ -7,7 +7,22 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-        SELECT usuario_id, primeiro_nome, email, empresa_id as loginUsuario FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT usuario_id, primeiro_nome, email, cargo, empresa_id as loginUsuario FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function alterarUsuario(nome, sobrenome, email, perguntaDeSeguranca) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    nome,
+    sobrenome,
+    email,
+    perguntaDeSeguranca
+  );
+  var instrucao = `
+        
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -81,4 +96,5 @@ async function cadastrar(
 module.exports = {
   autenticar,
   cadastrar,
+  alterarUsuario,
 };

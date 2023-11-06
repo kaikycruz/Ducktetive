@@ -593,9 +593,9 @@ new Chart(disco, {
 
 // Rede linha
 
-const rede = document.getElementById("uso_rede");
+const usoRede = document.getElementById("uso_rede");
 
-new Chart(rede, {
+new Chart(usoRede, {
   type: "line",
   data: {
     labels: ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30"],

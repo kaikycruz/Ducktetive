@@ -87,14 +87,22 @@
           console.log("resposta: ", resposta);
   
           if (resposta.ok) {
+            resposta.json().then((json) => {
+            console.log(json);
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+           console.log(JSON.stringify(json));
 
             alertify.success('login realizado com sucesso! Redirecionando para Dashboard...');
+  
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.primeiro_nome;
+            sessionStorage.ID_USUARIO = json.usuario_id;
+            sessionStorage.CARGO_USUARIO = json.cargo;
 
             setTimeout(() => {
               window.location = "./dashboard/dashboard.html";
             }, 2000);
-  
-
+        });
           } else {
             console.log('teste')
             throw alertify.error('Erro ao realizar login, verifique suas credenciais');
