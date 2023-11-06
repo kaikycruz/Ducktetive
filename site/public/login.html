@@ -94,10 +94,27 @@
 
             alertify.success('login realizado com sucesso! Redirecionando para Dashboard...');
   
-            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.ID_USUARIO = json.idUsuario;
             sessionStorage.NOME_USUARIO = json.primeiro_nome;
-            sessionStorage.ID_USUARIO = json.usuario_id;
+            sessionStorage.SOBRENOME_NOME_USUARIO = json.sobrenome;
+            sessionStorage.TELEFONE_USUARIO = json.telefone;
+            sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.CARGO_USUARIO = json.cargo;
+            sessionStorage.RESPOSTA_SEGURANCA_USUARIO = json.resposta_seguranca;
+            sessionStorage.RAZAO_SOCIAL_USUARIO = json.razao_social;
+            sessionStorage.NOME_FANTASIA_USUARIO = json.nome_fantasia;
+            sessionStorage.CNPJ_USUARIO = json.cnpj;
+            sessionStorage.LOGRADOURO_USUARIO = json.logradouro;
+            sessionStorage.NUMERO_USUARIO = json.numero;
+            sessionStorage.BAIRRO_USUARIO = json.bairro;
+            sessionStorage.CEP_USUARIO = json.cep;
+            sessionStorage.COMPLEMENTO_USUARIO = json.complemento;
+            sessionStorage.CIDADE_USUARIO = json.cidade;
+            sessionStorage.ESTADO_USUARIO = json.estado;
+
+
+
+
 
             setTimeout(() => {
               window.location = "./dashboard/dashboard.html";

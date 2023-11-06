@@ -18,7 +18,7 @@ CREATE TABLE Endereco (
 
 -- Tabela Empresa
 CREATE TABLE Empresa (
-    empresa_id INT AUTO_INCREMENT PRIMARY KEY,
+    fkEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     razao_social VARCHAR(255) NOT NULL,
     nome_fantasia VARCHAR(255) NOT NULL,
     cnpj CHAR(14) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE Empresa (
 
 -- Tabela Usuario
 CREATE TABLE Usuario (
-    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     primeiro_nome VARCHAR(255) NOT NULL,
     sobrenome VARCHAR(255) NOT NULL,
     telefone VARCHAR(20),
@@ -36,8 +36,8 @@ CREATE TABLE Usuario (
     senha VARCHAR(255) NOT NULL,
     cargo VARCHAR(50),
     pergunta_seguranca VARCHAR(255),
-    empresa_id INT,
-    FOREIGN KEY (empresa_id) REFERENCES Empresa(empresa_id)
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(fkEmpresa)
 );
 
 show tables;
@@ -72,7 +72,7 @@ nome varchar(45),
 fkEmpresa int,
 fkEndereco int,
 fkParametro int,
-foreign key (fkEmpresa) references empresa(empresa_id),
+foreign key (fkEmpresa) references empresa(fkEmpresa),
 foreign key (fkEndereco) references endereco(endereco_id),
 foreign key (fkParametro) references parametro(idParametro)
 );
@@ -97,7 +97,7 @@ VALUES ('Empresa A', 'Empresa A Fantasia', '12345678901234', 1),
        ('Empresa B', 'Empresa B Fantasia', '56789012345678', 2);
 
 -- Inserindo dados na tabela Usuario
-INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, cargo, pergunta_seguranca, empresa_id)
+INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, cargo, pergunta_seguranca, fkEmpresa)
 VALUES ('Alice', 'Silva', '123456789', 'alice@empresa.com', 'senha123', 'Gerente', 'Qual é o nome do seu animal de estimação?', 1),
        ('Bob', 'Santos', '987654321', 'bob@empresa.com', 'senha456', 'Analista', 'Qual é o nome da sua mãe?', 2);
        
