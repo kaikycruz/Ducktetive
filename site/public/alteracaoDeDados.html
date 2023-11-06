@@ -12,7 +12,7 @@
     <!-- include a theme -->
     <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
 </head>
-<body>
+<body onload="payload()">
 
     <main id="main">
         <div id="central-logo">
@@ -22,60 +22,137 @@
         <div id="userPicture">
         </div>
         <div class="form">
+            <h2 class="sub-titulo">Dados do usuário</h2>
             <div class="field-form">
                 <div class="field-father">
                     <div class="fild-child">
-                        <label class="form-title" for="nome">Nome</label><br>
-                        <input type="text" name="nome" id="novo_nome" class="form-field half">
+                        <label class="form-title" for="input_nome_usuario">Nome</label><br>
+                        <input type="text" name="nome" id="input_nome_usuario" class="form-field half">
                     </div>
                     <div class="fild-child">
-                        <label class="form-title" for="sobrenome">Sobrenome</label><br>
-                        <input type="text" name="sobrenome" id="novo_sobrenome" class="form-field half">
+                        <label class="form-title" for="input_sobrenome_usuario">Sobrenome</label><br>
+                        <input type="text" name="sobrenome" id="input_sobrenome_usuario" class="form-field half">
                     </div>
                 </div>
                 
             </div>
             <div class="field-form" id="password-login">
-                <label class="form-title" for="email" >Email</label><br>
-                    <input type="email" id="novo_email" class="form-field" required>
+                <label class="form-title" for="input_email" >Email</label><br>
+                    <input type="email" id="input_email" class="form-field" required>
                     <p class="form-tips">Recomendamos um endereço de e-mail comercial.</p>
             </div>
 
             <div class="field-form">
                 <div class="field-father">
                     <div class="fild-child">
-                        <label class="form-title" for="cargo">Cargo</label><br>
-                        <select name="cargo" id="cargo" class="form-field half blocked" disabled="">
-                            <option value="" id="cargo_usuario">NOME_DO_CARGO</option>
-                            <option value="diretor">Diretor</option>
-                            <option value="gerente">Gerente</option>
+                        <label class="form-title" for="input_cargo">Cargo</label><br>
+                        <select name="cargo" id="input_cargo" class="form-field half blocked" disabled>
+                            <option value="">Selecione uma opção...</option>
+                            <option value="dono" selected>Dono</option>
+                            <option value="analista">Analista</option>
                             <option value="estagiario">Estagiario</option>
                         </select>
                     </div>
                     <div class="fild-child">
-                        <label class="form-title" for="empresa">Empresa</label><br>
-                        <input type="text" name="empresa" id="empresa" class="form-field half blocked" disabled="" value="NOME_DA_EMPRESA ">
+                        <label class="form-title" for="input_telefone">Telefone</label><br>
+                        <input type="text" name="empresa" id="input_telefone" class="form-field half">
+                    </div>
+                </div>
+
+
+                <br><br>
+            <h2 class="sub-titulo">Dados da empresa</h2>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="input_razao_social" >Razão Social</label><br>
+                    <input type="email" id="input_razao_social" class="form-field" required>
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_nome_fantasia">Nome Fantasia</label><br>
+                        <input type="text" name="nome" id="input_nome_fantasia" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cnpj">CNPJ</label><br>
+                        <input type="text" name="sobrenome" id="input_cnpj" class="form-field half">
                     </div>
                 </div>
                 
             </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cep" onclick="capturarCEP()">CEP</label><br>
+                        <input type="text" name="nome" id="input_cep" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_endereco">Endereço</label><br>
+                        <input type="text" name="sobrenome" id="input_endereco" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_numero">Número</label><br>
+                        <input type="text" name="nome" id="input_numero" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_bairro">Bairro</label><br>
+                        <input type="text" name="sobrenome" id="input_bairro" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cidade">Cidade</label><br>
+                        <input type="text" name="nome" id="input_cidade" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_estado">Estado</label><br>
+                        <input type="text" name="sobrenome" id="input_estado" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_complemento">Complemento</label><br>
+                        <input type="text" name="nome" id="input_complemento" class="form-field half">
+                    </div>
+
+                </div>
+                
+            </div>
+                
+            </div>
 
             <div class="field-form">
-                <label class="form-title" for="perguntaDeSeguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" id="nova_perguntaDeSeguranca" class="form-field">
+                <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
+                <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
                     <option value="">Selecione uma opção...</option>
-                    <option value="diretor">Nome de solteiro da sua mãe</option>
-                    <option value="gerente">Cidade em que nasceu</option>
-                    <option value="estagiario">Nome do primeiro animal de estimação que teve</option>
+                    <option value="1">Nome do primeiro animal de estimação que teve</option>
+                    <option value="2">Nome de solteiro da sua mãe</option>
+                    <option value="3">Cidade em que nasceu</option>
                 </select>
+                <br>
+                <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
             </div>
             <br>
-            <button class="button" onclick="alertar()">Alterar dados</button>
+            <button class="button" onclick="cadastrar()">Criar conta</button>
             <br>
-            <div class="terms-of-use" style="text-align: center;">
-                <p>Quero realizar a exclusão dos dados deste usuário <span><a href="">Excluir conta.</a></span></p>
+            <div class="terms-of-use">
+                <p>Ao fazer login você aceita os <span><a href="">Termos de Uso e reconhece a Política de Privacidade e a Política de Cookies.</a></span></p>
             </div>
             <br>
+            <div class="already-account-or-not" >
+                <p>Já tem uma conta? <span><a href="login.html">Entrar</a></span></p>
+            </div>
+            <br><br>
         </div>
     </main>
         <footer class="footer">
@@ -95,6 +172,29 @@
 </html>
 
 <script>
+
+    function payload(){        
+        const ID_USUARIO = sessionStorage.ID_USUARIO;
+        const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+        const TELEFONE_USUARIO = sessionStorage.TELEFONE_USUARIO;
+        const EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
+        const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+        const RESPOSTA_SEGURANCA_USUARIO = sessionStorage.RESPOSTA_SEGURANCA_USUARIO;
+        const RAZAO_SOCIAL_USUARIO = sessionStorage.RAZAO_SOCIAL_USUARIO;
+        const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        const CNPJ_USUARIO = sessionStorage.CNPJ_USUARIO;
+        const LOGRADOURO_USUARIO = sessionStorage.LOGRADOURO_USUARIO;
+        const NUMERO_USUARIO = sessionStorage.NUMERO_USUARIO;
+        const BAIRRO_USUARIO = sessionStorage.BAIRRO_USUARIO;
+        const CEP_USUARIO = sessionStorage.CEP_USUARIO;
+        const COMPLEMENTO_USUARIO = sessionStorage.COMPLEMENTO_USUARIO;
+        const CIDADE_USUARIO = sessionStorage.CIDADE_USUARIO;
+        const ESTADO_USUARIO = sessionStorage.ESTADO_USUARIO;
+
+        input_nome_usuario.value = `${NOME_USUARIO.toUpperCase()}`;
+        input_sobrenome_usuario.value = `${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+    }
 
     function alertar(){
         var novoNomeVar = novo_nome.value;
