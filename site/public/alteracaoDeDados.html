@@ -46,12 +46,7 @@
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_cargo">Cargo</label><br>
-                        <select name="cargo" id="input_cargo" class="form-field half blocked" disabled>
-                            <option value="">Selecione uma opção...</option>
-                            <option value="dono" selected>Dono</option>
-                            <option value="analista">Analista</option>
-                            <option value="estagiario">Estagiario</option>
-                        </select>
+                        <input type="text" name="cargo" id="input_cargo" class="form-field half blocked" disabled>
                     </div>
                     <div class="fild-child">
                         <label class="form-title" for="input_telefone">Telefone</label><br>
@@ -194,6 +189,24 @@
 
         input_nome_usuario.value = `${NOME_USUARIO.toUpperCase()}`;
         input_sobrenome_usuario.value = `${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+
+        input_telefone.value = `${sessionStorage.TELEFONE_USUARIO.toUpperCase()}`;
+        input_email.value = `${sessionStorage.EMAIL_USUARIO.toUpperCase()}`;
+        input_cargo.value = `${sessionStorage.CARGO_USUARIO.toUpperCase()}`;
+        input_pergunta_de_seguranca.value = `${sessionStorage.RESPOSTA_SEGURANCA_USUARIO.toUpperCase()}`;
+        input_razao_social.value = `${sessionStorage.RAZAO_SOCIAL_USUARIO.toUpperCase()}`;
+        input_nome_fantasia.value = `${sessionStorage.NOME_FANTASIA_USUARIO.toUpperCase()}`;
+        input_cnpj.value = `${sessionStorage.CNPJ_USUARIO.toUpperCase()}`;
+        input_endereco.value = `${sessionStorage.LOGRADOURO_USUARIO.toUpperCase()}`;
+        input_numero.value = `${sessionStorage.NUMERO_USUARIO.toUpperCase()}`;
+        input_bairro.value = `${sessionStorage.BAIRRO_USUARIO.toUpperCase()}`;
+        input_cep.value = `${sessionStorage.CEP_USUARIO.toUpperCase()}`;
+        input_complemento.value = `${sessionStorage.COMPLEMENTO_USUARIO.toUpperCase()}`;
+        input_cidade.value = `${sessionStorage.CIDADE_USUARIO.toUpperCase()}`;
+        input_estado.value = `${sessionStorage.ESTADO_USUARIO.toUpperCase()}`;
+
+
+
     }
 
     function alertar(){

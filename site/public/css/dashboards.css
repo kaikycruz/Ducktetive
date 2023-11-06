@@ -71,6 +71,11 @@ hr {
   gap: 7px;
 }
 
+#linkPerfil{
+  font-style: none;
+  text-decoration: none;
+}
+
 .dashboard-main #userData #user-picture {
   height: 90px;
   width: 90px;
