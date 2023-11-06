@@ -27,7 +27,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="payload()">
 
     <main class="dashboard-main">
         <aside class="aside-bar-menu" style="">
@@ -634,8 +634,15 @@
 
 <script>
 
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-  cargo_usuario.innerHTML = sessionStorage.CARGO_USUARIO;
+    function payload(){
+        const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+        const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+        const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
+    }
+  
 
 
    const rede = document.getElementById('grafico-rede');
