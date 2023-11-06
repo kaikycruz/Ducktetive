@@ -73,7 +73,9 @@ function cadastrar(req, res) {
   var email = req.body.emailServer;
   var cargo = req.body.cargoServer;
   var telefone = req.body.telefoneServer;
+  var opcoesPerguntaDeSeguranca = req.body.opcoesPerguntasDeSegurancaServer;
   var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
+
   var senha = req.body.senhaServer;
 
   // Faça as validações dos valores
@@ -107,9 +109,11 @@ function cadastrar(req, res) {
     res.status(400).send("Seu cargo está undefined!");
   } else if (telefone == undefined) {
     res.status(400).send("Seu telefone está undefined!");
+  } else if (opcoesPerguntaDeSeguranca == undefined) {
+    res.status(400).send("Seu perguntaDeSeguranca está undefined!");
   } else if (perguntaDeSeguranca == undefined) {
     res.status(400).send("Seu perguntaDeSeguranca está undefined!");
-  } else if (senha == undefined) {
+  }  else if (senha == undefined) {
     res.status(400).send("Seu senha está undefined!");
   }
 
@@ -132,7 +136,48 @@ function cadastrar(req, res) {
       email,
       senha,
       cargo,
-      perguntaDeSeguranca
+      perguntaDeSeguranca,
+      opcoesPerguntaDeSeguranca
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function redefinir(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var email = req.body.emailServer;
+  var opcoesPerguntaDeSeguranca = req.body.opcoesPerguntasDeSegurancaServer;
+  var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
+  var novaSenha = req.body.novaSenhaServer;
+
+  // Faça as validações dos valores
+  if (email == undefined) {
+    res.status(400).send("Seu email está undefined!");
+  } else if (opcoesPerguntaDeSeguranca == undefined) {
+    res.status(400).send("Seu perguntaDeSeguranca está undefined!");
+  } else if (perguntaDeSeguranca == undefined) {
+    res.status(400).send("Seu perguntaDeSeguranca está undefined!");
+  }  else if (novaSenha == undefined) {
+    res.status(400).send("Seu novaSenha está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .redefinir(
+      email,
+      novaSenha,
+      perguntaDeSeguranca,
+      opcoesPerguntaDeSeguranca
     )
     .then(function (resultado) {
       res.json(resultado);
