@@ -13,21 +13,6 @@ function autenticar(email, senha) {
   return database.executar(instrucao);
 }
 
-function alterarUsuario(nome, sobrenome, email, perguntaDeSeguranca) {
-  console.log(
-    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
-    nome,
-    sobrenome,
-    email,
-    perguntaDeSeguranca
-  );
-  var instrucao = `
-        
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
-}
-
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 async function cadastrar(
   endereco,
@@ -126,8 +111,61 @@ async function redefinir(
   await database.executar(instrucao1);
 }
 
+async function alterarDados(
+  idUsuario,
+  endereco,
+  numero,
+  bairro,
+  cep,
+  complemento,
+  cidade,
+  estado,
+  razaoSocial,
+  nomeFantasia,
+  cnpj,
+  nomeUsuario,
+  sobrenomeUsuario,
+  telefone,
+  email,
+  perguntaDeSeguranca,
+  opcoesPerguntaDeSeguranca
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucao1 = `        
+        UPDATE usuario u join empresa emp on u.fkEmpresa = emp.idEmpresa 
+				                  join endereco ende on emp.fkEndereco = ende.idEndereco
+            set u.primeiro_nome = '${nomeUsuario}',
+              u.sobrenome = '${sobrenomeUsuario}',
+              u.telefone = '${telefone}',
+              u.email = '${email}',
+              u.resposta_seguranca = '${perguntaDeSeguranca}',
+              u.fkPergunta = ${opcoesPerguntaDeSeguranca},
+              emp.razao_social = '${razaoSocial}',
+              emp.nome_fantasia = '${nomeFantasia}',
+              emp.cnpj = '${cnpj}',
+              ende.logradouro = '${endereco}',
+              ende.numero = ${numero},
+              ende.bairro = '${bairro}',
+              ende.cep = '${cep}',
+              ende.complemento = '${complemento}',
+              ende.cidade = '${cidade}',
+              ende.estado = '${estado}'
+          WHERE u.idUsuario = ${idUsuario};
+    
+        `;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+
+}
+
 module.exports = {
   autenticar,
   cadastrar,
-  alterarUsuario,
+  redefinir,
+  alterarDados
 };

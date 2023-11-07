@@ -208,6 +208,7 @@
     function alterar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
+      var idUsuarioVar = sessionStorage.ID_USUARIO
       var nomeUsuarioVar = input_nome_usuario.value
       var sobrenomeUsuarioVar = input_sobrenome_usuario.value
       var emailVar = input_email.value
@@ -230,6 +231,7 @@
       
 
       if (
+        idUsuarioVar == ""||
         razaoSocialVar == "" ||
         nomeFantasiaVar == "" ||
         cnpjVar == "" ||
@@ -252,7 +254,7 @@
       } 
   
       // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
+      fetch("/usuarios/alterarDados", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -277,14 +279,13 @@
           nomeFantasiaServer: nomeFantasiaVar,
           cnpjServer: cnpjVar,
 
+          idUsuarioServer:idUsuarioVar,
           nomeUsuarioServer: nomeUsuarioVar,
           sobrenomeUsuarioServer: sobrenomeUsuarioVar,
           emailServer: emailVar,
-          cargoServer: cargoVar,
           telefoneServer: telefoneVar,
           opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
-          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
-          senhaServer: senhaVar
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar
 
         //   nomeUsuarioServer: nomeUsuarioVar,
         //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
@@ -301,16 +302,17 @@
           if (resposta.ok) {
 
   
-            alertify.success('Cadastro realizado com sucesso! Redirecionando para tela de Login...');
+            alertify.success('Alteração realizado com sucesso! Redirecionando para tela de Login...');
 
             setTimeout(() => {
-              window.location = "login.html";
+                sessionStorage.clear();
+                 window.location = "login.html";
             }, "2000");
   
 
           } else {
             console.log('teste')
-            throw alertify.error('Usuário já cadastrado, verifique o CNPJ da sua empresa ou o seu email');
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
           }
         })
         .catch(function (resposta) {

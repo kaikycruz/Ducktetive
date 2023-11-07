@@ -12,8 +12,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.post("/alterarUsuario", function (req, res) {
-    usuarioController.alterarUsuario(req, res);
+router.post("/redefinir", function (req, res) {
+    usuarioController.redefinir(req, res);
+}) 
+
+router.post("/alterarDados", function (req, res) {
+    usuarioController.alterarDados(req, res);
 }) 
 
 module.exports = router;
