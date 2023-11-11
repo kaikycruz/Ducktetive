@@ -16,7 +16,7 @@ public class Conexao {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
         dataSource.setUsername("root");
-        dataSource.setPassword("Ducktetive100");
+        dataSource.setPassword("urubu100");
 
 
         conexaoBanco = new JdbcTemplate(dataSource);
