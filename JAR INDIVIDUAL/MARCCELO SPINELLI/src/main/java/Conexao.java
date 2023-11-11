@@ -4,21 +4,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Conexao {
     private JdbcTemplate conexaoBanco;
 
-    public Conexao(){
-
+    public Conexao() {
         BasicDataSource dataSourceServer = new BasicDataSource();
         dataSourceServer.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSourceServer.setUrl("jdbc:mysql://localhost:3306/Ducktetive");
         dataSourceServer.setUsername("root");
         dataSourceServer.setPassword("urubu100");
 
-
         conexaoBanco = new JdbcTemplate(dataSourceServer);
     }
 
-    public JdbcTemplate getConexaoBanco(){
+    public JdbcTemplate getConexaoBanco() {
         return conexaoBanco;
     }
 }
-
-
