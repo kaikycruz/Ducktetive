@@ -10,6 +10,8 @@ public class Metrica {
     private String nome;
     private Double parametroMaximo;
 
+    Log info = new Log();
+
 
     public Metrica() {
     }

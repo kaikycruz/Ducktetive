@@ -3,6 +3,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Conexao {
     private JdbcTemplate conexaoBanco;
+    Log informacao = new Log();
 
     public Conexao(){
         BasicDataSource dataSource = new BasicDataSource();
@@ -10,6 +11,7 @@ public class Conexao {
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
         dataSource.setUsername("root");
         dataSource.setPassword("997849791abc");
+        informacao.gravar("Fazendo login no banco");
 
         conexaoBanco = new JdbcTemplate(dataSource);
     }
