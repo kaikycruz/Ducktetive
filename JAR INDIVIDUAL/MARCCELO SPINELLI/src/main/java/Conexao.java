@@ -11,6 +11,14 @@ public class Conexao {
         dataSource.setUsername("root");
         dataSource.setPassword("sptech");
 
+
+        BasicDataSource dataSourceServer = new BasicDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
+        dataSource.setUsername("root");
+        dataSource.setPassword("Ducktetive100");
+
+
         conexaoBanco = new JdbcTemplate(dataSource);
     }
 
@@ -18,3 +26,5 @@ public class Conexao {
         return conexaoBanco;
     }
 }
+
+

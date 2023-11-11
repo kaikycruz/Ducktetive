@@ -24,6 +24,7 @@ public class TesteLooca {
 
         LoocaDao loocaDao = new LoocaDao();
 
+
         Conexao conexao = new Conexao();
 
         Memoria memoria = looca.getMemoria();
