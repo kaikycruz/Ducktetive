@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
     <!-- include a theme -->
     <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+    <!-- Sweet Alert -->
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body>
 
@@ -95,11 +99,12 @@
             alertify.success('login realizado com sucesso! Redirecionando para Dashboard...');
   
             sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.ID_EMPRESA = json.idEmpresa;
             sessionStorage.NOME_USUARIO = json.primeiro_nome;
             sessionStorage.SOBRENOME_NOME_USUARIO = json.sobrenome;
             sessionStorage.TELEFONE_USUARIO = json.telefone;
             sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.CARGO_USUARIO = json.cargo;
+            sessionStorage.CARGO_USUARIO = json.nome;
             sessionStorage.RESPOSTA_SEGURANCA_USUARIO = json.resposta_seguranca;
             sessionStorage.RAZAO_SOCIAL_USUARIO = json.razao_social;
             sessionStorage.NOME_FANTASIA_USUARIO = json.nome_fantasia;
@@ -111,14 +116,41 @@
             sessionStorage.COMPLEMENTO_USUARIO = json.complemento;
             sessionStorage.CIDADE_USUARIO = json.cidade;
             sessionStorage.ESTADO_USUARIO = json.estado;
+            sessionStorage.USUARIO_ATIVO = json.ativo;
+            sessionStorage.ID_ENDERECO = json.idEndereco;
+            
+            console.log(JSON.stringify(json.ativo));
 
 
 
 
 
-            setTimeout(() => {
-              window.location = "./dashboard/dashboard.html";
-            }, 2000);
+            if(sessionStorage.USUARIO_ATIVO == 1){
+                setTimeout(() => {
+                  window.location = "./dashboard/dashboard.html";
+                }, 2000);
+            }else if(sessionStorage.USUARIO_ATIVO == 0){
+                Swal.fire({
+                    title: "Sua conta foi desativada",
+                    text: "Você deseja reativar a sua conta?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sim, reativar e entrar!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    ativarUsuario()
+                    Swal.fire({
+                    title: "Sua conta foi reativada!",
+                    text: "Estamos te redirecionando para a Dashboard.",
+                    icon: "success"
+                    });
+                    window.location = "./dashboard/dashboard.html"
+                }
+                });
+                
+            }
         });
           } else {
             console.log('teste')
@@ -133,4 +165,68 @@
     }
 
 
+    function ativarUsuario(){
+        //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var idUsuarioVar = sessionStorage.ID_USUARIO
+      
+
+      if (
+        idUsuarioVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+        return false;
+      } 
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/reativarConta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
+          idUsuarioServer:idUsuarioVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+
+  
+            alertify.success('Alteração realizado com sucesso! Redirecionando para tela de Login...');
+
+            setTimeout(() => {
+                sessionStorage.clear();
+                 window.location = "login.html";
+            }, "2000");
+  
+
+          } else {
+            console.log('teste')
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
 </script>

@@ -13,7 +13,7 @@
     <!-- include a theme -->
     <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
 </head>
-<body>
+<body onload="buscarParametros(), payload()">
 
     <main id="main">
         <div id="central-logo">
@@ -25,7 +25,7 @@
         <div class="content">
             <div class="nomeServer">
                 <span class="tilte">Nome do servidor</span>
-                <input type="text" id="NomeServidor">
+                <input type="text" id="nomeServidor_input">
             </div>
             <div class="dadosComponente">
                 <h3>Informações do processador</h3>
@@ -33,11 +33,11 @@
                 <div>
                     <span>
                         Maximo temperatura
-                        <input placeholder="00.00" id="inputValorMax">
+                        <input placeholder="00.00" id="inputValorMaxCPU_input">
                     </span>
                     <span>
                         Minimo temperatura
-                        <input placeholder="00.00" id="inputValorMin">
+                        <input placeholder="00.00" id="inputValorMinCPU_input">
                     </span>
                 </div>
             </div>
@@ -47,11 +47,11 @@
                 <div>
                     <span>
                         Maximo de uso
-                        <input placeholder="0000Mbps" id="inputValorMax">
+                        <input placeholder="0000Mbps" id="inputValorMaxRAM_input">
                     </span>
                     <span>
                         Minimo de uso
-                        <input placeholder="0000Mbps" id="inputValorMin">
+                        <input placeholder="0000Mbps" id="inputValorMinRAM_input">
                     </span>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div>
                     <span>
                         Maximo de uso
-                        <input placeholder="0000Mb" id="inputValorMax">
+                        <input placeholder="0000Mb" id="inputValorMaxDisco_input">
                     </span>
                 </div>
             </div>
@@ -71,10 +71,13 @@
                 <div>
                     <span>
                         Maximo de uso
-                        <input placeholder="0000Mbps" id="inputValorMax">
+                        <input placeholder="0000Mbps" id="inputValorMaxRede_input">
                     </span>
                 </div>
             </div>
+
+            <button class="button" onclick="cadastrar()">Entrar</button>
+                <br>
 
         </div>
     </main>
@@ -95,6 +98,16 @@
 </html>
 
 <script>
+
+function payload(){
+        inputValorMaxCPU_input.value = `${sessionStorage.MAXIMO_CPU}.0`
+        inputValorMinCPU_input.value = `${sessionStorage.MINIMO_CPU}.0`
+        inputValorMaxRAM_input.value = `${sessionStorage.MAXIMO_RAM}.0`
+        inputValorMinRAM_input.value = `${sessionStorage.MINIMO_RAM}.0`
+        inputValorMaxDisco_input.value = `${sessionStorage.MAXIMO_DISCO}.0`
+        inputValorMaxRede_input.value = `${sessionStorage.MAXIMO_REDE}.0`
+        console.log(`brabo`)
+    }
 
     function alertar(){
         alertify.success('Success message');
@@ -166,8 +179,147 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+
+    function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    //var idServidorVar = sessionStorage.ID_SERVIDOR
+    var idEmpresaVar = sessionStorage.ID_EMPRESA
+    var idEnderecoVar = sessionStorage.ID_ENDERECO
+
+    var nomeServidorVar = nomeServidor_input.value;
+    var maximoCPUVar = inputValorMaxCPU_input.value;
+    var minimoCPUVar = inputValorMinCPU_input.value;
+    var maximoRAMVar = inputValorMaxRAM_input.value;
+    var minimoRAMVar = inputValorMinRAM_input.value;
+    var maximoDiscoVar = inputValorMaxDisco_input.value;
+    var maximoRedeVar = inputValorMaxRede_input.value;
+
+    if (
+        //idServidorVar == "" ||
+        idEmpresaVar == "" ||
+        nomeServidorVar == "" ||
+        maximoCPUVar == "" ||
+        minimoCPUVar == "" ||
+        maximoRAMVar == "" ||
+        minimoRAMVar == "" ||
+        maximoDiscoVar == "" ||
+        maximoRedeVar == "" 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarServidor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        //idServidorServer: idServidorVar,
+        idEnderecoServer: idEnderecoVar,
+        idEmpresaServer: idEmpresaVar,
+        nomeServidorServer: nomeServidorVar,
+        maximoCPUServer: maximoCPUVar,
+        minimoCPUServer: minimoCPUVar,
+        maximoRAMServer: maximoRAMVar,
+        minimoRAMServer: minimoRAMVar,
+        maximoDiscoerver: maximoDiscoVar,
+        maximoRedeServer: maximoRedeVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            setTimeout(() => {
+              window.location = "dashboard/servidores.html";
+            }, "2000");
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            cardErro.style.display = "block";
+
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de servidores...";
+
+            setTimeout(() => {
+              window.location = "dashboard/servidores.html";
+            }, "2000");
+          });
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+
+    function buscarParametros() {
+        
+        var idEmpresaVar = sessionStorage.ID_EMPRESA
+
+        if (idEmpresaVar == "" ) {
+            alertify.error('Preencha todos os campos');
+            return false;
+        }
+
+        fetch("/usuarios/buscarParametros", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DOS PARAMETROS");
+        console.log(JSON.stringify(json));
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            var maximoCPU = JSON.stringify(json[0].maximo)
+            var minimoCPU = JSON.stringify(json[0].minimo)
+            var maximoRAM = JSON.stringify(json[1].maximo)
+            var minimoRAM = JSON.stringify(json[1].minimo)
+            var maximoDisco = JSON.stringify(json[2].maximo)
+            var maximoRede = JSON.stringify(json[3].maximo)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
+        console.log("maximoCPU:", maximoCPU, "minimoCPU:", minimoCPU, "maximoRAM:", maximoRAM, "minimoRAM:", minimoRAM, "maximoDisco:", maximoDisco, "maximoRede:", maximoRede);
+
+        sessionStorage.MAXIMO_CPU = maximoCPU
+        sessionStorage.MINIMO_CPU = minimoCPU
+        sessionStorage.MAXIMO_RAM = maximoRAM
+        sessionStorage.MINIMO_RAM = minimoRAM
+        sessionStorage.MAXIMO_DISCO = maximoDisco
+        sessionStorage.MAXIMO_REDE = maximoRede
+
+
+
+        });
+        } else {
+            console.log('teste')
+            throw alertify.error('Erro ao realizar login, verifique suas credenciais');
+        }
+        })
+        .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+        });
+        payload()
     }
 
 </script>

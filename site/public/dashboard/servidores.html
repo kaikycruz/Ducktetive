@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ducktetive | Dashboards</title>
+
+    <link rel="stylesheet" href="../css/dashboards.css">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="../src\images\ducktetive.png ">
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body onload="payload()">
+
+    <main class="dashboard-main">
+        <aside class="aside-bar-menu" style="">
+            <div id="logo-ducktetive">
+                <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard">
+            </div>
+            <hr>
+            <a href="../alteracaoDeDados.html" id="linkPerfil">
+                <div id="user-data" >
+                <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                <span id="b_usuario"></span>
+                <span id="cargo_usuario"></span>
+                </div>
+            </a>
+            <hr>
+            <div id="dashboard-menu">
+                <span id="dash-title">Navegação principal</span>
+                <div class="dash-item" onclick="mudarAbaDashboard()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/home-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Dashboard</p>
+                    </div>
+                </div>
+                <div class="dash-item" onclick="mudarAbaCPU()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/cpu-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">CPU</p>
+                    </div>
+                </div>
+                <div class="dash-item" onclick="mudarAbaRAM()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu"
+                                id="ram-icon">
+                        </div>
+                        <p class="item-text">RAM</p>
+                    </div>
+                </div>
+                <div class="dash-item" onclick="mudarAbaHD()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Armazenamento</p>
+                    </div>
+                </div>
+                <div class="dash-item" onclick="mudarAbaRede()">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Rede</p>
+                    </div>
+                </div>
+            </div>
+            <div id="alerts">
+                <span id="dash-title">Alertas</span>
+                <div id="alert-list">
+                </div>
+            </div>
+
+
+        </aside>
+        <section class="dashboard-content listagem-de-servidores" id="dashboard-home" style="display: block;">
+            <div id="headerServerList">
+            </div>
+            <div id="server-list">
+                <a href="../cadastrarNovoServidor.html">
+                    <div class="serverCard createServer">
+                        +
+                    </div>
+                </a>
+                
+            </div>
+        
+        </section>
+
+        
+
+        
+
+    </main>
+</body>
+
+</html>
+
+<script>
+var listaDeServidor;
+var quantidadeDeServidor = 0;
+
+    function payload(){
+        const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+        const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+        const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} <br> ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
+        buscarServidores()
+
+        headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
+        `
+    }
+  
+
+
+   function criarServidor(idServidor, nomeServidor, endereco, numeroEndereco, cidade, statusServidor){
+    listaDeServidores = document.querySelector("#server-list") 
+    listaDeServidores.insertAdjacentHTML('afterbegin', `
+    
+    <div class="serverCard" >
+                    <div class="cardButtons">
+                        <div class="serverData">
+                            #${idServidor} - ${statusServidor}
+                        </div>
+                        <div class="buttons">
+                            <div class="cardEdit">
+                                <a href=""></a>
+                            </div>
+                            <div class="cardoStatus">
+                                <a href=""></a>
+    
+                            </div>
+                            <div class="cardRemove">
+                                <a href=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="serverName">
+                        <a href="dashboard.html">
+                        ${nomeServidor}
+                        </a>
+                    </div>
+                    
+                    <div class="serverDetails">
+                        <span>${endereco} ${numeroEndereco}</span>
+                        <span>${cidade}</span>
+                    </div>
+
+                </div>
+    `);
+   }
+
+
+   function buscarServidores() {
+    
+        var idUsuarioVar = sessionStorage.ID_USUARIO
+
+        if (idUsuarioVar == "" ) {
+            alertify.error('Preencha todos os campos');
+            return false;
+        }
+
+        fetch("/usuarios/buscarServidores", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar
+            })
+        }).then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+           console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length
+            if(quantidadeDeServidor > 0){
+                console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" , quantidadeDeServidor)
+
+                for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i])
+                var idEmpresa = JSON.stringify(json[i].idEmpresa)
+                var idServidor = JSON.stringify(json[i].idServidor)
+                var nomeServidor = JSON.stringify(json[i].nomeServidor)
+                var logradouro = JSON.stringify(json[i].logradouro)
+                var numero = JSON.stringify(json[i].numero)
+                var cidade = JSON.stringify(json[i].cidade)
+                var statusServidor = JSON.stringify(json[i].statusServidor)
+
+                criarServidor( idServidor, nomeServidor, logradouro, numero, cidade, statusServidor)
+                }
+            }
+            console.log(JSON.stringify(json[1].idEmpresa))
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
+            
+  
+
+        });
+          } else {
+            console.log('teste')
+            throw alertify.error('Erro ao realizar login, verifique suas credenciais');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          
+        });
+
+  
+    }
+
+    function avisarUsuario(){
+        Swal.fire({
+                    title: "Ainda não há servidores cadastrados",
+                    text: "Você deseja criar um?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sim, criar um servidor!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    ativarUsuario()
+                    Swal.fire({
+                    title: "Sua conta foi reativada!",
+                    text: "Estamos te redirecionando para a Dashboard.",
+                    icon: "success"
+                    });
+                    window.location = "./dashboard/dashboard.html"
+                }
+                });
+    }
+    
+
+</script>

@@ -288,10 +288,239 @@ function alterarDados(req, res) {
     });
 }
 
+function excluirConta(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idUsuario = req.body.idUsuarioServer;
+
+  // Faça as validações dos valores
+  if (idUsuario == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .excluirConta(
+      idUsuario
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function reativarConta(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idUsuario = req.body.idUsuarioServer;
+
+  // Faça as validações dos valores
+  if (idUsuario == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .reativarConta(
+      idUsuario
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarServidores(req, res) {
+  var idUsuario = req.body.idUsuarioServer;
+
+
+  if (idUsuario == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  } else {
+    usuarioModel
+      .buscarServidores(idUsuario)
+      .then(function (resultadobuscarServidores) {
+        console.log(`\nResultados encontrados: ${resultadobuscarServidores.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadobuscarServidores)}`); // transforma JSON em String
+
+        if (resultadobuscarServidores.length > 0) {
+          console.log(resultadobuscarServidores);
+          res.json(resultadobuscarServidores);
+
+          // alteracao futura para criar servidor
+
+          //   aquarioModel
+          //     .buscarAquariosPorEmpresa(resultadobuscarServidores[0].empresaId)
+          //     .then((resultadoAquarios) => {
+          //       if (resultadoAquarios.length > 0) {
+          //         res.json({
+          //           id: resultadobuscarServidores[0].id,
+          //           email: resultadobuscarServidores[0].email,
+          //           nome: resultadobuscarServidores[0].nome,
+          //           senha: resultadobuscarServidores[0].senha,
+          //         });
+          //       } else {
+          //         res.status(204).json({ aquarios: [] });
+          //       }
+          //     });
+        } 
+        // else if (resultadobuscarServidores.length == 0) {
+        //   res.status(403).send("Email e/ou senha inválido(s)");
+        // } else {
+        //   res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        // }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function buscarParametros(req, res) {
+  var idEmpresa = req.body.idEmpresaServer;
+
+
+  if (idEmpresa == undefined) {
+    res.status(400).send("Seu idEmpresa está undefined!");
+  } else {
+    usuarioModel
+      .buscarParametros(idEmpresa)
+      .then(function (resultadobuscarParametros) {
+        console.log(`\nResultados encontrados: ${resultadobuscarParametros.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadobuscarParametros)}`); // transforma JSON em String
+
+        if (resultadobuscarParametros.length > 0) {
+          console.log(resultadobuscarParametros);
+          res.json(resultadobuscarParametros);
+
+          // alteracao futura para criar servidor
+
+          //   aquarioModel
+          //     .buscarAquariosPorEmpresa(resultadobuscarServidores[0].empresaId)
+          //     .then((resultadoAquarios) => {
+          //       if (resultadoAquarios.length > 0) {
+          //         res.json({
+          //           id: resultadobuscarServidores[0].id,
+          //           email: resultadobuscarServidores[0].email,
+          //           nome: resultadobuscarServidores[0].nome,
+          //           senha: resultadobuscarServidores[0].senha,
+          //         });
+          //       } else {
+          //         res.status(204).json({ aquarios: [] });
+          //       }
+          //     });
+        } 
+        // else if (resultadobuscarServidores.length == 0) {
+        //   res.status(403).send("Email e/ou senha inválido(s)");
+        // } else {
+        //   res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        // }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function cadastrarServidor(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+  
+  
+  //var idServidor = req.body.idServidorServer;
+  var idEndereco = req.body.idEnderecoServer;
+  var idEmpresa = req.body.idEmpresaServer;
+  var nomeServidor = req.body.nomeServidorServer;
+  var maximoCPU = req.body.maximoCPUServer;
+  var minimoCPU = req.body.minimoCPUServer;
+  var maximoRAM = req.body.maximoRAMServer;
+  var minimoRAM = req.body.minimoRAMServer;
+  var maximoDisco = req.body.maximoDiscoerver;
+  var maximoRede = req.body.maximoRedeServer;
+
+  // Faça as validações dos valores
+  if (nomeServidor === undefined) {
+      res.status(400).send("O nome do servidor está undefined!");
+  } else if (maximoCPU === undefined) {
+      res.status(400).send("A quantidade máxima de CPU está undefined!");
+  } else if (minimoCPU === undefined) {
+      res.status(400).send("A quantidade mínima de CPU está undefined!");
+  } else if (maximoRAM === undefined) {
+      res.status(400).send("A quantidade máxima de RAM está undefined!");
+  } else if (minimoRAM === undefined) {
+      res.status(400).send("A quantidade mínima de RAM está undefined!");
+  } else if (maximoDisco === undefined) {
+      res.status(400).send("A quantidade máxima de disco está undefined!");
+  } else if (maximoRede === undefined) {
+      res.status(400).send("A quantidade máxima de rede está undefined!");
+  } //else if (idServidor === undefined) {
+    //res.status(400).send("A quantidade máxima de rede está undefined!");
+  //} 
+  else if (idEmpresa === undefined) {
+  res.status(400).send("A quantidade máxima de rede está undefined!");
+  }else if (idEndereco === undefined) {
+    res.status(400).send("A quantidade máxima de rede está undefined!");
+    }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .cadastrarServidor(
+      nomeServidor,
+      maximoCPU,
+      minimoCPU,
+      maximoRAM,
+      minimoRAM,
+      maximoDisco,
+      maximoRede,
+      //idServidor,
+      idEmpresa,
+      idEndereco
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 module.exports = {
   autenticar,
   cadastrar,
   alterarDados,
-  redefinir
+  redefinir,
+  excluirConta,
+  reativarConta,
+  buscarServidores,
+  buscarParametros,
+  cadastrarServidor
 };
