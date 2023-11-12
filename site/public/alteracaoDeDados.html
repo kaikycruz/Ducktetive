@@ -63,12 +63,12 @@
 
 
                 <br><br>
-            <h2 class="sub-titulo">Dados da empresa</h2>
-            <div class="field-form" id="password-login">
+            <h2 class="sub-titulo empresa">Dados da empresa</h2>
+            <div class="field-form empresa" id="password-login">
                 <label class="form-title" for="input_razao_social" >Razão Social</label><br>
                     <input type="email" id="input_razao_social" class="form-field" required>
             </div>
-            <div class="field-form">
+            <div class="field-form empresa">
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_nome_fantasia">Nome Fantasia</label><br>
@@ -81,7 +81,7 @@
                 </div>
                 
             </div>
-            <div class="field-form">
+            <div class="field-form empresa">
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_cep" onclick="capturarCEP()">CEP</label><br>
@@ -94,7 +94,7 @@
                 </div>
                 
             </div>
-            <div class="field-form">
+            <div class="field-form empresa">
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_numero">Número</label><br>
@@ -107,7 +107,7 @@
                 </div>
                 
             </div>
-            <div class="field-form">
+            <div class="field-form empresa">
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_cidade">Cidade</label><br>
@@ -120,7 +120,7 @@
                 </div>
                 
             </div>
-            <div class="field-form">
+            <div class="field-form empresa">
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_complemento">Complemento</label><br>
@@ -207,6 +207,14 @@
         input_cidade.value = `${sessionStorage.CIDADE_USUARIO.toUpperCase()}`;
         input_estado.value = `${sessionStorage.ESTADO_USUARIO.toUpperCase()}`;
 
+        if(CARGO_USUARIO != "Dono" ){
+
+          var divs = document.getElementsByClassName("empresa");
+
+          for (var i = 0; i < divs.length; i++) {
+            divs[i].style.display = "none";
+          }
+        }
 
 
     }
@@ -250,7 +258,6 @@
         nomeUsuarioVar == "" ||
         sobrenomeUsuarioVar == "" ||
         emailVar == "" ||
-        telefoneVar == "" ||
         opcoesPerguntasDeSegurancaVar == "" |
         perguntaDeSegurancaVar == ""
       ) {
