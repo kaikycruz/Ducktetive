@@ -99,11 +99,9 @@
             <div id="headerServerList">
             </div>
             <div id="server-list">
-                <a href="../cadastrarNovoServidor.html">
-                    <div class="serverCard createServer">
+                    <div class="serverCard createServer" onclick="redirecionarUsuario()">
                         +
                     </div>
-                </a>
                 
             </div>
         
@@ -133,6 +131,21 @@ var quantidadeDeServidor = 0;
 
         headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
         `
+    }
+
+    function redirecionarUsuario(){
+        if (sessionStorage.CARGO_USUARIO == "Estagiario" ){
+            Swal.fire({
+            title: "Você não tem permissão para isso...",
+            text: "Apenas usuarios Donos e Analistas podem cadastrar servidores",
+            icon: "error"
+            });
+        }else{
+            setTimeout(() => {
+                  window.location = "cadastrarNovoServidor.html";
+                }, 2000);
+            
+        }
     }
   
 

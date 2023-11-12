@@ -78,6 +78,42 @@ async function cadastrar(
   await database.executar(instrucao3);
 }
 
+async function cadastrarUsuario(
+  nomeUsuario,
+  sobrenomeUsuario,
+  email,
+  senha,
+  cargo,
+  perguntaDeSeguranca,
+  opcoesPerguntaDeSeguranca,
+  empresa,
+  idEmpresa
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaEmail = `
+        SELECT * FROM Usuario WHERE email = '${email}';
+    `;
+  const resultadoEmail = await database.executar(verificaEmail);
+
+  if (resultadoEmail.length > 0) {
+    throw new Error("Já existe um usuário com o mesmo email.");
+  }
+
+  // Verifique se já existe uma empresa com o mesmo CNPJ
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+
+  var instrucao3 = `
+        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', 'null','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${idEmpresa});
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao3);
+  await database.executar(instrucao3);
+}
+
 async function redefinir(
   email,
   novaSenha,
@@ -318,5 +354,6 @@ module.exports = {
   reativarConta,
   buscarServidores,
   buscarParametros,
-  cadastrarServidor
+  cadastrarServidor,
+  cadastrarUsuario
 };

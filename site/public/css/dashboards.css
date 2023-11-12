@@ -76,7 +76,7 @@ hr {
   text-decoration: none;
 }
 
-.dashboard-main #userData #user-picture {
+ #user-picture {
   height: 90px;
   width: 90px;
 }

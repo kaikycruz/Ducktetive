@@ -152,6 +152,66 @@ function cadastrar(req, res) {
     });
 }
 
+function cadastrarUsuario(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+  var nomeUsuario = req.body.nomeUsuarioServer;
+  var sobrenomeUsuario = req.body.sobrenomeUsuarioServer;
+  var email = req.body.emailServer;
+  var cargo = req.body.cargoServer;
+  var opcoesPerguntaDeSeguranca = req.body.opcoesPerguntasDeSegurancaServer;
+  var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
+  var senha = req.body.senhaServer;
+  var empresa = req.body.empresaServer;
+  var idEmpresa = req.body.idEmpresaServer;
+
+  // Faça as validações dos valores
+  if (nomeUsuario == undefined) {
+    res.status(400).send("Seu nomeUsuario está undefined!");
+  } else if (sobrenomeUsuario == undefined) {
+    res.status(400).send("Seu sobrenomeUsuario está undefined!");
+  } else if (email == undefined) {
+    res.status(400).send("Seu email está undefined!");
+  } else if (cargo == undefined) {
+    res.status(400).send("Seu cargo está undefined!");
+  } else if (opcoesPerguntaDeSeguranca == undefined) {
+    res.status(400).send("Seu perguntaDeSeguranca está undefined!");
+  } else if (perguntaDeSeguranca == undefined) {
+    res.status(400).send("Seu perguntaDeSeguranca está undefined!");
+  }  else if (senha == undefined) {
+    res.status(400).send("Seu senha está undefined!");
+  }  else if (empresa == undefined) {
+    res.status(400).send("Sua empresa está undefined!");
+  }  else if (idEmpresa == undefined) {
+    res.status(400).send("Seu idEmpresa está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .cadastrarUsuario(
+      nomeUsuario,
+      sobrenomeUsuario,
+      email,
+      senha,
+      cargo,
+      perguntaDeSeguranca,
+      opcoesPerguntaDeSeguranca,
+      empresa,
+      idEmpresa
+
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function redefinir(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
@@ -522,5 +582,6 @@ module.exports = {
   reativarConta,
   buscarServidores,
   buscarParametros,
-  cadastrarServidor
+  cadastrarServidor,
+  cadastrarUsuario
 };
