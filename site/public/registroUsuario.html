@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
+    <title>cadastro de usuario</title>
     <link rel="icon" href="src\images\ducktetive.png">
     <link rel="stylesheet" href="css/formulario.css">
+
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
 </head>
-<body>
+<body onload="payload()">
 
     <main id="main-register">
         <div id="central-logo">
@@ -18,70 +24,65 @@
             <div class="field-form">
                 <div class="field-father">
                     <div class="fild-child">
-                        <label class="form-title" for="nome">Nome</label><br>
-                        <input type="text" name="nome" id="nome" class="form-field half">
+                        <label class="form-title" for="nome_input">Nome</label><br>
+                        <input type="text" name="nome" id="nome_input" class="form-field half">
                     </div>
                     <div class="fild-child">
-                        <label class="form-title" for="sobrenome">Sobrenome</label><br>
-                        <input type="text" name="sobrenome" id="sobrenome" class="form-field half">
+                        <label class="form-title" for="sobrenome_input">Sobrenome</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome_input" class="form-field half">
                     </div>
                 </div>
                 
             </div>
             <div class="field-form" id="password-login">
-                <label class="form-title" for="email" >Email</label><br>
-                    <input type="email" id="email" class="form-field" required>
+                <label class="form-title" for="email_input" >Email</label><br>
+                    <input type="email" id="email_input" class="form-field" required>
                     <p class="form-tips">Recomendamos um endereço de e-mail comercial.</p>
             </div>
 
             <div class="field-form">
                 <div class="field-father">
+                  <div class="fild-child">
+                    <label class="form-title" for="cargo_input">Cargo</label><br>
+                    <select name="cargo" id="cargo_input" class="form-field half" >
+                        <option value="">Selecione uma opção...</option>
+                        <option value="1" >Dono</option>
+                        <option value="2">Analista</option>
+                        <option value="3">Estagiario</option>
+                    </select>
+                </div>
                     <div class="fild-child">
-                        <label class="form-title" for="cargo">Cargo</label><br>
-                        <select name="cargo" id="cargo" class="form-field half">
-                            <option value="">Selecione uma opção...</option>
-                            <option value="diretor">Diretor</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="estagiario">Estagiario</option>
-                        </select>
-                    </div>
-                    <div class="fild-child">
-                        <label class="form-title" for="empresa">Empresa</label><br>
-                        <input type="text" name="empresa" id="empresa" class="form-field half">
+                        <label class="form-title" for="empresa_input">Empresa</label><br>
+                        <input type="text" name="empresa" id="empresa_input" class="form-field half" disabled>
                     </div>
                 </div>
                 
             </div>
 
             <div class="field-form">
-                <label class="form-title" for="perguntaDeSeguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" id="perguntaDeSeguranca" class="form-field">
-                    <option value="">Selecione uma opção...</option>
-                    <option value="diretor">Nome de solteiro da sua mãe</option>
-                    <option value="gerente">Cidade em que nasceu</option>
-                    <option value="estagiario">Nome do primeiro animal de estimação que teve</option>
-                </select>
-            </div>
+              <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
+              <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
+                  <option value="">Selecione uma opção...</option>
+                  <option value="1">Nome do primeiro animal de estimação que teve</option>
+                  <option value="2">Nome de solteiro da sua mãe</option>
+                  <option value="3">Cidade em que nasceu</option>
+              </select>
+              <br>
+              <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
+          </div>
 
             <div class="field-form" id="password-login">
-                <label class="form-title" for="password">Senha</label><br>
-                <input type="password" id="password" class="form-field" required>
+                <label class="form-title" for="input_password">Senha</label><br>
+                <input type="password" id="input_password" class="form-field" required>
                 <p class="form-tips">O comprimento minimo da senha é de 8 digitos.</p>
             </div>
             <div class="field-form" id="password-login">
-                <label class="form-title" for="password">Confirmar senha</label><br>
-                <input type="password" id="password" class="form-field" required>
+                <label class="form-title" for="input_confirm_password">Confirmar senha</label><br>
+                <input type="password" id="input_confirm_password" class="form-field" required>
             </div>
             <br>
             <button class="button" onclick="cadastrar()">Criar conta</button>
             <br>
-            <div class="terms-of-use">
-                <p>Ao fazer login você aceita os <span><a href="">Termos de Uso e reconhece a Política de Privacidade e a Política de Cookies.</a></span></p>
-            </div>
-            <br>
-            <div class="already-account-or-not" >
-                <p>Já tem uma conta? <span><a href="login.html">Entrar</a></span></p>
-            </div>
             <br><br>
         </div>
     </main>
@@ -102,35 +103,46 @@
 </html>
 
 <script>
+      function payload() {
+        empresa_input.value = sessionStorage.NOME_FANTASIA_USUARIO
+      }
+
+
     function cadastrar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
-      var nomeFantasiaVar = nome_fantasia.value;
-      var razaoSocialVar = razao_social.value
-      var cnpjVar = CNPJ.value
-      var emailVar = email_input.value;
-      var senhaVar = Senha.value;
-      var confirmacaoSenhaVar = confirmarSenha.value;
-      var permissao = permissao.value
+      var nomeUsuarioVar = nome_input.value
+      var sobrenomeUsuarioVar = sobrenome_input.value
+      var emailVar = email_input.value
+      var cargoVar = cargo_input.value
+      var empresaVar = empresa_input.value
+      var idEmpresaVar = sessionStorage.ID_EMPRESA
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+
+      var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
+      var senhaVar = input_password.value
+
+      var confirmacaoSenhaVar = input_confirm_password.value
+      
+
       if (
-        nomeFantasiaVar == "" ||
-        razaoSocialVar == "" ||
-        cnpjVar == "" ||
+        nomeUsuarioVar == "" ||
+        sobrenomeUsuarioVar == "" ||
         emailVar == "" ||
+        cargoVar == "" ||
+        empresaVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
+        perguntaDeSegurancaVar == "" ||
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
-      ) {
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para todos os campos em branco)";
+        ) {
+        alertify.error('Escreva os dados em todos os campos');
   
-        finalizarAguardar();
         return false;
-      } else {
-        setInterval(sumirMensagem, 5000);
-      }
+      } 
   
       // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
+      fetch("/usuarios/cadastrarUsuario", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -138,34 +150,49 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
+
+          nomeUsuarioServer: nomeUsuarioVar,
+          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
           emailServer: emailVar,
+          cargoServer: cargoVar,
+          opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
           senhaServer: senhaVar,
-          empresaServer: empresaVar
+          empresaServer : empresaVar,
+          idEmpresaServer : idEmpresaVar
+
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
         }),
       })
         .then(function (resposta) {
           console.log("resposta: ", resposta);
   
           if (resposta.ok) {
-            cardErro.style.display = "block";
+
   
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            alertify.success('Cadastro realizado com sucesso!');
   
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
-  
-            limparFormulario();
-            finalizarAguardar();
+
           } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
+            console.log('teste')
+            throw alertify.error('Usuário já cadastrado! Tente redefinir a sua senha');
           }
         })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
+
         });
   
       return false;

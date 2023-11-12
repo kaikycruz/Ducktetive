@@ -7,12 +7,11 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-        SELECT idUsuario, primeiro_nome, sobrenome, telefone, email, cargo, resposta_seguranca, razao_social, nome_fantasia, nome_fantasia, cnpj, logradouro, numero, bairro, cep, complemento, cidade, estado from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco where usuario.email = '${email}' and senha = '${senha}';
+      SELECT idUsuario, primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
-
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 async function cadastrar(
   endereco,
@@ -73,7 +72,43 @@ async function cadastrar(
   await database.executar(instrucao2);
 
   var instrucao3 = `
-        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, cargo, resposta_seguranca, fkPergunta, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${cargo}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
+        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao3);
+  await database.executar(instrucao3);
+}
+
+async function cadastrarUsuario(
+  nomeUsuario,
+  sobrenomeUsuario,
+  email,
+  senha,
+  cargo,
+  perguntaDeSeguranca,
+  opcoesPerguntaDeSeguranca,
+  empresa,
+  idEmpresa
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaEmail = `
+        SELECT * FROM Usuario WHERE email = '${email}';
+    `;
+  const resultadoEmail = await database.executar(verificaEmail);
+
+  if (resultadoEmail.length > 0) {
+    throw new Error("Já existe um usuário com o mesmo email.");
+  }
+
+  // Verifique se já existe uma empresa com o mesmo CNPJ
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+
+  var instrucao3 = `
+        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', 'null','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${idEmpresa});
     `;
   console.log("Executando a instrução SQL: \n" + instrucao3);
   await database.executar(instrucao3);
@@ -163,9 +198,162 @@ async function alterarDados(
 
 }
 
+async function excluirConta(
+  idUsuario
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucao1 = `        
+      UPDATE usuario SET ativo = 0 where idUsuario = ${idUsuario};`;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+
+}
+
+async function reativarConta(
+  idUsuario
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucao1 = `        
+      UPDATE usuario SET ativo = 1 where idUsuario = ${idUsuario};`;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+
+}
+
+function buscarServidores(idUsuario) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    idUsuario
+  );
+  var instrucao = `
+  SELECT empresa.idEmpresa, servidor.idServidor, servidor.nome as nomeServidor, endereco.logradouro, endereco.numero, endereco.cidade, statusservidor.nome as statusServidor FROM servidor JOIN empresa ON servidor.fkEmpresa = empresa.idEmpresa JOIN endereco ON servidor.fkEndereco = endereco.idEndereco JOIN statusservidor on servidor.fkStatusServ = statusservidor.idStatusServidor WHERE empresa.idEmpresa = ${idUsuario};
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function buscarParametros(idEmpresa) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    idEmpresa
+  );
+  var instrucao = `
+  select idParametro, nome, maximo, minimo from parametroalerta join componente on fkParametro = idParametro where componente.fkEmpresa = ${idEmpresa};
+  
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+async function cadastrarServidor(
+  nomeServidor,
+  maximoCPU,
+  minimoCPU,
+  maximoRAM,
+  minimoRAM,
+  maximoDisco,
+  maximoRede,
+  //idServidor,
+  idEmpresa,
+  idEndereco
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucaoParametro1 = `
+    insert into parametroAlerta values (null, ${maximoCPU}, ${minimoCPU}, ${idEmpresa});
+  `;
+
+  var instrucaoComponente1 = `
+  insert into componente values (null, 'CPU', null, 1, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
+`;
+
+  var instrucaoParametro2 = `
+    insert into parametroAlerta values (null, ${maximoRAM}, ${minimoRAM}, ${idEmpresa});
+  `;
+
+  var instrucaoComponente2 = `
+      insert into componente values (null, 'RAM', null, 2, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
+  `;
+
+  var instrucaoParametro3 = `
+    insert into parametroAlerta values (null, ${maximoDisco}, null, ${idEmpresa});
+  `;
+
+  var instrucaoComponente3 = `
+  insert into componente values (null, 'Disco', null, 3, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
+`;
+
+  var instrucaoParametro4 = `
+    insert into parametroAlerta values (null, ${maximoRede}, null, ${idEmpresa});
+  `;
+
+  var instrucaoComponente4 = `
+      insert into componente values (null, 'Rede', null, 4, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
+  `;
+
+  console.log("Executando as instruções SQL:");
+
+  console.log("Instrução 1:\n" + instrucaoParametro1);
+  await database.executar(instrucaoParametro1);
+
+  console.log("Executando a instrução SQL 1:");
+  console.log("Instrução 1:\n" + instrucaoComponente1);
+  await database.executar(instrucaoComponente1);
+
+
+  console.log("Instrução 2:\n" + instrucaoParametro2);
+  await database.executar(instrucaoParametro2);
+
+  console.log("Executando a instrução SQL 2:");
+  console.log("Instrução 2:\n" + instrucaoComponente2);
+  await database.executar(instrucaoComponente2);
+
+  console.log("Instrução 3:\n" + instrucaoParametro3);
+  await database.executar(instrucaoParametro3);
+
+  console.log("Executando a instrução SQL 3:");
+  console.log("Instrução 3:\n" + instrucaoComponente3);
+  await database.executar(instrucaoComponente3);
+
+  console.log("Instrução 4:\n" + instrucaoParametro4);
+  await database.executar(instrucaoParametro4);
+
+  console.log("Executando a instrução SQL 4:");
+  console.log("Instrução 4:\n" + instrucaoComponente4);
+  await database.executar(instrucaoComponente4);
+
+  var instrucao1 = `
+        INSERT INTO Servidor (idServidor, nome, fkEmpresa, fkEndereco, fkStatusServ) VALUES (null, '${nomeServidor}', ${idEmpresa}, ${idEndereco}, 1);
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+}
+
+
+
+
 module.exports = {
   autenticar,
   cadastrar,
   redefinir,
-  alterarDados
+  alterarDados,
+  excluirConta,
+  reativarConta,
+  buscarServidores,
+  buscarParametros,
+  cadastrarServidor,
+  cadastrarUsuario
 };
