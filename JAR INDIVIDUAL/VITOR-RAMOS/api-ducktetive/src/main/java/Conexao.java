@@ -8,8 +8,8 @@ public class Conexao {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
-        dataSource.setUsername("root");
-        dataSource.setPassword("040709");
+        dataSource.setUsername("admin");
+        dataSource.setPassword("userAdm003");
 
         conexaoBanco = new JdbcTemplate(dataSource);
     }

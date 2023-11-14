@@ -10,7 +10,6 @@ public class LoocaDao {
     JdbcTemplate con = conexao.getConexaoBanco();
 
 
-
     void cadastrarMetricas(Integer idComponente, Double valor, String data, String tipo) {
         String sql = "INSERT INTO Metrica (fkComponenteMetrica, valor, dataHora, tipo) VALUES (?, ?, ?, ?)";
         con.update(sql, idComponente, valor, data, tipo);

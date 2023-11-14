@@ -40,6 +40,8 @@ public class TesteLooca {
 
         Timer timer = new Timer();
 
+        Log informacao = new Log();
+
 
         // Cria uma tarefa TimerTask
         TimerTask task = new TimerTask() {
@@ -61,12 +63,13 @@ public class TesteLooca {
                     if (r.getPacotesRecebidos() != 0) {
                         double valorRede = (double) r.getPacotesRecebidos()/ 1000000;
                         loocaDao.cadastrarMetricas(4, valorRede, dataFormatada, "QtdRecebidos");
-
+                        informacao.gravar("Recebendo informações de rede.");
                     }
                 }
                 for (Disco disco : grupoDeDiscos.getDiscos()) {
                     double valorDisco = (double) disco.getBytesDeEscritas() / 1000000000;
                     loocaDao.cadastrarMetricas(3, valorDisco, dataFormatada, "Uso");
+                    informacao.gravar("Recebendo informações de Disco.");
                 }
 
             }
@@ -103,9 +106,11 @@ public class TesteLooca {
         for (int i = 0; i < emails.size(); i++) {
             if (login.equals(emails.get(i)) && senha.equals(senhas.get(i))) {
                 mensagem = "Bem vindo senhor(a)";
+                informacao.gravar("Login do usuario realizado com sucesso.");
                 break;
             } else {
                 System.out.println(mensagem);
+                informacao.gravar("Falha ao realizar o login do usuario.");
                 exit(0);
             }
         }
@@ -125,25 +130,31 @@ public class TesteLooca {
                             | 6) Sair                         |
                             +---------------------------------+
                             """);
+
                 operacao = leitorNum.nextInt();
             switch (operacao) {
                 case 1:
                     loocaDao.exibirMetricas("ram");
+                    informacao.gravar("Exibindo informações da memoria ram.");
                     break;
                 case 2:
                     loocaDao.exibirMetricas("cpu");
+                    informacao.gravar("Exibindo informações da CPU.");
                     break;
                 case 3:
                     loocaDao.exibirMetricas("disco");
+                    informacao.gravar("Exibindo informações do disco.");
                     break;
                 case 4:
                     loocaDao.exibirMetricas("rede");
+                    informacao.gravar("Exibindo informações da Rede.");
                     break;
                 case 5:
                     System.out.println("5");
                     break;
                 case 6:
                     System.out.println("Saindo...");
+                    informacao.gravar("Saindo da interface do usuario.");
                     exit(0);
                     break;
             }

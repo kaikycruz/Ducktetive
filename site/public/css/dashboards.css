@@ -1,730 +1,845 @@
 /* pagina mural */
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 *::-webkit-scrollbar {
-    width: 5px;
-    /* width of the entire scrollbar */
+  width: 5px;
+  /* width of the entire scrollbar */
 }
 
 *::-webkit-scrollbar-track {
-    background: #d9d9d9;
-    /* color of the tracking area */
-    border-radius: 5px;
-
+  background: #d9d9d9;
+  /* color of the tracking area */
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #FF7C33;
-    /* color of the scroll thumb */
-    /* creates padding around scroll thumb */
-    border-radius: 5px;
-
+  background-color: #ff7c33;
+  /* color of the scroll thumb */
+  /* creates padding around scroll thumb */
+  border-radius: 5px;
 }
 
 /* Side-bar */
 
 hr {
-    background-color: #D9D9D9;
-    height: 2px;
-    border: none;
+  background-color: #d9d9d9;
+  height: 2px;
+  border: none;
 }
 
 .dashboard-main {
-    display: flex;
+  display: flex;
 }
 
 .aside-bar-menu {
-    background-color: #FFFFFF;
-    width: 35vh;
-    height: 100vh;  
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+  background-color: #ffffff;
+  width: 35vh;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
-.icon{
-    pointer-events: none;
+.icon {
+  pointer-events: none;
 }
-.item-text{
-    pointer-events: none;
+.item-text {
+  pointer-events: none;
 }
 .aside-bar-menu #logo-ducktetive {
-    margin: 1vh;
-    text-align: center;
+  margin: 1vh;
+  text-align: center;
 }
 
 .aside-bar-menu #logo-ducktetive #duck-logo-dashboard {
-    height: 50px;
+  height: 50px;
 }
 
 .dashboard-main #user-data {
-    margin: 1vh 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
+  margin: 1vh 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
 }
 
-.dashboard-main #userData #user-picture {
-    height: 90px;
-    width: 90px;
+#linkPerfil{
+  font-style: none;
+  text-decoration: none;
 }
 
-#user-name {
-    font-weight: bold;
-    color: #313131;
-    font-size: 2.8vh;
+ #user-picture {
+  height: 90px;
+  width: 90px;
 }
 
-#user-role {
-    font-weight: bold;
-    color: #757575;
+#b_usuario {
+  font-weight: bold;
+  color: #313131;
+  font-size: 2.5vh;
+}
+
+#cargo_usuario {
+  font-weight: bold;
+  color: #757575;
+  font-size: 12px;
+  text-align: center;
 }
 
 #dashboard-menu {
-    margin-top: 1.5vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    font-size: 2vh;
+  margin-top: 1.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 2vh;
 }
 
 #dash-title {
-    color: #757575;
-    font-weight: bold;
-    margin-bottom: 1vh;
+  color: #757575;
+  font-weight: bold;
+  margin-bottom: 1vh;
 }
 
 #dashboard-menu .dash-item {
-    display: flex;
-    height: 5vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
+  display: flex;
+  height: 5vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 }
 
 .dash-item :hover {
-    background-color: rgba(255, 124, 51, 0.11);
-
+  background-color: rgba(255, 124, 51, 0.11);
 }
 
 #dashboard-menu .dash-item .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 15px;
-    height: 100%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  height: 100%;
 }
 
 #dashboard-menu .dash-item .menu .icon {
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 #dashboard-menu .dash-item .icon .icon-menu {
-    height: 19px;
+  height: 19px;
 }
 
 #ram-icon {
-    width: 19px;
-
+  width: 19px;
 }
-
 
 #dashboard-menu .dash-item .item-text {
-    color: #757575;
-    font-weight: bold;
-    width: 75%;
-    text-align: start;
+  color: #757575;
+  font-weight: bold;
+  width: 75%;
+  text-align: start;
 }
 
-
-
 #alerts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0px 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 2vh;
 }
 
 #alert-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 30vh;
-    width: 100%;
-    display: block;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40vh;
+  width: 100%;
+  display: block;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .content-alert {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 124, 51, 0.11);
-    height: 10vh;
-    width: 75%;
-    border-radius: 25px;
-    margin-bottom: 1vh;
-    padding: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 124, 51, 0.11);
+  height: 10vh;
+  width: 75%;
+  border-radius: 25px;
+  margin-bottom: 1vh;
+  padding: 2vh;
 }
 
 .content-alert div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
 }
 
 .content-alert #alert-status-healthy {
-    height: 20px;
-    width: 20px;
-    border-radius: 20px;
-    background-color: rgb(0, 255, 0);
-    margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background-color: rgb(0, 255, 0);
+  margin-right: 10px;
 }
 
 .content-alert #alert-status-attention {
-    height: 20px;
-    width: 20px;
-    border-radius: 20px;
-    background-color: yellow;
-    margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background-color: yellow;
+  margin-right: 10px;
 }
 
 .content-alert #alert-status-critic {
-    height: 20px;
-    width: 20px;
-    border-radius: 20px;
-    background-color: red;
-    margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background-color: red;
+  margin-right: 10px;
 }
 
 .alert-title {
-    font-weight: bold;
-    color: #757575;
+  font-weight: bold;
+  color: #757575;
 }
 
 .alert-message {
-    color: #757575;
-    font-size: 14px;
-    margin-top: 10px;
+  color: #757575;
+  font-size: 14px;
+  margin-top: 10px;
 }
-
 
 /* Final Side-bar */
 
 .dashboard-content {
-    background-color: #FF7C33;
-    background-color: rgba(255, 124, 51, 0.11);
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    padding-left: 45vh;
-    /* height: 100vh; */
-    /* comentamos o codigo acima para que a tela fique adaptiva*/
+  background-color: #ff7c33;
+  background-color: rgba(255, 124, 51, 0.11);
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding-left: 45vh;
+  /* height: 100vh; */
+  /* comentamos o codigo acima para que a tela fique adaptiva*/
+}
+
+.dashboard-content #header-Server-list{
+  margin: 40px 0px;
+}
+
+.dashboard-content #server-list{
+  display: flex;
+  gap: 20px;
+  border-radius: 15px;
+  width: 90%;
+  height: 80%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-content #server-list .serverCard{
+  background-color: rgb(255, 255, 255);
+  height: 200px;
+  width: 200px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-content #server-list .serverCard:hover{
+  background-color: rgba(0, 0, 0, 0.041);
+
+}
+.dashboard-content #server-list .serverCard{
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-content #server-list .serverCard .serverData{
+  font-size: 15px;
+}
+
+.dashboard-content #server-list .createServer{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.dashboard-content #server-list .serverCard .cardButtons{
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+
+}
+
+.dashboard-content #server-list .serverCard .cardButtons .buttons{
+  display: flex;
+  gap: 5px;
+}
+
+.dashboard-content #server-list .serverCard .serverName{
+  display: flex;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-content #server-list .serverCard .serverDetails{
+  font-size: 12px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.dashboard-content #server-list .serverCard .cardButtons .cardEdit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background-color: #6dff33;
+  border-radius: 15px;
+
+}
+
+.cardIcon{
+  height: 25px;
+
+}
+
+.dashboard-content #server-list .serverCard .cardButtons .cardoStatus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background-color: #e0ff33;
+  border-radius: 15px;
+
+
+}
+
+.dashboard-content #server-list .serverCard .cardButtons .cardRemove{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background-color: #ff3333;
+  border-radius: 15px;
+
+
 }
 
 /* DASHBOARD */
-.KPI-cards{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.KPI-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.CPU-cards-kpi, .disco-cards-kpi{
-    height: 100px;
-    width: 300px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #d9d9d9;
+.CPU-cards-kpi,
+.disco-cards-kpi {
+  height: 100px;
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d9d9d9;
 }
 
-
-#cpu-frequency{
-    background-color: rgb(202, 31, 31);
-    color: #ffffff;
+#cpu-frequency {
+  background-color: rgb(202, 31, 31);
+  color: #ffffff;
 }
 
-.kpi-title{
-    font-size: 14px;
+#ram-frequency {
+  background-color: rgb(25, 215, 53);
+  color: #ffffff;
 }
 
-.kpi-content{
-    font-size: 32px;
+#disco-frequency {
+  background-color: rgb(225, 213, 81);
+  color: #ffffff;
 }
 
-.read-write{
-    font-size: 22px;
+.kpi-title {
+  font-size: 14px;
 }
 
+.kpi-content {
+  font-size: 32px;
+}
+
+.read-write {
+  font-size: 22px;
+}
 
 /* Graficos CPU */
 
 /* CPU */
 
-
-
-
-
-
-
-
-
-
-
-
-#cards{
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+#cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-.cpu-cards, .ramCharts, .redeCharts, .discoCharts{
-    background-color: #ffffff;
-    height: 430px;
-    width: 800px;
-    border-radius: 30px;
-    padding: 15px;
-
+.cpu-cards,
+.ramCharts,
+.redeCharts,
+.discoCharts {
+  background-color: #ffffff;
+  height: 430px;
+  width: 800px;
+  border-radius: 30px;
+  padding: 15px;
 }
 
-.cpu-use{
-    height: 300px;
-    width: 600px;
-    background-color: #d9d9d9;
-    margin: 20px;
-    border-radius: 15px;
+.cpu-use {
+  height: 300px;
+  width: 600px;
+  background-color: #ffffff;
+  margin: 20px;
+  border-radius: 15px;
 }
 
-.ram-use{
-    height: 100px;
-    width: 600px;
-    background-color: #d9d9d9;
-    margin: 20px;
-    border-radius: 15px;
-
+.ram-use {
+  height: 100px;
+  width: 600px;
+  margin: 20px;
+  border-radius: 15px;
 }
 
 .rede-use {
-    height: 300px;
-    width: 600px;
-    background-color: #d9d9d9;
-    margin: 20px;
-    border-radius: 15px;
-
+  height: 300px;
+  width: 600px;
+  background-color: #ffffff;
+  margin: 20px;
+  border-radius: 15px;
 }
 
 .KPI-ram {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
 }
 
 .KPI-rede {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 45px;
 }
 
 .nome-rede {
-    background-color: #fff;
-    border: 2px solid #000;
-    text-align: center;
-    padding-left: 8px;
-    padding-right: 8px;
-    align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  text-align: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  align-items: center;
 }
 
 .pacotes-recebidos {
-    border: 2px solid #000;
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
 }
 
-
-.dados-do-servidor #nomeCPU p{
-    font-size: 20px;
-    margin: 10px;
-
+.dados-do-servidor #nomeCPU p {
+  font-size: 20px;
+  margin: 10px;
 }
 
 .alertas {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .alertas > .excesso-pacotes {
-    background-color: rgb(250, 147, 147);
-    border: 2px solid #000;
-    margin-bottom: 5px;
-    padding: 5px;
+  background-color: rgb(250, 147, 147);
+  border: 2px solid #000;
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
 .alertas > .risco-excesso {
-    background-color: rgb(252, 210, 119);
-    border: 2px solid #000;
-    padding: 5px;
+  background-color: rgb(252, 210, 119);
+  border: 2px solid #000;
+  padding: 5px;
 }
 
 /*alterar padding*/
-.total-ram, .emUso-ram, .info-over {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #fff;
+.total-ram,
+.emUso-ram,
+.info-over {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff;
 }
 
-.info-over{
-    background-color: rgb(202, 31, 31);
-    color: #FFFFFF;
+.info-over {
+  background-color: rgb(202, 31, 31);
+  color: #ffffff;
 }
 
 .ramCharts {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-#bar-total{
-    background-color: green;
-    height: 40px;
+#bar-total {
+  background-color: green;
+  height: 40px;
 }
 
-#bar-uso{
-    background-color: #FF7C33;
-    height: 40px;
-
+#bar-uso {
+  background-color: #ff7c33;
+  height: 40px;
 }
 
 /* Kaiky */
 .cpu-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .campo-grafico {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
 }
 
 .graficos {
-    width: 15vw;
-    height: 20vh;
-    background-color: #fff;
-    border-radius: 20px;
-    margin: 10px;
+  width: 15vw;
+  height: 20vh;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 10px;
 }
 
 #dashboard-CPU {
-    color: #757575;
+  color: #757575;
 }
 
 .uso-cpu {
-    display: flex;
-    justify-content: space-between;
-    width: 65vw;
-    background-color: #fff;
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 2vh;
+  display: flex;
+  justify-content: space-between;
+  width: 65vw;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 2vh;
 }
 
 .grafico-detalhes {
-    width: 60%;
+  width: 60%;
 }
 
 .utilizacao-velocidade {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.utilizacao-velocidade span{
-    display: flex;
-    flex-direction: column;
+.utilizacao-velocidade span {
+  display: flex;
+  flex-direction: column;
 }
 
 .uso-cpu #div_kpi_cpu span div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-span div span{
-    display: flex;
-    justify-content: space-between;
+span div span {
+  display: flex;
+  justify-content: space-between;
 }
 
-span div span b{
-    margin-left: 2vh;
+span div span b {
+  margin-left: 2vh;
 }
 
 /* Dashboard memória RAM */
 /* Zapatta */
 .conteudo-ram {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: space-evenly;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 
 .area-grafico-ram {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 40vh;
-    width: 70vw;
-    background-color: #FFFFFF;
-    border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  width: 70vw;
+  background-color: #ffffff;
+  border-radius: 30px;
 }
 
 .grafico-ram {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .indicadores-grafico-ram {
-    display: flex;
-    justify-content: space-between;
-    color: #757575;
-    font-size: 125%;
-    font-weight: 400;
-    height: 50vh;
-    width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  color: #757575;
+  font-size: 125%;
+  font-weight: 400;
+  height: 50vh;
+  width: 70vw;
 }
 
 .indicadores-ram {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: space-between;
-    padding: 3%;
-    background-color: #ffffff;
-    border-radius: 30px;
-    height: 82%;
-    width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 3%;
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 82%;
+  width: 42%;
 }
 
 .indicadores-medicao {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .grafico-barra-individual1,
 .grafico-barra-individual2 {
-    display: flex;
-    background-color: #ffffff;
-    flex-direction: column;
-    align-items: center;
-    padding: 3%;
-    border-radius: 30px;
-    height: 82%;
-    width: 17%;
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  border-radius: 30px;
+  height: 82%;
+  width: 17%;
 }
 
 /* Dashboard armazenamento */
 /* Zapatta*/
 
 .conteudo-armazenamento {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: space-evenly;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 
 .area-grafico01-armazenamento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 40vh;
-    width: 70vw;
-    background-color: #FFFFFF;
-    border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  width: 70vw;
+  background-color: #ffffff;
+  border-radius: 30px;
 }
 
 .armazenamento-grafico01 {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .area-grafico02-armazenamento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 16vh;
-    width: 70vw;
-    background-color: #FFFFFF;
-    border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 16vh;
+  width: 70vw;
+  background-color: #ffffff;
+  border-radius: 30px;
 }
 
 .armazenamento-grafico02 {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .area-bottom-indicadores-grafico03 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 30vh;
-    width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30vh;
+  width: 70vw;
 }
 
 .indicadores {
-    height: 100%;
-    width: 28vw;
+  height: 100%;
+  width: 28vw;
 }
 
 .indicadores-armazenamento {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 30px;
-    height: 20vh;
-    width: 28vw;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
+  height: 20vh;
+  width: 28vw;
 }
 
 .indicadores-titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 20px;
-    height: 3vh;
-    width: 28vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 3vh;
+  width: 28vw;
 }
 
 .indicadores-armazenamento {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 30px;
-    height: 20vh;
-    width: 28vw;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
+  height: 20vh;
+  width: 28vw;
 }
 
 .indicadores-titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 20px;
-    height: 3vh;
-    width: 28vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 3vh;
+  width: 28vw;
 }
 
 .dados-indicadores {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #ffffff;
-    margin-top: 5%;
-    padding-top: 3%;
-    padding-left: 3%;
-    padding-bottom: 2%;
-    border-radius: 30px;
-    height: 100%;
-    width: 28vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  margin-top: 5%;
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-bottom: 2%;
+  border-radius: 30px;
+  height: 100%;
+  width: 28vw;
 }
 
 .area-grafico03-armazenamento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 29vh;
-    width: 40vw;
-    background-color: #FFFFFF;
-    border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 29vh;
+  width: 40vw;
+  background-color: #ffffff;
+  border-radius: 30px;
 }
-
 
 /* dash de rede */
 /* gustavo*/
 .dash-uso-rede {
-    display: flex;
-    width: 75vw;
-    justify-content: space-between;
+  display: flex;
+  width: 75vw;
+  justify-content: space-between;
 }
 
 .dash-uso-rede div {
-    background-color: #FFf;
-    border-radius: 5vh;
-    height: 50vh;
-    width: 70vw;
-    padding: 5vh;
-    margin: 2vh;
+  background-color: #fff;
+  border-radius: 5vh;
+  height: 50vh;
+  width: 70vw;
+  padding: 5vh;
+  margin: 2vh;
 }
 
 .dash-uso-rede #div_kpi_rede {
-    width: 30vw;
-    height: 80vh;
-    background-color: #FFf;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  width: 30vw;
+  height: 80vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .dash-uso-rede #div_kpi_rede span {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .dash-uso-rede #div_kpi_rede span div {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 5vh;
-    width: 20vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 5vh;
+  width: 20vh;
 }
 
-.dash-uso-rede #div_kpi_rede span div p{
-    margin: 0;
+.dash-uso-rede #div_kpi_rede span div p {
+  margin: 0;
 }
 
+
+.listagem-de-servidores {
+  min-height: 100vh;
+  height: 100%;
+  /* height: 100vh; */
+  /* comentamos o codigo acima para que a tela fique adaptiva*/
+}

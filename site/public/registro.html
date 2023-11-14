@@ -41,7 +41,7 @@
             <div class="field-form">
                 <div class="field-father">
                     <div class="fild-child">
-                        <label class="form-title" for="input_cep">CEP</label><br>
+                        <label class="form-title" for="input_cep" onclick="capturarCEP()">CEP</label><br>
                         <input type="text" name="nome" id="input_cep" class="form-field half">
                     </div>
                     <div class="fild-child">
@@ -113,11 +113,11 @@
                 <div class="field-father">
                     <div class="fild-child">
                         <label class="form-title" for="input_cargo">Cargo</label><br>
-                        <select name="cargo" id="input_cargo" class="form-field half blocked" >
+                        <select name="cargo" id="input_cargo" class="form-field half blocked" disabled>
                             <option value="">Selecione uma opção...</option>
-                            <option value="dono">Dono</option>
-                            <option value="analista">Analista</option>
-                            <option value="estagiario">Estagiario</option>
+                            <option value="1" selected>Dono</option>
+                            <option value="2">Analista</option>
+                            <option value="3">Estagiario</option>
                         </select>
                     </div>
                     <div class="fild-child">
@@ -130,11 +130,11 @@
 
             <div class="field-form">
                 <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
-                <select name="perguntaDeSeguranca" class="form-field">
+                <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
                     <option value="">Selecione uma opção...</option>
-                    <option value="">Nome de solteiro da sua mãe</option>
-                    <option value="">Cidade em que nasceu</option>
-                    <option value="">Nome do primeiro animal de estimação que teve</option>
+                    <option value="1">Nome do primeiro animal de estimação que teve</option>
+                    <option value="2">Nome de solteiro da sua mãe</option>
+                    <option value="3">Cidade em que nasceu</option>
                 </select>
                 <br>
                 <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
@@ -201,6 +201,8 @@
       var emailVar = input_email.value
       var cargoVar = input_cargo.value
       var telefoneVar = input_telefone.value
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+
       var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
       var senhaVar = input_password.value
 
@@ -217,12 +219,12 @@
         bairroVar == "" ||
         cidadeVar == "" ||
         estadoVar == "" ||
-        complementoVar == "" ||
         nomeUsuarioVar == "" ||
         sobrenomeUsuarioVar == "" ||
         emailVar == "" ||
         cargoVar == "" ||
         telefoneVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
         perguntaDeSegurancaVar == "" ||
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
@@ -263,6 +265,7 @@
           emailServer: emailVar,
           cargoServer: cargoVar,
           telefoneServer: telefoneVar,
+          opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
           perguntaDeSegurancaServer: perguntaDeSegurancaVar,
           senhaServer: senhaVar
 
@@ -320,4 +323,31 @@
     function sumirMensagem() {
       cardErro.style.display = "none";
     }
+
+    const cepField = document.querySelector('#input_cep').addEventListener('blur', capturarCEP)
+
+    function capturarCEP(){
+        const cepInput = document.getElementById("input_cep");
+        const cep = cepInput.value
+        if(cep != ""){
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(res => res.json())
+            .then(dados => preencherCEP(dados))          
+        }
+
+    }
+    function preencherCEP(dados){
+        const rua = document.querySelector("#input_endereco")
+        const bairro = document.querySelector("#input_bairro")
+        const cidade = document.querySelector("#input_cidade")
+        const estado = document.querySelector("#input_estado")
+        const complemento = document.querySelector("#input_complemento")
+
+        rua.value = dados.logradouro;
+        bairro.value = dados.bairro;
+        cidade.value = dados.localidade;
+        estado.value = dados.uf;
+        complemento.value = dados.complemento;
+    }
+
   </script>
