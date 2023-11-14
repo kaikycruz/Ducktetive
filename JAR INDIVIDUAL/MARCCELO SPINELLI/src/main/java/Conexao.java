@@ -5,14 +5,14 @@ public class Conexao {
 
 
     public Conexao() {
-        BasicDataSource dataSourceServer = new BasicDataSource();
-        dataSourceServer.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSourceServer.setUrl("jdbc:mysql://localhost:3306/Ducktetive100?autoReconnect=true&useSSL=false");
-        dataSourceServer.setUsername("teste");
-        dataSourceServer.setPassword("urubu100");
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/Ducktetive100?autoReconnect=true&useSSL=false");
+        dataSource.setUsername("teste");
+        dataSource.setPassword("urubu100");
 
 
-        conexaoBanco = new JdbcTemplate(dataSourceServer);
+        conexaoBanco = new JdbcTemplate(dataSource);
     }
 
     public JdbcTemplate getConexaoBanco() {
