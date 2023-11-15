@@ -35,3 +35,11 @@ app.listen(PORTA, function () {
     \t\tSe "producao", você está se conectando ao banco REMOTO (SQL Server em nuvem Azure) \n
     \t\t\t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'`);
 });
+
+
+// 
+const axios = require("axios")
+
+axios.post("https://hooks.slack.com/services/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", {
+    text: "Teste chamado slack"
+})

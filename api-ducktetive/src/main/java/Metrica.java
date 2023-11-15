@@ -1,28 +1,52 @@
-import com.github.britooo.looca.api.util.Conversor;
+import Conexao.ConexaoBanco;
+import Conexao.ConexaoSlack;
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.discos.Disco;
+import com.github.britooo.looca.api.group.discos.DiscoGrupo;
+import com.github.britooo.looca.api.group.memoria.Memoria;
+import com.github.britooo.looca.api.group.processador.Processador;
+import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
+import com.github.britooo.looca.api.group.rede.RedeInterface;
+import com.github.britooo.looca.api.group.rede.RedeInterfaceGroup;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import oshi.SystemInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Metrica {
     private Integer idMetrica;
     private Double valor;
     private Date dataHora;
-    private String tipo;
-    private String nome;
-    private Double parametroMaximo;
+    private Integer fkConfigComponente;
+    private Integer fkConfigServidor;
+    private Integer fkEspecMetrica;
 
-    Log info = new Log();
+    Looca looca = new Looca();
+    ConexaoBanco conexao = new ConexaoBanco();
+    JdbcTemplate con = conexao.getConexaoBanco();
+    Memoria memoria = looca.getMemoria();
+    RedeInterfaceGroup redeInterfaceGroup = new RedeInterfaceGroup(new SystemInfo());
+    Processador processador = looca.getProcessador();
+    ProcessoGrupo processoGrupo = new ProcessoGrupo();
+    DiscoGrupo grupoDeDiscos = looca.getGrupoDeDiscos();
+    List<Disco> discos = grupoDeDiscos.getDiscos();
 
 
-    public Metrica() {
-    }
-
-    public Metrica(Integer idMetrica, Double valor, Date dataHora, String tipo, String nome, Double maximo) {
+    public Metrica(Integer idMetrica, Double valor, Date dataHora, Integer fkConfigComponente, Integer fkConfigServidor, Integer fkEspecMetrica) {
         this.idMetrica = idMetrica;
         this.valor = valor;
         this.dataHora = dataHora;
-        this.tipo = tipo;
-        this.nome = nome;
-        this.parametroMaximo = maximo;
+        this.fkConfigComponente = fkConfigComponente;
+        this.fkConfigServidor = fkConfigServidor;
+        this.fkEspecMetrica = fkEspecMetrica;
+    }
+
+    public Metrica() {
     }
 
     public Integer getIdMetrica() {
@@ -49,43 +73,40 @@ public class Metrica {
         this.dataHora = dataHora;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Integer getFkConfigComponente() {
+        return fkConfigComponente;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setFkConfigComponente(Integer fkConfigComponente) {
+        this.fkConfigComponente = fkConfigComponente;
     }
 
-    public String getNome() {
-        return nome;
+    public Integer getFkConfigServidor() {
+        return fkConfigServidor;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setFkConfigServidor(Integer fkConfigServidor) {
+        this.fkConfigServidor = fkConfigServidor;
     }
 
-    public Double getMaximo() {
-        return parametroMaximo;
+    public Integer getFkEspecMetrica() {
+        return fkEspecMetrica;
     }
 
-    public void setMaximo(Double maximo) {
-        this.parametroMaximo = maximo;
+    public void setFkEspecMetrica(Integer fkEspecMetrica) {
+        this.fkEspecMetrica = fkEspecMetrica;
     }
 
     @Override
     public String toString() {
-        return """
-                ------------------
-                |    Metrica     |
-                +----------------+
-                | ID: %d  
-                | Tipo: %s
-                | Nome: %s       
-                | Valor: %.2f   
-                | Maximo: %.2f 
-                | Data: %s      
-                +----------------+
-                """.formatted(idMetrica, tipo, nome, valor, parametroMaximo, dataHora );
+        return String.format("""
+                    Metrica
+                ID: %d
+                Valor: %.2f
+                Data Hora: %s
+                FkComponente: %d
+                FkServidor: %d
+                FkEspecMetrica: %d
+                """, idMetrica, valor, dataHora, fkConfigComponente, fkConfigServidor, fkEspecMetrica);
     }
 }
