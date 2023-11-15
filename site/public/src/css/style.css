@@ -512,6 +512,7 @@ hr{
 
     #equipe #cards .cardEquipe .fotoColaborador{
         height: 200px;
+        border-radius: 100px;
     }
     #iconesColaborador{
         display: flex;
