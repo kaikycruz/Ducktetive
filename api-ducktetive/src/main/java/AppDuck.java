@@ -152,7 +152,7 @@ public class AppDuck {
                                         serial = disco.getSerial();
                                     }
                                 }
-                                List<Config> config = con.query("SELECT * FROM configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
+                                List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
                                 if (config.isEmpty()) {
                                     String sqlConfig = "INSERT INTO Configuracao (fkComponente, fkServidor, serialDisco) VALUES (?, ?, ?);";
                                     con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null);
