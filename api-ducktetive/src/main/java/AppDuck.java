@@ -111,7 +111,7 @@ public class AppDuck {
         System.out.println("Digite sua senha:");
         String senha = leitor.nextLine();
 
-        List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
+        List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM Usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
         if (usuarios.size() > 0) {
             if (usuarios.get(0) != null && usuarios.get(0).getFkCargo() == 1) {
                 System.out.println("Bem vindo " + usuarios.get(0).getNome());
