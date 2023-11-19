@@ -335,7 +335,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
-            () => atualizarGraficoCPU(idMetrica, dados, myChartRAMdeitada),
+            () => atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada),
             2000
           );
         });
@@ -343,7 +343,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
         console.error("Nenhum dado encontrado ou erro na API");
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
-          () => atualizarGraficoCPU(idMetrica, dados, myChartRAMdeitada),
+          () => atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada),
           2000
         );
       }
@@ -497,7 +497,7 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
-            () => atualizarGraficoCPU(idMetrica, dados, myChartRAMlinha),
+            () => atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha),
             2000
           );
         });
@@ -505,7 +505,7 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
         console.error("Nenhum dado encontrado ou erro na API");
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
-          () => atualizarGraficoCPU(idMetrica, dados, myChartRAMlinha),
+          () => atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha),
           2000
         );
       }
@@ -515,166 +515,317 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
     });
 }
 
-
 // grafico disco
 
 function obterDadosGraficoDisco(idMetrica) {
-    if (proximaAtualizacao != undefined) {
-      clearTimeout(proximaAtualizacao);
-    }
-  
-    fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (resposta) {
-            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-            resposta.reverse();
-  
-            plotarGraficoDisco(resposta, idMetrica);
-          });
-        } else {
-          console.error("Nenhum dado encontrado ou erro na API");
-        }
-      })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
+  if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
   }
-  
-  // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-  // ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-  // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-  function plotarGraficoDisco(resposta, idMetrica) {
-    console.log("iniciando plotagem do gráfico...");
-  
-    // Criando estrutura para plotar gráfico - labels
-    let labels = [];
-  
-    // Criando estrutura para plotar gráfico - dados
-    let dados = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Core 1",
-          data: [20, 30, 10, 24, 23, 45, 50],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.1,
-        },
-        {
-          label: "RAM",
-          data: [],
-          fill: false,
-          borderColor: "rgb(199, 52, 52)",
-          tension: 0.1,
-        },
-      ],
-    };
-  
-    console.log("----------------------------------------------");
-    console.log(
-      'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
-    );
-    console.log(resposta);
-  
-    // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
-      var registro = resposta[i];
-      labels.push(registro.momento_grafico);
-      dados.datasets[0].data.push(registro.valor);
-      // dados.datasets[1].data.push(registro.temperatura);
-    }
-  
-    console.log("----------------------------------------------");
-    console.log("O gráfico será plotado com os respectivos valores:");
-    console.log("Labels:");
-    console.log(labels);
-    console.log("Dados:");
-    console.log(dados.datasets);
-    console.log("----------------------------------------------");
-  
-    // Criando estrutura para plotar gráfico - configCPU
-    const configDisco = {
-      type: "line",
-      data: dados,
-    };
-  
-    // Adicionando gráfico criado em div na tela
-    let myChartDisco= new Chart(
-      document.getElementById(`uso_disco`),
-      configDisco
-    );
-  
-    setTimeout(
-      () => atualizarGraficoRAMlinha(idMetrica, dados, myChartDisco),
-      2000
-    );
+
+  fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoDisco(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+function plotarGraficoDisco(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Core 1",
+        data: [20, 30, 10, 24, 23, 45, 50],
+        fill: false,
+        borderColor: "rgb(75, 192, 192)",
+        tension: 0.1,
+      },
+      {
+        label: "Disco",
+        data: [],
+        fill: false,
+        borderColor: "rgb(199, 52, 52)",
+        tension: 0.1,
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
   }
-  
-  // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-  // buscando a última medida inserida em tabela contendo as capturas,
-  
-  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-  //     Para ajustar o "select", ajuste o comando sql em src/models
-  function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
-    fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (novoRegistro) {
-            obterdados(idMetrica);
-            // alertar(novoRegistro, idMetrica);
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-  
-            if (
-              novoRegistro[0].momento_grafico ==
-              dados.labels[dados.labels.length - 1]
-            ) {
-              console.log(
-                "---------------------------------------------------------------"
-              );
-              console.log(
-                "Como não há dados novos para captura, o gráfico não atualizará."
-              );
-              console.log("Horário do novo dado capturado:");
-              console.log(novoRegistro[0].momento_grafico);
-              console.log("Horário do último dado capturado:");
-              console.log(dados.labels[dados.labels.length - 1]);
-              console.log(
-                "---------------------------------------------------------------"
-              );
-            } else {
-              // tirando e colocando valores no gráfico
-              dados.labels.shift(); // apagar o primeiro
-              dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-  
-              dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-              dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
-  
-              //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-              //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-  
-              myChartRAMlinha.update();
-            }
-  
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(
-              () => atualizarGraficoCPU(idMetrica, dados, myChartRAMlinha),
-              2000
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configDisco = {
+    type: "line",
+    data: dados,
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartDisco = new Chart(
+    document.getElementById(`uso_disco`),
+    configDisco
+  );
+
+  setTimeout(() => atualizarGraficoDisco(idMetrica, dados, myChartDisco), 2000);
+}
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas,
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
+  fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          obterdados(idMetrica);
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
             );
-          });
-        } else {
-          console.error("Nenhum dado encontrado ou erro na API");
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+
+            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+            myChartDisco.update();
+          }
+
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
-            () => atualizarGraficoCPU(idMetrica, dados, myChartRAMlinha),
+            () => atualizarGraficoDisco(idMetrica, dados, myChartDisco),
             2000
           );
-        }
-      })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoDisco(idMetrica, dados, myChartDisco),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+// grafico REDE
+
+function obterDadosGraficoRede(idMetrica) {
+  if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
   }
-  
+
+  fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoRede(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+function plotarGraficoRede(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Core 1",
+        data: [20, 30, 10, 24, 23, 45, 50],
+        fill: false,
+        borderColor: "rgb(75, 192, 192)",
+        tension: 0.1,
+      },
+      {
+        label: "Rede",
+        data: [],
+        fill: false,
+        borderColor: "rgb(199, 52, 52)",
+        tension: 0.1,
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
+  }
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configRede = {
+    type: "line",
+    data: dados,
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartRede = new Chart(document.getElementById(`uso_rede`), configRede);
+
+  setTimeout(() => atualizarGraficoRede(idMetrica, dados, myChartRede), 2000);
+}
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas,
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGraficoRede(idMetrica, dados, myChartRede) {
+  fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          obterdados(idMetrica);
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+
+            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+            myChartRede.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoRede(idMetrica, dados, myChartRede),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoRede(idMetrica, dados, myChartRede),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}

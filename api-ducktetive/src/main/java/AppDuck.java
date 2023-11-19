@@ -1,5 +1,5 @@
 import Conexao.ConexaoBanco;
-import Conexao.ConexaoSlack;
+//import Conexao.ConexaoSlack;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
@@ -17,9 +17,9 @@ public class AppDuck {
         ConexaoBanco conexao = new ConexaoBanco();
         JdbcTemplate con = conexao.getConexaoBanco();
         Scanner in = new Scanner(System.in);
-        ConexaoSlack conexaoSlack = new ConexaoSlack();
+        // ConexaoSlack conexaoSlack = new ConexaoSlack();
         Timer timer = new Timer();
-        inserirDadosMetrica(con, conexaoSlack, looca, timer);
+        inserirDadosMetrica(con, looca, timer);
         Integer opcao;
         do {
             System.out.println("""
@@ -36,7 +36,7 @@ public class AppDuck {
             switch (opcao) {
                 case 1:
                     System.out.println();
-                    logar(con, in, looca, conexaoSlack, timer);
+                    logar(con, in, looca, timer);
                     break;
                 case 2:
                     System.out.println("Saindo....");
@@ -51,7 +51,7 @@ public class AppDuck {
     }
 
 
-    public static void inserirDadosMetrica(JdbcTemplate con, ConexaoSlack conSlack, Looca looca, Timer timer) {
+    public static void inserirDadosMetrica(JdbcTemplate con, Looca looca, Timer timer) {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -98,7 +98,7 @@ public class AppDuck {
     }
 
 
-    public static void logar(JdbcTemplate con, Scanner in, Looca looca, ConexaoSlack conexaoSlack, Timer timer) {
+    public static void logar(JdbcTemplate con, Scanner in, Looca looca, Timer timer) {
         Scanner leitor = new Scanner(System.in);
         System.out.println("Insira seu email:");
         String email = leitor.nextLine();
