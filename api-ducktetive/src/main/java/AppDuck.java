@@ -2,6 +2,7 @@ import Conexao.ConexaoBanco;
 import Conexao.ConexaoSlack;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
+import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,7 +37,7 @@ public class AppDuck {
             switch (opcao) {
                 case 1:
                     System.out.println();
-                    logar(con, in, looca, conexaoSlack, timer);
+                    logar(con, in, looca, timer);
                     break;
                 case 2:
                     System.out.println("Saindo....");
@@ -67,7 +68,8 @@ public class AppDuck {
                     List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), config.get(0).fkServidor);
                     if (servidoresAtivos.get(0).getStatus().equals("Ativo")) {
 
-                        //            conSlack.enviandoMsgSlack("TESTE 02");
+                        List<ParametroAlerta> parametroAlertas = con.query("SELECT * FROM ParametroAlerta WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(ParametroAlerta.class), servidoresAtivos.get(0).getIdServidor());
+
                         // Formatar a data para o formato desejado (opcional)
                         Date data = new Date();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -76,20 +78,56 @@ public class AppDuck {
 
                         String sql = "INSERT INTO Metrica (valor, dataHora, fkConfigComponente, fkConfigServidor, fkEspecMetrica) VALUES (?, ?, ?, ?, ?);";
 
-                        double valorMemoria = (double) looca.getMemoria().getEmUso() / 1000000000;
 
-                        con.update(sql, looca.getProcessador().getUso(), dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 1);// cpu
-                        con.update(sql, valorMemoria, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 2);// ram
+
+                        // INSERT CPU
+                        con.update(sql, looca.getProcessador().getUso(), dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 1);
+                        // MSG SLACK RAM
+                        if (looca.getProcessador().getUso() >= parametroAlertas.get(3).getMaximo()){
+                            enviarMsgSlack(1, looca, timer, parametroAlertas.get(0).getMaximo(), conSlack, looca.getProcessador().getUso(), servidoresAtivos.get(0).getNome());
+                        }
+
+                        // INSERT RAM
+                        double valorMemoria = (double) looca.getMemoria().getEmUso() / 1000000000;
+                        con.update(sql, valorMemoria, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 2);
+                        // MSG SLACK RAM
+                        if (valorMemoria >= parametroAlertas.get(3).getMaximo()){
+                            enviarMsgSlack(2, looca, timer, parametroAlertas.get(1).getMaximo(), conSlack, valorMemoria, servidoresAtivos.get(0).getNome());
+                        }
+
+                        // INSERT DISCO
                         for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
                             double valorDisco = (double) disco.getBytesDeEscritas() / 1000000000;
-                            con.update(sql, valorDisco, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 2);// disco
+                            con.update(sql, valorDisco, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 2);
+                            // MSG SLACK DISCO
+                            if (valorDisco >= parametroAlertas.get(0).getMaximo()){
+                                enviarMsgSlack(3, looca, timer, parametroAlertas.get(2).getMaximo(), conSlack, valorDisco, servidoresAtivos.get(0).getNome());
+                            }
                         }
+
+                        // INSERT REDE
                         for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
                             if (r.getPacotesRecebidos() != 0) {
                                 double valorRede = (double) r.getPacotesRecebidos() / 100000;
-                                con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 3); // rede
+                                con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 3);
+                                // MSG SLACK REDE
+                                if (valorRede >= parametroAlertas.get(3).getMaximo()){
+                                    enviarMsgSlack(4, looca, timer, parametroAlertas.get(3).getMaximo(), conSlack, valorRede, servidoresAtivos.get(0).getNome() );
+                                }
                             }
                         }
+                        // INSERT PROCESSO com MSG Slack
+                        for (Processo p : looca.getGrupoDeProcessos().getProcessos()) {
+                            if (p.getUsoCpu() >= (parametroAlertas.get(0).getMaximo() / 2)) {
+                                String sqlProcesso = "INSERT INTO Processo (pId, consumoCpu, consumoMem, fkServidor, skStatusProce, fkAcaoProcess) VALUES (?, ?, ?, ?, ?, ?);";
+                                con.update(sqlProcesso, p.getPid(), p.getUsoCpu(), p.getUsoMemoria(), servidoresAtivos.get(0).getIdServidor(), 1, 1);
+                            }
+                            if (p.getUsoMemoria() >= (parametroAlertas.get(1).getMaximo() / 2)) {
+                                String sqlProcesso = "INSERT INTO Processo (pId, consumoCpu, consumoMem, fkServidor, skStatusProce, fkAcaoProcess) VALUES (?, ?, ?, ?, ?, ?);";
+                                con.update(sqlProcesso, p.getPid(), p.getUsoCpu(), p.getUsoMemoria(), servidoresAtivos.get(0).getIdServidor(), 1, 1);
+                            }
+                        }
+
 
                     }
                 }
@@ -98,7 +136,7 @@ public class AppDuck {
     }
 
 
-    public static void logar(JdbcTemplate con, Scanner in, Looca looca, ConexaoSlack conexaoSlack, Timer timer) {
+    public static void logar(JdbcTemplate con, Scanner in, Looca looca, Timer timer) {
         Scanner leitor = new Scanner(System.in);
         System.out.println("Insira seu email:");
         String email = leitor.nextLine();
@@ -210,6 +248,49 @@ public class AppDuck {
         } else {
             System.out.println("Email ou senha invalidos!");
 
+        }
+    }
+
+    public static void enviarMsgSlack(Integer idComponente, Looca looca, Timer timer, Double limiteMax, ConexaoSlack conSlack, Double consumo, String servidor) {
+
+        ConexaoSlack conexaoSlack = new ConexaoSlack();
+        switch (idComponente) {
+            case 1:
+                conexaoSlack.enviandoMsgSlack(String.format("""
+                        O Componente: CPU
+                        Servidor: %s
+                        Ultrapassou do limite!
+                        """, servidor));
+                break;
+            case 2:
+                conexaoSlack.enviandoMsgSlack(String.format("""
+                        O Componente: RAM
+                        Servidor: %s
+                        Ultrapassou do limite!
+                        """, servidor));
+                break;
+            case 3:
+                conexaoSlack.enviandoMsgSlack(String.format("""
+                        O Componente: DISCO
+                        Servidor: %s
+                        Ultrapassou do limite!
+                        """, servidor));
+                break;
+            case 4:
+                conexaoSlack.enviandoMsgSlack(String.format("""
+                        O Componente: REDE
+                        Servidor: %s
+                        Ultrapassou do limite!
+                        """, servidor));
+                break;
+            case 5:
+                conexaoSlack.enviandoMsgSlack(String.format("""
+                        O Processo 
+                        Servidor: %s
+                        Ultrapassou do limite!
+                        Em sua Dashboard poderá pausar!
+                        """, servidor));
+                break;
         }
     }
 }
