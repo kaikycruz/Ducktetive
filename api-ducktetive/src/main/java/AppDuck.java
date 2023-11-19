@@ -61,7 +61,7 @@ public class AppDuck {
                         serial = disco.getSerial();
                     }
                 }
-                List<Config> config = con.query("SELECT * FROM configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
+                List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
 
                 if (!config.isEmpty()) {
                     List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), config.get(0).fkServidor);
@@ -111,7 +111,7 @@ public class AppDuck {
         System.out.println("Digite sua senha:");
         String senha = leitor.nextLine();
 
-        List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
+        List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM Usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
         if (usuarios.size() > 0) {
             if (usuarios.get(0) != null && usuarios.get(0).getFkCargo() == 1) {
                 System.out.println("Bem vindo " + usuarios.get(0).getNome());
@@ -152,7 +152,7 @@ public class AppDuck {
                                         serial = disco.getSerial();
                                     }
                                 }
-                                List<Config> config = con.query("SELECT * FROM configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
+                                List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
                                 if (config.isEmpty()) {
                                     String sqlConfig = "INSERT INTO Configuracao (fkComponente, fkServidor, serialDisco) VALUES (?, ?, ?);";
                                     con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null);

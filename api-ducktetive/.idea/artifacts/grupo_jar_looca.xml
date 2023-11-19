@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="grupo-jar-looca">
+    <output-path>$PROJECT_DIR$/out/artifacts/grupo_jar_looca</output-path>
+    <root id="archive" name="grupo-jar-looca.jar" />
+  </artifact>
+</component>
