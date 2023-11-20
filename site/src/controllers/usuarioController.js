@@ -117,6 +117,20 @@ function cadastrar(req, res) {
     res.status(400).send("Seu senha está undefined!");
   }
 
+
+  if (cnpj.length != 14) {
+    res.status(400).send("O CNPJ é invalido, corrija o campo e tente novamente.");
+  }
+  if (cep.length != 8) {
+    res.status(400).send("O CEP é invalido, corrija o campo e tente novamente.");
+  }
+  if (estado.length != 2) {
+    res.status(400).send("O estado é invalido, corrija o campo e tente novamente.");
+  }
+  if (telefone.length != 11) {
+    res.status(400).send("O telefone é invalido, corrija o campo e tente novamente.");
+  }
+
   // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
   usuarioModel
     .cadastrar(
@@ -405,14 +419,14 @@ function reativarConta(req, res) {
 }
 
 function buscarServidores(req, res) {
-  var idUsuario = req.body.idUsuarioServer;
+  var idEmpresa = req.body.idEmpresaServer;
 
 
-  if (idUsuario == undefined) {
-    res.status(400).send("Seu idUsuario está undefined!");
+  if (idEmpresa == undefined) {
+    res.status(400).send("Seu idEmpresa está undefined!");
   } else {
     usuarioModel
-      .buscarServidores(idUsuario)
+      .buscarServidores(idEmpresa)
       .then(function (resultadobuscarServidores) {
         console.log(`\nResultados encontrados: ${resultadobuscarServidores.length}`);
         console.log(`Resultados: ${JSON.stringify(resultadobuscarServidores)}`); // transforma JSON em String

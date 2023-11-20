@@ -161,7 +161,7 @@
     } else {
       setTimeout(() => {
         window.location = "../cadastrarNovoServidor.html";
-      }, 2000);
+      }, 1);
     }
   }
 
@@ -214,9 +214,9 @@
   }
 
   function buscarServidores() {
-    var idUsuarioVar = sessionStorage.ID_USUARIO;
+    var idEmpresaVar = sessionStorage.ID_EMPRESA;
 
-    if (idUsuarioVar == "") {
+    if (idEmpresaVar == "") {
       alertify.error("Preencha todos os campos");
       return false;
     }
@@ -227,7 +227,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idUsuarioServer: idUsuarioVar,
+        idEmpresaServer: idEmpresaVar,
       }),
     })
       .then(function (resposta) {

@@ -72,7 +72,7 @@ async function cadastrar(
   await database.executar(instrucao2);
 
   var instrucao3 = `
-        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
+        INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
     `;
   console.log("Executando a instrução SQL: \n" + instrucao3);
   await database.executar(instrucao3);
@@ -230,13 +230,13 @@ async function reativarConta(
 
 }
 
-function buscarServidores(idUsuario) {
+function buscarServidores(idEmpresa) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
-    idUsuario
+    idEmpresa
   );
   var instrucao = `
-  SELECT empresa.idEmpresa, servidor.idServidor, servidor.nome as nomeServidor, endereco.logradouro, endereco.numero, endereco.cidade, statusservidor.nome as statusServidor FROM servidor JOIN empresa ON servidor.fkEmpresa = empresa.idEmpresa JOIN endereco ON servidor.fkEndereco = endereco.idEndereco JOIN statusservidor on servidor.fkStatusServ = statusservidor.idStatusServidor WHERE empresa.idEmpresa = ${idUsuario};
+  SELECT empresa.idEmpresa, servidor.idServidor, servidor.nome as nomeServidor, endereco.logradouro, endereco.numero, endereco.cidade, statusservidor.nome as statusServidor FROM servidor JOIN empresa ON servidor.fkEmpresa = empresa.idEmpresa JOIN endereco ON servidor.fkEndereco = endereco.idEndereco JOIN statusservidor on servidor.fkStatusServ = statusservidor.idStatusServidor WHERE empresa.idEmpresa = ${idEmpresa};
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -263,87 +263,55 @@ async function cadastrarServidor(
   minimoRAM,
   maximoDisco,
   maximoRede,
-  //idServidor,
   idEmpresa,
   idEndereco
 ) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
   );
+
+
+  var instrucao1 = `
+        INSERT INTO Servidor (idServidor, nome, fkEmpresa, fkEndereco, fkStatusServ) VALUES (null, '${nomeServidor}', ${idEmpresa}, ${idEndereco}, 2);
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucaoParametro1 = `
-    insert into parametroAlerta values (null, ${maximoCPU}, ${minimoCPU}, ${idEmpresa});
+    insert into parametroAlerta values (null, ${maximoCPU}, ${minimoCPU}, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 1);
   `;
-
-  var instrucaoComponente1 = `
-  insert into componente values (null, 'CPU', null, 1, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
-`;
 
   var instrucaoParametro2 = `
-    insert into parametroAlerta values (null, ${maximoRAM}, ${minimoRAM}, ${idEmpresa});
-  `;
-
-  var instrucaoComponente2 = `
-      insert into componente values (null, 'RAM', null, 2, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
+    insert into parametroAlerta values (null, ${maximoRAM}, ${minimoRAM}, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 2);
   `;
 
   var instrucaoParametro3 = `
-    insert into parametroAlerta values (null, ${maximoDisco}, null, ${idEmpresa});
+    insert into parametroAlerta values (null, ${maximoDisco}, null, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 3);
   `;
-
-  var instrucaoComponente3 = `
-  insert into componente values (null, 'Disco', null, 3, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
-`;
 
   var instrucaoParametro4 = `
-    insert into parametroAlerta values (null, ${maximoRede}, null, ${idEmpresa});
+    insert into parametroAlerta values (null, ${maximoRede}, null, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 4);
   `;
 
-  var instrucaoComponente4 = `
-      insert into componente values (null, 'Rede', null, 4, ${"(SELECT COUNT(*) AS total_parametros FROM parametroAlerta)"}, ${idEmpresa});
-  `;
 
   console.log("Executando as instruções SQL:");
 
   console.log("Instrução 1:\n" + instrucaoParametro1);
   await database.executar(instrucaoParametro1);
 
-  console.log("Executando a instrução SQL 1:");
-  console.log("Instrução 1:\n" + instrucaoComponente1);
-  await database.executar(instrucaoComponente1);
-
 
   console.log("Instrução 2:\n" + instrucaoParametro2);
   await database.executar(instrucaoParametro2);
 
-  console.log("Executando a instrução SQL 2:");
-  console.log("Instrução 2:\n" + instrucaoComponente2);
-  await database.executar(instrucaoComponente2);
-
   console.log("Instrução 3:\n" + instrucaoParametro3);
   await database.executar(instrucaoParametro3);
-
-  console.log("Executando a instrução SQL 3:");
-  console.log("Instrução 3:\n" + instrucaoComponente3);
-  await database.executar(instrucaoComponente3);
 
   console.log("Instrução 4:\n" + instrucaoParametro4);
   await database.executar(instrucaoParametro4);
 
-  console.log("Executando a instrução SQL 4:");
-  console.log("Instrução 4:\n" + instrucaoComponente4);
-  await database.executar(instrucaoComponente4);
-
-  var instrucao1 = `
-        INSERT INTO Servidor (idServidor, nome, fkEmpresa, fkEndereco, fkStatusServ) VALUES (null, '${nomeServidor}', ${idEmpresa}, ${idEndereco}, 1);
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucao1);
-  await database.executar(instrucao1);
+  
 }
-
-
-
 
 module.exports = {
   autenticar,
