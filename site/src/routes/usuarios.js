@@ -44,6 +44,17 @@ router.post("/cadastrarServidor", function (req, res) {
     usuarioController.cadastrarServidor(req, res);
 }) 
 
+router.post("/alterarDadosServidor", function (req, res) {
+    usuarioController.alterarDadosServidor(req, res);
+}) 
+
+router.post("/excluirServidor", function (req, res) {
+    usuarioController.excluirServidor(req, res);
+}) 
+
+router.post("/alterarStatusServidor", function (req, res) {
+    usuarioController.alterarStatusServidor(req, res);
+}) 
 
 
 
