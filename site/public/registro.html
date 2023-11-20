@@ -179,6 +179,84 @@
 </html>
 
 <script>
+    function validarCampos(){
+      var razaoSocialVar = input_razao_social.value
+      var nomeFantasiaVar = input_nome_fantasia.value
+      var cnpjVar = input_cnpj.value
+
+
+      var cepVar = input_cep.value
+      var enderecoVar = input_endereco.value
+      var numeroVar = input_numero.value
+      var bairroVar = input_bairro.value
+      var cidadeVar = input_cidade.value
+      var estadoVar = input_estado.value
+      var complementoVar = input_complemento.value
+
+
+      var nomeUsuarioVar = input_nome_usuario.value
+      var sobrenomeUsuarioVar = input_sobrenome_usuario.value
+      var emailVar = input_email.value
+      var cargoVar = input_cargo.value
+      var telefoneVar = input_telefone.value
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+
+      var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
+      var senhaVar = input_password.value
+
+      var confirmacaoSenhaVar = input_confirm_password.value
+
+        if (
+        razaoSocialVar == "" ||
+        nomeFantasiaVar == "" ||
+        cnpjVar == "" ||
+        cepVar == "" ||
+        enderecoVar == "" ||
+        numeroVar == "" ||
+        bairroVar == "" ||
+        cidadeVar == "" ||
+        estadoVar == "" ||
+        nomeUsuarioVar == "" ||
+        sobrenomeUsuarioVar == "" ||
+        emailVar == "" ||
+        cargoVar == "" ||
+        telefoneVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
+        perguntaDeSegurancaVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+  
+        return false;
+      } 
+
+      if (cnpjVar.length != 14){
+        alertify.error('O CNPJ é invalido, corrija o campo e tente novamente.');
+        return false;
+      }
+      if (cepVar.length != 8){
+        alertify.error('O CEP é invalido, corrija o campo e tente novamente.');
+        return false;
+      }
+      if (estadoVar.length != 2){
+        alertify.error('O estado é invalido, corrija o campo e tente novamente.');
+        return false;
+      }
+      if (telefoneVar.length != 11){
+        alertify.error('O telefone é invalido, corrija o campo e tente novamente.');
+        return false;
+      }
+
+      if(senhaVar != confirmacaoSenhaVar){
+        alertify.error('As senhas não conferem, corrija e tente novamente.');
+        return false;
+      }
+        
+      return true
+    }
+
+
     function cadastrar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
@@ -207,34 +285,9 @@
       var senhaVar = input_password.value
 
       var confirmacaoSenhaVar = input_confirm_password.value
-      
-
-      if (
-        razaoSocialVar == "" ||
-        nomeFantasiaVar == "" ||
-        cnpjVar == "" ||
-        cepVar == "" ||
-        enderecoVar == "" ||
-        numeroVar == "" ||
-        bairroVar == "" ||
-        cidadeVar == "" ||
-        estadoVar == "" ||
-        nomeUsuarioVar == "" ||
-        sobrenomeUsuarioVar == "" ||
-        emailVar == "" ||
-        cargoVar == "" ||
-        telefoneVar == "" ||
-        opcoesPerguntasDeSegurancaVar == "" |
-        perguntaDeSegurancaVar == "" ||
-        senhaVar == "" ||
-        confirmacaoSenhaVar == ""
-      ) {
-        alertify.error('Escreva os dados em todos os campos');
-  
-        return false;
-      } 
-  
-      // Enviando o valor da nova input
+            
+      if(validarCampos()){
+        // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -302,6 +355,10 @@
         });
   
       return false;
+      }
+      
+  
+      
     }
   
     function listar() {
