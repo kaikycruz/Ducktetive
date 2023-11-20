@@ -661,6 +661,10 @@
     if (CARGO_USUARIO.toUpperCase() != "DONO"){
         document.getElementById("criarUsuario").style.display = "none";
     }
+
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    console.log(`servidor ${id}`)
     }
   
 
