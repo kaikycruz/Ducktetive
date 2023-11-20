@@ -49,7 +49,7 @@
           </div>
         </a>
         <hr />
-        <div id="dashboard-menu">
+        <div id="dashboard-menu" >
           <span id="dash-title">Navegação principal</span>
           <div class="dash-item" onclick="mudarAbaDashboard()">
             <div class="menu">
@@ -184,21 +184,24 @@
                             #${idServidor} - ${statusServidor}
                         </div>
                         <div class="buttons">
+                          <a href="../editarServidor.html?id=${idServidor}">
                             <div class="cardEdit">
-                                <a href=""></a>
                             </div>
-                            <div class="cardoStatus">
-                                <a href=""></a>
+                          </a>
+                          <a href="">
+                          <div class="cardoStatus" onclick="alterarStatusServidor(${idServidor})">
     
                             </div>
-                            <div class="cardRemove">
-                                <a href=""></a>
+                          </a>
+                          <a href="">
+                            <div class="cardRemove" onclick="excluirServidor(${idServidor})">
                             </div>
+                          </a>
                         </div>
                     </div>
                     
                     <div class="serverName">
-                        <a href="dashboard.html">
+                        <a href="dashboard.html?=id${idServidor}">
                         ${nomeServidor}
                         </a>
                     </div>
@@ -281,25 +284,112 @@
       });
   }
 
-  function avisarUsuario() {
-    Swal.fire({
-      title: "Ainda não há servidores cadastrados",
-      text: "Você deseja criar um?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim, criar um servidor!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        ativarUsuario();
-        Swal.fire({
-          title: "Sua conta foi reativada!",
-          text: "Estamos te redirecionando para a Dashboard.",
-          icon: "success",
+  function excluirServidor(idServidor) {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var idServidorVar = idServidor
+      
+
+      if (
+        idServidorVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+        return false;
+      } 
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/excluirServidor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+        idServidorServer:idServidorVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            location.reload()
+          } else {
+            console.log('teste')
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
         });
-        window.location = "./dashboard/dashboard.html";
-      }
-    });
+  
+      return false;
+    }
+
+  function alterarStatusServidor(idServidor) {  
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idServidorVar = idServidor
+    
+
+    if (
+      idServidorVar == ""
+    ) {
+      alertify.error('Escreva os dados em todos os campos');
+      return false;
+    } 
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/alterarStatusServidor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+      //   nomeFantasiaServer: nomeFantasiaVar,
+      //   cnpjServer: cnpjVar,
+
+      idServidorServer:idServidorVar
+
+      //   nomeUsuarioServer: nomeUsuarioVar,
+      //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+      //   emailServer: emailVar,
+      //   cargoServer: 'Dono',
+      //   telefoneServer: telefoneVar,
+      //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+      //   senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          location.reload()
+        } else {
+          console.log('teste')
+          throw alertify.error('Ocorreu um erro com a atualização dos dados');
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
   }
+
 </script>
