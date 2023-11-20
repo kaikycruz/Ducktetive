@@ -188,9 +188,21 @@
 
         </aside>
         <section class="dashboard-content" id="dashboard-home" style="display: block;">
-            <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
+            
             <div class="dados-do-servidor">
-                <span id="nomeCPU"><p>Intel core I5 11400f - Rocket Lake </h3> <span id="fabricanteCPU"><p>Intel Family</p></span></span> 
+                <div class="servHeader">
+                    <div class="servButtons">
+                        <div class="perfil" id="criarUsuario">
+                            <a href="../registroUsuario.html"><img src="../src/images/Cards/adicionar-usuario.png" alt="" class="headerButton"></a>
+                        </div>
+                        <div class="logout" onclick="sessionStorage.clear()">
+                            <a href="../login.html"><img src="../src/images/Cards/sair.png" alt="" class="headerButton"></a>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
+                <span id="nomeCPU"><p>Intel core I5 11400f - Rocket Lake </h3>
+                <span id="fabricanteCPU"><p>Intel Family</p></span></span> 
                 
             </div>
 
@@ -645,6 +657,10 @@
         const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
         b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
+    
+    if (CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+    }
     }
   
 

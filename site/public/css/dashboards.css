@@ -485,6 +485,27 @@ hr {
   flex-direction: column;
   background-color: #fff;
 }
+.dados-do-servidor{
+  display: flex;
+  flex-direction: column;
+}
+
+.dados-do-servidor .servHeader{
+  display: flex;
+  justify-content: end;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+
+.dados-do-servidor .servButtons{
+  display: flex;
+  gap: 10px;
+}
+
+.headerButton{
+  height: 50px;
+}
+
 
 .dados-do-servidor #nomeCPU p {
   font-size: 20px;

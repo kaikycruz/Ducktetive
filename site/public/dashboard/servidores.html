@@ -49,83 +49,28 @@
           </div>
         </a>
         <hr />
-        <div id="dashboard-menu" >
-          <span id="dash-title">Navegação principal</span>
-          <div class="dash-item" onclick="mudarAbaDashboard()">
-            <div class="menu">
-              <div class="icon">
-                <img
-                  src="../src/images/Dashboard/icons/home-icon.png"
-                  alt=""
-                  class="icon-menu"
-                />
-              </div>
-              <p class="item-text">Dashboard</p>
-            </div>
-          </div>
-          <div class="dash-item" onclick="mudarAbaCPU()">
-            <div class="menu">
-              <div class="icon">
-                <img
-                  src="../src/images/Dashboard/icons/cpu-icon.png"
-                  alt=""
-                  class="icon-menu"
-                />
-              </div>
-              <p class="item-text">CPU</p>
-            </div>
-          </div>
-          <div class="dash-item" onclick="mudarAbaRAM()">
-            <div class="menu">
-              <div class="icon">
-                <img
-                  src="../src/images/Dashboard/icons/ram-icon.png"
-                  alt=""
-                  class="icon-menu"
-                  id="ram-icon"
-                />
-              </div>
-              <p class="item-text">RAM</p>
-            </div>
-          </div>
-          <div class="dash-item" onclick="mudarAbaHD()">
-            <div class="menu">
-              <div class="icon">
-                <img
-                  src="../src/images/Dashboard/icons/hd-icon.png"
-                  alt=""
-                  class="icon-menu"
-                />
-              </div>
-              <p class="item-text">Armazenamento</p>
-            </div>
-          </div>
-          <div class="dash-item" onclick="mudarAbaRede()">
-            <div class="menu">
-              <div class="icon">
-                <img
-                  src="../src/images/Dashboard/icons/hd-icon.png"
-                  alt=""
-                  class="icon-menu"
-                />
-              </div>
-              <p class="item-text">Rede</p>
-            </div>
-          </div>
-        </div>
-        <div id="alerts">
-          <span id="dash-title">Alertas</span>
-          <div id="alert-list"></div>
-        </div>
       </aside>
       <section
         class="dashboard-content listagem-de-servidores"
         id="dashboard-home"
         style="display: block"
       >
+      <div class="dados-do-servidor">
+        <div class="servHeader">
+            <div class="servButtons">
+                <div class="perfil" id="criarUsuario">
+                    <a href="../registroUsuario.html"><img src="../src/images/Cards/adicionar-usuario.png" alt="" class="headerButton"></a>
+                </div>
+                <div class="logout" onclick="sessionStorage.clear()">
+                    <a href="../login.html"><img src="../src/images/Cards/sair.png" alt="" class="headerButton"></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
         <div id="headerServerList"></div>
         <div id="server-list">
-          <div class="serverCard createServer" onclick="redirecionarUsuario()">
+          <div class="serverCard createServer" onclick="redirecionarUsuario()" id="criarServidor">
             +
           </div>
         </div>
@@ -149,6 +94,14 @@
 
     headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
         `;
+    console.log(cargo_usuario)
+    if (CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+    }
+
+    // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
+    //   document.getElementById("criarServidor").style.display = "none";
+    // }
   }
 
   function redirecionarUsuario() {

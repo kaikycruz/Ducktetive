@@ -7,7 +7,7 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-      SELECT idUsuario, usuario.nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
+      SELECT idUsuario, usuario.nome as primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome as nomeCargo, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -108,7 +108,7 @@ async function cadastrarUsuario(
   //  e na ordem de inserção dos dados.
 
   var instrucao3 = `
-        INSERT INTO Usuario (primeiro_nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', 'null','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${idEmpresa});
+        INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', 'null','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${idEmpresa});
     `;
   console.log("Executando a instrução SQL: \n" + instrucao3);
   await database.executar(instrucao3);
@@ -174,7 +174,7 @@ async function alterarDados(
   var instrucao1 = `        
         UPDATE usuario u join empresa emp on u.fkEmpresa = emp.idEmpresa 
 				                  join endereco ende on emp.fkEndereco = ende.idEndereco
-            set u.primeiro_nome = '${nomeUsuario}',
+            set u.nome = '${nomeUsuario}',
               u.sobrenome = '${sobrenomeUsuario}',
               u.telefone = '${telefone}',
               u.email = '${email}',
