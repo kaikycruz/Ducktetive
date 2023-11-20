@@ -586,6 +586,128 @@ function cadastrarServidor(req, res) {
     });
 }
 
+function alterarDadosServidor(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+  
+  
+  var idServidor = req.body.idServidorServer;
+  var idEndereco = req.body.idEnderecoServer;
+  var idEmpresa = req.body.idEmpresaServer;
+  var nomeServidor = req.body.nomeServidorServer;
+  var maximoCPU = req.body.maximoCPUServer;
+  var minimoCPU = req.body.minimoCPUServer;
+  var maximoRAM = req.body.maximoRAMServer;
+  var minimoRAM = req.body.minimoRAMServer;
+  var maximoDisco = req.body.maximoDiscoerver;
+  var maximoRede = req.body.maximoRedeServer;
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  console.log(idServidor)
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  // Faça as validações dos valores
+  if (nomeServidor === undefined) {
+      res.status(400).send("O nome do servidor está undefined!");
+  } else if (maximoCPU === undefined) {
+      res.status(400).send("A quantidade máxima de CPU está undefined!");
+  } else if (minimoCPU === undefined) {
+      res.status(400).send("A quantidade mínima de CPU está undefined!");
+  } else if (maximoRAM === undefined) {
+      res.status(400).send("A quantidade máxima de RAM está undefined!");
+  } else if (minimoRAM === undefined) {
+      res.status(400).send("A quantidade mínima de RAM está undefined!");
+  } else if (maximoDisco === undefined) {
+      res.status(400).send("A quantidade máxima de disco está undefined!");
+  } else if (maximoRede === undefined) {
+      res.status(400).send("A quantidade máxima de rede está undefined!");
+  } else if (idServidor === undefined) {
+    res.status(400).send("A quantidade máxima de rede está undefined!");
+  } 
+  else if (idEmpresa === undefined) {
+  res.status(400).send("A quantidade máxima de rede está undefined!");
+  }else if (idEndereco === undefined) {
+    res.status(400).send("A quantidade máxima de rede está undefined!");
+    }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .alterarDadosServidor(
+      nomeServidor,
+      maximoCPU,
+      minimoCPU,
+      maximoRAM,
+      minimoRAM,
+      maximoDisco,
+      maximoRede,
+      idServidor
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar a alteracao! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function excluirServidor(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idServidor = req.body.idServidorServer;
+
+  // Faça as validações dos valores
+  if (idServidor == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .excluirServidor(
+      idServidor
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function alterarStatusServidor(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idServidor = req.body.idServidorServer;
+
+  // Faça as validações dos valores
+  if (idServidor == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .alterarStatusServidor(
+      idServidor
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 module.exports = {
   autenticar,
@@ -597,5 +719,8 @@ module.exports = {
   buscarServidores,
   buscarParametros,
   cadastrarServidor,
-  cadastrarUsuario
+  cadastrarUsuario,
+  excluirServidor,
+  alterarStatusServidor,
+  alterarDadosServidor
 };

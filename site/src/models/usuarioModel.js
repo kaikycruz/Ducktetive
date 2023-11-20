@@ -65,14 +65,14 @@ async function cadastrar(
   await database.executar(instrucao1);
 
   var instrucao2 = `
-         INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, fkEndereco) VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', ${"(SELECT COUNT(*) AS total_cadastros FROM Endereco)"});
+         INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, fkEndereco) VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', ${"(SELECT MAX(idEndereco) AS ultimoIdEndereco FROM endereco)"});
        
     `;
   console.log("Executando a instrução SQL: \n" + instrucao2);
   await database.executar(instrucao2);
 
   var instrucao3 = `
-        INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT COUNT(*) AS total_cadastros FROM Empresa)"});
+        INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT MAX(idEndereco) AS ultimoIdEndereco FROM endereco)"});
     `;
   console.log("Executando a instrução SQL: \n" + instrucao3);
   await database.executar(instrucao3);
@@ -248,8 +248,7 @@ function buscarParametros(idEmpresa) {
     idEmpresa
   );
   var instrucao = `
-  select idParametro, nome, maximo, minimo from parametroalerta join componente on fkParametro = idParametro where componente.fkEmpresa = ${idEmpresa};
-  
+  SELECT idParametro, nome, maximo, minimo FROM parametroalerta join servidor on idServidor = fkServidor WHERE fkServidor = ${idEmpresa};
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -279,19 +278,19 @@ async function cadastrarServidor(
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucaoParametro1 = `
-    insert into parametroAlerta values (null, ${maximoCPU}, ${minimoCPU}, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 1);
+    insert into parametroAlerta values (null, ${maximoCPU}, ${minimoCPU}, ${"(SELECT MAX(idServidor) AS ultimoIdServidor FROM servidor)"}, 1);
   `;
 
   var instrucaoParametro2 = `
-    insert into parametroAlerta values (null, ${maximoRAM}, ${minimoRAM}, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 2);
+    insert into parametroAlerta values (null, ${maximoRAM}, ${minimoRAM}, ${"(SELECT MAX(idServidor) AS ultimoIdServidor FROM servidor)"}, 2);
   `;
 
   var instrucaoParametro3 = `
-    insert into parametroAlerta values (null, ${maximoDisco}, null, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 3);
+    insert into parametroAlerta values (null, ${maximoDisco}, null, ${"(SELECT MAX(idServidor) AS ultimoIdServidor FROM servidor)"}, 3);
   `;
 
   var instrucaoParametro4 = `
-    insert into parametroAlerta values (null, ${maximoRede}, null, ${"(SELECT COUNT(*) AS total_servidores FROM servidor)"}, 4);
+    insert into parametroAlerta values (null, ${maximoRede}, null, ${"(SELECT MAX(idServidor) AS ultimoIdServidor FROM servidor)"}, 4);
   `;
 
 
@@ -313,6 +312,129 @@ async function cadastrarServidor(
   
 }
 
+async function alterarDadosServidor(
+  nomeServidor,
+  maximoCPU,
+  minimoCPU,
+  maximoRAM,
+  minimoRAM,
+  maximoDisco,
+  maximoRede,
+  idServidor
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  console.log(idServidor)
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+  var instrucaoParametro1 = `
+    UPDATE parametroalerta SET maximo = ${maximoCPU}, minimo = ${minimoCPU} where fkServidor = ${idServidor} and fkComponente = 1;
+    `;
+
+  var instrucaoParametro2 = `
+    UPDATE parametroalerta SET maximo = ${maximoRAM}, minimo = ${minimoRAM} where fkServidor = ${idServidor} and fkComponente = 2;
+    `;
+
+  var instrucaoParametro3 = `
+    UPDATE parametroalerta SET maximo = ${maximoDisco} where fkServidor = ${idServidor} and fkComponente = 3;
+    `;
+
+  var instrucaoParametro4 = `
+    UPDATE parametroalerta SET maximo = ${maximoRede} where fkServidor = ${idServidor} and fkComponente = 4;
+    `;
+
+    var instrucaoParametro5 = `
+    UPDATE servidor SET nome = "${nomeServidor}" where idServidor = ${idServidor};
+    `;
+
+
+  console.log("Executando as instruções SQL:");
+
+  console.log("Instrução 1:\n" + instrucaoParametro1);
+  await database.executar(instrucaoParametro1);
+
+
+  console.log("Instrução 2:\n" + instrucaoParametro2);
+  await database.executar(instrucaoParametro2);
+
+  console.log("Instrução 3:\n" + instrucaoParametro3);
+  await database.executar(instrucaoParametro3);
+
+  console.log("Instrução 4:\n" + instrucaoParametro4);
+  await database.executar(instrucaoParametro4);
+
+  console.log("Instrução 4:\n" + instrucaoParametro5);
+  await database.executar(instrucaoParametro5);
+
+  
+}
+
+async function excluirServidor(
+  idServidor
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+  var instrucao1 = `        
+  delete from parametroalerta where fkServidor = ${idServidor};`;
+      
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
+
+  var instrucao2 = `        
+  delete from servidor where idServidor = ${idServidor};`;
+  console.log("Executando a instrução SQL: \n" + instrucao2);
+  await database.executar(instrucao2);
+
+}
+
+async function alterarStatusServidor(
+  idServidor
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL do alterar \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaStatus = `
+    select fkStatusServ from servidor where idServidor = '${idServidor}';
+    `;
+  const resultadoStatus = await database.executar(verificaStatus);
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+  console.log(resultadoStatus[0].fkStatusServ)
+
+  var instrucaoAtivo = `        
+  UPDATE servidor SET fkStatusServ = 3 WHERE idServidor = ${idServidor};`;
+
+  var instrucaoEmManutencao = `        
+  UPDATE servidor SET fkStatusServ = 1 WHERE idServidor = ${idServidor};`;
+
+
+  if (resultadoStatus[0].fkStatusServ == 3) {
+    console.log("Executando a instrução SQL 1: \n" + instrucaoEmManutencao);
+    await database.executar(instrucaoEmManutencao);
+  }else if(resultadoStatus[0].fkStatusServ == 1){
+    console.log("Executando a instrução SQL 2: \n" + instrucaoAtivo);
+    await database.executar(instrucaoAtivo);
+  }else if(resultadoStatus[0].fkStatusServ == 2){
+    throw new Error("Habilite o servidor para poder alterar seu status");
+  }
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+
+
+
+}
+
 module.exports = {
   autenticar,
   cadastrar,
@@ -323,5 +445,8 @@ module.exports = {
   buscarServidores,
   buscarParametros,
   cadastrarServidor,
-  cadastrarUsuario
+  cadastrarUsuario,
+  excluirServidor,
+  alterarStatusServidor,
+  alterarDadosServidor
 };
