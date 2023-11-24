@@ -1,6 +1,7 @@
 public class Processo {
     private Integer idProcesso;
     private String pId;
+    private String nome;
     private Integer fkAcao;
     private Double consumoCpu;
     private Double consumoMem;
@@ -11,9 +12,12 @@ public class Processo {
     public Processo() {
     }
 
-    public Processo(Integer idProcesso, String pId, Integer fkAcao, Double consumoCpu, Double consumoMem, Integer fkServidor, Integer fkStatusProce) {
+
+
+    public Processo(Integer idProcesso, String pId, String nome, Integer fkAcao, Double consumoCpu, Double consumoMem, Integer fkServidor, Integer fkStatusProce) {
         this.idProcesso = idProcesso;
         this.pId = pId;
+        this.nome = nome;
         this.fkAcao = fkAcao;
         this.consumoCpu = consumoCpu;
         this.consumoMem = consumoMem;
@@ -35,6 +39,13 @@ public class Processo {
 
     public void setpId(String pId) {
         this.pId = pId;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Integer getFkAcao() {
@@ -83,11 +94,12 @@ public class Processo {
                     Processo
                 ID: %d
                 Pid: %s
+                Nome: %s
                 FkAção: %d
                 Uso Cpu: %.2f
                 Uso Ram: %.2f
                 FkServidor: %d
                 FkStatus: %d
-                """, idProcesso, pId, fkAcao, consumoCpu, consumoMem, fkServidor, fkStatusProce);
+                """, idProcesso, pId, nome ,fkAcao, consumoCpu, consumoMem, fkServidor, fkStatusProce);
     }
 }

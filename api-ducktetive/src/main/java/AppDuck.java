@@ -1,26 +1,25 @@
-import Conexao.ConexaoBanco;
-import Conexao.ConexaoSlack;
+import Banco.ConexaoBanco;
+import Slack.BotSlack;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
-import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AppDuck {
 
     public static void main(String[] args) {
-
         Looca looca = new Looca();
         ConexaoBanco conexao = new ConexaoBanco();
         JdbcTemplate con = conexao.getConexaoBanco();
         Scanner in = new Scanner(System.in);
-        ConexaoSlack conexaoSlack = new ConexaoSlack();
         Timer timer = new Timer();
-        inserirDadosMetrica(con, conexaoSlack, looca, timer);
+
+        inserirDadosMetrica(con, looca, timer);
         Integer opcao;
         do {
             System.out.println("""
@@ -52,7 +51,7 @@ public class AppDuck {
     }
 
 
-    public static void inserirDadosMetrica(JdbcTemplate con, ConexaoSlack conSlack, Looca looca, Timer timer) {
+    public static void inserirDadosMetrica(JdbcTemplate con,  Looca looca, Timer timer) {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -68,40 +67,63 @@ public class AppDuck {
                     List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), config.get(0).fkServidor);
                     if (servidoresAtivos.get(0).getStatus().equals("Ativo")) {
 
-                        List<ParametroAlerta> parametroAlertas = con.query("SELECT * FROM ParametroAlerta WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(ParametroAlerta.class), servidoresAtivos.get(0).getIdServidor());
+                        Integer idServidor = servidoresAtivos.get(0).getIdServidor();
+
+                        List<ParametroAlerta> parametroAlertas = con.query("SELECT * FROM ParametroAlerta WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(ParametroAlerta.class), (idServidor));
+
 
                         // Formatar a data para o formato desejado (opcional)
                         Date data = new Date();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String dataFormatada = sdf.format(data);
 
-
                         String sql = "INSERT INTO Metrica (valor, dataHora, fkConfigComponente, fkConfigServidor, fkEspecMetrica) VALUES (?, ?, ?, ?, ?);";
 
-
+                        // INSERT PROCESSOS && SLACK PROCESSOS
+                        try {
+                            monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
 
                         // INSERT CPU
                         con.update(sql, looca.getProcessador().getUso(), dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 1);
-                        // MSG SLACK RAM
-                        if (looca.getProcessador().getUso() >= parametroAlertas.get(3).getMaximo()){
-                            enviarMsgSlack(1, looca, timer, parametroAlertas.get(0).getMaximo(), conSlack, looca.getProcessador().getUso(), servidoresAtivos.get(0).getNome());
+                        // SLACK CPU
+                        try {
+                            verificarLimite(servidoresAtivos.get(0).getNome(), looca.getProcessador().getUso(), parametroAlertas.get(0).getMaximo(), "CPU");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
                         }
+
 
                         // INSERT RAM
                         double valorMemoria = (double) looca.getMemoria().getEmUso() / 1000000000;
                         con.update(sql, valorMemoria, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 2);
-                        // MSG SLACK RAM
-                        if (valorMemoria >= parametroAlertas.get(3).getMaximo()){
-                            enviarMsgSlack(2, looca, timer, parametroAlertas.get(1).getMaximo(), conSlack, valorMemoria, servidoresAtivos.get(0).getNome());
+                        // SLACK RAM
+                        try {
+                            verificarLimite(servidoresAtivos.get(0).getNome(), valorMemoria , parametroAlertas.get(1).getMaximo(), "RAM");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
                         }
 
                         // INSERT DISCO
                         for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
                             double valorDisco = (double) disco.getBytesDeEscritas() / 1000000000;
                             con.update(sql, valorDisco, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 2);
-                            // MSG SLACK DISCO
-                            if (valorDisco >= parametroAlertas.get(0).getMaximo()){
-                                enviarMsgSlack(3, looca, timer, parametroAlertas.get(2).getMaximo(), conSlack, valorDisco, servidoresAtivos.get(0).getNome());
+
+                            // SLACK DISCO
+                            try {
+                                verificarLimite(servidoresAtivos.get(0).getNome(), valorDisco , parametroAlertas.get(2).getMaximo(), "DISCO");
+                            }catch (IOException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
                             }
                         }
 
@@ -110,25 +132,16 @@ public class AppDuck {
                             if (r.getPacotesRecebidos() != 0) {
                                 double valorRede = (double) r.getPacotesRecebidos() / 100000;
                                 con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 3);
-                                // MSG SLACK REDE
-                                if (valorRede >= parametroAlertas.get(3).getMaximo()){
-                                    enviarMsgSlack(4, looca, timer, parametroAlertas.get(3).getMaximo(), conSlack, valorRede, servidoresAtivos.get(0).getNome() );
+                                // SLACK REDE
+                                try {
+                                    verificarLimite(servidoresAtivos.get(0).getNome(), valorRede , parametroAlertas.get(3).getMaximo(), "REDE");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
                                 }
                             }
                         }
-                        // INSERT PROCESSO com MSG Slack
-                        for (Processo p : looca.getGrupoDeProcessos().getProcessos()) {
-                            if (p.getUsoCpu() >= (parametroAlertas.get(0).getMaximo() / 2)) {
-                                String sqlProcesso = "INSERT INTO Processo (pId, consumoCpu, consumoMem, fkServidor, skStatusProce, fkAcaoProcess) VALUES (?, ?, ?, ?, ?, ?);";
-                                con.update(sqlProcesso, p.getPid(), p.getUsoCpu(), p.getUsoMemoria(), servidoresAtivos.get(0).getIdServidor(), 1, 1);
-                            }
-                            if (p.getUsoMemoria() >= (parametroAlertas.get(1).getMaximo() / 2)) {
-                                String sqlProcesso = "INSERT INTO Processo (pId, consumoCpu, consumoMem, fkServidor, skStatusProce, fkAcaoProcess) VALUES (?, ?, ?, ?, ?, ?);";
-                                con.update(sqlProcesso, p.getPid(), p.getUsoCpu(), p.getUsoMemoria(), servidoresAtivos.get(0).getIdServidor(), 1, 1);
-                            }
-                        }
-
-
                     }
                 }
             }
@@ -251,49 +264,82 @@ public class AppDuck {
         }
     }
 
-    public static void enviarMsgSlack(Integer idComponente, Looca looca, Timer timer, Double limiteMax, ConexaoSlack conSlack, Double consumo, String servidor) {
+    public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor) throws IOException, InterruptedException {
 
-        ConexaoSlack conexaoSlack = new ConexaoSlack();
-        switch (idComponente) {
-            case 1:
-                conexaoSlack.enviandoMsgSlack(String.format("""
-                        O Componente: CPU
-                        Servidor: %s
-                        Ultrapassou do limite!
-                        """, servidor));
-                break;
-            case 2:
-                conexaoSlack.enviandoMsgSlack(String.format("""
-                        O Componente: RAM
-                        Servidor: %s
-                        Ultrapassou do limite!
-                        """, servidor));
-                break;
-            case 3:
-                conexaoSlack.enviandoMsgSlack(String.format("""
-                        O Componente: DISCO
-                        Servidor: %s
-                        Ultrapassou do limite!
-                        """, servidor));
-                break;
-            case 4:
-                conexaoSlack.enviandoMsgSlack(String.format("""
-                        O Componente: REDE
-                        Servidor: %s
-                        Ultrapassou do limite!
-                        """, servidor));
-                break;
-            case 5:
-                conexaoSlack.enviandoMsgSlack(String.format("""
-                        O Processo 
-                        Servidor: %s
-                        Ultrapassou do limite!
-                        Em sua Dashboard poderá pausar!
-                        """, servidor));
-                break;
+        for (int i = 0; i < looca.getGrupoDeProcessos().getProcessos().size() ; i++) {
+            if (looca.getGrupoDeProcessos().getProcessos().get(i).getUsoCpu() > cpuLimite){
+                Timer timer = new Timer();
+                int finalI = i;
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu() > cpuLimite){
+                            String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                            con.update(sql, looca.getGrupoDeProcessos().getProcessos().get(finalI).getPid(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
+                            BotSlack botSlack = new BotSlack();
+                            try {
+                                botSlack.msgProcesso(looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(), nomeServidor, "CPU");
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+                }, 20000, 30000); // 5000 milissegundos = 5 segundos
+            }
+
+            if (looca.getGrupoDeProcessos().getProcessos().get(i).getUsoMemoria() > ramLimite){
+                Timer timer = new Timer();
+                int finalI = i;
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria() > ramLimite){
+                            String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                            con.update(sql, looca.getGrupoDeProcessos().getProcessos().get(finalI).getPid(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
+                            BotSlack botSlack = new BotSlack();
+                            try {
+                                botSlack.msgProcesso(looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(), nomeServidor, "RAM");
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+                }, 20000, 30000); // 5000 milissegundos = 5 segundos
+            }
         }
+
     }
+
+    public static void verificarLimite(String servidor, Double valorCaptura, Double limite, String componente) throws IOException, InterruptedException {
+        final Boolean[] timeoutAtivo = {false};
+
+        if (valorCaptura >= limite){
+
+            if (!timeoutAtivo[0]) {
+                timeoutAtivo[0] = true;
+                BotSlack botSlack = new BotSlack();
+                botSlack.msgComponente(componente, servidor);
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        timeoutAtivo[0] = false;
+                    }
+                }, 10000, 30000); // 5000 milissegundos = 5 segundos
+            }
+        }
+
+
+    }
+
 }
-
-
-
