@@ -39,19 +39,20 @@
         </a>
         <hr/>
         <div id="dashboard-menu">
+            <a href="servidores.html">
           <div class="dash-item">
-              <div class="menu" id="selected">
+              <div class="menu">
                   <div class="icon">
                       <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
                   </div>
                   <p class="item-text">Servidores</p>
               </div>
-          </div>
+          </div></a>
           
           <div class="bottom-items">
             <div class="dash-item">
               <a href="">
-                <div class="menu">
+                <div class="menu" id="selected">
                     <div class="icon">
                         <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
                     </div>
@@ -101,7 +102,7 @@
       <div class="dados-do-servidor">
         <div class="servHeader">
           <div id="titulo-pagina">
-          <p class="titulo">Servidores da DUCKTETIVE</p>
+          <p class="titulo" id="tituloPagina">Servidores da DUCKTETIVE</p>
           <p class="subtitulo">Painel de gerenciamento de usuários</p>
           </div>
             <div class="servButtons">
@@ -125,7 +126,7 @@
       </div>
         <div id="headerUserList"></div>
         <div id="users-list">
-            <div class="user">
+            <div class="user" id="usersList" >
                 <ul class="userData header">
                     <li class="data name">Nome</li>
                     <li class="data email">Email</li>
@@ -134,16 +135,6 @@
                     <li class="data estado">Estado</li>
                     <li class="data telefone">Telefone</li>
                     <li class="data status">Status</li>
-                </ul>
-                <ul class="userData">
-                    <li class="data name">Kayky Cruz</li>
-                    <li class="data email">kayky.cruz@sptech.school</li>
-                    <li class="data cargo">Analista</li>
-                    <li class="data cidade">São Paulo</li>
-                    <li class="data estado">SP</li>
-                    <li class="data telefone">11 97080-8325</li>
-                    <li class="data status"> <div id="status">Ativo</div> <div class="userStatus" id="userStatus"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
-                    </div></li>
                 </ul>
                 
                 
@@ -166,10 +157,9 @@
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
     b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
-    buscarServidores();
+    buscarUsuarios();
 
-    headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
-        `;
+    tituloPagina.innerHTML = `Usuarios da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
     console.log(cargo_usuario)
     if (CARGO_USUARIO.toUpperCase() != "DONO"){
         document.getElementById("criarUsuario").style.display = "none";
@@ -180,6 +170,182 @@
     // }
   }
 
+  function criarUsuario(
+    idUsuario,
+    nome,
+    sobrenome,
+    email,
+    cargo,
+    cidade,
+    estado,
+    telefone,
+    ativo
+  ) {
+    listaDeServidores = document.querySelector("#usersList");
+    listaDeServidores.insertAdjacentHTML(
+      "beforeend",
+      `
+      
+    <ul class="userData">
+        <li class="data name">${nome} ${sobrenome}</li>
+        <li class="data email">${email}</li>
+        <li class="data cargo">${cargo}</li>
+        <li class="data cidade">${cidade}</li>
+        <li class="data estado">${estado}</li>
+        <li class="data telefone">${telefone}</li>
+        <li class="data status"> <div id="status">${ativo}</div> <div class="userStatus ${ativo}" id="userStatus" onclick="alterarStatusUsuario(${idUsuario})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+        </div></li>
+    </ul>
+
+    
+    `
+    );
+  }
+
+  function buscarUsuarios() {
+    var idEmpresaVar = sessionStorage.ID_EMPRESA;
+
+    if (idEmpresaVar == "") {
+      alertify.error("Preencha todos os campos");
+      return false;
+    }
+
+    fetch("/usuarios/buscarUsuarios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idEmpresaServer: idEmpresaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+            console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length;
+            if (quantidadeDeServidor > 0) {
+              console.log(
+                "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                quantidadeDeServidor
+              );
+
+              for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i]);
+                var idUsuario = JSON.stringify(json[i].idUsuario);
+                var nome = JSON.stringify(json[i].nome);
+                var sobrenome = JSON.stringify(json[i].sobrenome);
+                var email = JSON.stringify(json[i].email);
+                var cargo = JSON.stringify(json[i].cargo);
+                var cidade = JSON.stringify(json[i].cidade);
+                var estado = JSON.stringify(json[i].estado);
+                var telefone= JSON.stringify(json[i].telefone);
+                var ativo= JSON.stringify(json[i].ativo);
+
+                if(ativo == 1){
+                    var ativo = "Ativo"
+                    console.log(`22323`)
+                }else if(ativo == 0){
+                    var ativo = "Inativo"
+                }
+
+                var nome = JSON.stringify(json[i].nome).substring(1, JSON.stringify(json[i].nome).length - 1);
+                var sobrenome = JSON.stringify(json[i].sobrenome).substring(1, JSON.stringify(json[i].sobrenome).length - 1);
+                var email = JSON.stringify(json[i].email).substring(1, JSON.stringify(json[i].email).length - 1);
+                var cargo = JSON.stringify(json[i].cargo).substring(1, JSON.stringify(json[i].cargo).length - 1);
+                var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
+                var estado = JSON.stringify(json[i].estado).substring(1, JSON.stringify(json[i].estado).length - 1);
+                var telefone = JSON.stringify(json[i].telefone).substring(1, JSON.stringify(json[i].telefone).length - 1);
+
+                
+
+                criarUsuario(
+                    idUsuario,
+                    nome,
+                    sobrenome,
+                    email,
+                    cargo,
+                    cidade,
+                    estado,
+                    telefone,
+                    ativo
+                );
+              }
+            }
+            console.log(JSON.stringify(json[1].idEmpresa));
+            console.log(
+              "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            );
+          });
+        } else {
+          console.log("teste");
+          throw alertify.error(
+            "Erro ao realizar login, verifique suas credenciais"
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function alterarStatusUsuario(idUsuario) {  
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idUsuarioVar = idUsuario
+    
+
+    if (
+      idUsuarioVar == ""
+    ) {
+      alertify.error('Escreva os dados em todos os campos');
+      return false;
+    } 
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/alterarStatusUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+      //   nomeFantasiaServer: nomeFantasiaVar,
+      //   cnpjServer: cnpjVar,
+
+      idUsuarioServer:idUsuarioVar
+     
+
+      //   nomeUsuarioServer: nomeUsuarioVar,
+      //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+      //   emailServer: emailVar,
+      //   cargoServer: 'Dono',
+      //   telefoneServer: telefoneVar,
+      //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+      //   senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          location.reload()
+        } else {
+          console.log('teste')
+          throw alertify.error('Ocorreu um erro com a atualização dos dados');
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
+  }
   
 
 </script>

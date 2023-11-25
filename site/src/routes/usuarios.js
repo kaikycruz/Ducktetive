@@ -56,6 +56,14 @@ router.post("/alterarStatusServidor", function (req, res) {
     usuarioController.alterarStatusServidor(req, res);
 }) 
 
+router.post("/buscarUsuarios", function (req, res) {
+    usuarioController.buscarUsuarios(req, res);
+}) 
+
+router.post("/alterarStatusUsuario", function (req, res) {
+    usuarioController.alterarStatusUsuario(req, res);
+}) 
+
 
 
 module.exports = router;
