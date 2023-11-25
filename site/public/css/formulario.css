@@ -194,6 +194,16 @@ a{
     color: #757575;
 }
 
+#opcoesPerguntasDeSeguranca{
+    width: 454px;
+    height: 30px;
+    border: #FF7C33 1px solid;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0px 10px;
+    color: #757575;
+}
+
 .half{
     width: 185px;
 }

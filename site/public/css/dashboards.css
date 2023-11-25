@@ -401,6 +401,10 @@ a{
   width: 100%;
 }
 
+.serverActions .buttons a{
+  height: fit-content;
+}
+
 .cardEdit{
   display: flex;
   justify-content: center;
