@@ -36,19 +36,58 @@
         <div id="logo-ducktetive">
           <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
         </div>
-        <hr />
-        <a href="../alteracaoDeDados.html" id="linkPerfil">
-          <div id="user-data">
-            <img
-              src="../src/images/Dashboard/userProfile.png"
-              alt=""
-              id="user-picture"
-            />
-            <span id="b_usuario"></span>
-            <span id="cargo_usuario"></span>
-          </div>
         </a>
-        <hr />
+        <hr/>
+        <div id="dashboard-menu">
+          <div class="dash-item">
+              <div class="menu" id="selected">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Dashboard</p>
+              </div>
+          </div>
+          
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="">
+                <div class="menu">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Gerenciar contas</p>
+                </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+              </div>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Criar usuario</p>
+              </div>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Logout</p>
+              </div>
+          </div>
+          
+          </div>
       </aside>
       <section
         class="dashboard-content listagem-de-servidores"
@@ -57,12 +96,24 @@
       >
       <div class="dados-do-servidor">
         <div class="servHeader">
+          <div id="titulo-pagina">
+          <p class="titulo">Servidores da DUCKTETIVE</p>
+          <p class="subtitulo">Painel de gerenciamento de servidores</p>
+          </div>
             <div class="servButtons">
-                <div class="perfil" id="criarUsuario">
-                    <a href="../registroUsuario.html"><img src="../src/images/Cards/adicionar-usuario.png" alt="" class="headerButton"></a>
+                <div class="buscar">
+                  <input type="text" class="buscar">
+                  <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
                 </div>
-                <div class="logout" onclick="sessionStorage.clear()">
-                    <a href="../login.html"><img src="../src/images/Cards/sair.png" alt="" class="headerButton"></a>
+                <div id="filtrarServidores">
+                  <img src="../src/images/Dashboard/icons/contexto 1.png">
+                </div>
+                <div id="user-data" >
+                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                </div>
+                <div id="dadosUsuario">
+                  <span id="b_usuario">Kaiky Cruz</span><br>
+                  <span id="cargo_usuario">Analista de Infra</span>
                 </div>
             </div>
         </div>
@@ -70,9 +121,17 @@
     </div>
         <div id="headerServerList"></div>
         <div id="server-list">
+          
+            
+            
+            
+            
+
+          
           <div class="serverCard createServer" onclick="redirecionarUsuario()" id="criarServidor">
             +
           </div>
+        </div>
         </div>
       </section>
     </main>
@@ -87,9 +146,8 @@
     const NOME_USUARIO = sessionStorage.NOME_USUARIO;
     const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
-    const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
     b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
-    cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} <br> ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
+    cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
     buscarServidores();
 
     headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
@@ -130,41 +188,44 @@
     listaDeServidores.insertAdjacentHTML(
       "afterbegin",
       `
-    
-    <div class="serverCard" >
-                    <div class="cardButtons">
-                        <div class="serverData">
-                            #${idServidor} - ${statusServidor}
-                        </div>
-                        <div class="buttons">
-                          <a href="../editarServidor.html?id=${idServidor}">
-                            <div class="cardEdit">
-                            </div>
-                          </a>
-                          <a href="">
-                          <div class="cardoStatus" onclick="alterarStatusServidor(${idServidor})">
-    
-                            </div>
-                          </a>
-                          <a href="">
-                            <div class="cardRemove" onclick="excluirServidor(${idServidor})">
-                            </div>
-                          </a>
-                        </div>
-                    </div>
-                    
-                    <div class="serverName">
-                        <a href="dashboard.html?=id${idServidor}">
-                        ${nomeServidor}
-                        </a>
-                    </div>
-                    
-                    <div class="serverDetails">
-                        <span>${endereco} ${numeroEndereco}</span>
-                        <span>${cidade}</span>
-                    </div>
-
+      <div class="serverCard" >
+            <div class="serverGeneral">
+              <div class="serverStatus">
+                <div class="statusServer"></div>
+                <div id="statusServer">Alerta</div>
+              </div>
+              <div class="serverData">
+                <p class="nomeServidor">${nomeServidor}</p>
+                <p class="idServidor">#${idServidor}</p>
+              </div>
+              <div class="serverLocation">
+                <p class="serverEndereco">${cidade} - SP</p>
+              </div>
+            </div>
+            <div class="serverActions">
+              <div class="buttons">
+                <a href="../editarServidor.html?id=${idServidor}">
+                  <div class="cardEdit">
+                    <img src="../src/images/Dashboard/icons/editar.png" id="imgEdit">
+                  </div>
+                </a>
+                <a href="">
+                <div class="cardoStatus" onclick="alterarStatusServidor(${idServidor})">
+                  <img src="../src/images/Dashboard/icons/atencao 1.png" id="imgEdit">
                 </div>
+                </a>
+                <a href="">
+                  <div class="cardRemove" onclick="excluirServidor(${idServidor})">
+                    <img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+                  </div>
+                </a>
+              </div>
+              <div class="serverStatus">
+                <div class="statusServer"></div>
+                <div id="statusServer">${statusServidor}</div>
+              </div>
+            </div>
+    
     `
     );
   }
@@ -209,6 +270,14 @@
                 var numero = JSON.stringify(json[i].numero);
                 var cidade = JSON.stringify(json[i].cidade);
                 var statusServidor = JSON.stringify(json[i].statusServidor);
+
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
+                var logradouro = JSON.stringify(json[i].logradouro).substring(1, JSON.stringify(json[i].logradouro).length - 1);
+                var numero = JSON.stringify(json[i].numero).substring(1, JSON.stringify(json[i].numero).length - 1);
+                var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
+                var statusServidor = JSON.stringify(json[i].statusServidor).substring(1, JSON.stringify(json[i].statusServidor).length - 1);
+
+                
 
                 criarServidor(
                   idServidor,
