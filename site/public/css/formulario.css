@@ -351,6 +351,7 @@ a{
 }
 
 .footer{
+    background-color: #ffffff;
     display: flex;
     color: #757575;
     font-weight: 700;
@@ -361,6 +362,9 @@ a{
     max-width: 1300px;
     margin: auto;
     border-top: #d9d9d9 1px solid;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 }
 
 #footer-list{

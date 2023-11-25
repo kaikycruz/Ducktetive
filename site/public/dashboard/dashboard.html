@@ -580,11 +580,11 @@
         const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
         const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
         const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
-        b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
-        cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
     
         b_usuario.innerHTML = `${NOME_USUARIO}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+        var baseStr64 = sessionStorage.FOTO_PERFIL;
+        user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
         
     if (CARGO_USUARIO.toUpperCase() != "DONO"){
         document.getElementById("criarUsuario").style.display = "none";

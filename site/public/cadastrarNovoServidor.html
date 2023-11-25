@@ -16,6 +16,68 @@
 <body onload="buscarParametros(), payload()">
 
     <main id="main">
+        <aside class="aside-bar-menu" style="">
+            <div id="logo-ducktetive">
+              <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+            </div>
+            </a>
+            <hr/>
+            <div id="dashboard-menu">
+                <a href="dashboard/servidores.html">
+              <div class="dash-item">
+                  <div class="menu" id="selected">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Servidores</p>
+                  </div>
+              </div></a>
+              
+              <div class="bottom-items">
+                <div class="dash-item" id="gerenciarContas">
+                  <a href="visualizarUsuarios.html" >
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Gerenciar contas</p>
+                    </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../alteracaoDeDados.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Editar conta</p>
+                  </div></a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item" id="criarUsuario">
+                  <a href="../registroUsuario.html" >
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Criar usuario</p>
+                  </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../login.html">
+                  <div class="menu" onclick="sessionStorage.clear()">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Logout</p>
+                  </div></a>
+              </div>
+              
+              </div>
+          </aside>
         <div id="central-logo">
             <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
         </div>
@@ -81,15 +143,6 @@
 
         </div>
     </main>
-        <footer class="footer">
-            <ul id="footer-list">
-                <li class="list"><a href="index.html"><span>A Ducktetive</span></a></li>
-                <li class="list"><a href="">Evite o Pato</a></li>
-                <li class="list"><a href="">Sobré Nós</a></li>
-                <li class="list"><a href="">A Equipe</a></li>
-                <li class="list"><a href="">Nossa Solução</a></li>
-            </ul>
-        </footer>
 
 </body>
 </html>
