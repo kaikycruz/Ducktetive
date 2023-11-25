@@ -32,179 +32,105 @@
     <main class="dashboard-main">
         <aside class="aside-bar-menu" style="">
             <div id="logo-ducktetive">
-                <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard">
+              <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
             </div>
-            <hr>
-            <a href="../alteracaoDeDados.html" id="linkPerfil">
-                <div id="user-data" >
-                <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
-                <span id="b_usuario"></span>
-                <span id="cargo_usuario"></span>
-                </div>
             </a>
-            <hr>
-            <div id="dashboard-menu">
-                <span id="dash-title">Navegação principal</span>
-                <div class="dash-item" onclick="mudarAbaDashboard()">
+            <hr/>
+        <div id="dashboard-menu">
+            <div class="top-items">
+                <div class="dash-item">
+                    <a href="servidores.html">
                     <div class="menu">
                         <div class="icon">
-                            <img src="../src/images/Dashboard/icons/home-icon.png" alt="" class="icon-menu">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
                         </div>
-                        <p class="item-text">Dashboard</p>
-                    </div>
+                      <p class="item-text">Servidores</p>
+                    </div></a>
                 </div>
-                <div class="dash-item" onclick="mudarAbaCPU()">
-                    <div class="menu">
+                <div class="dash-item">
+                    <div class="menu" id="selected">
                         <div class="icon">
-                            <img src="../src/images/Dashboard/icons/cpu-icon.png" alt="" class="icon-menu">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
                         </div>
-                        <p class="item-text">CPU</p>
-                    </div>
-                </div>
-                <div class="dash-item" onclick="mudarAbaRAM()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu"
-                                id="ram-icon">
-                        </div>
-                        <p class="item-text">RAM</p>
-                    </div>
-                </div>
-                <div class="dash-item" onclick="mudarAbaHD()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">Armazenamento</p>
-                    </div>
-                </div>
-                <div class="dash-item" onclick="mudarAbaRede()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">Rede</p>
+                      <p class="item-text">Dashboard</p>
                     </div>
                 </div>
             </div>
-            <div id="alerts">
-                <span id="dash-title">Alertas</span>
-                <div id="alert-list">
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
+            
+              
+              
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
                         </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
+                        <p class="item-text">Gerenciar contas</p>
                     </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-healthy"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-
-        </aside>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../alteracaoDeDados.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Editar conta</p>
+                  </div></a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../registroUsuario.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Criar usuario</p>
+                  </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../login.html">
+                  <div class="menu" onclick="sessionStorage.clear()">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Logout</p>
+                  </div></a>
+              </div>
+              
+              </div>
+          </aside>
         <section class="dashboard-content" id="dashboard-home" style="display: block;">
             
             <div class="dados-do-servidor">
                 <div class="servHeader">
+                  <div id="titulo-pagina">
+                  <p class="titulo">Servidores da DUCKTETIVE</p>
+                  <p class="subtitulo">Painel de gerenciamento de servidores</p>
+                  </div>
                     <div class="servButtons">
-                        <div class="perfil" id="criarUsuario">
-                            <a href="../registroUsuario.html"><img src="../src/images/Cards/adicionar-usuario.png" alt="" class="headerButton"></a>
+                        <div class="buscar">
+                          <input type="text" class="buscar">
+                          <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
                         </div>
-                        <div class="logout" onclick="sessionStorage.clear()">
-                            <a href="../login.html"><img src="../src/images/Cards/sair.png" alt="" class="headerButton"></a>
+                        <div id="filtrarServidores">
+                          <img src="../src/images/Dashboard/icons/contexto 1.png">
+                        </div>
+                        <div id="user-data" >
+                          <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                        </div>
+                        <div id="dadosUsuario">
+                          <span id="b_usuario">Kaiky Cruz</span><br>
+                          <span id="cargo_usuario">Analista de Infra</span>
                         </div>
                     </div>
-                </div>
-                <h2 class="dashboard-title">Overview California_Server - Dashboard</h2>
-                <span id="nomeCPU"><p>Intel core I5 11400f - Rocket Lake </h3>
-                <span id="fabricanteCPU"><p>Intel Family</p></span></span> 
+              </div>
                 
-            </div>
+              </div>
 
             <div id="cards">
 
@@ -239,7 +165,7 @@
                     <div class="cpuCharts">
                         <div class="cpu-use" style="width: 764px;">
                             <span>Uso de CPU</span>
-                            <canvas id="uso_cpu" style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
+                            <canvas id=" " style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
                         </div>
 
                     </div>
