@@ -41,7 +41,7 @@
           </div>
           
           <div class="bottom-items">
-            <div class="dash-item">
+            <div class="dash-item" id="gerenciarContas">
               <a href="dashboard/visualizarUsuarios.html">
                 <div class="menu">
                     <div class="icon">
@@ -61,7 +61,7 @@
               </div>
           </div>
           <div class="bottom-items">
-            <div class="dash-item">
+            <div class="dash-item" id="criarUsuario">
               <a href="registroUsuario.html">
               <div class="menu">
                   <div class="icon">
@@ -268,6 +268,11 @@
         input_complemento.value = `${sessionStorage.COMPLEMENTO_USUARIO.toUpperCase()}`;
         input_cidade.value = `${sessionStorage.CIDADE_USUARIO.toUpperCase()}`;
         input_estado.value = `${sessionStorage.ESTADO_USUARIO.toUpperCase()}`;
+
+        if (sessionStorage.CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+        document.getElementById("gerenciarContas").style.display = "none";
+        }
         
         var baseStr64 = sessionStorage.FOTO_PERFIL;
         user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);

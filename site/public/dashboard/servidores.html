@@ -49,8 +49,8 @@
           </div>
           
           <div class="bottom-items">
-            <div class="dash-item">
-              <a href="visualizarUsuarios.html">
+            <div class="dash-item" id="gerenciarContas">
+              <a href="visualizarUsuarios.html" >
                 <div class="menu">
                     <div class="icon">
                         <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
@@ -70,8 +70,8 @@
               </div></a>
           </div>
           <div class="bottom-items">
-            <div class="dash-item">
-              <a href="../registroUsuario.html">
+            <div class="dash-item" id="criarUsuario">
+              <a href="../registroUsuario.html" >
               <div class="menu">
                   <div class="icon">
                       <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
@@ -150,6 +150,10 @@
     const NOME_USUARIO = sessionStorage.NOME_USUARIO;
     const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+    if (sessionStorage.CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+        document.getElementById("gerenciarContas").style.display = "none";
+    }
     b_usuario.innerHTML = `${NOME_USUARIO}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
     var baseStr64 = sessionStorage.FOTO_PERFIL;
@@ -158,10 +162,8 @@
 
     headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
         `;
-    console.log(cargo_usuario)
-    if (CARGO_USUARIO.toUpperCase() != "DONO"){
-        document.getElementById("criarUsuario").style.display = "none";
-    }
+    console.log(cargo_usuario + `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasds`)
+    
 
     // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
     //   document.getElementById("criarServidor").style.display = "none";
