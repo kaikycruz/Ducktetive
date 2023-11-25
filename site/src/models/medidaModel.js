@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idMetrica, limite_linhas) {
+function buscarUltimasMedidas(idServidor, limite_linhas) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -13,11 +13,14 @@ function buscarUltimasMedidas(idMetrica, limite_linhas) {
                     where fk_aquario = ${idMetrica}
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `select valor as medidas,
-        datahora,
-        DATE_FORMAT(datahora,'%H:%i:%s') as momento_grafico
-    from metrica
-   order by ${idMetrica} desc limit ${limite_linhas};`;
+    instrucaoSql = `select c.nome,
+    m.valor,
+    DATE_FORMAT(datahora,'%H:%i:%s') as momento_grafico,
+    m.datahora
+    from  metrica m join configuracao on fkConfigComponente = fkComponente
+    join servidor s on fkConfigServidor = fkServidor
+    join componente c on fkComponente = idComponente
+    where s.idServidor = 8 order by s.idServidor desc limit ${limite_linhas};`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
@@ -29,7 +32,7 @@ function buscarUltimasMedidas(idMetrica, limite_linhas) {
   return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idMetrica) {
+function buscarMedidasEmTempoReal(idServidor) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -41,11 +44,14 @@ function buscarMedidasEmTempoReal(idMetrica) {
                         from medida where fk_aquario = ${idAquario} 
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `select valor as medidas,
-        datahora,
-        DATE_FORMAT(datahora,'%H:%i:%s') as momento_grafico
-    from metrica
-   order by ${idMetrica} desc limit 1;`;
+    instrucaoSql = `select c.nome,
+      m.valor,
+      DATE_FORMAT(datahora,'%H:%i:%s') as momento_grafico,
+      m.datahora
+      from  metrica m join configuracao on fkConfigComponente = fkComponente
+      join servidor s on fkConfigServidor = fkServidor
+      join componente c on fkComponente = idComponente
+      where s.idServidor = 8 order by s.idServidor limit 1;`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
