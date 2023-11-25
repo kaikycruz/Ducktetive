@@ -1,8 +1,4 @@
-window.onload = obterDadosGraficoCPU();
-window.onload = obterDadosGraficoRAMlinha();
-window.onload = obterDadosGraficoRAM();
-window.onload = obterDadosGraficoDisco();
-window.onload = obterDadosGraficoRede();
+
 
 // Dados CPU
 
@@ -91,7 +87,7 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idMetrica);
+          //obterdados(idMetrica);;
           // alertar(novoRegistro, idMetrica);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
@@ -267,7 +263,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idMetrica);
+          //obterdados(idMetrica);;
           // alertar(novoRegistro, idMetrica);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
@@ -417,7 +413,7 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idMetrica);
+          //obterdados(idMetrica);;
           // alertar(novoRegistro, idMetrica);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
@@ -564,7 +560,7 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idMetrica);
+          //obterdados(idMetrica);;
           // alertar(novoRegistro, idMetrica);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
@@ -703,13 +699,12 @@ function plotarGraficoRede(resposta, idMetrica) {
   setTimeout(() => atualizarGraficoRede(idMetrica, dados, myChartRede), 2000);
 }
 
-
 function atualizarGraficoRede(idMetrica, dados, myChartRede) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idMetrica);
+          //obterdados(idMetrica);;
           // alertar(novoRegistro, idMetrica);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);

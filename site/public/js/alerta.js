@@ -1,6 +1,6 @@
 var alertas = [];
 
-function obterdados(idMetrica) {
+function //obterdados(idMetrica); {
     fetch(`/medidas/tempo-real/${idMetrica}`)
         .then(resposta => {
             if (resposta.status == 200) {
