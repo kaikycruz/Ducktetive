@@ -257,7 +257,7 @@
     }
 
 
-    function cadastrar() {  
+    async function cadastrar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
       var razaoSocialVar = input_razao_social.value
@@ -284,19 +284,13 @@
 
       var confirmacaoSenhaVar = input_confirm_password.value
 
-      const encoder = new TextEncoder();
-      const senhaBuffer = encoder.encode(senhaVar);
-
-      // Calcula o hash SHA-256
-      const hashBuffer = crypto.subtle.digest('SHA-256', senhaBuffer);
-
-      // Converte o ArrayBuffer resultante para uma string hexadecimal
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-
-      alert(hashHex)
+      senhaVar = hashSenha(senhaVar)
+      const senha = 'minhaSenha123';
+      const hash = await hashSenha(senha);
+      
+      senhaVar = hash
             
-      if(validarCamp2323os()){
+      if(validarCampos()){
         // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
         method: "POST",
@@ -416,5 +410,19 @@
         estado.value = dados.uf;
         complemento.value = dados.complemento;
     }
+
+    async function hashSenha(senha) {
+            // Converte a senha para ArrayBuffer
+            const encoder = new TextEncoder();
+            const senhaBuffer = encoder.encode(senha);
+
+            // Calcula o hash SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', senhaBuffer);
+
+            // Converte o ArrayBuffer resultante para uma string hexadecimal
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
 
   </script>

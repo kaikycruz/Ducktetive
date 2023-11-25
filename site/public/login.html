@@ -69,9 +69,15 @@
 
 <script>
 
-    function entrar() {
+    async function entrar() {
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
+
+        senhaVar = hashSenha(senhaVar)
+        const senha = 'minhaSenha123';
+        const hash = await hashSenha(senha);
+        
+        senhaVar = hash
 
         if (emailVar == "" || senhaVar == "") {
             alertify.error('Preencha todos os campos');
@@ -230,6 +236,20 @@
   
       return false;
     }
+
+    async function hashSenha(senha) {
+            // Converte a senha para ArrayBuffer
+            const encoder = new TextEncoder();
+            const senhaBuffer = encoder.encode(senha);
+
+            // Calcula o hash SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', senhaBuffer);
+
+            // Converte o ArrayBuffer resultante para uma string hexadecimal
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
 
     
 </script>

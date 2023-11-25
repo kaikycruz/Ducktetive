@@ -71,7 +71,7 @@
 
 <script>
 
-function redefinir() {  
+async function redefinir() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
       var emailVar = input_email.value
@@ -79,6 +79,12 @@ function redefinir() {
       var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
       var novaSenhaVar = input_new_password.value
       var confirmacaonovaSenhaVar = input_confirm_new_password.value
+
+      novaSenhaVar = hashSenha(novaSenhaVar)
+      const senha = 'minhaSenha123';
+      const hash = await hashSenha(senha);
+        
+      novaSenhaVar = hash
       
 
       if (
@@ -150,5 +156,19 @@ function redefinir() {
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
+
+    async function hashSenha(senha) {
+            // Converte a senha para ArrayBuffer
+            const encoder = new TextEncoder();
+            const senhaBuffer = encoder.encode(senha);
+
+            // Calcula o hash SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', senhaBuffer);
+
+            // Converte o ArrayBuffer resultante para uma string hexadecimal
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
 
 </script>
