@@ -1,1107 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ducktetive | Dashboards</title>
 
-    <link rel="stylesheet" href="../css/visualizarUsuarios.css">
+    <link rel="stylesheet" href="../css/dashboards.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://kit.fontawesome.com/9f7414eb10.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="../src\images\ducktetive.png " />
 
-<!-- <body onload=" atualizarFeed()"> -->
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
 
-<body>
-
+  <body onload="payload()">
     <main class="dashboard-main">
-        <aside class="aside-bar-menu" style="">
-            <div id="logo-ducktetive">
-                <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard">
-            </div>
-            <hr>
-            <div id="user-data">
-                <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
-                <span id="user-name">Kaiky Cruz</span>
-                <span id="user-role">Analista de Infra</span>
-            </div>
-            <hr>
-            <div id="dashboard-menu">
-                <span id="dash-title">Navegação principal</span>
-                <div class="dash-item" onclick="mudarAbaDashboard()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/home-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">Dashboard</p>
+      <aside class="aside-bar-menu" style="">
+        <div id="logo-ducktetive">
+          <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+        </div>
+        </a>
+        <hr/>
+        <div id="dashboard-menu">
+          <div class="dash-item">
+              <div class="menu" id="selected">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Servidores</p>
+              </div>
+          </div>
+          
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="">
+                <div class="menu">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
                     </div>
+                    <p class="item-text">Gerenciar contas</p>
                 </div>
-                <div class="dash-item" onclick="mudarAbaCPU()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/cpu-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">CPU</p>
-                    </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../alteracaoDeDados.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+              </div></a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../registroUsuario.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Criar usuario</p>
+              </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../login.html">
+              <div class="menu" onclick="sessionStorage.clear()">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Logout</p>
+              </div></a>
+          </div>
+          
+          </div>
+      </aside>
+      <section
+        class="dashboard-content listagem-de-servidores"
+        id="dashboard-home"
+        style="display: block"
+      >
+      <div class="dados-do-servidor">
+        <div class="servHeader">
+          <div id="titulo-pagina">
+          <p class="titulo">Servidores da DUCKTETIVE</p>
+          <p class="subtitulo">Painel de gerenciamento de usuários</p>
+          </div>
+            <div class="servButtons">
+                <div class="buscar">
+                  <input type="text" class="buscar">
+                  <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
                 </div>
-                <div class="dash-item" onclick="mudarAbaRAM()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/ram-icon.png" alt="" class="icon-menu"
-                                id="ram-icon">
-                        </div>
-                        <p class="item-text">RAM</p>
-                    </div>
+                <div id="filtrarServidores">
+                  <img src="../src/images/Dashboard/icons/contexto 1.png">
                 </div>
-                <div class="dash-item" onclick="mudarAbaHD()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">Armazenamento</p>
-                    </div>
+                <div id="user-data" >
+                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
                 </div>
-                <div class="dash-item" onclick="mudarAbaRede()">
-                    <div class="menu">
-                        <div class="icon">
-                            <img src="../src/images/Dashboard/icons/hd-icon.png" alt="" class="icon-menu">
-                        </div>
-                        <p class="item-text">Rede</p>
-                    </div>
-                </div>
-            </div>
-            <div id="alerts">
-                <span id="dash-title">Alertas</span>
-                <div id="alert-list">
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-healthy"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-attention"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-                    <div class="content-alert">
-                        <div>
-                            <div id="alert-status-critic"></div>
-                            <span id="component" class="alert-title">CPU</span>
-                            <span class="alert-title"> - </span>
-                            <span id="status" class="alert-title"> Critico</span>
-                        </div>
-                        <div>
-                            <p class="alert-message">11:57:08 - O uso da CPU ultrapassou 80%</p>
-                        </div>
-                    </div>
-
-
-
-
+                <div id="dadosUsuario">
+                  <span id="b_usuario">Kaiky Cruz</span><br>
+                  <span id="cargo_usuario">Analista de Infra</span>
                 </div>
             </div>
-
-
-        </aside>
-        <section class="dashboard-content" id="dashboard-home" style="display: block;">
-            <h2 class="dashboard-title">Usuários Cadastrados</h2>
-
-            <div id="cards">
-                <div class="dashboard-content-usuarios">
-                    <div class="titulos-usuarios">
-                        <div class="indicadores-usuarios-nome">
-                            <h3>Nome</h3>
-                        </div>
-                        <div class="indicadores-usuarios-email">
-                            <h3>Email</h3>
-                        </div>
-                        <div class="indicadores-usuarios-cargo">
-                            <h3>Cargo</h3>
-                        </div>
-                        <div class="indicadores-usuarios-cidade">
-                            <h3>Cidade</h3>
-                        </div>
-                        <div class="indicadores-usuarios-status">
-                            <h3>Status</h3>
-                        </div>
-
-                    </div>
-                    <div class="conteudo-usuarios">
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status">
-                                <h3>Ativo</h3>
-                            </div>
-                        </div>
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status-inativo">
-                                <h3>Inativo</h3>
-                            </div>
-                        </div>
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status">
-                                <h3>Ativo</h3>
-                            </div>
-                        </div>
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status">
-                                <h3>Ativo</h3>
-                            </div>
-                        </div>
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status">
-                                <h3>Ativo</h3>
-                            </div>
-                        </div>
-                        <div class="usuarios">
-                            <div class="usuarios-nome">
-                                <h3>Kaiky Cruz</h3>
-                            </div>
-                            <div class="usuarios-email">
-                                <h3>kayky.cruz@sptech.school</h3>
-                            </div>
-                            <div class="usuarios-cargo">
-                                <h3>Analista</h3>
-                            </div>
-                            <div class="usuarios-cidade">
-                                <h3>São Paulo</h3>
-                            </div>
-                            <div class="usuarios-status">
-                                <h3>Ativo</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
+      </div>
+        
+      </div>
+        <div id="headerUserList"></div>
+        <div id="users-list">
+            <div class="user">
+                <ul class="userData header">
+                    <li class="data name">Nome</li>
+                    <li class="data email">Email</li>
+                    <li class="data cargo">Cargo</li>
+                    <li class="data cidade">Cidade</li>
+                    <li class="data estado">Estado</li>
+                    <li class="data telefone">Telefone</li>
+                    <li class="data status">Status</li>
+                </ul>
+                <ul class="userData">
+                    <li class="data name">Kayky Cruz</li>
+                    <li class="data email">kayky.cruz@sptech.school</li>
+                    <li class="data cargo">Analista</li>
+                    <li class="data cidade">São Paulo</li>
+                    <li class="data estado">SP</li>
+                    <li class="data telefone">11 97080-8325</li>
+                    <li class="data status"> <div id="status">Ativo</div> <div class="userStatus" id="userStatus"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+                    </div></li>
+                </ul>
+                
+                
 
             </div>
-
-        </section>
-        <!-- CPU - KAIKY -->
-        <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
-            <h2 class="dashboard-title">Overview California_Server - CPU</h2>
-            <div class="cpu-content">
-                <h3>AMD Ryzen 5 5500U- 8 cores 8 threads</h3>
-                <div class="campo-grafico" id="campo_grafico">
-                    <div class="graficos">
-                        <canvas id="grafico_cpu"></canvas>
-                    </div>
-                </div>
-                <div class="uso-cpu">
-                    <div id="div_kpi_cpu">
-                        <h1>Detalhes da Cpu</h1>
-                        <div class="utilizacao-velocidade">
-                            <span>
-                                <p>
-                                    Utilização:
-                                </p>
-                                <h3>20%</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Velocidade:
-                                </p>
-                                <h3>2.71 Ghz</h3>
-                            </span>
-
-                        </div>
-                        <p>
-                            Processos:
-                        <h3>244</h3>
-                        </p>
-                        <p>
-                            Tempo Ligado:
-                        <h3>1:12:31:28</h3>
-                        </p>
-                        <span>
-                            <div>
-                                <span>
-                                    <p>Velocidade base</p>
-                                    <p><b>2.10 Ghz</b></p>
-                                </span>
-                                <span>
-                                    <p>Cores</p>
-                                    <p><b>8</b></p>
-                                </span>
-
-                                <span>
-                                    <p>Threads</p>
-                                    <p><b>8</b></p>
-                                </span>
-
-                                <span>
-                                    <p>L1 Cache</p>
-                                    <p><b>384 KB</b></p>
-                                </span>
-
-                                <span>
-                                    <p>L2 Cache</p>
-                                    <p><b>3.0 MB</b></p>
-                                </span>
-
-                                <span>
-                                    <p>L3 Cache</p>
-                                    <p><b>8.0 MB</b></p>
-                                </span>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="grafico-detalhes">
-                        <canvas id="detalhes_cpu"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- RAM - ZAPATTA -->
-        <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
-            <h2 class="dashboard-title">Overview California_Server - RAM</h2>
-            <div class="conteudo-ram">
-                <div class="area-grafico-ram">
-                    <h3>Uso da memória</h3>
-                    <div class="grafico-ram">
-                        <canvas id="grafico-ram"
-                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
-                    </div>
-                </div>
-                <div class="indicadores-grafico-ram">
-                    <div class="indicadores-ram">
-                        <h3>Detalhes da memória</h3>
-                        <div class="indicadores-medicao">
-                            <span>
-                                <p>
-                                    Capacidade:
-                                </p>
-                                <h3>128 GB</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Em uso:
-                                </p>
-                                <h3>102,4 GB</h3>
-                            </span>
-                            <span>
-                                <p>
-                                    Disponível:
-                                </p>
-                                <h3>25,6 GB</h3>
-                            </span>
-                        </div>
-                        <span>
-                            <p>
-                                Em cache:
-                            </p>
-                            <h3>12,3 GB</h3>
-                        </span>
-                        <span>
-                            <p>
-                                Processos em fila:
-                            </p>
-                            <h3>2500</h3>
-                        </span>
-                        <span>
-                            <p>
-                                Frequência:
-                            </p>
-                            <h3>6400 Mhz</h3>
-                        </span>
-                        <span>
-                            <p>
-                                Porcentagem de uso:
-                            </p>
-                            <h3>80%</h3>
-                        </span>
-                        </span>
-                    </div>
-                    <div class="grafico-barra-individual1">
-                        <span>Memória 1:</span>
-                        <canvas id="grafico1-ram-barra"
-                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
-                    </div>
-                    <div class="grafico-barra-individual2">
-                        <span>Memória 2:</span>
-                        <canvas id="grafico2-ram-barra"
-                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- ARMAZENAMENTO - ZAPATTA -->
-        <section class="dashboard-content" id="dashboard-HD" style="display: none;">
-            <h2 class="dashboard-title">Overview California_Server - HD</h2>
-            <div class="conteudo-armazenamento">
-                <div class="area-grafico01-armazenamento">
-                    <h2>Uso do armazenamento</h2>
-                    <div class="armazenamento-grafico01">
-                        <canvas id="grafico01-armazenamento"
-                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
-                    </div>
-                </div>
-                <div class="area-grafico02-armazenamento">
-                    <h2>Taxa de transferência de disco</h2>
-                    <div class="armazenamento-grafico02">
-                        <canvas id="grafico02-armazenamento"
-                            style="display: block; box-sizing: border-box; height: 100px; width: 1200px;"></canvas>
-                    </div>
-                </div>
-                <div class="area-bottom-indicadores-grafico03">
-                    <div class="indicadores">
-                        <div class="indicadores-titulo">
-                            <h2>Detalhes do armazenamento</h2>
-                        </div>
-                        <div class="indicadores-armazenamento">
-                            <div class="dados-indicadores">
-                                <span>
-                                    <p>
-                                        Capacidade:
-                                    </p>
-                                    <h3>9.768 GB</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Em uso:
-                                    </p>
-                                    <h3>7.170 GB</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Disponível:
-                                    </p>
-                                    <h3>73,4% / 2.598 GB</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Tempo de atividade:
-                                    </p>
-                                    <h3>70%</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Taxa de transferência:
-                                    </p>
-                                    <h3>600 Kb/s</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Velocidade de leitura:
-                                    </p>
-                                    <h3>30 Kb/s</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Velogicade de gravação:
-                                    </p>
-                                    <h3>472 Kb/s</h3>
-                                </span>
-                                <span>
-                                    <p>
-                                        Tipo:
-                                    </p>
-                                    <h3>SSD M.2 NVMe</h3>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="area-grafico03-armazenamento">
-                        <h2>Taxa de transferência de disco</h2>
-                        <canvas id="grafico03-armazenamento"
-                            style="display: block; box-sizing: border-box; height: 200px; width: 700px;"></canvas>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- REDE - GUSTAVO -->
-        <section class="dashboard-content" id="dashboard-REDE" style="display: none;">
-            <h2 class="dashboard-title">Overview California_Server - REDE</h2>
-            <div class="dash-uso-rede">
-                <div id="div_kpi_rede">
-                    <h2>Detalhes da rede</h2>
-                    <p>
-                        Frequência:
-                    <h3>5.0 Ghz</h3>
-                    </p>
-                    <p>
-                        Tipo de conexão:
-                    <h3>Ethernet</h3>
-                    </p>
-                    <p>
-                        Velocidade de Download:
-                    <h3>5000Mb/ps</h3>
-                    </p>
-                    <p>
-                        Velociade de Upload:
-                    <h3>4000Mb/ps</h3>
-                    </p>
-                    <h2>Dados</h2>
-                    <span>
-                        <div>
-                            <p>Enviados:</p>
-                            <h3>3500Mb/ps</h3>
-                        </div>
-                        <div>
-                            <p>Recebidos:</p>
-                            <h3>4300Mb/ps</h3>
-                        </div>
-                    </span>
-                </div>
-                <div>
-                    <canvas id="grafico-rede" class="canvas-rede"></canvas>
-                </div>
-            </div>
-        </section>
-
+        </div>
+        </div>
+      </section>
     </main>
-
-  <script src="../js/graficos.js"></script>
-</body>
-
+  </body>
 </html>
 
 <script>
+  var listaDeServidor;
+  var quantidadeDeServidor = 0;
 
-   const rede = document.getElementById('grafico-rede');
+  function payload() {
+    const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+    const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+    const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+    b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+    cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
+    buscarServidores();
 
-    new Chart(rede, {
-        type: 'line',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const ram1 = document.getElementById('grafico-ram');
-
-    new Chart(ram1, {
-        type: 'line',
-        data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-            datasets: [{
-                label: 'Uso atual',
-                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const ram2 = document.getElementById('grafico1-ram-barra');
-
-    new Chart(ram2, {
-        type: 'bar',
-        data: {
-            labels: [''],
-            datasets: [{
-                label: '',
-                data: [100],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
-                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
-                borderWidth: 1,
-            },
-            {
-                data: [80],
-                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
-                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false  // Remove a legenda
-                }
-            },
-            scales: {
-                x: {
-                    display: false  // Remove os rótulos do eixo X
-                },
-                y: {
-                    display: false  // Remove os rótulos do eixo Y
-                }
-            },
-            indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
-            barPercentage: -4,  // Ajuste para sobrepor as barras
-            scales: {
-                x: {
-                    beginAtZero: true
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
-        }
-    });
-
-    const ram3 = document.getElementById('grafico2-ram-barra');
-
-    new Chart(ram3, {
-        type: 'bar',
-        data: {
-            labels: [''],
-            datasets: [{
-                label: '',
-                data: [100],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
-                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
-                borderWidth: 1,
-            },
-            {
-                data: [80],
-                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
-                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false  // Remove a legenda
-                }
-            },
-            scales: {
-                x: {
-                    display: false  // Remove os rótulos do eixo X
-                },
-                y: {
-                    display: false  // Remove os rótulos do eixo Y
-                }
-            },
-            indexAxis: 'x',  // Mudança para o eixo y para sobrepor as barras
-            barPercentage: -4,  // Ajuste para sobrepor as barras
-            scales: {
-                x: {
-                    beginAtZero: true
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
-        }
-    });
-
-    const armazenamento01 = document.getElementById('grafico01-armazenamento');
-
-    new Chart(armazenamento01, {
-        type: 'line',
-        data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-            datasets: [{
-                label: 'Uso atual',
-                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const armazenamento02 = document.getElementById('grafico02-armazenamento');
-
-    new Chart(armazenamento02, {
-        type: 'bar',
-        data: {
-            labels: [''],
-            datasets: [{
-                label: '',
-                data: [100],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo para a barra
-                borderColor: 'rgba(255, 99, 132)', // Cor da borda da barra
-                borderWidth: 1,
-            },
-            {
-                data: [80],
-                backgroundColor: 'rgba(54, 162, 235)', // Cor de fundo para a barra
-                borderColor: 'rgba(54, 162, 235)', // Cor da borda da barra
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false  // Remove a legenda
-                }
-            },
-            scales: {
-                x: {
-                    display: false  // Remove os rótulos do eixo X
-                },
-                y: {
-                    display: false  // Remove os rótulos do eixo Y
-                }
-            },
-            indexAxis: 'y',  // Mudança para o eixo y para sobrepor as barras
-            barPercentage: -4,  // Ajuste para sobrepor as barras
-            scales: {
-                x: {
-                    beginAtZero: true
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
-        }
-    });
-
-    const armazenamento03 = document.getElementById('grafico03-armazenamento');
-
-    new Chart(armazenamento03, {
-        type: 'line',
-        data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-            datasets: [{
-                label: 'Uso atual',
-                data: [12, 19, 33, 54, 25, 70, 73, 66, 70, 90],
-                borderWidth: 1,
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    let proximaAtualizacao;
-
-    window.onload = exibirAquariosDoUsuario();
-
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
-
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            obterDadosGrafico(item.id)
-        });
-
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
-        }
+    headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
+        `;
+    console.log(cargo_usuario)
+    if (CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
     }
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
+    // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
+    //   document.getElementById("criarServidor").style.display = "none";
+    // }
+  }
 
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+  
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
-
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
-                }
-                btnAtual.classList.add("btn-white")
-            }
-        }
-
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
-    }
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
-
-        alterarTitulo(idAquario)
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idAquario);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGraficoCPU(resposta, idAquario) {
-
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Core 1',
-                data: [20, 30, 10, 24, 23, 45, 50],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
-        }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-    }
-
-
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
-
-
-
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-
-    function mudarAbaDashboard() {
-        document.getElementById("dashboard-home").style.display = "block";
-        document.getElementById("dashboard-CPU").style.display = "none";
-        document.getElementById("dashboard-RAM").style.display = "none";
-        document.getElementById("dashboard-HD").style.display = "none";
-        document.getElementById("dashboard-REDE").style.display = "none";
-    }
-    function mudarAbaCPU() {
-        document.getElementById("dashboard-home").style.display = "none";
-        document.getElementById("dashboard-CPU").style.display = "block";
-        document.getElementById("dashboard-RAM").style.display = "none";
-        document.getElementById("dashboard-REDE").style.display = "none";
-        document.getElementById("dashboard-HD").style.display = "none";
-    }
-    function mudarAbaRAM() {
-        document.getElementById("dashboard-home").style.display = "none";
-        document.getElementById("dashboard-CPU").style.display = "none";
-        document.getElementById("dashboard-RAM").style.display = "block";
-        document.getElementById("dashboard-HD").style.display = "none";
-        document.getElementById("dashboard-REDE").style.display = "none";
-    }
-    function mudarAbaHD() {
-        document.getElementById("dashboard-home").style.display = "none";
-        document.getElementById("dashboard-CPU").style.display = "none";
-        document.getElementById("dashboard-RAM").style.display = "none";
-        document.getElementById("dashboard-HD").style.display = "block";
-        document.getElementById("dashboard-REDE").style.display = "none";
-    }
-    function mudarAbaRede() {
-        document.getElementById("dashboard-home").style.display = "none";
-        document.getElementById("dashboard-CPU").style.display = "none";
-        document.getElementById("dashboard-RAM").style.display = "none";
-        document.getElementById("dashboard-HD").style.display = "none";
-        document.getElementById("dashboard-REDE").style.display = "block";
-    }
 </script>
