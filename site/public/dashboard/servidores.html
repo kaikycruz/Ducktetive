@@ -50,7 +50,7 @@
           
           <div class="bottom-items">
             <div class="dash-item">
-              <a href="">
+              <a href="visualizarUsuarios.html">
                 <div class="menu">
                     <div class="icon">
                         <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
@@ -113,7 +113,7 @@
                   <img src="../src/images/Dashboard/icons/contexto 1.png">
                 </div>
                 <div id="user-data" >
-                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
                 </div>
                 <div id="dadosUsuario">
                   <span id="b_usuario">Kaiky Cruz</span><br>
@@ -150,8 +150,10 @@
     const NOME_USUARIO = sessionStorage.NOME_USUARIO;
     const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
-    b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
-    cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
+    b_usuario.innerHTML = `${NOME_USUARIO}`;
+    cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
     buscarServidores();
 
     headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
@@ -421,5 +423,37 @@
 
     return false;
   }
+
+  function carregarImagem() {
+            const inputFile = sessionStorage.FOTO_PERFIL;
+            const imagemRenderizada = document.getElementById('user-data');
+            // Verifica se um arquivo foi selecionado
+            if (inputFile.files.length > 0) {
+                const imagem = inputFile.files[0];
+
+                // Cria um novo leitor de arquivos
+                const reader = new FileReader();
+
+                // Configura a função de retorno de chamada quando a leitura estiver concluída
+                reader.onloadend = function () {
+                    // O resultado da leitura está disponível em reader.result
+                    const buffer = new Uint8Array(reader.result);
+
+                    // Exibe a imagem renderizada no HTML
+                    const imagemElement = document.createElement('img');
+                    imagemElement.src = `data:image/jpeg;base64,${arrayBufferToBase64(buffer)}`;
+                    imagemRenderizada.innerHTML = ''; // Limpa qualquer imagem anterior
+                    imagemRenderizada.appendChild(imagemElement);
+                    // Use o buffer conforme necessário (por exemplo, envie para o servidor)
+                    console.log('Buffer:', buffer);
+                    exibirImagem(buffer)
+                };
+
+                // Lê o conteúdo do arquivo como um buffer
+                reader.readAsArrayBuffer(imagem);
+            } else {
+                alert('Selecione uma imagem antes de carregar.');
+            }
+        }
 
 </script>

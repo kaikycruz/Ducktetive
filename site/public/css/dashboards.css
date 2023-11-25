@@ -72,9 +72,10 @@ a{
   text-decoration: none;
 }
 
- #user-picture {
+ #user_picture {
   height: 40px;
   width: 40px;
+  border-radius: 40px;
 }
 
 #b_usuario {
@@ -989,4 +990,115 @@ span div span b {
   height: 100%;
   /* height: 100vh; */
   /* comentamos o codigo acima para que a tela fique adaptiva*/
+<<<<<<< HEAD
 }
+=======
+}
+
+#uso_cpu{
+  width: 300px;
+  background-color: #6dff33;
+}
+
+
+.dashboard-content #users-list{
+  display: flex;
+  gap: 20px;
+  border-radius: 15px;
+  width: 90%;
+  height: 80%;
+  padding: 0 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-content #users-list .user{
+  border-radius: 10px;
+  background-color: #F4F4F4;
+  padding: 20px;
+  width: fit-content;
+
+}
+
+.dashboard-content #users-list .user .userData{
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  display: flex;
+  color: #757575;
+  font-weight: 500;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 10px;
+
+}
+.dashboard-content #users-list .user .header{
+  color: #ff7c33;
+  font-weight: bold;
+}
+
+.dashboard-content #users-list .user .userData .data{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+}
+
+.dashboard-content #users-list .user .userData .name{
+  padding-left: 15px;
+  width: 150px;
+}
+
+.dashboard-content #users-list .user .userData .email{
+  width: 250px;
+}
+
+.dashboard-content #users-list .user .userData .cargo{
+  width: 80px;
+}
+
+.dashboard-content #users-list .user .userData .cidade{
+  width: 13vw;
+  margin: 0 20px;
+}
+.dashboard-content #users-list .user .userData .estado{
+  width: 100px;
+}
+.dashboard-content #users-list .user .userData .telefone{
+  width: 150px;
+}
+
+.dashboard-content #users-list .user .userData .status{
+  display: flex;
+  gap: 5px;
+  justify-content: end;
+  width: 150px;
+}
+
+.dashboard-content #users-list .user .userData .status .userStatus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-content #users-list .user .userData .status .userStatus #imgEdit{
+  height: 10px;
+}
+
+
+
+.dashboard-content #users-list .user .userData .status .userStatus {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.Inativo{
+  background-color: red;
+}
+
+.Ativo{
+  background-color: #6dff33;
+}
+  
+>>>>>>> 0020c688e08b49a898b031e50eeb3769faf695b7

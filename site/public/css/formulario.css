@@ -138,10 +138,37 @@ a{
     border-radius: 100px;
     height: 120px;
     width: 120px;
+    text-decoration: none;
+    font-size: 10px;
 }
 #userPicture:hover{
     background-color: #757575;
 }
+
+#imagemCarregada::file-selector-button {
+    display: none;
+
+  }
+
+  #imagemCarregada{
+    display: block;
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+    font-size: 0px;
+    position: absolute;
+
+  }
+
+#userPicture img{
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+    
+    position: relative;
+
+}
+
 
 #central-logo{
     display: flex;

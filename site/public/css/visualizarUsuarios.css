@@ -73,7 +73,7 @@ hr {
     gap: 7px;
 }
 
-.dashboard-main #userData #user-picture {
+.dashboard-main #userData #user_picture {
     height: 90px;
     width: 90px;
 }

@@ -288,6 +288,7 @@ function alterarDados(req, res) {
   var telefone = req.body.telefoneServer;
   var opcoesPerguntaDeSeguranca = req.body.opcoesPerguntasDeSegurancaServer;
   var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
+  var fotoUsuario = req.body.fotoUsuarioServer;
 
 
   // Faça as validações dos valores
@@ -347,7 +348,8 @@ function alterarDados(req, res) {
       telefone,
       email,
       perguntaDeSeguranca,
-      opcoesPerguntaDeSeguranca
+      opcoesPerguntaDeSeguranca,
+      fotoUsuario
     )
     .then(function (resultado) {
       res.json(resultado);
@@ -708,6 +710,84 @@ function alterarStatusServidor(req, res) {
     });
 }
 
+function buscarUsuarios(req, res) {
+  var idEmpresa = req.body.idEmpresaServer;
+
+
+  if (idEmpresa == undefined) {
+    res.status(400).send("Seu idEmpresa está undefined!");
+  } else {
+    usuarioModel
+      .buscarUsuarios(idEmpresa)
+      .then(function (resultadobuscarUsuarios) {
+        console.log(`\nResultados encontrados: ${resultadobuscarUsuarios.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadobuscarUsuarios)}`); // transforma JSON em String
+
+        if (resultadobuscarUsuarios.length > 0) {
+          console.log(resultadobuscarUsuarios);
+          res.json(resultadobuscarUsuarios);
+
+          // alteracao futura para criar servidor
+
+          //   aquarioModel
+          //     .buscarAquariosPorEmpresa(resultadobuscarUsuarios[0].empresaId)
+          //     .then((resultadoAquarios) => {
+          //       if (resultadoAquarios.length > 0) {
+          //         res.json({
+          //           id: resultadobuscarUsuarios[0].id,
+          //           email: resultadobuscarUsuarios[0].email,
+          //           nome: resultadobuscarUsuarios[0].nome,
+          //           senha: resultadobuscarUsuarios[0].senha,
+          //         });
+          //       } else {
+          //         res.status(204).json({ aquarios: [] });
+          //       }
+          //     });
+        } 
+        // else if (resultadobuscarUsuarios.length == 0) {
+        //   res.status(403).send("Email e/ou senha inválido(s)");
+        // } else {
+        //   res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        // }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function alterarStatusUsuario(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idUsuario = req.body.idUsuarioServer;
+
+  // Faça as validações dos valores
+  if (idUsuario == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .alterarStatusUsuario(
+      idUsuario
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
   autenticar,
@@ -722,5 +802,7 @@ module.exports = {
   cadastrarUsuario,
   excluirServidor,
   alterarStatusServidor,
-  alterarDadosServidor
+  alterarDadosServidor,
+  buscarUsuarios,
+  alterarStatusUsuario
 };

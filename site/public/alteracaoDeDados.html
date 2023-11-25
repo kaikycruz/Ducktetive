@@ -42,7 +42,7 @@
           
           <div class="bottom-items">
             <div class="dash-item">
-              <a href="">
+              <a href="dashboard/visualizarUsuarios.html">
                 <div class="menu">
                     <div class="icon">
                         <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
@@ -87,8 +87,17 @@
             <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
         </div>
         <h2 class="titulo-do-formulario">ALTERAÇÃO DE DADOS CADASTRAIS</h2>
+        
         <div id="userPicture">
-        </div>
+          <label for="imagemCarregada"><div id="user-data" >
+            <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
+          </div></label>
+          
+          <input type="file" accept="image/*" id="imagemCarregada" onchange="carregarImagem()">
+        
+
+          
+      </div>
         <div class="form">
             <h2 class="sub-titulo">Dados do usuário</h2>
             <div class="field-form">
@@ -222,6 +231,7 @@
 </html>
 
 <script>
+    var fotoUsuario;
 
     function payload(){        
         const ID_USUARIO = sessionStorage.ID_USUARIO;
@@ -258,7 +268,10 @@
         input_complemento.value = `${sessionStorage.COMPLEMENTO_USUARIO.toUpperCase()}`;
         input_cidade.value = `${sessionStorage.CIDADE_USUARIO.toUpperCase()}`;
         input_estado.value = `${sessionStorage.ESTADO_USUARIO.toUpperCase()}`;
-
+        
+        var baseStr64 = sessionStorage.FOTO_PERFIL;
+        user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+        
         if(CARGO_USUARIO != "Dono" ){
 
           var divs = document.getElementsByClassName("empresa");
@@ -274,6 +287,7 @@
     function alterar() {  
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
+      var fotoUsuarioVar = fotoUsuario
       var idUsuarioVar = sessionStorage.ID_USUARIO
       var nomeUsuarioVar = input_nome_usuario.value
       var sobrenomeUsuarioVar = input_sobrenome_usuario.value
@@ -317,6 +331,8 @@
   
         return false;
       } 
+
+      alert(fotoUsuarioVar)
   
       // Enviando o valor da nova input
       fetch("/usuarios/alterarDados", {
@@ -350,7 +366,8 @@
           emailServer: emailVar,
           telefoneServer: telefoneVar,
           opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
-          perguntaDeSegurancaServer: perguntaDeSegurancaVar
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+          fotoUsuarioServer: fotoUsuarioVar
 
         //   nomeUsuarioServer: nomeUsuarioVar,
         //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
@@ -473,5 +490,56 @@
   
       return false;
     }
+
+    function mostrarFoto(){
+      var imagem = document.getElementById("imagemCarregada").files[0].name;
+      alert(imagem)
+    }
+
+    function carregarImagem() {
+            const inputFile = document.getElementById('imagemCarregada');
+            const imagemRenderizada = document.getElementById('userPicture');
+            // Verifica se um arquivo foi selecionado
+            if (inputFile.files.length > 0) {
+                const imagem = inputFile.files[0];
+
+                // Cria um novo leitor de arquivos
+                const reader = new FileReader();
+
+                // Configura a função de retorno de chamada quando a leitura estiver concluída
+                reader.onloadend = function () {
+                    // O resultado da leitura está disponível em reader.result
+                    const buffer = new Uint8Array(reader.result);
+
+                    // Exibe a imagem renderizada no HTML
+                    const imagemElement = document.createElement('img');
+                    imagemElement.src = `data:image/jpeg;base64,${arrayBufferToBase64(buffer)}`;
+                    imagemRenderizada.innerHTML = ''; // Limpa qualquer imagem anterior
+                    imagemRenderizada.appendChild(imagemElement);
+                    // Use o buffer conforme necessário (por exemplo, envie para o servidor)
+                    console.log('Buffer:', buffer);
+                    exibirImagem(buffer)
+                };
+
+                // Lê o conteúdo do arquivo como um buffer
+                reader.readAsArrayBuffer(imagem);
+            } else {
+                alert('Selecione uma imagem antes de carregar.');
+            }
+        }
+
+        
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            fotoUsuario = btoa(binary)
+            return btoa(binary);
+        }
+
+      
 
 </script>

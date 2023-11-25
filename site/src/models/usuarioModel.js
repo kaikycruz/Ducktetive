@@ -7,7 +7,7 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-      SELECT idUsuario, usuario.nome as primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome as nomeCargo, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
+      SELECT idUsuario, TO_BASE64(usuario.fotoPerfil) as fotoPerfil, usuario.nome as primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome as nomeCargo, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -163,7 +163,8 @@ async function alterarDados(
   telefone,
   email,
   perguntaDeSeguranca,
-  opcoesPerguntaDeSeguranca
+  opcoesPerguntaDeSeguranca,
+  fotoUsuario
 ) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
@@ -180,6 +181,7 @@ async function alterarDados(
               u.email = '${email}',
               u.resposta_seguranca = '${perguntaDeSeguranca}',
               u.fkPergunta = ${opcoesPerguntaDeSeguranca},
+              u.fotoPerfil = FROM_BASE64('${fotoUsuario}'),
               emp.razao_social = '${razaoSocial}',
               emp.nome_fantasia = '${nomeFantasia}',
               emp.cnpj = '${cnpj}',
@@ -435,6 +437,59 @@ async function alterarStatusServidor(
 
 }
 
+function buscarUsuarios(idEmpresa) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    idEmpresa
+  );
+  var instrucao = `
+  select usuario.idUsuario, usuario.nome, usuario.sobrenome, usuario.email, cargo.nome as cargo, endereco.cidade, endereco.estado, usuario.telefone, usuario.ativo from usuario join empresa on fkEmpresa = idEmpresa join cargo on usuario.fkCargo = cargo.idCargo join endereco on empresa.fkEndereco = endereco.idEndereco where idEmpresa = ${idEmpresa};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+async function alterarStatusUsuario(
+  idUsuario
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL do alterar \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaStatus = `
+    select ativo from usuario where idUsuario = '${idUsuario}';
+    `;
+  const resultadoStatus = await database.executar(verificaStatus);
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+  console.log(resultadoStatus[0].ativo)
+
+  var instrucaoAtivo = `        
+  UPDATE usuario SET ativo = 0 where idUsuario = ${idUsuario};`;
+
+  var instrucaoEmManutencao = `        
+  UPDATE usuario SET ativo = 1 where idUsuario = ${idUsuario};`;
+
+
+  if (resultadoStatus[0].ativo == 0) {
+    console.log("Executando a instrução SQL 1: \n" + instrucaoEmManutencao);
+    await database.executar(instrucaoEmManutencao);
+  }else if(resultadoStatus[0].ativo == 1){
+    console.log("Executando a instrução SQL 2: \n" + instrucaoAtivo);
+    await database.executar(instrucaoAtivo);
+  }
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+
+
+
+}
+
+
 module.exports = {
   autenticar,
   cadastrar,
@@ -448,5 +503,7 @@ module.exports = {
   cadastrarUsuario,
   excluirServidor,
   alterarStatusServidor,
-  alterarDadosServidor
+  alterarDadosServidor,
+  buscarUsuarios,
+  alterarStatusUsuario
 };

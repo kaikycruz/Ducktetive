@@ -61,7 +61,7 @@
               
               <div class="bottom-items">
                 <div class="dash-item">
-                  <a href="">
+                  <a href="visualizarUsuarios.html">
                     <div class="menu">
                         <div class="icon">
                             <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
@@ -121,11 +121,11 @@
                           <img src="../src/images/Dashboard/icons/contexto 1.png">
                         </div>
                         <div id="user-data" >
-                          <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                          <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
                         </div>
                         <div id="dadosUsuario">
-                          <span id="b_usuario">Kaiky Cruz</span><br>
-                          <span id="cargo_usuario">Analista de Infra</span>
+                          <span id="b_usuario"></span><br>
+                          <span id="cargo_usuario"></span>
                         </div>
                     </div>
               </div>
@@ -583,6 +583,12 @@
         b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
     
+        b_usuario.innerHTML = `${NOME_USUARIO}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+        
+    if (CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+    }
 
     const pegaURL = new URL(window.location)
     const id = pegaURL.searchParams.get('id')
@@ -593,6 +599,10 @@
     obterDadosGraficoRAMlinha(id)
     obterDadosGraficoDisco(id)
     obterDadosGraficoRede(id)
+    
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+
     }
 
     // function buscarUltimasMedidasCPU(id) {
