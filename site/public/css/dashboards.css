@@ -369,7 +369,6 @@ a{
   height: 20px;
   width: 20px;
   border-radius: 20px;
-  background-color: #6dff33;
   margin-top: 5px;
 }
 
@@ -1039,6 +1038,7 @@ span div span b {
   align-items: center;
   text-decoration: none;
   list-style: none;
+  font-size: 14px;
 }
 
 .dashboard-content #users-list .user .userData .name{
@@ -1096,5 +1096,9 @@ span div span b {
 
 .Ativo{
   background-color: #6dff33;
+}
+
+.Ativo{
+  background-color: #FFCF26;
 }
   

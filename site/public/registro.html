@@ -283,8 +283,20 @@
       var senhaVar = input_password.value
 
       var confirmacaoSenhaVar = input_confirm_password.value
+
+      const encoder = new TextEncoder();
+      const senhaBuffer = encoder.encode(senhaVar);
+
+      // Calcula o hash SHA-256
+      const hashBuffer = crypto.subtle.digest('SHA-256', senhaBuffer);
+
+      // Converte o ArrayBuffer resultante para uma string hexadecimal
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+      alert(hashHex)
             
-      if(validarCampos()){
+      if(validarCamp2323os()){
         // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
         method: "POST",
