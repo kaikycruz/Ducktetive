@@ -34,13 +34,17 @@ hr {
   border: none;
 }
 
+a{
+  text-decoration: none;
+}
+
 .dashboard-main {
   display: flex;
 }
 
 .aside-bar-menu {
-  background-color: #ffffff;
-  width: 300px;
+  background-color: #F8F8F8;
+  width: 220px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -54,7 +58,7 @@ hr {
   pointer-events: none;
 }
 .aside-bar-menu #logo-ducktetive {
-  margin: 1vh;
+  margin: 25px;
   text-align: center;
 }
 
@@ -62,14 +66,6 @@ hr {
   height: 50px;
 }
 
-.dashboard-main #user-data {
-  margin: 1vh 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-}
 
 #linkPerfil{
   font-style: none;
@@ -77,14 +73,14 @@ hr {
 }
 
  #user-picture {
-  height: 90px;
-  width: 90px;
+  height: 40px;
+  width: 40px;
 }
 
 #b_usuario {
   font-weight: bold;
   color: #313131;
-  font-size: 2.5vh;
+  font-size: 15px;
 }
 
 #cargo_usuario {
@@ -94,14 +90,24 @@ hr {
   text-align: center;
 }
 
+#dashboard-home{
+}
+
 #dashboard-menu {
-  margin-top: 1.5vh;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-size: 2vh;
+  font-size: 12px;
+  height: 80%;
+}
+
+.bottom-items, .top-items{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #dash-title {
@@ -119,17 +125,34 @@ hr {
   margin-top: 5px;
 }
 
-.dash-item :hover {
-  background-color: rgba(255, 124, 51, 0.11);
+.double-item{
+  display: block;
 }
 
+
+
 #dashboard-menu .dash-item .menu {
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 180px;
   gap: 15px;
-  height: 100%;
+  height: 40px;
+  border-radius: 15px;
+}
+
+#dashboard-menu .dash-item #selected{
+  background: rgb(238,238,238);
+  background: linear-gradient(90deg, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 90%, rgba(255,124,51,1) 90%);
+}
+
+#dashboard-menu .dash-item #selected .item-text{
+  color: #ff7c33;
+
+}
+#dashboard-menu .dash-item .menu :hover {
+  background-color: rgba(255, 89, 0, 0.11);
 }
 
 #dashboard-menu .dash-item .menu .icon {
@@ -232,20 +255,17 @@ hr {
 /* Final Side-bar */
 
 .dashboard-content {
-  background-color: #ff7c33;
-  background-color: rgba(255, 124, 51, 0.11);
+
   display: flex;
   width: 100%;
   height: 100vh;
   position: relative;
-  padding-left: 45vh;
+  padding-left: 220px;
   /* height: 100vh; */
   /* comentamos o codigo acima para que a tela fique adaptiva*/
 }
 
-.dashboard-content #header-Server-list{
-  margin: 40px 0px;
-}
+
 
 .dashboard-content #server-list{
   display: flex;
@@ -253,103 +273,166 @@ hr {
   border-radius: 15px;
   width: 90%;
   height: 80%;
-  padding: 20px;
+  padding: 0 40px;
   flex-wrap: wrap;
 }
 
-.dashboard-content #server-list .serverCard{
-  background-color: rgb(255, 255, 255);
+ .serverCard{
+  background-color: #F4F4F4;
   height: 200px;
-  width: 200px;
+  width: 350px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dashboard-content #server-list .serverCard:hover{
-  background-color: rgba(0, 0, 0, 0.041);
 
-}
-.dashboard-content #server-list .serverCard{
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-content #server-list .serverCard .serverData{
-  font-size: 15px;
-}
-
-.dashboard-content #server-list .createServer{
+#server-list .createServer{
   font-size: 40px;
   font-weight: bold;
+  background-color: #F4F4F4;
 }
 
-.dashboard-content #server-list .serverCard .cardButtons{
-  display: flex;
+ .serverCard .serverGeneral{
+  background-color: #ffffff;
+  height: 180px;
   width: 100%;
-  height: fit-content;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+
+
+
+ .serverCard .serverGeneral .serverData{
+  margin: 15px 10px;
+  height: 40%;
 
 }
 
-.dashboard-content #server-list .serverCard .cardButtons .buttons{
-  display: flex;
-  gap: 5px;
+ .serverCard .serverGeneral .serverData .nomeServidor{
+  font-weight: bold;
+  color: #757575;
+  font-size: 16px;
 }
 
-.dashboard-content #server-list .serverCard .serverName{
+ .serverCard .serverGeneral .serverData .idServidor{
+  font-weight: 500;
+  color: #757575;
+  font-size: 14px;
+}
+
+ .serverCard .serverGeneral .serverLocation{
+  margin: 15px 10px 0px 10px;
+  height: 20%;
   display: flex;
+  align-items: end;
+
+}
+
+ .serverCard .serverGeneral .serverLocation .serverEndereco{
+  font-weight: 500;
+  color: #757575;
+  font-size: 14px;
+
+}
+
+ .serverCard .serverGeneral .serverStatus{
+  background-color: #ffffff;
+  width: 70%;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+ .serverCard .serverActions .serverStatus{
   width: 100%;
-  height: 60%;
-  text-align: center;
+  margin: 20px 0;
+  border-radius: 10px;
+  display: flex;
+  gap: 3px;
   justify-content: center;
-  align-items: center;
 }
 
-.dashboard-content #server-list .serverCard .serverDetails{
-  font-size: 12px;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+ .serverCard .serverActions{
+  background-color: #F4F4F4;
+  width: fit-content;
+  height: 180px;
+  margin: 0 0 10px 0;
+  border-radius: 10px;
 }
 
-
-
-
-.dashboard-content #server-list .serverCard .cardButtons .cardEdit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ .serverCard .serverActions .statusServer{
   height: 20px;
   width: 20px;
+  border-radius: 20px;
   background-color: #6dff33;
+  margin-top: 5px;
+}
+
+ .serverCard .serverActions #statusServer{
+  margin-top: 5px;
+  margin-right: 5px;
+  font-weight: bold;
+  color: #757575;
+  font-size: 16px;
+}
+
+ .serverCard .serverGeneral .statusServer{
+  height: 20px;
+  width: 20px;
   border-radius: 15px;
-
+  background-color: #6dff33;
+  margin-top: 5px;
 }
 
-.cardIcon{
-  height: 25px;
-
+ .serverCard .serverGeneral #statusServer{
+  margin-top: 5px;
+  font-weight: bold;
+  color: #757575;
 }
 
-.dashboard-content #server-list .serverCard .cardButtons .cardoStatus{
+
+.serverActions .buttons{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  margin-left: -5px;
+  height: 70%;
+  width: 100%;
+}
+
+.serverActions .buttons a{
+  height: fit-content;
+}
+
+.cardEdit{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   width: 20px;
-  background-color: #e0ff33;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+
+}
+
+.cardoStatus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background-color: #FFCF26;
   border-radius: 15px;
 
 
 }
 
-.dashboard-content #server-list .serverCard .cardButtons .cardRemove{
+.cardRemove{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -488,18 +571,61 @@ hr {
 .dados-do-servidor{
   display: flex;
   flex-direction: column;
+  padding: 20px 40px;
 }
 
 .dados-do-servidor .servHeader{
   display: flex;
-  justify-content: end;
-  margin-top: 30px;
-  margin-right: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dados-do-servidor .servHeader #titulo-pagina .titulo{
+  color: #757575;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.dados-do-servidor .servHeader #titulo-pagina .subtitulo{
+  color: #A6A6A6;
+  font-weight: 500;
+  font-size: 22px;
 }
 
 .dados-do-servidor .servButtons{
   display: flex;
   gap: 10px;
+  align-items: center;
+}
+
+.dados-do-servidor .servButtons .buscar{
+  background-color: #F4F4F4;
+  width: 350px;
+  height: 40px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border: 0px;
+}
+
+.dados-do-servidor .servButtons #dadosUsuario{
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Define outras propriedades para remover estilos padrão (opcional) */
+  border: none;
+  outline: none;
+  /* Adicione mais propriedades conforme necessário */
+  margin-left: 15px;
+}
+
+#imgLupa{
+  margin-right: 10px;
 }
 
 .headerButton{
@@ -599,7 +725,7 @@ hr {
 }
 
 .grafico-detalhes {
-  width: 60%;
+  width: 65%;
 }
 
 .utilizacao-velocidade {
@@ -863,4 +989,9 @@ span div span b {
   height: 100%;
   /* height: 100vh; */
   /* comentamos o codigo acima para que a tela fique adaptiva*/
+}
+
+#uso_cpu{
+  width: 300px;
+  background-color: #6dff33;
 }
