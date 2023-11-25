@@ -1,21 +1,12 @@
+window.onload = obterDadosGraficoCPU();
+window.onload = obterDadosGraficoRAMlinha();
+window.onload = obterDadosGraficoRAM();
+window.onload = obterDadosGraficoDisco();
+window.onload = obterDadosGraficoRede();
+
 // Dados CPU
 
-// O gráfico é construído com três funções:
-// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-// 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-// Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-// para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-// A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function obterDadosGraficoCPU(idMetrica) {
-  if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-  }
-
   fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
@@ -34,9 +25,6 @@ function obterDadosGraficoCPU(idMetrica) {
     });
 }
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGraficoCPU(resposta, idMetrica) {
   console.log("iniciando plotagem do gráfico...");
 
@@ -98,11 +86,6 @@ function plotarGraficoCPU(resposta, idMetrica) {
   setTimeout(() => atualizarGraficoCPU(idMetrica, dados, myChartCPU), 2000);
 }
 
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
@@ -168,10 +151,6 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
 // Graficos RAM deitado e linha
 
 function obterDadosGraficoRAM(idMetrica) {
-  if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-  }
-
   fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
@@ -190,9 +169,6 @@ function obterDadosGraficoRAM(idMetrica) {
     });
 }
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGraficoRAM(resposta, idMetrica) {
   console.log("iniciando plotagem do gráfico...");
 
@@ -286,11 +262,6 @@ function plotarGraficoRAM(resposta, idMetrica) {
   );
 }
 
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
@@ -356,10 +327,6 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
 // ram linha
 
 function obterDadosGraficoRAMlinha(idMetrica) {
-  if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-  }
-
   fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
@@ -378,9 +345,6 @@ function obterDadosGraficoRAMlinha(idMetrica) {
     });
 }
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGraficoRAMlinha(resposta, idMetrica) {
   console.log("iniciando plotagem do gráfico...");
 
@@ -448,11 +412,6 @@ function plotarGraficoRAMlinha(resposta, idMetrica) {
   );
 }
 
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
@@ -518,10 +477,6 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
 // grafico disco
 
 function obterDadosGraficoDisco(idMetrica) {
-  if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-  }
-
   fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
@@ -540,9 +495,6 @@ function obterDadosGraficoDisco(idMetrica) {
     });
 }
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGraficoDisco(resposta, idMetrica) {
   console.log("iniciando plotagem do gráfico...");
 
@@ -607,11 +559,6 @@ function plotarGraficoDisco(resposta, idMetrica) {
   setTimeout(() => atualizarGraficoDisco(idMetrica, dados, myChartDisco), 2000);
 }
 
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
@@ -677,10 +624,6 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
 // grafico REDE
 
 function obterDadosGraficoRede(idMetrica) {
-  if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-  }
-
   fetch(`/medidas/ultimas/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
@@ -699,9 +642,6 @@ function obterDadosGraficoRede(idMetrica) {
     });
 }
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// ConfigCPUura o gráfico (cores, tipo, etc), materializa-o na página e,
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGraficoRede(resposta, idMetrica) {
   console.log("iniciando plotagem do gráfico...");
 
@@ -763,11 +703,7 @@ function plotarGraficoRede(resposta, idMetrica) {
   setTimeout(() => atualizarGraficoRede(idMetrica, dados, myChartRede), 2000);
 }
 
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas,
 
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
 function atualizarGraficoRede(idMetrica, dados, myChartRede) {
   fetch(`/medidas/tempo-real/${idMetrica}`, { cache: "no-store" })
     .then(function (response) {

@@ -574,6 +574,7 @@
 </html>
 
 <script>
+
     
 
     function payload(){
@@ -591,11 +592,49 @@
     const pegaURL = new URL(window.location)
     const id = pegaURL.searchParams.get('id')
     console.log(`servidor ${id}`)
+
+    }
+
+    function buscarUltimasMedidas() {
+        var idServidorVar = id;
+
+        if (
+        idServidorVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+        return false;
+      } 
+  
+      fetch("/medidas/ultimas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idServidorServer:idServidorVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            console.log('dados corretos')
+          } else {
+            console.log('Ocorreu um erro com a atualização dos dados')
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
     }
   
 
 
-   const rede = document.getElementById('grafico-rede');
+
+   /*const rede = document.getElementById('grafico-rede');
 
     new Chart(rede, {
         type: 'line',
@@ -859,13 +898,15 @@
         if (aquarios.length > 0) {
             exibirAquario(aquarios[0].id)
         }
-    }
+    }*/
 
     // function alterarTitulo(idAquario) {
     //     var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
     //     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
     //     tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
     // }
+
+    
 
 
     function mudarAbaDashboard() {
