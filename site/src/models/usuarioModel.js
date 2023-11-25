@@ -7,7 +7,7 @@ function autenticar(email, senha) {
     senha
   );
   var instrucao = `
-      SELECT idUsuario, usuario.nome as primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome as nomeCargo, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
+      SELECT idUsuario, TO_BASE64(usuario.fotoPerfil) as fotoPerfil, usuario.nome as primeiro_nome, sobrenome, telefone, email, resposta_seguranca, cargo.nome as nomeCargo, idEmpresa, razao_social, nome_fantasia, nome_fantasia, cnpj, idEndereco, logradouro, numero, bairro, cep, complemento, cidade, estado, ativo from usuario join empresa on fkEmpresa = idEmpresa join endereco on fkEndereco = idEndereco join cargo on  fkCargo = idCargo where usuario.email = '${email}' and senha = '${senha}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -163,7 +163,8 @@ async function alterarDados(
   telefone,
   email,
   perguntaDeSeguranca,
-  opcoesPerguntaDeSeguranca
+  opcoesPerguntaDeSeguranca,
+  fotoUsuario
 ) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
@@ -180,6 +181,7 @@ async function alterarDados(
               u.email = '${email}',
               u.resposta_seguranca = '${perguntaDeSeguranca}',
               u.fkPergunta = ${opcoesPerguntaDeSeguranca},
+              u.fotoPerfil = FROM_BASE64('${fotoUsuario}'),
               emp.razao_social = '${razaoSocial}',
               emp.nome_fantasia = '${nomeFantasia}',
               emp.cnpj = '${cnpj}',

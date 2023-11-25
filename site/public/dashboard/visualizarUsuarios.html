@@ -114,7 +114,7 @@
                   <img src="../src/images/Dashboard/icons/contexto 1.png">
                 </div>
                 <div id="user-data" >
-                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user-picture">
+                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
                 </div>
                 <div id="dadosUsuario">
                   <span id="b_usuario">Kaiky Cruz</span><br>
@@ -157,6 +157,8 @@
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
     b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
     buscarUsuarios();
 
     tituloPagina.innerHTML = `Usuarios da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
@@ -347,5 +349,12 @@
     return false;
   }
   
+  //var listaUsuarios = document.getElementById('usersList')
+  //var itens = listaUsuarios.getElementsByClassName('userData');
+  //itens[1]
+  //itens[1].getElementsByClassName('name')
+  //itens[1].getElementsByClassName('name')[0].value
+  //itens[1].getElementsByClassName('name')[0]
+  //itens[1].getElementsByClassName('name')[0].innerHTML
 
 </script>

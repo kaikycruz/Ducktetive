@@ -72,9 +72,10 @@ a{
   text-decoration: none;
 }
 
- #user-picture {
+ #user_picture {
   height: 40px;
   width: 40px;
+  border-radius: 40px;
 }
 
 #b_usuario {
@@ -1005,13 +1006,14 @@ span div span b {
   height: 80%;
   padding: 0 40px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .dashboard-content #users-list .user{
   border-radius: 10px;
   background-color: #F4F4F4;
   padding: 20px;
-  width: 100%;
+  width: fit-content;
 
 }
 
@@ -1053,7 +1055,7 @@ span div span b {
 }
 
 .dashboard-content #users-list .user .userData .cidade{
-  width: 100px;
+  width: 13vw;
   margin: 0 20px;
 }
 .dashboard-content #users-list .user .userData .estado{
@@ -1066,6 +1068,8 @@ span div span b {
 .dashboard-content #users-list .user .userData .status{
   display: flex;
   gap: 5px;
+  justify-content: end;
+  width: 150px;
 }
 
 .dashboard-content #users-list .user .userData .status .userStatus{

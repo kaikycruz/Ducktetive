@@ -288,6 +288,7 @@ function alterarDados(req, res) {
   var telefone = req.body.telefoneServer;
   var opcoesPerguntaDeSeguranca = req.body.opcoesPerguntasDeSegurancaServer;
   var perguntaDeSeguranca = req.body.perguntaDeSegurancaServer;
+  var fotoUsuario = req.body.fotoUsuarioServer;
 
 
   // Faça as validações dos valores
@@ -347,7 +348,8 @@ function alterarDados(req, res) {
       telefone,
       email,
       perguntaDeSeguranca,
-      opcoesPerguntaDeSeguranca
+      opcoesPerguntaDeSeguranca,
+      fotoUsuario
     )
     .then(function (resultado) {
       res.json(resultado);
