@@ -141,7 +141,7 @@
                             <span class="kpi-title">
                                 PROCESSADORES LÓGICOS
                             </span>
-                            <span class="kpi-content">
+                            <span id="procLogCPU" class="kpi-content">
                                 4
                             </span>
                         </div>
@@ -149,15 +149,15 @@
                             <span class="kpi-title">
                                 PROCESSADORES FÍSICOS
                             </span>
-                            <span class="kpi-content">
+                            <span id="procFisCPU" class="kpi-content">
                                 2
                             </span>
                         </div>
                         <div class="CPU-cards-kpi" id="cpu-frequency">
-                            <span class="kpi-title">
+                            <span  class="kpi-title">
                                 Percentual de uso
                             </span>
-                            <span class="kpi-content">
+                            <span id="percUsoCpu" class="kpi-content">
                                 86%
                             </span>
                         </div>
@@ -580,15 +580,13 @@
         const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
         const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
         const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
     
         b_usuario.innerHTML = `${NOME_USUARIO}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
-        var baseStr64 = sessionStorage.FOTO_PERFIL;
-        user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
         
-    if (CARGO_USUARIO.toUpperCase() != "DONO"){
-        document.getElementById("criarUsuario").style.display = "none";
-    }
+    
 
     const pegaURL = new URL(window.location)
     const id = pegaURL.searchParams.get('id')

@@ -34,7 +34,7 @@ hr {
   border: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -43,7 +43,7 @@ a{
 }
 
 .aside-bar-menu {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   width: 220px;
   height: 100vh;
   position: fixed;
@@ -66,13 +66,12 @@ a{
   height: 50px;
 }
 
-
-#linkPerfil{
+#linkPerfil {
   font-style: none;
   text-decoration: none;
 }
 
- #user_picture {
+#user_picture {
   height: 40px;
   width: 40px;
   border-radius: 40px;
@@ -91,7 +90,7 @@ a{
   text-align: center;
 }
 
-#dashboard-home{
+#dashboard-home {
 }
 
 #dashboard-menu {
@@ -105,7 +104,8 @@ a{
   height: 80%;
 }
 
-.bottom-items, .top-items{
+.bottom-items,
+.top-items {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -126,11 +126,9 @@ a{
   margin-top: 5px;
 }
 
-.double-item{
+.double-item {
   display: block;
 }
-
-
 
 #dashboard-menu .dash-item .menu {
   background-color: #ffffff;
@@ -143,14 +141,18 @@ a{
   border-radius: 15px;
 }
 
-#dashboard-menu .dash-item #selected{
-  background: rgb(238,238,238);
-  background: linear-gradient(90deg, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 90%, rgba(255,124,51,1) 90%);
+#dashboard-menu .dash-item #selected {
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(238, 238, 238, 1) 90%,
+    rgba(255, 124, 51, 1) 90%
+  );
 }
 
-#dashboard-menu .dash-item #selected .item-text{
+#dashboard-menu .dash-item #selected .item-text {
   color: #ff7c33;
-
 }
 #dashboard-menu .dash-item .menu :hover {
   background-color: rgba(255, 89, 0, 0.11);
@@ -256,7 +258,6 @@ a{
 /* Final Side-bar */
 
 .dashboard-content {
-
   display: flex;
   width: 100%;
   height: 100vh;
@@ -266,9 +267,7 @@ a{
   /* comentamos o codigo acima para que a tela fique adaptiva*/
 }
 
-
-
-.dashboard-content #server-list{
+.dashboard-content #server-list {
   display: flex;
   gap: 20px;
   border-radius: 15px;
@@ -278,8 +277,8 @@ a{
   flex-wrap: wrap;
 }
 
- .serverCard{
-  background-color: #F4F4F4;
+.serverCard {
+  background-color: #f4f4f4;
   height: 200px;
   width: 350px;
   border-radius: 15px;
@@ -288,58 +287,51 @@ a{
   align-items: center;
 }
 
-
-#server-list .createServer{
+#server-list .createServer {
   font-size: 40px;
   font-weight: bold;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
- .serverCard .serverGeneral{
+.serverCard .serverGeneral {
   background-color: #ffffff;
   height: 180px;
   width: 100%;
   margin: 10px;
   border-radius: 10px;
-  
 }
 
-
-
- .serverCard .serverGeneral .serverData{
+.serverCard .serverGeneral .serverData {
   margin: 15px 10px;
   height: 40%;
-
 }
 
- .serverCard .serverGeneral .serverData .nomeServidor{
+.serverCard .serverGeneral .serverData .nomeServidor {
   font-weight: bold;
   color: #757575;
   font-size: 16px;
 }
 
- .serverCard .serverGeneral .serverData .idServidor{
+.serverCard .serverGeneral .serverData .idServidor {
   font-weight: 500;
   color: #757575;
   font-size: 14px;
 }
 
- .serverCard .serverGeneral .serverLocation{
+.serverCard .serverGeneral .serverLocation {
   margin: 15px 10px 0px 10px;
   height: 20%;
   display: flex;
   align-items: end;
-
 }
 
- .serverCard .serverGeneral .serverLocation .serverEndereco{
+.serverCard .serverGeneral .serverLocation .serverEndereco {
   font-weight: 500;
   color: #757575;
   font-size: 14px;
-
 }
 
- .serverCard .serverGeneral .serverStatus{
+.serverCard .serverGeneral .serverStatus {
   background-color: #ffffff;
   width: 70%;
   margin: 10px;
@@ -348,7 +340,7 @@ a{
   gap: 10px;
 }
 
- .serverCard .serverActions .serverStatus{
+.serverCard .serverActions .serverStatus {
   width: 100%;
   margin: 20px 0;
   border-radius: 10px;
@@ -357,22 +349,22 @@ a{
   justify-content: center;
 }
 
- .serverCard .serverActions{
-  background-color: #F4F4F4;
+.serverCard .serverActions {
+  background-color: #f4f4f4;
   width: fit-content;
   height: 180px;
   margin: 0 0 10px 0;
   border-radius: 10px;
 }
 
- .serverCard .serverActions .statusServer{
+.serverCard .serverActions .statusServer {
   height: 20px;
   width: 20px;
   border-radius: 20px;
   margin-top: 5px;
 }
 
- .serverCard .serverActions #statusServer{
+.serverCard .serverActions #statusServer {
   margin-top: 5px;
   margin-right: 5px;
   font-weight: bold;
@@ -380,7 +372,7 @@ a{
   font-size: 16px;
 }
 
- .serverCard .serverGeneral .statusServer{
+.serverCard .serverGeneral .statusServer {
   height: 20px;
   width: 20px;
   border-radius: 15px;
@@ -388,14 +380,13 @@ a{
   margin-top: 5px;
 }
 
- .serverCard .serverGeneral #statusServer{
+.serverCard .serverGeneral #statusServer {
   margin-top: 5px;
   font-weight: bold;
   color: #757575;
 }
 
-
-.serverActions .buttons{
+.serverActions .buttons {
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -405,34 +396,31 @@ a{
   width: 100%;
 }
 
-.serverActions .buttons a{
+.serverActions .buttons a {
   height: fit-content;
 }
 
-.cardEdit{
+.cardEdit {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   width: 20px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   border-radius: 15px;
-
 }
 
-.cardoStatus{
+.cardoStatus {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   width: 20px;
-  background-color: #FFCF26;
+  background-color: #ffcf26;
   border-radius: 15px;
-
-
 }
 
-.cardRemove{
+.cardRemove {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -440,8 +428,6 @@ a{
   width: 20px;
   background-color: #ff3333;
   border-radius: 15px;
-
-
 }
 
 /* DASHBOARD */
@@ -568,38 +554,38 @@ a{
   flex-direction: column;
   background-color: #fff;
 }
-.dados-do-servidor{
+.dados-do-servidor {
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
 }
 
-.dados-do-servidor .servHeader{
+.dados-do-servidor .servHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dados-do-servidor .servHeader #titulo-pagina .titulo{
+.dados-do-servidor .servHeader #titulo-pagina .titulo {
   color: #757575;
   font-weight: bold;
   font-size: 32px;
 }
 
-.dados-do-servidor .servHeader #titulo-pagina .subtitulo{
-  color: #A6A6A6;
+.dados-do-servidor .servHeader #titulo-pagina .subtitulo {
+  color: #a6a6a6;
   font-weight: 500;
   font-size: 22px;
 }
 
-.dados-do-servidor .servButtons{
+.dados-do-servidor .servButtons {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.dados-do-servidor .servButtons .buscar{
-  background-color: #F4F4F4;
+.dados-do-servidor .servButtons .buscar {
+  background-color: #f4f4f4;
   width: 350px;
   height: 40px;
   border-radius: 15px;
@@ -609,7 +595,7 @@ a{
   border: 0px;
 }
 
-.dados-do-servidor .servButtons #dadosUsuario{
+.dados-do-servidor .servButtons #dadosUsuario {
 }
 
 input {
@@ -624,14 +610,13 @@ input {
   margin-left: 15px;
 }
 
-#imgLupa{
+#imgLupa {
   margin-right: 10px;
 }
 
-.headerButton{
+.headerButton {
   height: 50px;
 }
-
 
 .dados-do-servidor #nomeCPU p {
   font-size: 20px;
@@ -983,7 +968,6 @@ span div span b {
   margin: 0;
 }
 
-
 .listagem-de-servidores {
   min-height: 100vh;
   height: 100%;
@@ -991,13 +975,7 @@ span div span b {
   /* comentamos o codigo acima para que a tela fique adaptiva*/
 }
 
-#uso_cpu{
-  width: 300px;
-  background-color: #6dff33;
-}
-
-
-.dashboard-content #users-list{
+.dashboard-content #users-list {
   display: flex;
   gap: 20px;
   border-radius: 15px;
@@ -1008,31 +986,29 @@ span div span b {
   justify-content: center;
 }
 
-.dashboard-content #users-list .user{
+.dashboard-content #users-list .user {
   border-radius: 10px;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   padding: 20px;
   width: fit-content;
-
 }
 
-.dashboard-content #users-list .user .userData{
+.dashboard-content #users-list .user .userData {
   border-radius: 15px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   color: #757575;
   font-weight: 500;
   width: 100%;
   height: fit-content;
   margin-bottom: 10px;
-
 }
-.dashboard-content #users-list .user .header{
+.dashboard-content #users-list .user .header {
   color: #ff7c33;
   font-weight: bold;
 }
 
-.dashboard-content #users-list .user .userData .data{
+.dashboard-content #users-list .user .userData .data {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -1041,48 +1017,46 @@ span div span b {
   font-size: 14px;
 }
 
-.dashboard-content #users-list .user .userData .name{
+.dashboard-content #users-list .user .userData .name {
   padding-left: 15px;
   width: 150px;
 }
 
-.dashboard-content #users-list .user .userData .email{
+.dashboard-content #users-list .user .userData .email {
   width: 250px;
 }
 
-.dashboard-content #users-list .user .userData .cargo{
+.dashboard-content #users-list .user .userData .cargo {
   width: 80px;
 }
 
-.dashboard-content #users-list .user .userData .cidade{
+.dashboard-content #users-list .user .userData .cidade {
   width: 13vw;
   margin: 0 20px;
 }
-.dashboard-content #users-list .user .userData .estado{
+.dashboard-content #users-list .user .userData .estado {
   width: 100px;
 }
-.dashboard-content #users-list .user .userData .telefone{
+.dashboard-content #users-list .user .userData .telefone {
   width: 150px;
 }
 
-.dashboard-content #users-list .user .userData .status{
+.dashboard-content #users-list .user .userData .status {
   display: flex;
   gap: 5px;
   justify-content: end;
   width: 150px;
 }
 
-.dashboard-content #users-list .user .userData .status .userStatus{
+.dashboard-content #users-list .user .userData .status .userStatus {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dashboard-content #users-list .user .userData .status .userStatus #imgEdit{
+.dashboard-content #users-list .user .userData .status .userStatus #imgEdit {
   height: 10px;
 }
-
-
 
 .dashboard-content #users-list .user .userData .status .userStatus {
   height: 20px;
@@ -1090,15 +1064,14 @@ span div span b {
   border-radius: 10px;
 }
 
-.Inativo{
+.Inativo {
   background-color: red;
 }
 
-.Ativo{
+.Ativo {
   background-color: #6dff33;
 }
 
-.Ativo{
-  background-color: #FFCF26;
+.Ativo {
+  background-color: #ffcf26;
 }
-  
