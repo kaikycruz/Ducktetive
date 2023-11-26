@@ -3,16 +3,17 @@ public class Config {
     Integer fkComponente;
     Integer fkServidor;
     String serialDisco;
+    Long tamanhoTotal;
 
     public Config() {
     }
 
-    public Config(Integer fkComponente, Integer fkServidor, String serialDisco) {
+    public Config(Integer fkComponente, Integer fkServidor, String serialDisco, Long tamanhoTotal) {
         this.fkComponente = fkComponente;
         this.fkServidor = fkServidor;
         this.serialDisco = serialDisco;
+        this.tamanhoTotal = tamanhoTotal;
     }
-
 
     public Integer getFkComponente() {
         return fkComponente;
@@ -38,17 +39,21 @@ public class Config {
         this.serialDisco = serialDisco;
     }
 
+    public Long getTamanhoTotal() {
+        return tamanhoTotal;
+    }
+
+    public void setTamanhoTotal(Long tamanhoTotal) {
+        this.tamanhoTotal = tamanhoTotal;
+    }
+
     @Override
     public String toString() {
-
-        return String.format("""
-                
-                +-----------------------+
-                |      CONFIGURAÇÃO                  
-                | fkComponente: %d      
-                | fkServidor: %d                   
-                | StaserialDisco: %s            
-                +-----------------------+
-                """, fkComponente, fkServidor, serialDisco);
+        return "Config{" +
+                "fkComponente=" + fkComponente +
+                ", fkServidor=" + fkServidor +
+                ", serialDisco='" + serialDisco + '\'' +
+                ", tamanhoTotal=" + tamanhoTotal +
+                '}';
     }
 }

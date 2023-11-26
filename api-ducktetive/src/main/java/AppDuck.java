@@ -1,5 +1,6 @@
 import Banco.ConexaoBanco;
 import Slack.BotSlack;
+import Users.Usuario;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
@@ -7,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -63,6 +66,8 @@ public class AppDuck {
                 }
                 List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
 
+
+
                 if (!config.isEmpty()) {
                     List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), config.get(0).fkServidor);
                     if (servidoresAtivos.get(0).getStatus().equals("Ativo")) {
@@ -71,6 +76,8 @@ public class AppDuck {
 
                         List<ParametroAlerta> parametroAlertas = con.query("SELECT * FROM ParametroAlerta WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(ParametroAlerta.class), (idServidor));
 
+                        List<Config> config2 = con.query("SELECT * FROM Configuracao WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(Config.class), idServidor);
+
 
                         // Formatar a data para o formato desejado (opcional)
                         Date data = new Date();
@@ -78,6 +85,8 @@ public class AppDuck {
                         String dataFormatada = sdf.format(data);
 
                         String sql = "INSERT INTO Metrica (valor, dataHora, fkConfigComponente, fkConfigServidor, fkEspecMetrica) VALUES (?, ?, ?, ?, ?);";
+
+
 
                         // INSERT PROCESSOS && SLACK PROCESSOS
                         try {
@@ -89,10 +98,15 @@ public class AppDuck {
                         }
 
                         // INSERT CPU
-                        con.update(sql, looca.getProcessador().getUso(), dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 1);
+                        double usoDouble = looca.getProcessador().getUso();
+                        int valorCpu = (int) Math.round(usoDouble);
+
+
+                        con.update(sql, valorCpu, dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 2);
+
                         // SLACK CPU
                         try {
-                            verificarLimite(servidoresAtivos.get(0).getNome(), looca.getProcessador().getUso(), parametroAlertas.get(0).getMaximo(), "CPU");
+                            verificarLimite(servidoresAtivos.get(0).getNome(), valorCpu, parametroAlertas.get(0).getMaximo(), "CPU", config2.get(0));
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (InterruptedException e) {
@@ -101,11 +115,11 @@ public class AppDuck {
 
 
                         // INSERT RAM
-                        double valorMemoria = (double) looca.getMemoria().getEmUso() / 1000000000;
-                        con.update(sql, valorMemoria, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 2);
+                        long valorRam = looca.getMemoria().getEmUso();
+                        con.update(sql, valorRam, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 1);
                         // SLACK RAM
                         try {
-                            verificarLimite(servidoresAtivos.get(0).getNome(), valorMemoria , parametroAlertas.get(1).getMaximo(), "RAM");
+                            verificarLimite(servidoresAtivos.get(0).getNome(), valorRam , parametroAlertas.get(1).getMaximo(), "RAM", config2.get(1));
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (InterruptedException e) {
@@ -114,12 +128,14 @@ public class AppDuck {
 
                         // INSERT DISCO
                         for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
-                            double valorDisco = (double) disco.getBytesDeEscritas() / 1000000000;
-                            con.update(sql, valorDisco, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 2);
+
+                            long tamanhoTotal = disco.getBytesDeEscritas() + disco.getBytesDeLeitura();
+
+                            con.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
 
                             // SLACK DISCO
                             try {
-                                verificarLimite(servidoresAtivos.get(0).getNome(), valorDisco , parametroAlertas.get(2).getMaximo(), "DISCO");
+                                verificarLimite(servidoresAtivos.get(0).getNome(), tamanhoTotal , parametroAlertas.get(2).getMaximo(), "DISCO", config2.get(2));
                             }catch (IOException e) {
                                 throw new RuntimeException(e);
                             } catch (InterruptedException e) {
@@ -130,11 +146,12 @@ public class AppDuck {
                         // INSERT REDE
                         for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
                             if (r.getPacotesRecebidos() != 0) {
-                                double valorRede = (double) r.getPacotesRecebidos() / 100000;
-                                con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 3);
+                                long valorRede = r.getBytesRecebidos() ;
+
+                                con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 1);
                                 // SLACK REDE
                                 try {
-                                    verificarLimite(servidoresAtivos.get(0).getNome(), valorRede , parametroAlertas.get(3).getMaximo(), "REDE");
+                                    verificarLimite(servidoresAtivos.get(0).getNome(), valorRede , parametroAlertas.get(3).getMaximo(), "REDE", config2.get(3));
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 } catch (InterruptedException e) {
@@ -145,7 +162,7 @@ public class AppDuck {
                     }
                 }
             }
-        }, 1000, 5000);
+        }, 1000, 1000);
     }
 
 
@@ -162,9 +179,27 @@ public class AppDuck {
         System.out.println("Digite sua senha:");
         String senha = leitor.nextLine();
 
+        try {
+            // Obtendo a instância de MessageDigest para SHA-256
+            MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+
+            // Convertendo a string para bytes e atualizando o digest
+            byte[] hashBytes = sha256.digest(senha.getBytes());
+
+            // Convertendo bytes para representação hexadecimal
+            StringBuilder hexStringBuilder = new StringBuilder();
+            for (byte hashByte : hashBytes) {
+                hexStringBuilder.append(String.format("%02x", hashByte));
+            }
+            senha = hexStringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+
         List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM Usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
         if (usuarios.size() > 0) {
-            if (usuarios.get(0) != null && usuarios.get(0).getFkCargo() == 1) {
+            if (usuarios.get(0).getFkCargo() != 3) {
                 System.out.println("Bem vindo " + usuarios.get(0).getNome());
                 Integer opcaoAdm;
                 do {
@@ -203,13 +238,18 @@ public class AppDuck {
                                         serial = disco.getSerial();
                                     }
                                 }
+                                long redeTotal = 0;
+
+                                for (RedeInterface r: looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
+                                    redeTotal = r.getBytesRecebidos() + r.getBytesEnviados();
+                                }
                                 List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
                                 if (config.isEmpty()) {
-                                    String sqlConfig = "INSERT INTO Configuracao (fkComponente, fkServidor, serialDisco) VALUES (?, ?, ?);";
-                                    con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null);
-                                    con.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), null);
-                                    con.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), serial);
-                                    con.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), null);
+                                    String sqlConfig = "INSERT INTO Configuracao (fkComponente, fkServidor, tamanhoTotal,serialDisco) VALUES (?, ?, ?, ?);";
+                                    con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null ,null);
+                                    con.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), looca.getMemoria().getTotal() ,null);
+                                    con.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), looca.getGrupoDeDiscos().getTamanhoTotal() ,serial);
+                                    con.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), redeTotal,null);
                                 }
                                 System.out.println(servidoresAtivos.get(0));
                                 break;
@@ -320,10 +360,22 @@ public class AppDuck {
 
     }
 
-    public static void verificarLimite(String servidor, Double valorCaptura, Double limite, String componente) throws IOException, InterruptedException {
+    public static void verificarLimite(String servidor, long valorCaptura, Double limite, String componente, Config config) throws IOException, InterruptedException {
         final Boolean[] timeoutAtivo = {false};
+        Double porcetagem = 0.0;
+        if (componente.equals("RAM")){
+            double bytes = valorCaptura / 8.0;
+            double gb = bytes / (1024.0 * 1024.0 * 1024.0);
+            porcetagem = gb / config.getTamanhoTotal();
+        } else if (componente.equals("DISCO")){
+            double bytes = valorCaptura / 8.0;
+            double gb = bytes / (1024.0 * 1024.0 * 1024.0);
+            porcetagem = gb / config.getTamanhoTotal();
+        } else if (componente.equals("REDE")){
+           porcetagem =(double) valorCaptura / config.getTamanhoTotal() * 100;
+        }
 
-        if (valorCaptura >= limite){
+        if (porcetagem >= limite){
 
             if (!timeoutAtivo[0]) {
                 timeoutAtivo[0] = true;
