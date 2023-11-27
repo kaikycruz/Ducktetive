@@ -600,7 +600,13 @@
     obterDadosGraficoRede(id)
     
     var baseStr64 = sessionStorage.FOTO_PERFIL;
-    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    if (sessionStorage.FOTO_PERFIL == 'null'){
+
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+      user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    }
 
     }
 

@@ -28,6 +28,8 @@
 
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
   </head>
 
   <body onload="payload()">
@@ -157,7 +159,14 @@
     b_usuario.innerHTML = `${NOME_USUARIO}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
     var baseStr64 = sessionStorage.FOTO_PERFIL;
-    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    
+    if (sessionStorage.FOTO_PERFIL == 'null'){
+
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+      user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    }
     buscarServidores();
 
     headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
@@ -288,7 +297,6 @@
                 var numero = JSON.stringify(json[i].numero).substring(1, JSON.stringify(json[i].numero).length - 1);
                 var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
                 var statusServidor = JSON.stringify(json[i].statusServidor).substring(1, JSON.stringify(json[i].statusServidor).length - 1);
-
                 
 
                 criarServidor(

@@ -19,10 +19,11 @@ public class AppDuck {
         Looca looca = new Looca();
         ConexaoBanco conexao = new ConexaoBanco();
         JdbcTemplate con = conexao.getConexaoBanco();
+        JdbcTemplate conAws = conexao.getConexaoBancoAWS();
         Scanner in = new Scanner(System.in);
         Timer timer = new Timer();
 
-        inserirDadosMetrica(con, looca, timer);
+        inserirDadosMetrica(con, looca, timer, conAws);
         Integer opcao;
         do {
             System.out.println("""
@@ -39,7 +40,7 @@ public class AppDuck {
             switch (opcao) {
                 case 1:
                     System.out.println();
-                    logar(con, in, looca, timer);
+                    logar(con, in, looca, timer, conAws);
                     break;
                 case 2:
                     System.out.println("Saindo....");
@@ -54,7 +55,7 @@ public class AppDuck {
     }
 
 
-    public static void inserirDadosMetrica(JdbcTemplate con,  Looca looca, Timer timer) {
+    public static void inserirDadosMetrica(JdbcTemplate con,  Looca looca, Timer timer, JdbcTemplate conAws) {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -90,7 +91,7 @@ public class AppDuck {
 
                         // INSERT PROCESSOS && SLACK PROCESSOS
                         try {
-                            monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
+                            monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome(), conAws);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (InterruptedException e) {
@@ -103,7 +104,7 @@ public class AppDuck {
 
 
                         con.update(sql, valorCpu, dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 2);
-
+                        conAws.update(sql, valorCpu, dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 2);
                         // SLACK CPU
                         try {
                             verificarLimite(servidoresAtivos.get(0).getNome(), valorCpu, parametroAlertas.get(0).getMaximo(), "CPU", config2.get(0));
@@ -117,6 +118,7 @@ public class AppDuck {
                         // INSERT RAM
                         long valorRam = looca.getMemoria().getEmUso();
                         con.update(sql, valorRam, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 1);
+                        conAws.update(sql, valorRam, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 1);
                         // SLACK RAM
                         try {
                             verificarLimite(servidoresAtivos.get(0).getNome(), valorRam , parametroAlertas.get(1).getMaximo(), "RAM", config2.get(1));
@@ -132,6 +134,7 @@ public class AppDuck {
                             long tamanhoTotal = disco.getBytesDeEscritas() + disco.getBytesDeLeitura();
 
                             con.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
+                            conAws.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
 
                             // SLACK DISCO
                             try {
@@ -149,6 +152,7 @@ public class AppDuck {
                                 long valorRede = r.getBytesRecebidos() ;
 
                                 con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 1);
+                                conAws.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 1);
                                 // SLACK REDE
                                 try {
                                     verificarLimite(servidoresAtivos.get(0).getNome(), valorRede , parametroAlertas.get(3).getMaximo(), "REDE", config2.get(3));
@@ -166,7 +170,7 @@ public class AppDuck {
     }
 
 
-    public static void logar(JdbcTemplate con, Scanner in, Looca looca, Timer timer) {
+    public static void logar(JdbcTemplate con, Scanner in, Looca looca, Timer timer, JdbcTemplate conAws) {
         Scanner leitor = new Scanner(System.in);
         System.out.println("Insira seu email:");
         String email = leitor.nextLine();
@@ -230,6 +234,7 @@ public class AppDuck {
                                 Integer idAtivar = in.nextInt();
                                 String sql = "UPDATE Servidor SET fkStatusServ = 1 WHERE idServidor = ?;";
                                 con.update(sql, idAtivar);
+                                conAws.update(sql, idAtivar);
 
                                 List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), idAtivar);
                                 String serial = null;
@@ -250,6 +255,12 @@ public class AppDuck {
                                     con.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), looca.getMemoria().getTotal() ,null);
                                     con.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), looca.getGrupoDeDiscos().getTamanhoTotal() ,serial);
                                     con.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), redeTotal,null);
+
+
+                                    conAws.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null ,null);
+                                    conAws.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), looca.getMemoria().getTotal() ,null);
+                                    conAws.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), looca.getGrupoDeDiscos().getTamanhoTotal() ,serial);
+                                    conAws.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), redeTotal,null);
                                 }
                                 System.out.println(servidoresAtivos.get(0));
                                 break;
@@ -304,7 +315,7 @@ public class AppDuck {
         }
     }
 
-    public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor) throws IOException, InterruptedException {
+    public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor, JdbcTemplate conAws) throws IOException, InterruptedException {
 
         for (int i = 0; i < looca.getGrupoDeProcessos().getProcessos().size() ; i++) {
             if (looca.getGrupoDeProcessos().getProcessos().get(i).getUsoCpu() > cpuLimite){
@@ -316,6 +327,11 @@ public class AppDuck {
                         if (looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu() > cpuLimite){
                             String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
                             con.update(sql, looca.getGrupoDeProcessos().getProcessos().get(finalI).getPid(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
+
+                                    conAws.update(sql, looca.getGrupoDeProcessos().getProcessos().get(finalI).getPid(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
@@ -344,6 +360,13 @@ public class AppDuck {
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
+
+                            conAws.update(sql, looca.getGrupoDeProcessos().getProcessos().get(finalI).getPid(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
+                                    looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
+
+
                             BotSlack botSlack = new BotSlack();
                             try {
                                 botSlack.msgProcesso(looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(), nomeServidor, "RAM");
@@ -390,7 +413,6 @@ public class AppDuck {
                 }, 10000, 30000); // 5000 milissegundos = 5 segundos
             }
         }
-
 
     }
 
