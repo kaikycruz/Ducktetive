@@ -142,7 +142,7 @@
                                 PROCESSADORES LÓGICOS
                             </span>
                             <span id="procLogCPU" class="kpi-content">
-                                4
+                                  4
                             </span>
                         </div>
                         <div class="CPU-cards-kpi">
@@ -158,7 +158,7 @@
                                 Percentual de uso
                             </span>
                             <span id="percUsoCpu" class="kpi-content">
-                                86%
+                            <span>%</span>
                             </span>
                         </div>
                     </div>
@@ -170,13 +170,14 @@
 
                     </div>
                 </div>
+
                 <div class="ramCharts">
                     <div class="KPI-ram">
                         <div class="CPU-cards-kpi">
                             <span class="kpi-title">
                                 Total
                             </span>
-                            <span class="kpi-content">
+                            <span id="percUsoCpu"class="kpi-content">
                                 19.8GB
                             </span>
                         </div>
@@ -642,6 +643,8 @@
 
 // Dados CPU
 
+
+
 function obterDadosGraficoCPU(idMetrica) {
     var idServidorVar = idMetrica
   fetch(`/medidas/buscarUltimasMedidasCPU`, {
@@ -795,6 +798,42 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
     });
 }
 
+function obterKPIsCPU(idMetrica) {
+  var idServidorVar = idMetrica
+  var idProcLogVar = document.getElementById("procLogCPU")
+  var idProcFisVar = document.getElementById("procFisCPU")
+  var idPercUsoVar = document.getElementById("percUsoCpu")
+  
+  
+  fetch(`/medidas/buscarKPIsCPU`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+        idProcLogServer: idProcLogVar,
+        idProcFisServer: idProcFisVar,
+        idPercUsoServer: idPercUsoVar
+      }),
+    })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then((json) => {
+           // sessionStorage.ProcLOG = json.procLog
+           // sessionStorage.ProcFIS = json.procFis
+           sessionStorage.PercUso = json.percUso
+
+          
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Graficos RAM deitado
 
@@ -836,15 +875,17 @@ function plotarGraficoRAM(resposta, idMetrica) {
     labels: labels,
     datasets: [
     {
+        label: "em uso",
         data: [],
-        backgroundColor: "rgba(255, 99, 132, 0.2)", // Cor de fundo para a barra
-        borderColor: "rgba(255, 99, 132)", // Cor da borda da barra
+        backgroundColor: "rgba(255,124,51,0.4)", // Cor de fundo para a barra
+        borderColor: "rgba(255,124,51,0.4)", // Cor da borda da barra
         borderWidth: 1,
       },
       {
+        label: "disponivel",
         data: [],
-        backgroundColor: "rgba(54, 162, 235)", // Cor de fundo para a barra
-        borderColor: "rgba(54, 162, 235)", // Cor da borda da barra
+        backgroundColor: "rgba(255, 99, 132, 0.2)", // Cor de fundo para a barra
+        borderColor: "rgba(255, 99, 132)", // Cor da borda da barra
         borderWidth: 1,
       },
     ],
@@ -1335,16 +1376,11 @@ function plotarGraficoRede(resposta, idMetrica) {
       {
         label: "Rede",
         data: [],
-        borderColor:'rgba(255,124,51,1)',
-        backgroundColor: [
-        'rgba(255,124,51,1)',
-        '#ffff'
-     ],
-        tension: 0.7,
+        fill: false,
+        borderColor: "rgba(255,124,51,1)",
+        tension: 0.1,
+        borderWidth: 4
       },
-      {
-      hoverOffset: 4
-      }
     ],
   };
 
@@ -1357,8 +1393,8 @@ function plotarGraficoRede(resposta, idMetrica) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
-    dados.datasets[0].data.push(registro.Porcentagem_USO);
-    dados.datasets[0].data.push(registro.Resto)
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
     // dados.datasets[1].data.push(registro.temperatura);
   }
 
@@ -1372,11 +1408,8 @@ function plotarGraficoRede(resposta, idMetrica) {
 
   // Criando estrutura para plotar gráfico - configCPU
   const configRede = {
-    type: "doughnut",
+    type: "line",
     data: dados,
-    options: {
-    max: 100,
-  },
   };
 
   // Adicionando gráfico criado em div na tela
@@ -1427,10 +1460,9 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].Porcentagem_USO); 
+            dados.datasets[0].data.push(novoRegistro[0].valor); 
             
-            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].Resto);
+            
 
             //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
             //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura

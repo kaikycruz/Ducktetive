@@ -12,6 +12,10 @@ router.post("/buscarMedidasEmTempoRealCPU", function (req, res) {
     medidaController.buscarMedidasEmTempoRealCPU(req, res);
 });
 
+router.post("/buscarKPIsCPU", function (req, res) {
+    medidaController.buscarKPIsCPU(req, res);
+});
+
 
 //RAM
 router.post("/buscarUltimasMedidasRAM", function (req, res) {
