@@ -28,6 +28,8 @@
 
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
   </head>
 
   <body onload="payload()">
@@ -288,7 +290,6 @@
                 var numero = JSON.stringify(json[i].numero).substring(1, JSON.stringify(json[i].numero).length - 1);
                 var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
                 var statusServidor = JSON.stringify(json[i].statusServidor).substring(1, JSON.stringify(json[i].statusServidor).length - 1);
-
                 
 
                 criarServidor(

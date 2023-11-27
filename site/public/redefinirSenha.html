@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
     <!-- include a theme -->
     <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
 </head>
 <body>
 
@@ -81,11 +83,8 @@ async function redefinir() {
       var novaSenhaVar = input_new_password.value
       var confirmacaonovaSenhaVar = input_confirm_new_password.value
 
-      novaSenhaVar = hashSenha(novaSenhaVar)
-      const senha = 'minhaSenha123';
-      const hash = await hashSenha(senha);
-        
-      novaSenhaVar = hash
+      novaSenhaVar = senhaParaSHA256(novaSenhaVar)
+
       
 
       if (
@@ -158,18 +157,12 @@ async function redefinir() {
         cardErro.style.display = "none"
     }
 
-    async function hashSenha(senha) {
-            // Converte a senha para ArrayBuffer
-            const encoder = new TextEncoder();
-            const senhaBuffer = encoder.encode(senha);
+    function senhaParaSHA256(text) {
+    // Calcular o hash SHA-256 usando CryptoJS
+    var hash = CryptoJS.SHA256(text);
 
-            // Calcula o hash SHA-256
-            const hashBuffer = await crypto.subtle.digest('SHA-256', senhaBuffer);
-
-            // Converte o ArrayBuffer resultante para uma string hexadecimal
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-            return hashHex;
-        }
+    // Retornar o hash como uma string hexadecimal
+    return hash.toString(CryptoJS.enc.Hex);
+}
 
 </script>
