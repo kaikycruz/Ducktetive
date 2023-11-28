@@ -141,12 +141,12 @@ function buscarUltimasMedidasREDE(idServidor) {
                     where fk_aquario = ${idMetrica}
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = ` SELECT
+    instrucaoSql = `  SELECT
     c.nome,
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    (select format(m.valor / 1000000,0)) AS valor,
+    (select (REPLACE((select format(m.valor / 1000000,0)), ',', '.'))) AS valor,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
@@ -307,12 +307,12 @@ function buscarMedidasEmTempoRealREDE(idServidor) {
                         from medida where fk_aquario = ${idAquario} 
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `SELECT
+    instrucaoSql = ` SELECT
     c.nome,
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    (select format(m.valor / 1000000,0)) AS valor,
+    (select (REPLACE((select format(m.valor / 1000000,0)), ',', '.'))) AS valor,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
