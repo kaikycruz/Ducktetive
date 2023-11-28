@@ -595,7 +595,7 @@
      obterDadosGraficoRAM(id)
      obterDadosGraficoRAMlinha(id)
      obterDadosGraficoDisco(id)
-    obterDadosGraficoRede(id)
+     obterDadosGraficoRede(id)
     
     var baseStr64 = sessionStorage.FOTO_PERFIL;
     if (sessionStorage.FOTO_PERFIL == 'null'){
@@ -1660,7 +1660,7 @@ function buscarParametroServidores() {
 
 
 
-    if(RAM > parametroMaximoRAM){
+    if(RAM > parametroMaximoRAM || RAM < parametroMinimoRAM){
       alertarUsuario(`critico`, `RAM`, `${RAM}`)
     }else if(RAM < SegundoQuartilRAM || RAM > TerceiroQuartilRAM){
       alertarUsuario(`aviso`, `RAM`, `${RAM}`)
