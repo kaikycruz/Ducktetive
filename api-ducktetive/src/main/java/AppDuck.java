@@ -3,6 +3,7 @@ import Slack.BotSlack;
 import Users.Usuario;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
+import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,8 +22,8 @@ public class AppDuck {
         JdbcTemplate con = conexao.getConexaoBanco();
         Scanner in = new Scanner(System.in);
         Timer timer = new Timer();
-
         inserirDadosMetrica(con, looca, timer);
+        pausarProcessos(looca, con);
         Integer opcao;
         do {
             System.out.println("""
@@ -130,7 +131,7 @@ public class AppDuck {
                         // INSERT DISCO
                         for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
 
-                            long tamanhoTotal = disco.getBytesDeEscritas() + disco.getBytesDeLeitura();
+                            long tamanhoTotal = disco.getBytesDeEscritas();
 
                             con.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
 
@@ -165,7 +166,7 @@ public class AppDuck {
                     }
                 }
             }
-        }, 1000, 1000);
+        }, 2000, 5000);
     }
 
 
@@ -318,6 +319,8 @@ public class AppDuck {
         }
     }
 
+
+
     public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor) throws IOException, InterruptedException {
 
         for (int i = 0; i < looca.getGrupoDeProcessos().getProcessos().size() ; i++) {
@@ -344,7 +347,7 @@ public class AppDuck {
                             }
                         }
                     }
-                }, 20000, 30000); // 5000 milissegundos = 5 segundos
+                }, 20000, 50000); // 5000 milissegundos = 5 segundos
             }
 
             if (looca.getGrupoDeProcessos().getProcessos().get(i).getUsoMemoria() > ramLimite){
@@ -360,9 +363,6 @@ public class AppDuck {
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoCpu(),
                                     looca.getGrupoDeProcessos().getProcessos().get(finalI).getUsoMemoria(), servidor,1, 3);
 
-
-
-
                             BotSlack botSlack = new BotSlack();
                             try {
                                 botSlack.msgProcesso(looca.getGrupoDeProcessos().getProcessos().get(finalI).getNome(), nomeServidor, "RAM");
@@ -373,7 +373,7 @@ public class AppDuck {
                             }
                         }
                     }
-                }, 20000, 30000); // 5000 milissegundos = 5 segundos
+                }, 20000, 50000); // 5000 milissegundos = 5 segundos
             }
         }
 
@@ -383,17 +383,17 @@ public class AppDuck {
         final Boolean[] timeoutAtivo = {false};
         Double porcetagem = 0.0;
         if (componente.equals("RAM")){
-            double bytes = valorCaptura / 8.0;
-            double gb = bytes / (1024.0 * 1024.0 * 1024.0);
-            porcetagem = gb / config.getTamanhoTotal();
+            porcetagem = (double) valorCaptura / config.getTamanhoTotal() * 100;
+            System.out.println("RAM" + porcetagem);
         } else if (componente.equals("DISCO")){
-            double bytes = valorCaptura / 8.0;
-            double gb = bytes / (1024.0 * 1024.0 * 1024.0);
-            porcetagem = gb / config.getTamanhoTotal();
+            porcetagem = (double) valorCaptura / config.getTamanhoTotal() * 100;
+            System.out.println("DISCO" + porcetagem);
         } else if (componente.equals("REDE")){
            porcetagem =(double) valorCaptura / config.getTamanhoTotal() * 100;
+            System.out.println("rede" + porcetagem);
         }
 
+        System.out.println(porcetagem + " > " +limite);
         if (porcetagem >= limite){
 
             if (!timeoutAtivo[0]) {
@@ -410,6 +410,91 @@ public class AppDuck {
             }
         }
 
+    }
+
+    public static void pausarProcessos(Looca looca, JdbcTemplate con){
+        List<Processo> processos = con.query("SELECT * FROM Processo WHERE fkAcaoProcesso != 3;", new BeanPropertyRowMapper<>(Processo.class));
+
+        String nomeProcesso = processos.get(0).getNome();
+        for (Processo p: looca.getGrupoDeProcessos().getProcessos()){
+
+            if (p.getNome().equals(nomeProcesso)){
+
+                String pId = String.valueOf(p.getPid());
+                if (looca.getSistema().getSistemaOperacional().equals("Windows")){
+                    kilProcessWindows(pId);
+
+                } else {
+                    pauseProcessUbuntu(pId);
+                    // Aguarde por um tempo (apenas para ilustração)
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    // Continue o mesmo processo
+                    resumeProcessUbuntu(pId);
+                }
+            }
+        }
+
+    }
+
+    public static void kilProcessWindows(String pId){
+        String processoParaEncerrar = pId;
+
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder("taskkill", "/F", "/IM", processoParaEncerrar);
+            Process process = processBuilder.start();
+
+            int exitCode = process.waitFor();
+            if (exitCode == 0) {
+                System.out.println("Processo encerrado com sucesso.");
+            } else {
+                System.out.println("Erro ao encerrar o processo. Código de saída: " + exitCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void pauseProcessUbuntu(String pid) {
+        try {
+            // Construa o comando para pausar o processo
+            String[] command = {"kill", "-STOP", pid};
+            Process process = new ProcessBuilder(command).start();
+
+            // Aguarde o término do processo
+            int exitCode = process.waitFor();
+
+            if (exitCode == 0) {
+                System.out.println("Processo com PID " + pid + " pausado com sucesso.");
+            } else {
+                System.out.println("Erro ao pausar o processo com PID " + pid + ". Código de saída: " + exitCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void resumeProcessUbuntu(String pid) {
+        try {
+            // Construa o comando para continuar o processo
+            String[] command = {"kill", "-CONT", pid};
+            Process process = new ProcessBuilder(command).start();
+
+            // Aguarde o término do processo
+            int exitCode = process.waitFor();
+
+            if (exitCode == 0) {
+                System.out.println("Processo com PID " + pid + " continuado com sucesso.");
+            } else {
+                System.out.println("Erro ao continuar o processo com PID " + pid + ". Código de saída: " + exitCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

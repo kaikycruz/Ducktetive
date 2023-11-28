@@ -7,6 +7,7 @@
     <title>Ducktetive | Dashboards</title>
 
     <link rel="stylesheet" href="../css/dashboards.css" />
+    <link rel="stylesheet" href="../css/alertas.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -141,6 +142,13 @@
         </div>
       </section>
     </main>
+    
+    <div id="containerAlerts">
+        
+      </div>
+    
+    </div>
+    
   </body>
 </html>
 
@@ -393,6 +401,10 @@
       return false;
     } 
 
+    if(statusServer.value == "Inativo"){
+      ale
+    }
+
     // Enviando o valor da nova input
     fetch("/usuarios/alterarStatusServidor", {
       method: "POST",
@@ -434,7 +446,7 @@
     return false;
   }
 
-  function carregarImagem() {
+function carregarImagem() {
             const inputFile = sessionStorage.FOTO_PERFIL;
             const imagemRenderizada = document.getElementById('user-data');
             // Verifica se um arquivo foi selecionado
@@ -464,6 +476,39 @@
             } else {
                 alert('Selecione uma imagem antes de carregar.');
             }
-        }
+}
+
+async function alertarUsuario(criticidade, componente, metrica){
+  listaDeServidores = document.querySelector("#containerAlerts");
+  listaDeServidores.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div class="alerta">
+      <div class="alertIcon ${criticidade}">
+      </div>
+      <div class="alertDescription">
+        O componente: <span class="componenteAlert">${componente}</span> está em niveis criticos: <span class="componenteAlert">${metrica}</span> <br> 
+      <a href=""><span class="actionProcess">Veja os processos! </span></a>
+      </div>
+      
+    </div>
+    `)
+    
+    
+}
+
+function limparAlerta() {
+  var listaDeServidores = document.querySelector("#containerAlerts");
+
+  // Verificar se há filhos para remover
+  if (listaDeServidores.children.length > 0) {
+    // Remover a última div filho
+    listaDeServidores.removeChild(listaDeServidores.lastElementChild);
+    setTimeout(limparAlerta, 5000)
+  }
+}
+setInterval(limparAlerta, 5000)
+
+
 
 </script>
