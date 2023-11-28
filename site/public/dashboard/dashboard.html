@@ -142,7 +142,7 @@
                                 PROCESSADORES LÓGICOS
                             </span>
                             <span id="procLogCPU" class="kpi-content">
-                                  4
+                                  
                             </span>
                         </div>
                         <div class="CPU-cards-kpi">
@@ -150,7 +150,7 @@
                                 PROCESSADORES FÍSICOS
                             </span>
                             <span id="procFisCPU" class="kpi-content">
-                                2
+                                
                             </span>
                         </div>
                         <div class="CPU-cards-kpi" id="cpu-frequency">
@@ -158,7 +158,7 @@
                                 Percentual de uso
                             </span>
                             <span id="percUsoCpu" class="kpi-content">
-                            <span>%</span>
+                            <span id="valorCPU">%</span>
                             </span>
                         </div>
                     </div>
@@ -177,24 +177,24 @@
                             <span class="kpi-title">
                                 Total
                             </span>
-                            <span id="percUsoCpu"class="kpi-content">
-                                19.8GB
+                            <span id="totalRam"class="kpi-content">
+                                
                             </span>
                         </div>
                         <div class="CPU-cards-kpi">
                             <span class="kpi-title">
                                 Em uso
                             </span>
-                            <span class="kpi-content">
-                                10.2GB
+                            <span id="ramEmUso" class="kpi-content">
+                                
                             </span>
                         </div>
                         <div class="CPU-cards-kpi" id="ram-frequency">
                             <span class="kpi-title">
                                 Percentual de uso
                             </span>
-                            <span class="kpi-content">
-                                49%
+                            <span id="percUsoRam" class="kpi-content">
+                                
                             </span>
                         </div>
                     </div>  
@@ -215,21 +215,13 @@
                     <div class="KPI-cards">
                         <div class="disco-cards-kpi">
                             <span class="kpi-content read-write">
-                                Leitura : 4.2 MB/s
+                                Total : <span id="totalDisco"></span> 
                             </span>
                             <span class="kpi-content read-write">
-                                Escrita : 4.2 MB/s
-                            </span>
-                        </div>
-                        <div class="disco-cards-kpi">
-                            <span class="kpi-content read-write">
-                                Total : 1 TB
+                                Disponivel : <span id="disponivelDisco"></span>
                             </span>
                             <span class="kpi-content read-write">
-                                Disponivel : 354 GBs
-                            </span>
-                            <span class="kpi-content read-write">
-                                Percentual de uso: 35%
+                                Percentual de uso: <span id="percDisco"></span>
                             </span>
                             
                             
@@ -263,8 +255,8 @@
                             <span class="kpi-content read-write">
                                 Nome Rede:
                             </span>
-                            <span class="kpi-content read-write">
-                                Starbucks
+                            <span id="nomeRede" class="kpi-content read-write">
+                                
                             </span>
                         </div>
                         
@@ -272,8 +264,8 @@
                             <span class="kpi-title">
                                 Pacotes Recebidos 
                             </span>
-                            <span class="kpi-content">
-                                369 
+                            <span id="pacotesRecebidos" class="kpi-content">
+                               
                             </span>
                     </div>
                     
@@ -757,19 +749,16 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
             novoRegistro[0].momento_grafico ==
             dados.labels[dados.labels.length - 1]
           ) {
-            console.log(
-              "---------------------------------------------------------------"
-            );
-            console.log(
-              "Como não há dados novos para captura, o gráfico não atualizará."
-            );
-            console.log("Horário do novo dado capturado:");
-            console.log(novoRegistro[0].momento_grafico);
-            console.log("Horário do último dado capturado:");
-            console.log(dados.labels[dados.labels.length - 1]);
-            console.log(
-              "---------------------------------------------------------------"
-            );
+            dados.labels.shift(); 
+            dados.labels.push(novoRegistro[0].momento_grafico);
+
+            dados.datasets[0].data.shift(); 
+            dados.datasets[0].data.push(novoRegistro[0].valor);
+
+            dados.datasets[0].data.push(novoRegistro[0].cpuFisica);
+            dados.datasets[0].data.push(novoRegistro[0].cpuLogica);
+           
+            myChartCPU.update();
           } else {
             // tirando e colocando valores no gráfico
             dados.labels.shift(); // apagar o primeiro
@@ -777,18 +766,19 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
-
-            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            valorCPU.innerHTML = `${novoRegistro[0].valor}%`
+            procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
+            procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
 
             myChartCPU.update();
-          }
-
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(
+            proximaAtualizacao = setTimeout(
             () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
             2000
           );
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          
         });
       } else {
         console.error("Nenhum dado encontrado ou erro na API");
@@ -985,6 +975,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             console.log(dados.labels[dados.labels.length - 1]);
             console.log(
               "---------------------------------------------------------------"
+              
             );
           } else {
             // tirando e colocando valores no gráfico
@@ -994,8 +985,12 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
 
-            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            dados.datasets[0].data.push(novoRegistro[0].total);
+
+            totalRam.innerHTML = `${novoRegistro[0].total}GB`
+            ramEmUso.innerHTML = `${novoRegistro[0].valor}GB`
+            percUsoRam.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
+
 
             myChartRAMdeitada.update();
           }
@@ -1311,10 +1306,13 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+            dados.datasets[0].data.push(novoRegistro[0].valor); 
 
-            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            totalDisco.innerHTML = `${novoRegistro[0].total}`
+
+            disponivelDisco.innerHTML = `${novoRegistro[0].total - novoRegistro[0].valor}`
+
+            percDisco.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
 
             myChartDisco.update();
           }
@@ -1416,6 +1414,26 @@ function plotarGraficoRede(resposta, idMetrica) {
   const configRede = {
     type: "line",
     data: dados,
+    options: {
+    responsive: true,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    stacked: false,
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+      },
+    }
+  },
   };
 
   // Adicionando gráfico criado em div na tela
@@ -1468,10 +1486,10 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); 
             
-            
+            dados.datasets[0].data.push(novoRegistro[0].nomeRede); 
 
-            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            nomeRede.innerHTML = `${novoRegistro[0].nomeRede}`
+            pacotesRecebidos.innerHTML = `${novoRegistro[0].valor}`
 
             myChartRede.update();
           }
