@@ -244,6 +244,29 @@ function buscarServidores(idEmpresa) {
   return database.executar(instrucao);
 }
 
+
+function buscarParametroServidores(idServidor) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    idServidor
+  );
+  var instrucao = `
+  SELECT servidor.idServidor,
+ servidor.nome as nomeServidor,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'CPU') as maximoCPU,
+ (select minimo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'CPU') as minimoCPU,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'RAM') as maximoRAM,
+ (select minimo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'RAM') as minimoRAM,
+  (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'DISCO') as maximoDISCO,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'REDE') as maximoREDE
+ FROM servidor 
+ WHERE servidor.idServidor = ${idServidor};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+
 function buscarParametros(idEmpresa) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
@@ -498,6 +521,7 @@ module.exports = {
   excluirConta,
   reativarConta,
   buscarServidores,
+  buscarParametroServidores,
   buscarParametros,
   cadastrarServidor,
   cadastrarUsuario,

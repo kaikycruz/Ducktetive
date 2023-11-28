@@ -8,6 +8,8 @@
     <title>Ducktetive | Dashboards</title>
 
     <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="../css/alertas.css">
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -561,6 +563,9 @@
 
     <!-- <script src="../js/dashDinamica.js"></script>  -->
   <!--<script src="../js/graficos.js"></script>-->
+  <div id="containerAlerts">
+            
+  </div>
 </body>
 
 </html>
@@ -577,6 +582,8 @@
     
         b_usuario.innerHTML = `${NOME_USUARIO}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+
+        buscarParametroServidores()
         
     
 
@@ -584,10 +591,10 @@
     const id = pegaURL.searchParams.get('id')
     console.log(`servidor ${id}`)
     //buscarUltimasMedidas(id)
-    // obterDadosGraficoCPU(id)
-    // obterDadosGraficoRAM(id)
-    // obterDadosGraficoRAMlinha(id)
-    // obterDadosGraficoDisco(id)
+     obterDadosGraficoCPU(id)
+     obterDadosGraficoRAM(id)
+     obterDadosGraficoRAMlinha(id)
+     obterDadosGraficoDisco(id)
     obterDadosGraficoRede(id)
     
     var baseStr64 = sessionStorage.FOTO_PERFIL;
@@ -776,12 +783,14 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
             procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
             procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
             valorCPU.innerHTML = `${novoRegistro[0].valor}%`
+            checarParametrosCPU(novoRegistro[0].valor)
 
 
             myChartCPU.update();
+            
           }
           proximaAtualizacao = setTimeout(
-            () => atualizarGraficoRAM(idMetrica, dados, myChartCPU),
+            () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
             2000
           );
         });
@@ -995,7 +1004,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             totalRam.innerHTML = `${novoRegistro[0].total}GB`
             ramEmUso.innerHTML = `${novoRegistro[0].valor}GB`
             percUsoRam.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
-
+            checarParametrosRAM(`${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`)
 
             myChartRAMdeitada.update();
           }
@@ -1154,6 +1163,7 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+            checarParametrosRAM(novoRegistro[0].valor)
 
             //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
             //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
@@ -1312,6 +1322,8 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); 
+            checarParametrosDISCO(novoRegistro[0].valor)
+
 
             totalDisco.innerHTML = `${novoRegistro[0].total}`
 
@@ -1359,8 +1371,6 @@ function obterDadosGraficoRede(idMetrica) {
       if (response.ok) {
         response.json().then(function (resposta) {
           console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-          alert(JSON.stringify(resposta))
-          alert(idMetrica)
           resposta.reverse();
           plotarGraficoRede(resposta, idMetrica);
         });
@@ -1471,6 +1481,7 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             valorCPU.innerHTML = `${novoRegistro[0].valor}%`
             procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
             procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
+            checarParametrosREDE(novoRegistro[0].valor)
 
             myChartCPU.update();
             proximaAtualizacao = setTimeout(
@@ -1494,5 +1505,204 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
 
 }
 
+function verificarParametros(){
+
+}
+
+
+async function alertarUsuario(criticidade, componente, metrica){
+  listaDeServidores = document.querySelector("#containerAlerts");
+  listaDeServidores.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div class="alerta">
+      <div class="alertIcon ${criticidade}">
+      </div>
+      <div class="alertDescription">
+        O componente: <span class="componenteAlert">${componente}</span> está em niveis criticos: <span class="componenteAlert">${metrica}</span> <br> 
+      <a href=""><span class="actionProcess">Veja os processos! </span></a>
+      </div>
+      
+    </div>
+    `)
+    
+    
+}
+
+function limparAlerta() {
+  var listaDeServidores = document.querySelector("#containerAlerts");
+
+  // Verificar se há filhos para remover
+  if (listaDeServidores.children.length > 0) {
+    // Remover a última div filho
+    listaDeServidores.removeChild(listaDeServidores.lastElementChild);
+    setTimeout(limparAlerta, 5000)
+  }
+}
+setInterval(limparAlerta, 5000)
+
+function buscarParametroServidores() {
+  const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    var idServidorVar = id;
+
+    if (idServidorVar == "") {
+      alertify.error("Preencha todos os campos");
+      return false;
+    }
+
+    fetch("/usuarios/buscarParametroServidores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+            console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length;
+            if (quantidadeDeServidor > 0) {
+              console.log(
+                "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                quantidadeDeServidor
+              );
+
+              for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i]);
+                var idServidor = JSON.stringify(json[i].idServidor);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor);
+                var maximoCPU = JSON.stringify(json[i].maximoCPU);
+                var minimoCPU = JSON.stringify(json[i].minimoCPU);
+                var maximoRAM = JSON.stringify(json[i].maximoRAM);
+                var minimoRAM = JSON.stringify(json[i].minimoRAM);
+                var maximoDISCO = JSON.stringify(json[i].maximoDISCO);
+                var maximoREDE = JSON.stringify(json[i].maximoREDE);
+
+
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
+                // var maximoCPU = JSON.stringify(json[i].maximoCPU).substring(1, JSON.stringify(json[i].maximoCPU).length - 1);
+                // var minimoCPU = JSON.stringify(json[i].minimoCPU).substring(1, JSON.stringify(json[i].minimoCPU).length - 1);
+                // var maximoRAM = JSON.stringify(json[i].maximoRAM).substring(1, JSON.stringify(json[i].maximoRAM).length - 1);
+                // var minimoRAM = JSON.stringify(json[i].minimoRAM).substring(1, JSON.stringify(json[i].minimoRAM).length - 1);
+                // var maximoDISCO = JSON.stringify(json[i].maximoDISCO).substring(1, JSON.stringify(json[i].maximoDISCO).length - 1);
+                // var maximoREDE = JSON.stringify(json[i].maximoREDE).substring(1, JSON.stringify(json[i].maximoREDE).length - 1);               
+                sessionStorage.maximoCPU = JSON.stringify(json[i].maximoCPU)
+                sessionStorage.minimoCPU = Number( minimoCPU)
+                sessionStorage.maximoRAM = Number( maximoRAM)
+                sessionStorage.minimoRAM = Number( minimoRAM)
+                sessionStorage.maximoDISCO = Number( maximoDISCO)
+                sessionStorage.maximoREDE = Number( maximoREDE)
+                
+
+                alertarUsuario(``)
+
+              }
+            }
+            console.log(
+              "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            );
+          });
+        } else {
+          console.log("teste");
+          throw alertify.error(
+            "Erro ao realizar login, verifique suas credenciais"
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+
+  function checarParametrosCPU(CPU){
+    var metrica = CPU
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+    
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+    if(metrica > parametroMaximoCPU || metrica < parametroMinimoCPU){
+      alertarUsuario(`critico`, `CPU`, `${metrica}`)
+    }else if(metrica < SegundoQuartilCPU || metrica > TerceiroQuartilCPU){
+      alertarUsuario(`aviso`, `CPU`, `${metrica}`)
+    }
+
+
+  }
+  function checarParametrosRAM(RAM){
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+
+    if(RAM > parametroMaximoRAM){
+      alertarUsuario(`critico`, `RAM`, `${RAM}`)
+    }else if(RAM < SegundoQuartilRAM || RAM > TerceiroQuartilRAM){
+      alertarUsuario(`aviso`, `RAM`, `${RAM}`)
+    }
+   
+
+  }
+  function checarParametrosDISCO(DISCO){
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+    if(DISCO > parametroMaximoDISCO){
+      alertarUsuario(`critico`, `DISCO`, `${DISCO}`)
+    }
+  }
+  function checarParametrosREDE(REDE){
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+    if(REDE > parametroMaximoREDE){
+      alertarUsuario(`critico`, `REDE`, `${REDE}`)
+    }
+  }
 
 </script>

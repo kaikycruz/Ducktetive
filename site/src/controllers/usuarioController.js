@@ -471,6 +471,57 @@ function buscarServidores(req, res) {
   }
 }
 
+function buscarParametroServidores(req, res) {
+  var idServidor = req.body.idServidorServer;
+
+
+  if (idServidor == undefined) {
+    res.status(400).send("Seu idServidor está undefined!");
+  } else {
+    usuarioModel
+      .buscarParametroServidores(idServidor)
+      .then(function (resultadobuscarParametroServidores) {
+        console.log(`\nResultados encontrados: ${resultadobuscarParametroServidores.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadobuscarParametroServidores)}`); // transforma JSON em String
+
+        if (resultadobuscarParametroServidores.length > 0) {
+          console.log(resultadobuscarParametroServidores);
+          res.json(resultadobuscarParametroServidores);
+
+          // alteracao futura para criar servidor
+
+          //   aquarioModel
+          //     .buscarAquariosPorEmpresa(resultadobuscarParametroServidores[0].empresaId)
+          //     .then((resultadoAquarios) => {
+          //       if (resultadoAquarios.length > 0) {
+          //         res.json({
+          //           id: resultadobuscarParametroServidores[0].id,
+          //           email: resultadobuscarParametroServidores[0].email,
+          //           nome: resultadobuscarParametroServidores[0].nome,
+          //           senha: resultadobuscarParametroServidores[0].senha,
+          //         });
+          //       } else {
+          //         res.status(204).json({ aquarios: [] });
+          //       }
+          //     });
+        } 
+        // else if (resultadobuscarParametroServidores.length == 0) {
+        //   res.status(403).send("Email e/ou senha inválido(s)");
+        // } else {
+        //   res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        // }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 function buscarParametros(req, res) {
   var idEmpresa = req.body.idEmpresaServer;
 
@@ -797,6 +848,7 @@ module.exports = {
   excluirConta,
   reativarConta,
   buscarServidores,
+  buscarParametroServidores,
   buscarParametros,
   cadastrarServidor,
   cadastrarUsuario,

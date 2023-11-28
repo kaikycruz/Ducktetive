@@ -36,6 +36,10 @@ router.post("/buscarServidores", function (req, res) {
     usuarioController.buscarServidores(req, res);
 }) 
 
+router.post("/buscarParametroServidores", function (req, res) {
+    usuarioController.buscarParametroServidores(req, res);
+}) 
+
 router.post("/buscarParametros", function (req, res) {
     usuarioController.buscarParametros(req, res);
 }) 
