@@ -57,6 +57,15 @@
                       <p class="item-text">Dashboard</p>
                     </div>
                 </div>
+                <a href="visualizarProcessos.html?id=" id="linkProcessos">
+                <div class="dash-item">
+                  <div class="menu" >
+                      <div class="icon">
+                        <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                      </div>
+                    <p class="item-text">Processos</p>
+                  </div>
+              </div></a>
             </div>
             
               
@@ -589,6 +598,9 @@
 
     const pegaURL = new URL(window.location)
     const id = pegaURL.searchParams.get('id')
+
+    var paginaProcessos = document.getElementById(`linkProcessos`);
+    paginaProcessos.href = `visualizarProcessos.html?id=${id}`
     console.log(`servidor ${id}`)
     //buscarUltimasMedidas(id)
      obterDadosGraficoCPU(id)

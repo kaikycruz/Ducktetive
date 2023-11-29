@@ -840,6 +840,86 @@ function alterarStatusUsuario(req, res) {
     });
 }
 
+
+function buscarProcessos(req, res) {
+  var idServidor = req.body.idServidorServer;
+
+
+  if (idServidor == undefined) {
+    res.status(400).send("Seu idServidor está undefined!");
+  } else {
+    usuarioModel
+      .buscarProcessos(idServidor)
+      .then(function (resultadobuscarProcessos) {
+        console.log(`\nResultados encontrados: ${resultadobuscarProcessos.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadobuscarProcessos)}`); // transforma JSON em String
+
+        if (resultadobuscarProcessos.length > 0) {
+          console.log(resultadobuscarProcessos);
+          res.json(resultadobuscarProcessos);
+
+          // alteracao futura para criar servidor
+
+          //   aquarioModel
+          //     .buscarAquariosPorEmpresa(resultadobuscarProcessos[0].empresaId)
+          //     .then((resultadoAquarios) => {
+          //       if (resultadoAquarios.length > 0) {
+          //         res.json({
+          //           id: resultadobuscarProcessos[0].id,
+          //           email: resultadobuscarProcessos[0].email,
+          //           nome: resultadobuscarProcessos[0].nome,
+          //           senha: resultadobuscarProcessos[0].senha,
+          //         });
+          //       } else {
+          //         res.status(204).json({ aquarios: [] });
+          //       }
+          //     });
+        } 
+        // else if (resultadobuscarProcessos.length == 0) {
+        //   res.status(403).send("Email e/ou senha inválido(s)");
+        // } else {
+        //   res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        // }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+function alterarStatusprocesso(req, res) {
+  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+  var idUsuario = req.body.idUsuarioServer;
+
+  // Faça as validações dos valores
+  if (idUsuario == undefined) {
+    res.status(400).send("Seu idUsuario está undefined!");
+  }
+
+  // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
+  usuarioModel
+    .alterarStatusprocesso(
+      idUsuario
+    )
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   autenticar,
   cadastrar,
@@ -856,5 +936,7 @@ module.exports = {
   alterarStatusServidor,
   alterarDadosServidor,
   buscarUsuarios,
-  alterarStatusUsuario
+  alterarStatusUsuario,
+  buscarProcessos,
+  alterarStatusprocesso
 };

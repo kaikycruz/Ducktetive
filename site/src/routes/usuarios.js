@@ -68,6 +68,14 @@ router.post("/alterarStatusUsuario", function (req, res) {
     usuarioController.alterarStatusUsuario(req, res);
 }) 
 
+router.post("/buscarProcessos", function (req, res) {
+    usuarioController.buscarProcessos(req, res);
+}) 
+
+router.post("/alterarStatusprocesso", function (req, res) {
+    usuarioController.alterarStatusprocesso(req, res);
+}) 
+
 
 
 module.exports = router;
