@@ -148,13 +148,11 @@
         <div id="users-list">
             <div class="user" id="usersList" >
                 <ul class="userData header">
-                    <li class="data name">Nome</li>
-                    <li class="data email">Email</li>
-                    <li class="data cargo">Cargo</li>
-                    <li class="data cidade">Cidade</li>
-                    <li class="data estado">Estado</li>
-                    <li class="data telefone">Telefone</li>
-                    <li class="data status">Status</li>
+                    <li class="data pid">PID</li>
+                    <li class="data nameProcesso">Nome</li>
+                    <li class="data cpu">Consumo CPU</li>
+                    <li class="data ram">Consumo CPU</li>
+                    <li class="data status">Ação</li>
                 </ul>
                 
                 
@@ -199,15 +197,11 @@
   }
 
   function criarProcesso(
-    idprocesso,
+    PID,
     nome,
-    sobrenome,
-    email,
-    cargo,
-    cidade,
-    estado,
-    telefone,
-    ativo
+    cpu,
+    RAM,
+    status
   ) {
     listaDeServidores = document.querySelector("#usersList");
     listaDeServidores.insertAdjacentHTML(
@@ -215,13 +209,11 @@
       `
       
     <ul class="userData">
-        <li class="data name">${nome} ${sobrenome}</li>
-        <li class="data email">${email}</li>
-        <li class="data cargo">${cargo}</li>
-        <li class="data cidade">${cidade}</li>
-        <li class="data estado">${estado}</li>
-        <li class="data telefone">${telefone}</li>
-        <li class="data status"> <div id="status">${ativo}</div> <div class="userStatus ${ativo}" id="userStatus" onclick="alterarStatusProcesso(${idprocesso})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+        <li class="data pid">${PID}</li>
+        <li class="data nameProcesso">${nome}</li>
+        <li class="data cpu">${cpu}</li>
+        <li class="data ram">${RAM}</li>
+        <li class="data status"> <div id="status">Matar</div> <div class="userStatus matar" id="userStatus" onclick="alterarStatusProcesso(${PID})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
         </div></li>
     </ul>
 

@@ -1017,11 +1017,11 @@ span div span b {
 }
 
 .dashboard-content #users-list .user .userData .email {
-  width: 250px;
+  width: 200px;
 }
 
 .dashboard-content #users-list .user .userData .cargo {
-  width: 80px;
+  width: 114px;
 }
 
 .dashboard-content #users-list .user .userData .cidade {
@@ -1040,7 +1040,10 @@ span div span b {
   gap: 5px;
   justify-content: end;
   width: 150px;
+  margin-right: 10px;
 }
+
+
 
 .dashboard-content #users-list .user .userData .status .userStatus {
   display: flex;
@@ -1058,7 +1061,7 @@ span div span b {
   border-radius: 10px;
 }
 
-.Inativo {
+.matar {
   background-color: red;
 }
 
@@ -1068,4 +1071,26 @@ span div span b {
 
 .Manutenção {
   background-color: #ffcf26;
+}
+
+.status{
+}
+
+
+.dashboard-content #users-list .user .userData .pid{
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.dashboard-content #users-list .user .userData .cpu{
+  width: 130px;
+}
+.dashboard-content #users-list .user .userData .ram{
+  width: 100px;
+}
+
+
+.dashboard-content #users-list .user .userData .nameProcesso {
+  padding-left: 15px;
+  width: 75px;
 }
