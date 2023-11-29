@@ -789,9 +789,6 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
             dados.datasets[0].data.shift(); 
             dados.datasets[0].data.push(novoRegistro[0].valor);
 
-            dados.datasets[0].data.push(novoRegistro[0].cpuFisica);
-            dados.datasets[0].data.push(novoRegistro[0].cpuLogica);
-
             procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
             procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
             valorCPU.innerHTML = `${novoRegistro[0].valor}%`
@@ -902,13 +899,7 @@ function plotarGraficoRAM(resposta, idMetrica) {
         backgroundColor: "rgba(255,124,51,0.4)", // Cor de fundo para a barra
         borderColor: "rgba(255,124,51,0.4)", // Cor da borda da barra
         borderWidth: 1,
-      },
-      {
-        label: "disponivel",
-        data: [],
-        backgroundColor: "rgba(255, 99, 132, 0.2)", // Cor de fundo para a barra
-        borderColor: "rgba(255, 99, 132)", // Cor da borda da barra
-        borderWidth: 1,
+
       },
     ],
   };
@@ -941,14 +932,14 @@ function plotarGraficoRAM(resposta, idMetrica) {
     data: dados,
     options: {
     indexAxis: "y", // Mudança para o eixo y para sobrepor as barras
-    barPercentage: -100, // Ajuste para sobrepor as barras
+    barPercentage: 100, // Ajuste para sobrepor as barras
     scales: {
       x: {
         beginAtZero: true,
       },
       y: {
         beginAtZero: true,
-        max: 100,
+        max: totalRam,
       },
     },
   },
@@ -1011,7 +1002,6 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
             dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
 
-            dados.datasets[0].data.push(novoRegistro[0].total);
 
             totalRam.innerHTML = `${novoRegistro[0].total}GB`
             ramEmUso.innerHTML = `${novoRegistro[0].valor}GB`
@@ -1174,8 +1164,8 @@ function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
-            checarParametrosRAM(novoRegistro[0].valor)
+            dados.datasets[0].data.push(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)); // incluir uma nova medida de umidade
+            checarParametrosRAM(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100))
 
             //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
             //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
@@ -1439,20 +1429,20 @@ console.log(dados.datasets);
 console.log("----------------------------------------------");
 
 // Criando estrutura para plotar gráfico - configCPU
-const configCPU = {
+const configRede = {
   type: "line",
   data: dados,
 };
 
 // Adicionando gráfico criado em div na tela
-let myChartCPU = new Chart(document.getElementById(`uso_rede`), configCPU);
+let myChartRede = new Chart(document.getElementById(`uso_rede`), configRede);
 
-setTimeout(() => atualizarGraficoCPU(idMetrica, dados, myChartCPU), 2000);
+setTimeout(() => atualizarGraficoRede(idMetrica, dados, myChartRede), 2000);
 }
 
 function atualizarGraficoRede(idMetrica, dados, myChartRede) {
   var idServidorVar = idMetrica
-  fetch(`/medidas/buscarMedidasEmTempoReal`, {
+  fetch(`/medidas/buscarMedidasEmTempoRealREDE`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1473,40 +1463,44 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             novoRegistro[0].momento_grafico ==
             dados.labels[dados.labels.length - 1]
           ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            
             dados.labels.shift(); 
             dados.labels.push(novoRegistro[0].momento_grafico);
 
             dados.datasets[0].data.shift(); 
             dados.datasets[0].data.push(novoRegistro[0].valor);
-
-            dados.datasets[0].data.push(novoRegistro[0].cpuFisica);
-            dados.datasets[0].data.push(novoRegistro[0].cpuLogica);
-           
-            myChartCPU.update();
-          } else {
-            // tirando e colocando valores no gráfico
-            dados.labels.shift(); // apagar o primeiro
-            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
-            valorCPU.innerHTML = `${novoRegistro[0].valor}%`
-            procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
-            procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
+             
+            nomeRede.innerHTML = `${novoRegistro[0].nomeRede}`
+            pacotesRecebidos.innerHTML = `${novoRegistro[0].valor}`
+            
             checarParametrosREDE(novoRegistro[0].valor)
 
-            myChartCPU.update();
-            proximaAtualizacao = setTimeout(
-            () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
+            myChartRede.update();
+          }
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoRede(idMetrica, dados, myChartRede),
             2000
           );
-          }
         });
       } else {
         console.error("Nenhum dado encontrado ou erro na API");
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
-          () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
+          () => atualizarGraficoRede(idMetrica, dados, myChartRede),
           2000
         );
       }

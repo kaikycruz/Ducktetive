@@ -307,7 +307,7 @@ function buscarMedidasEmTempoRealREDE(idServidor) {
                         from medida where fk_aquario = ${idAquario} 
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = ` SELECT
+    instrucaoSql = `  SELECT
     c.nome,
     configuracao.cpuLogica,
     configuracao.cpuFisica,
