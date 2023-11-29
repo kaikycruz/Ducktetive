@@ -37,9 +37,17 @@
     color: #757575;
 }
 
-.aviso{
+.aviso {
     background-color: #ffcf26;
+    color: #ffffff;
 }
 .critico{
-    background-color: red;
+    background-color: rgb(202, 31, 31);
+    color: #ffffff !important;
+
+}
+.saudavel{
+    background-color: #4ff154; 
+    color: #ffffff !important;
+
 }

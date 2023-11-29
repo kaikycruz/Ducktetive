@@ -1629,6 +1629,7 @@ function buscarParametroServidores() {
 
 
   function checarParametrosCPU(CPU){
+    var cardCPU = document.getElementById('cpu-frequency');
     var metrica = CPU
     var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
     var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
@@ -1644,14 +1645,43 @@ function buscarParametroServidores() {
 
 
     if(metrica > parametroMaximoCPU || metrica < parametroMinimoCPU){
+      if (cardCPU.classList.contains('aviso')) {
+          cardCPU.classList.replace('aviso', 'critico')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('saudavel', 'critico')
+        }else{
+          cardCPU.classList.add('critico');
+
+        }
       alertarUsuario(`critico`, `CPU`, `${metrica}`)
+      
     }else if(metrica < SegundoQuartilCPU || metrica > TerceiroQuartilCPU){
       alertarUsuario(`aviso`, `CPU`, `${metrica}`)
+
+      if (cardCPU.classList.contains('critico')) {
+          cardCPU.classList.replace('critico', 'aviso')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('saudavel', 'aviso')
+        }else{
+          cardCPU.classList.add('aviso');
+
+        }
+    }else if(metrica > SegundoQuartilRAM && metrica < TerceiroQuartilRAM){
+      if (cardCPU.classList.contains('critico')) {
+          cardCPU.classList.replace('critico', 'saudavel')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('aviso', 'saudavel')
+        }else{
+          cardCPU.classList.add('saudavel');
+
+        }
     }
+   
 
 
   }
   function checarParametrosRAM(RAM){
+    var cardRAM = document.getElementById('ram-frequency');
     var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
     var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
     var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
@@ -1665,11 +1695,35 @@ function buscarParametroServidores() {
     var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
 
 
-
     if(RAM > parametroMaximoRAM || RAM < parametroMinimoRAM){
+      if (cardRAM.classList.contains('aviso')) {
+          cardRAM.classList.replace('aviso', 'critico')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('saudavel', 'critico')
+        }else{
+          cardRAM.classList.add('critico');
+
+        }
       alertarUsuario(`critico`, `RAM`, `${RAM}`)
     }else if(RAM < SegundoQuartilRAM || RAM > TerceiroQuartilRAM){
+      if (cardRAM.classList.contains('critico')) {
+          cardRAM.classList.replace('critico', 'aviso')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('saudavel', 'aviso')
+        }else{
+          cardRAM.classList.add('aviso');
+
+        }
       alertarUsuario(`aviso`, `RAM`, `${RAM}`)
+    }else if(RAM > SegundoQuartilRAM && RAM < TerceiroQuartilRAM){
+      if (cardRAM.classList.contains('critico')) {
+          cardRAM.classList.replace('critico', 'saudavel')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('aviso', 'saudavel')
+        }else{
+          cardRAM.classList.add('saudavel');
+
+        }
     }
    
 
