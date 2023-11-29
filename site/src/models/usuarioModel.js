@@ -244,6 +244,29 @@ function buscarServidores(idEmpresa) {
   return database.executar(instrucao);
 }
 
+
+function buscarParametroServidores(idServidor) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    idServidor
+  );
+  var instrucao = `
+  SELECT servidor.idServidor,
+ servidor.nome as nomeServidor,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'CPU') as maximoCPU,
+ (select minimo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'CPU') as minimoCPU,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'RAM') as maximoRAM,
+ (select minimo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'RAM') as minimoRAM,
+  (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'DISCO') as maximoDISCO,
+ (select maximo from ParametroAlerta join componente on ParametroAlerta.fkComponente = componente.idComponente join servidor on ParametroAlerta.fkServidor = servidor.idServidor where idServidor = ${idServidor} and componente.nome = 'REDE') as maximoREDE
+ FROM servidor 
+ WHERE servidor.idServidor = ${idServidor};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+
 function buscarParametros(idEmpresa) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
@@ -489,6 +512,50 @@ async function alterarStatusUsuario(
 
 }
 
+function buscarProcessos(idServidor) {
+  console.log(
+    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+  );
+  var instrucao = `
+  select usuario.idUsuario, usuario.nome, usuario.sobrenome, usuario.email, cargo.nome as cargo, endereco.cidade, endereco.estado, usuario.telefone, usuario.ativo from usuario join empresa on fkEmpresa = idEmpresa join cargo on usuario.fkCargo = cargo.idCargo join endereco on empresa.fkEndereco = endereco.idEndereco where idEmpresa = ${idServidor};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+async function alterarStatusprocesso(
+  idProcesso
+) {
+  console.log(
+    "ACESSEI O USUARIO MODEL do alterar \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
+  );
+
+  const verificaStatus = `
+    select ativo from usuario where idUsuario = '${idProcesso}';
+    `;
+  const resultadoStatus = await database.executar(verificaStatus);
+
+  var instrucaoAtivo = `        
+  UPDATE usuario SET ativo = 0 where idUsuario = ${idProcesso};`;
+
+  var instrucaoEmManutencao = `        
+  UPDATE usuario SET ativo = 1 where idUsuario = ${idProcesso};`;
+
+
+  if (resultadoStatus[0].ativo == 0) {
+    console.log("Executando a instrução SQL 1: \n" + instrucaoEmManutencao);
+    await database.executar(instrucaoEmManutencao);
+  }else if(resultadoStatus[0].ativo == 1){
+    console.log("Executando a instrução SQL 2: \n" + instrucaoAtivo);
+    await database.executar(instrucaoAtivo);
+  }
+  // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+  //  e na ordem de inserção dos dados.
+
+
+
+}
+
 
 module.exports = {
   autenticar,
@@ -498,6 +565,7 @@ module.exports = {
   excluirConta,
   reativarConta,
   buscarServidores,
+  buscarParametroServidores,
   buscarParametros,
   cadastrarServidor,
   cadastrarUsuario,
@@ -505,5 +573,7 @@ module.exports = {
   alterarStatusServidor,
   alterarDadosServidor,
   buscarUsuarios,
-  alterarStatusUsuario
+  alterarStatusUsuario,
+  buscarProcessos,
+  alterarStatusprocesso
 };

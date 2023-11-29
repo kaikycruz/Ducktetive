@@ -36,6 +36,10 @@ router.post("/buscarServidores", function (req, res) {
     usuarioController.buscarServidores(req, res);
 }) 
 
+router.post("/buscarParametroServidores", function (req, res) {
+    usuarioController.buscarParametroServidores(req, res);
+}) 
+
 router.post("/buscarParametros", function (req, res) {
     usuarioController.buscarParametros(req, res);
 }) 
@@ -62,6 +66,14 @@ router.post("/buscarUsuarios", function (req, res) {
 
 router.post("/alterarStatusUsuario", function (req, res) {
     usuarioController.alterarStatusUsuario(req, res);
+}) 
+
+router.post("/buscarProcessos", function (req, res) {
+    usuarioController.buscarProcessos(req, res);
+}) 
+
+router.post("/alterarStatusprocesso", function (req, res) {
+    usuarioController.alterarStatusprocesso(req, res);
 }) 
 
 
