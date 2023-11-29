@@ -23,7 +23,7 @@ public class AppDuck {
         Scanner in = new Scanner(System.in);
         Timer timer = new Timer();
         inserirDadosMetrica(con, looca, timer);
-        pausarProcessos(looca, con);
+        //pausarProcessos(looca, con);
         Integer opcao;
         do {
             System.out.println("""
