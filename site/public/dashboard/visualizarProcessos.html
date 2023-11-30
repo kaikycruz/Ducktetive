@@ -194,16 +194,18 @@
     // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
     //   document.getElementById("criarServidor").style.display = "none";
     // }
+
   }
 
   function criarProcesso(
     PID,
     nome,
     cpu,
-    RAM,
-    status
+    RAM
   ) {
+    
     listaDeServidores = document.querySelector("#usersList");
+    
     listaDeServidores.insertAdjacentHTML(
       "beforeend",
       `
@@ -213,7 +215,7 @@
         <li class="data nameProcesso">${nome}</li>
         <li class="data cpu">${cpu}</li>
         <li class="data ram">${RAM}</li>
-        <li class="data status"> <div id="status">Matar</div> <div class="userStatus matar" id="userStatus" onclick="alterarStatusProcesso(${PID})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+        <li class="data status"> <div id="status">Matar</div> <div class="userStatus matar" id="userStatus" onclick="alterarStatusProcesso(${`1`}, ${idProcesso}, ${idServidor})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
         </div></li>
     </ul>
 
@@ -226,6 +228,7 @@
     const pegaURL = new URL(window.location)
     const id = pegaURL.searchParams.get('id')
     var idServidorVar = id;
+    var idAcaoProcesso = 1;
 
     if (idServidorVar == "") {
       alertify.error("Preencha todos os campos");
@@ -257,15 +260,13 @@
 
               for (let i = 0; i < json.length; i++) {
                 JSON.stringify(json[i]);
-                var idUsuario = JSON.stringify(json[i].idUsuario);
+                var idProcesso = JSON.stringify(json[i].idProcesso);
+                var pId = JSON.stringify(json[i].pId);
                 var nome = JSON.stringify(json[i].nome);
-                var sobrenome = JSON.stringify(json[i].sobrenome);
-                var email = JSON.stringify(json[i].email);
-                var cargo = JSON.stringify(json[i].cargo);
-                var cidade = JSON.stringify(json[i].cidade);
-                var estado = JSON.stringify(json[i].estado);
-                var telefone= JSON.stringify(json[i].telefone);
-                var ativo= JSON.stringify(json[i].ativo);
+                var consumoCPU = JSON.stringify(json[i].consumoCPU);
+                var consumoMem = JSON.stringify(json[i].consumoMem);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor);
+
 
                 if(ativo == 1){
                     var ativo = "Ativo"
@@ -274,26 +275,18 @@
                     var ativo = "Inativo"
                 }
 
+                var pId = JSON.stringify(json[i].pId).substring(1, JSON.stringify(json[i].pId).length - 1);
                 var nome = JSON.stringify(json[i].nome).substring(1, JSON.stringify(json[i].nome).length - 1);
-                var sobrenome = JSON.stringify(json[i].sobrenome).substring(1, JSON.stringify(json[i].sobrenome).length - 1);
-                var email = JSON.stringify(json[i].email).substring(1, JSON.stringify(json[i].email).length - 1);
-                var cargo = JSON.stringify(json[i].cargo).substring(1, JSON.stringify(json[i].cargo).length - 1);
-                var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
-                var estado = JSON.stringify(json[i].estado).substring(1, JSON.stringify(json[i].estado).length - 1);
-                var telefone = JSON.stringify(json[i].telefone).substring(1, JSON.stringify(json[i].telefone).length - 1);
-
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
                 
 
                 criarProcesso(
-                    idUsuario,
-                    nome,
-                    sobrenome,
-                    email,
-                    cargo,
-                    cidade,
-                    estado,
-                    telefone,
-                    ativo
+                  pId,
+                  nome,
+                  arredondarNumeros(consumoCPU),
+                  arredondarNumeros(consumoMem)
+                    
+
                 );
               }
             }
@@ -312,16 +305,20 @@
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
+      
   }
 
-  function alterarStatusProcesso(idprocesso) {  
+  function alterarStatusProcesso(idAcaoProcesso, idProcesso, idServidor) {  
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var idprocessoVar = idprocesso
-    
+    var idAcaoProcessoVar = idAcaoProcesso
+    var idprocessoVar = idProcesso
+    var idServidorVar = idServidor
 
     if (
-      idprocessoVar == ""
+      idAcaoProcessoVar == "" ||
+      idprocessoVar == "" ||
+      idServidorVar == "" 
     ) {
       alertify.error('Escreva os dados em todos os campos');
       return false;
@@ -339,8 +336,10 @@
       //   nomeFantasiaServer: nomeFantasiaVar,
       //   cnpjServer: cnpjVar,
 
-      idprocessoServer:idprocessoVar
-     
+      idAcaoProcessoServer:idAcaoProcessoVar,
+      idProcessoServer:idprocessoVar,
+      idServidorServer:idServidorVar
+        
 
       //   nomeprocessoServer: nomeprocessoVar,
       //   sobrenomeprocessoServer: sobrenomeprocessoVar,
@@ -368,6 +367,13 @@
 
     return false;
   }
+
+
+  function arredondarNumeros(numeroQuebrado){
+    var numero = Number(numeroQuebrado)
+    
+    return parseFloat(numero.toFixed(2))
+  }
   
   //var listaUsuarios = document.getElementById('usersList')
   //var itens = listaUsuarios.getElementsByClassName('userData');
@@ -376,5 +382,7 @@
   //itens[1].getElementsByClassName('name')[0].value
   //itens[1].getElementsByClassName('name')[0]
   //itens[1].getElementsByClassName('name')[0].innerHTML
+
+  var intervalo = setInterval(buscarProcessos, 5000);
 
 </script>

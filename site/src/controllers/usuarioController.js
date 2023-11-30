@@ -894,18 +894,43 @@ function buscarProcessos(req, res) {
 
 function alterarStatusprocesso(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-
-  var idUsuario = req.body.idUsuarioServer;
+  var idAcaoProcesso = req.body.idAcaoProcessoServer;
+  var idProcesso = req.body.idProcessoServer;
+  var idServidor = req.body.idServidorServer;
 
   // Faça as validações dos valores
-  if (idUsuario == undefined) {
-    res.status(400).send("Seu idUsuario está undefined!");
+  if (idProcesso == undefined) {
+    res.status(400).send("Seu idProcesso está undefined!");
+  } else if (idAcaoProcesso == undefined) {
+    res.status(400).send("Seu idAcaoProcesso está undefined!");
+  } else if (idServidor == undefined) {
+    res.status(400).send("Seu idServidor está undefined!");
   }
+
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+
 
   // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js razaoSocial, nomeFantasia, cnpj, nomeUsuario, sobrenomeUsuario, email, cargo, telefone, perguntaDeSeguranca, senha
   usuarioModel
     .alterarStatusprocesso(
-      idUsuario
+      idAcaoProcesso,
+      idProcesso,
+      idServidor
     )
     .then(function (resultado) {
       res.json(resultado);

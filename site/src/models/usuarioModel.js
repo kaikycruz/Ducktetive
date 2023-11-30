@@ -517,38 +517,39 @@ function buscarProcessos(idServidor) {
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
   );
   var instrucao = `
-  select usuario.idUsuario, usuario.nome, usuario.sobrenome, usuario.email, cargo.nome as cargo, endereco.cidade, endereco.estado, usuario.telefone, usuario.ativo from usuario join empresa on fkEmpresa = idEmpresa join cargo on usuario.fkCargo = cargo.idCargo join endereco on empresa.fkEndereco = endereco.idEndereco where idEmpresa = ${idServidor};
+  select processo.idProcesso, processo.pId, processo.nome, processo.consumoCPU, processo.consumoMem, servidor.nome as nomeServidor from processo join servidor on processo.fkServidor = servidor.idServidor join acaoProcesso on acaoProcesso.idAcaoProcesso = processo.fkAcaoProcesso where idServidor = ${idServidor} and acaoProcesso.nome != 'matar';
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
 async function alterarStatusprocesso(
-  idProcesso
+  idAcaoProcesso,
+  idProcesso,
+  idServidor
 ) {
   console.log(
     "ACESSEI O USUARIO MODEL do alterar \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
   );
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  console.log(idProcesso)
+  
 
-  const verificaStatus = `
-    select ativo from usuario where idUsuario = '${idProcesso}';
-    `;
-  const resultadoStatus = await database.executar(verificaStatus);
+
 
   var instrucaoAtivo = `        
-  UPDATE usuario SET ativo = 0 where idUsuario = ${idProcesso};`;
-
-  var instrucaoEmManutencao = `        
-  UPDATE usuario SET ativo = 1 where idUsuario = ${idProcesso};`;
+  UPDATE processo set fkAcaoProcesso = ${idAcaoProcesso} where idProcesso = ${idProcesso} and fkServidor = ${idServidor};`;
 
 
-  if (resultadoStatus[0].ativo == 0) {
-    console.log("Executando a instrução SQL 1: \n" + instrucaoEmManutencao);
-    await database.executar(instrucaoEmManutencao);
-  }else if(resultadoStatus[0].ativo == 1){
-    console.log("Executando a instrução SQL 2: \n" + instrucaoAtivo);
-    await database.executar(instrucaoAtivo);
-  }
+  console.log("Executando a instrução SQL 1: \n" + instrucaoAtivo);
+  await database.executar(instrucaoAtivo);
+
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
 
