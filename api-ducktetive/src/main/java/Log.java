@@ -4,33 +4,46 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+
 public class Log {
     private LocalDateTime dataAtual = LocalDateTime.now();
-    private File pasta = new File(".\\src\\log");
-    private File file = new File(".\\src\\log\\%d_%s_%d.txt".formatted(dataAtual.getYear(), dataAtual.getMonth(), dataAtual.getDayOfMonth()));
+    private String dataFormat = ("%d_%s_%d".formatted(dataAtual.getYear(), dataAtual.getMonthValue(), dataAtual.getDayOfMonth()));
+    private File file = new File(".\\src\\log\\%s.txt".formatted(dataFormat));
 
-    public void gravar(String info) {
-        // Verifica se o arquivo já existe
-        if (file.exists()) {
-//            se o arquivo ja existir ele vai inserir no arquivo de texto
-            escreverNoArquivo("%d:%d - %s".formatted(dataAtual.getHour(),dataAtual.getMinute(),info));
-//            System.out.println("Texto inserido no arquivo com sucesso.");
-        } else {
-            try {
-                file.createNewFile();
-//                se o arquivo não existir ele vai criar e logo em seguida vai inserir no arquivo de texto
-                escreverNoArquivo("%d:%d - %s".formatted(dataAtual.getHour(),dataAtual.getMinute(),info));
-//                System.out.println("Texto inserido no arquivo com sucesso.");
-            } catch (IOException e) {
-                e.printStackTrace();
+    public void gravar(String info, String tipo) {
+
+
+        if (tipo.equals("erro")){
+            file = new File(".\\src\\log\\[error] %s.txt".formatted(dataFormat));
+            if (file.exists()) {
+                escreverNoArquivo("[%s - %d:%d]  %s".formatted(dataFormat,dataAtual.getHour(),dataAtual.getMinute(),info));
+            } else {
+                try {
+                    file.createNewFile();
+                    escreverNoArquivo("[%s - %d:%d]  %s".formatted(dataFormat,dataAtual.getHour(),dataAtual.getMinute(),info));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            file = new File(".\\src\\log\\[system] %s.txt".formatted(dataFormat));
+            if (file.exists()) {
+                escreverNoArquivo("[%s - %d:%d]  %s".formatted(dataFormat,dataAtual.getHour(),dataAtual.getMinute(),info));
+            } else if (tipo.equals("system")){
+                try {
+                    file.createNewFile();
+                    escreverNoArquivo("[%s - %d:%d]  %s".formatted(dataFormat,dataAtual.getHour(),dataAtual.getMinute(),info));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
-        System.out.println(Arrays.toString(pasta.listFiles()));
     }
 
     private void escreverNoArquivo(String texto) {
-        try (FileWriter writer = new FileWriter(file, true)) {
+        try (
+                FileWriter writer = new FileWriter(file, true)) {
             writer.write(texto + "\n");
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,6 +53,6 @@ public class Log {
     public static void main(String[] args) {
         Log cadastro = new Log();
 
-        cadastro.gravar("test");
+        cadastro.gravar("test", "system");
     }
 }
