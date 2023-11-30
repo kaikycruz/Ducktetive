@@ -971,7 +971,6 @@ span div span b {
 
 .dashboard-content #users-list {
   display: flex;
-  gap: 20px;
   border-radius: 15px;
   width: 90%;
   height: 80%;
@@ -983,7 +982,7 @@ span div span b {
 .dashboard-content #users-list .user {
   border-radius: 10px;
   background-color: #f4f4f4;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   width: fit-content;
 }
 
@@ -997,6 +996,7 @@ span div span b {
   height: fit-content;
   margin-bottom: 10px;
 }
+
 .dashboard-content #users-list .user .header {
   color: #ff7c33;
   font-weight: bold;
