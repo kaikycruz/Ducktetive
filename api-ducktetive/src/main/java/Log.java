@@ -47,10 +47,4 @@ public class Log {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        Log cadastro = new Log();
-
-        cadastro.gravar("test", "system");
-    }
 }
