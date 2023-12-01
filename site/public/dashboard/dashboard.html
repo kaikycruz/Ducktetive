@@ -1389,7 +1389,7 @@ for (i = 0; i < resposta.length; i++) {
   var registro = resposta[i];
   labels.push(registro.momento_grafico);
   dados.datasets[0].data.push(registro.valor);
-  dados.datasets[1].data.push(registro.valor);
+  dados.datasets[1].data.push(registro.valorTeste);
   
 }
 
@@ -1483,7 +1483,9 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             dados.datasets[0].data.shift(); 
             dados.datasets[0].data.push(novoRegistro[0].valor);
 
-             
+            dados.datasets[0].data.shift(); 
+            dados.datasets[0].data.push(novoRegistro[0].valorTeste); 
+
             nomeRede.innerHTML = `${novoRegistro[0].nomeRede}`
             pacotesRecebidos.innerHTML = `${novoRegistro[0].valor}`
             
@@ -1510,6 +1512,8 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
     });
 
 }
+
+
 
 function verificarParametros(){
 

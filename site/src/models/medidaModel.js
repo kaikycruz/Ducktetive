@@ -141,12 +141,13 @@ function buscarUltimasMedidasREDE(idServidor) {
                     where fk_aquario = ${idMetrica}
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `  SELECT
+    instrucaoSql = `   SELECT
     c.nome,
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
     (select (REPLACE((select format(m.valor / 1000000,0)), ',', '.'))) AS valor,
+    (select (REPLACE((select format(m.valor / 1000000,0)) + 200, ',', '.'))) AS valorTeste,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
@@ -307,12 +308,13 @@ function buscarMedidasEmTempoRealREDE(idServidor) {
                         from medida where fk_aquario = ${idAquario} 
                     order by id desc`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `  SELECT
+    instrucaoSql = `   SELECT
     c.nome,
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
     (select (REPLACE((select format(m.valor / 1000000,0)), ',', '.'))) AS valor,
+    (select (REPLACE((select format(m.valor / 1000000,0)) + 200, ',', '.'))) AS valorTeste,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
@@ -324,7 +326,7 @@ WHERE
     AND c.nome = 'REDE'
 ORDER BY
     datahora DESC
-LIMIT 1;`;
+LIMIT 7;`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
