@@ -1,28 +1,25 @@
-public class Processo {
+public class ProcessoI {
     private Integer idProcesso;
     private String pId;
     private String nome;
-    private Integer fkAcao;
     private Double consumoCpu;
     private Double consumoMem;
     private Integer fkServidor;
     private Integer fkStatusProce;
+    private Integer fkAcao;
 
-
-    public Processo() {
+    public ProcessoI() {
     }
 
-
-
-    public Processo(Integer idProcesso, String pId, String nome, Integer fkAcao, Double consumoCpu, Double consumoMem, Integer fkServidor, Integer fkStatusProce) {
+    public ProcessoI(Integer idProcesso, String pId, String nome, Double consumoCpu, Double consumoMem, Integer fkServidor, Integer fkStatusProce, Integer fkAcao) {
         this.idProcesso = idProcesso;
         this.pId = pId;
         this.nome = nome;
-        this.fkAcao = fkAcao;
         this.consumoCpu = consumoCpu;
         this.consumoMem = consumoMem;
         this.fkServidor = fkServidor;
         this.fkStatusProce = fkStatusProce;
+        this.fkAcao = fkAcao;
     }
 
     public Integer getIdProcesso() {
@@ -40,20 +37,13 @@ public class Processo {
     public void setpId(String pId) {
         this.pId = pId;
     }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Integer getFkAcao() {
-        return fkAcao;
-    }
-
-    public void setFkAcao(Integer fkAcao) {
-        this.fkAcao = fkAcao;
     }
 
     public Double getConsumoCpu() {
@@ -88,18 +78,25 @@ public class Processo {
         this.fkStatusProce = fkStatusProce;
     }
 
+    public Integer getFkAcao() {
+        return fkAcao;
+    }
+
+    public void setFkAcao(Integer fkAcao) {
+        this.fkAcao = fkAcao;
+    }
+
     @Override
     public String toString() {
-        return String.format("""
-                    Processo
-                ID: %d
-                Pid: %s
-                Nome: %s
-                FkAção: %d
-                Uso Cpu: %.2f
-                Uso Ram: %.2f
-                FkServidor: %d
-                FkStatus: %d
-                """, idProcesso, pId, nome ,fkAcao, consumoCpu, consumoMem, fkServidor, fkStatusProce);
+        return "ProcessoI{" +
+                "idProcesso=" + idProcesso +
+                ", pId='" + pId + '\'' +
+                ", nome='" + nome + '\'' +
+                ", consumoCpu=" + consumoCpu +
+                ", consumoMem=" + consumoMem +
+                ", fkServidor=" + fkServidor +
+                ", fkStatusProce=" + fkStatusProce +
+                ", fkAcao=" + fkAcao +
+                '}';
     }
 }
