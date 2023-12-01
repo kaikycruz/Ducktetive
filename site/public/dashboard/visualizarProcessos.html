@@ -181,14 +181,23 @@
     var paginaDashboard = document.getElementById(`linkDashboard`);
     paginaDashboard.href = `dashboard.html?id=${id}`
 
-    var baseStr64 = sessionStorage.FOTO_PERFIL;
-    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
     buscarProcessos();
 
     tituloPagina.innerHTML = `Processos da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
     console.log(cargo_usuario)
     if (CARGO_USUARIO.toUpperCase() != "DONO") {
       document.getElementById("criarUsuario").style.display = "none";
+    }
+
+
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+
+    if (sessionStorage.FOTO_PERFIL == 'null'){
+
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
     }
 
     // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){

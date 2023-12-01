@@ -1633,15 +1633,11 @@ function buscarParametroServidores() {
     var metrica = CPU
     var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
     var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
-    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
-    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
-    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
-    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
     
     var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
     var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
-    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
-    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
 
 
     if(metrica > parametroMaximoCPU || metrica < parametroMinimoCPU){
@@ -1759,8 +1755,9 @@ function buscarParametroServidores() {
     var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
     var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
 
-
-    if(REDE > parametroMaximoREDE){
+    if(REDE < parametroMaximoREDE*1.20){
+      alertarUsuario(`aviso`, `REDE`, `${REDE}`)
+    }else if(REDE < parametroMaximoREDE){
       alertarUsuario(`critico`, `REDE`, `${REDE}`)
     }
   }
