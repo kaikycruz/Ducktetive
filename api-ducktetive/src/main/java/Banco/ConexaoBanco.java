@@ -8,7 +8,7 @@ public class ConexaoBanco {
     // ALTERAR DEV PARA INSERIR NO BANCO
     // dev = true; <- INSERINDO LOCAL
     // dev = false; < - INSERINDO SQL Server
-    private Boolean dev = true;
+    private Boolean dev = false;
 
 
     public ConexaoBanco() {
@@ -19,7 +19,7 @@ public class ConexaoBanco {
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
             dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
             dataSource.setUsername("root");
-            dataSource.setPassword("userAdm003");
+            dataSource.setPassword("997849791abc");
 
             conexaoBanco = new JdbcTemplate(dataSource);
         } else {

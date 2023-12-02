@@ -22,13 +22,13 @@ public class BotSlack {
         ConfigSlack.sendMessage(json);
     }
 
-    public void msgProcesso(String nomeProcesso, String servidor, String componente) throws IOException, InterruptedException {
+    public void msgProcesso(String nomeProcesso, String servidor) throws IOException, InterruptedException {
 
         String msg = String.format("""
                 O Processo: %s
                 Servidor: %s
-                Atingiu o seu limite de %s!
-                """, nomeProcesso, servidor, componente);
+                Atingiu o seu limite de consumo!
+                """, nomeProcesso, servidor);
 
         JSONObject json = new JSONObject();
 

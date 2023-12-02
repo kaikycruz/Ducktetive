@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-
 
 public class Log {
     private LocalDateTime dataAtual = LocalDateTime.now();
@@ -48,11 +46,5 @@ public class Log {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        Log cadastro = new Log();
-
-        cadastro.gravar("test", "system");
     }
 }

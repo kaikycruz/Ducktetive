@@ -5,6 +5,7 @@ public class ParametroAlerta {
     private Integer fkComponente;
     private Integer fkServidor;
 
+
     public ParametroAlerta(Integer idParametro, Double maximo, Double minimo, Integer fkComponente, Integer fkServidor) {
         this.idParametro = idParametro;
         this.maximo = maximo;

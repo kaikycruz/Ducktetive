@@ -4,6 +4,9 @@ public class Cargo {
     private String nome;
     private String nivelPermissao;
 
+    public Cargo() {
+    }
+
     public Cargo(Integer idCargo, String nome, String nivelPermissao) {
         this.idCargo = idCargo;
         this.nome = nome;
