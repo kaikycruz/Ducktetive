@@ -109,18 +109,18 @@ public class AppDuck {
 
 
                             // INSERT PROCESSOS && SLACK PROCESSOS
-                            try {
-                                monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
-                                log.gravar("Exito ao inserir dados dos processos no banco na classe AppDuck", "system");
-                                log.gravar("Exito ao enviar os dados dos processos para o SLACK na classe AppDuck", "system");
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }catch (ArithmeticException e){
-                                log.gravar("Erro ao inserir dados dos processos no banco. Na linha 110 a 119 na classe AppDuck", "erro");
-                                log.gravar("Erro ao enviar as informações dos processos para o SLACK. Na linha 110 a 119 na classe AppDuck", "system");
-                            }
+//                            try {
+//                                monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
+//                                log.gravar("Exito ao inserir dados dos processos no banco na classe AppDuck", "system");
+//                                log.gravar("Exito ao enviar os dados dos processos para o SLACK na classe AppDuck", "system");
+//                            } catch (IOException e) {
+//                                throw new RuntimeException(e);
+//                            } catch (InterruptedException e) {
+//                                throw new RuntimeException(e);
+//                            }catch (ArithmeticException e){
+//                                log.gravar("Erro ao inserir dados dos processos no banco. Na linha 110 a 119 na classe AppDuck", "erro");
+//                                log.gravar("Erro ao enviar as informações dos processos para o SLACK. Na linha 110 a 119 na classe AppDuck", "system");
+//                            }
 
                             // INSERT CPU
                             double usoDouble = looca.getProcessador().getUso();
