@@ -124,13 +124,13 @@
             <p class="subtitulo">Painel de gerenciamento de processos</p>
           </div>
           <div class="servButtons">
-            <div class="buscar">
+            <!-- <div class="buscar">
               <input type="text" class="buscar">
               <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
             </div>
             <div id="filtrarServidores">
               <img src="../src/images/Dashboard/icons/contexto 1.png">
-            </div>
+            </div> -->
             <div id="user-data">
               <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
             </div>
@@ -150,7 +150,7 @@
             <li class="data pid">PID</li>
             <li class="data nameProcesso">Nome</li>
             <li class="data cpu">Consumo CPU</li>
-            <li class="data ram">Consumo CPU</li>
+            <li class="data ram">Consumo RAM</li>
             <li class="data status">Ação</li>
           </ul>
         </div>
@@ -175,7 +175,7 @@
     const NOME_USUARIO = sessionStorage.NOME_USUARIO;
     const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
     const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
-    b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+    b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
 
     var paginaDashboard = document.getElementById(`linkDashboard`);
@@ -197,7 +197,8 @@
     user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
 
     }else{
-    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    //user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
     }
 
     // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){

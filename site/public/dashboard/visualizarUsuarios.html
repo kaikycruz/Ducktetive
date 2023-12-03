@@ -106,13 +106,13 @@
           <p class="subtitulo">Painel de gerenciamento de usuários</p>
           </div>
             <div class="servButtons">
-                <div class="buscar">
+                <!-- <div class="buscar">
                   <input type="text" class="buscar">
                   <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
                 </div>
                 <div id="filtrarServidores">
                   <img src="../src/images/Dashboard/icons/contexto 1.png">
-                </div>
+                </div> -->
                 <div id="user-data" >
                   <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
                 </div>
@@ -158,7 +158,8 @@
     b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
     cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
     var baseStr64 = sessionStorage.FOTO_PERFIL;
-    user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
     buscarUsuarios();
 
     tituloPagina.innerHTML = `Usuarios da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
@@ -218,7 +219,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idEmpresaServer: idEmpresaVar,
+        idEmpresaServer: idEmpresaVar
       }),
     })
       .then(function (resposta) {
@@ -247,10 +248,10 @@
                 var telefone= JSON.stringify(json[i].telefone);
                 var ativo= JSON.stringify(json[i].ativo);
 
-                if(ativo == 1){
+                if(ativo == 'true'){
                     var ativo = "Ativo"
                     console.log(`22323`)
-                }else if(ativo == 0){
+                }else if(ativo == 'false'){
                     var ativo = "Inativo"
                 }
 

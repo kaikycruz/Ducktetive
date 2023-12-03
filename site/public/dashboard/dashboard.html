@@ -120,17 +120,17 @@
             <div class="dados-do-servidor">
                 <div class="servHeader">
                   <div id="titulo-pagina">
-                  <p class="titulo">Servidores da DUCKTETIVE</p>
+                  <p class="titulo" id="tituloPagina">Servidores da {Undefined}</p>
                   <p class="subtitulo">Painel de gerenciamento de servidores</p>
                   </div>
                     <div class="servButtons">
-                        <div class="buscar">
+                        <!-- <div class="buscar">
                           <input type="text" class="buscar">
                           <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
                         </div>
                         <div id="filtrarServidores">
                           <img src="../src/images/Dashboard/icons/contexto 1.png">
-                        </div>
+                        </div> -->
                         <div id="user-data" >
                           <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
                         </div>
@@ -244,7 +244,7 @@
                             <span class="kpi-title">
                                 Disco vai estourar em 
                             </span>
-                            <span class="kpi-content">
+                            <span id="estimativaDisco" class="kpi-content">
                                
                             </span>
                     </div>
@@ -592,6 +592,9 @@
         b_usuario.innerHTML = `${NOME_USUARIO}`;
         cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
 
+        tituloPagina.innerHTML = `Servidores da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
+
+
         buscarParametroServidores()
         
     
@@ -615,7 +618,8 @@
       user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
 
     }else{
-      user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+      // user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
     }
 
     }
@@ -1296,6 +1300,7 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
 
             percDisco.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
 
+            estimativaDisco.innerHTML = `${novoRegistro[0].estimativa}`
             myChartDisco.update();
           }
 

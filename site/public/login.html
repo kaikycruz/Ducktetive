@@ -73,7 +73,10 @@
     async function entrar() {
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
+        alert(senhaVar)
         var senhaVar = senhaParaSHA256(senhaVar);
+
+        alert(senhaVar)
     
         if (emailVar == "" || senhaVar == "") {
             alertify.error('Preencha todos os campos');
@@ -125,14 +128,11 @@
             console.log(JSON.stringify(json.ativo));
 
 
-
-
-
-            if(sessionStorage.USUARIO_ATIVO == 1){
+            if(sessionStorage.USUARIO_ATIVO == 'true'){
                 setTimeout(() => {
                   window.location = "./dashboard/servidores.html";
                 }, 2000);
-            }else if(sessionStorage.USUARIO_ATIVO == 0){
+            }else if(sessionStorage.USUARIO_ATIVO == 'false'){
                 Swal.fire({
                     title: "Sua conta foi desativada",
                     text: "Você deseja reativar a sua conta?",

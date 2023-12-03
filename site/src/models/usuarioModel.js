@@ -12,7 +12,7 @@ function autenticar(email, senha) {
    instrucao = `SELECT
    idUsuario,
    CAST('' AS VARBINARY) AS fotoPerfil, -- A função TO_BASE64 não é diretamente suportada no SQL Server
-   nome AS primeiro_nome,
+   usuario.nome AS primeiro_nome,
    sobrenome,
    telefone,
    email,
@@ -20,7 +20,6 @@ function autenticar(email, senha) {
    cargo.nome AS nomeCargo,
    idEmpresa,
    razao_social,
-   nome_fantasia,
    nome_fantasia,
    cnpj,
    idEndereco,
@@ -111,23 +110,19 @@ async function cadastrar(
   instrucao1 = `
         INSERT INTO Endereco (logradouro, numero, bairro, cep, complemento, cidade, estado) VALUES ('${endereco}', '${numero}', '${bairro}', '${cep}', '${complemento}', '${cidade}', '${estado}');
     `;
+  console.log("Executando a instrução SQL: \n" + instrucao1);
+  await database.executar(instrucao1);
 
-    console.log("Executando a instrução SQL: \n" + instrucao1);
-    await database.executar(instrucao1);
-
-
-  instrucao2 = `
-      INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, fkEndereco)
-      VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', SCOPE_IDENTITY());  
+   instrucao2 = `
+         INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, fkEndereco) VALUES ('${razaoSocial}', '${nomeFantasia}', '${cnpj}', ${"(SELECT MAX(idEndereco) AS ultimoIdEndereco FROM endereco)"});
+       
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao2);
-    await database.executar(instrucao2);
+  console.log("Executando a instrução SQL: \n" + instrucao2);
+  await database.executar(instrucao2);
 
-
-  instrucao3 = `
-    INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa)
-    VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}', '${email}', '${senha}', '${perguntaDeSeguranca}', '${opcoesPerguntaDeSeguranca}', '${cargo}', SCOPE_IDENTITY());
-`;
+   instrucao3 = `
+        INSERT INTO Usuario (nome, sobrenome, telefone, email, senha, resposta_seguranca, fkPergunta, fkCargo, fkEmpresa) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${telefone}','${email}','${senha}','${perguntaDeSeguranca}','${opcoesPerguntaDeSeguranca}', '${cargo}', ${"(SELECT MAX(idEndereco) AS ultimoIdEndereco FROM endereco)"});
+    `;
 
    console.log("Executando a instrução SQL: \n" + instrucao3);
    await database.executar(instrucao3);
@@ -268,7 +263,7 @@ async function redefinir(
     const verificaUsuario = `
     SELECT *
     FROM usuario
-    WHERE email = '${email}' AND resposta_seguranca = '${perguntaDeSeguranca}' AND fkPergunta = '${opcoesPerguntaDeSeguranca}'';
+    WHERE email = '${email}' AND resposta_seguranca = '${perguntaDeSeguranca}' AND fkPergunta = ${opcoesPerguntaDeSeguranca};
     `;
     const resultadoUsuario = await database.executar(verificaUsuario);
 
@@ -285,9 +280,8 @@ async function redefinir(
    JOIN (
        SELECT idUsuario
        FROM usuario
-       WHERE email = '${email}' AND resposta_seguranca = '${perguntaDeSeguranca}' AND fkPergunta = '${opcoesPerguntaDeSeguranca}'
-   ) subquery ON usuario.idUsuario = subquery.idUsuario;';
-
+       WHERE email = '${email}' AND resposta_seguranca = '${perguntaDeSeguranca}' AND fkPergunta = ${opcoesPerguntaDeSeguranca}
+   ) subquery ON usuario.idUsuario = subquery.idUsuario;
     `;
   console.log("Executando a instrução SQL: \n" + instrucao1);
   await database.executar(instrucao1);
@@ -348,31 +342,51 @@ async function alterarDados(
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
     instrucao1 = `        
-    UPDATE u
+    BEGIN TRANSACTION;
+
+-- Atualizar a tabela Usuario
+UPDATE usuario
 SET
-    u.nome = '${nomeUsuario}',
-    u.sobrenome = '${sobrenomeUsuario}',
-    u.telefone = '${telefone}',
-    u.email = '${email}',
-    u.resposta_seguranca = '${perguntaDeSeguranca}',
-    u.fkPergunta = ${opcoesPerguntaDeSeguranca},
-    u.fotoPerfil = CONVERT(VARBINARY(MAX), '${fotoUsuario}', 1),
-    emp.razao_social = '${razaoSocial}',
-    emp.nome_fantasia = '${nomeFantasia}',
-    emp.cnpj = '${cnpj}',
-    ende.logradouro = '${endereco}',
-    ende.numero = ${numero},
-    ende.bairro = '${bairro}',
-    ende.cep = '${cep}',
-    ende.complemento = '${complemento}',
-    ende.cidade = '${cidade}',
-    ende.estado = '${estado}'
+    nome = '${nomeUsuario}',
+    sobrenome = '${sobrenomeUsuario}',
+    telefone = '${telefone}',
+    email = '${email}',
+    resposta_seguranca = '${perguntaDeSeguranca}',
+    fkPergunta = ${opcoesPerguntaDeSeguranca},
+    fotoPerfil = null
+WHERE
+    idUsuario = ${idUsuario};
+
+-- Atualizar a tabela Empresa
+UPDATE empresa
+SET
+    razao_social = '${razaoSocial}',
+    nome_fantasia = '${nomeFantasia}',
+    cnpj = '${cnpj}'
 FROM
-    usuario u
-JOIN empresa emp ON u.fkEmpresa = emp.idEmpresa
-JOIN endereco ende ON emp.fkEndereco = ende.idEndereco
+    empresa AS emp
+JOIN usuario AS u ON u.fkEmpresa = emp.idEmpresa
 WHERE
     u.idUsuario = ${idUsuario};
+
+-- Atualizar a tabela Endereco
+UPDATE endereco
+SET
+    logradouro = '${endereco}',
+    numero = ${numero},
+    bairro = '${bairro}',
+    cep = '${cep}',
+    complemento = '${complemento}',
+    cidade = '${cidade}',
+    estado = '${estado}'
+FROM
+    endereco AS ende
+JOIN empresa AS emp ON emp.fkEndereco = ende.idEndereco
+JOIN usuario AS u ON u.fkEmpresa = emp.idEmpresa
+WHERE
+    u.idUsuario = ${idUsuario};
+
+COMMIT;
 
     `;
 console.log("Executando a instrução SQL: \n" + instrucao1);
@@ -629,11 +643,6 @@ WHERE
     );
     return;
   }
-   
-
-  return database.executar(instrucao);
-
- 
 }
 
 
@@ -652,8 +661,6 @@ async function cadastrarServidor(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():"
   );
 
-
-  
   instrucao1 = "";
   instrucaoParametro1 = "";
   instrucaoParametro2 = "";
@@ -662,7 +669,7 @@ async function cadastrarServidor(
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
     instrucao1 = `
-    INSERT INTO Servidor (idServidor, nome, fkEmpresa, fkEndereco, fkStatusServ) VALUES (null, '${nomeServidor}', ${idEmpresa}, ${idEndereco}, 2);
+    INSERT INTO Servidor (nome, fkEmpresa, fkEndereco, fkStatusServ) VALUES ('${nomeServidor}', ${idEmpresa}, ${idEndereco}, 2);
     `;
   console.log("Executando a instrução SQL: \n" + instrucao1);
   await database.executar(instrucao1);
@@ -671,24 +678,24 @@ async function cadastrarServidor(
 
   // caso de erro adicionar chaves
    instrucaoParametro1 = `
-   INSERT INTO parametroAlerta (nome, maximo, minimo, fkServidor, fkComponente)
-   VALUES (null, ${maximoCPU}, ${minimoCPU}, (SELECT MAX(idServidor) FROM servidor), 1);
+   INSERT INTO parametroAlerta (maximo, minimo, fkServidor, fkComponente)
+   VALUES (${maximoCPU}, ${minimoCPU}, (SELECT MAX(idServidor) FROM servidor), 1);
   `;
 
    instrucaoParametro2 = `
-   INSERT INTO parametroAlerta (nome, maximo, minimo, fkServidor, fkComponente)
-   VALUES (null, ${maximoRAM}, ${minimoRAM}, (SELECT MAX(idServidor) FROM servidor), 2);
+   INSERT INTO parametroAlerta (maximo, minimo, fkServidor, fkComponente)
+   VALUES ( ${maximoRAM}, ${minimoRAM}, (SELECT MAX(idServidor) FROM servidor), 2);
    
   `;
 
    instrucaoParametro3 = `
-   INSERT INTO parametroAlerta (nome, maximo, minimo, fkServidor, fkComponente)
-   VALUES (null, ${maximoDisco}, null, (SELECT MAX(idServidor) FROM servidor), 3);
+   INSERT INTO parametroAlerta (maximo, minimo, fkServidor, fkComponente)
+   VALUES ( ${maximoDisco}, null, (SELECT MAX(idServidor) FROM servidor), 3);
   `;
 
    instrucaoParametro4 = `
-   INSERT INTO parametroAlerta (nome, maximo, minimo, fkServidor, fkComponente)
-   VALUES (null, ${maximoRede}, null, (SELECT MAX(idServidor) FROM servidor), 4);
+   INSERT INTO parametroAlerta (maximo, minimo, fkServidor, fkComponente)
+   VALUES ( ${maximoRede}, null, (SELECT MAX(idServidor) FROM servidor), 4);
   `;
 
 
@@ -891,9 +898,17 @@ async function excluirServidor(
   await database.executar(instrucao1);
 
    instrucao2 = `        
-  delete from servidor where idServidor = ${idServidor};`;
+  DELETE FROM ParametroAlerta_Old WHERE fkServidor = ${idServidor};
+`;
+  
   console.log("Executando a instrução SQL: \n" + instrucao2);
   await database.executar(instrucao2);
+
+  instrucao3 = `        
+  delete from servidor where idServidor = ${idServidor};`;
+  
+  console.log("Executando a instrução SQL: \n" + instrucao3);
+  await database.executar(instrucao3);
 
 
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
@@ -1009,30 +1024,42 @@ function buscarUsuarios(idEmpresa) {
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
     idEmpresa
   );
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
+    console.log("ENTREI")
 
   instrucao = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
-    instrucao = `SELECT
-    usuario.idUsuario,
-    usuario.nome,
-    usuario.sobrenome,
-    usuario.email,
-    cargo.nome as cargo,
-    endereco.cidade,
-    endereco.estado,
-    usuario.telefone,
-    usuario.ativo
-FROM
-    usuario
-JOIN
-    empresa ON usuario.fkEmpresa = empresa.idEmpresa
-JOIN
-    cargo ON usuario.fkCargo = cargo.idCargo
-JOIN
-    endereco ON empresa.fkEndereco = endereco.idEndereco
-WHERE
-    idEmpresa = ${idEmpresa};`
+    
+          instrucao = `SELECT
+          usuario.idUsuario,
+          usuario.nome,
+          usuario.sobrenome,
+          usuario.email,
+          cargo.nome as cargo,
+          endereco.cidade,
+          endereco.estado,
+          usuario.telefone,
+          usuario.ativo
+      FROM
+          usuario
+      JOIN
+          empresa ON usuario.fkEmpresa = empresa.idEmpresa
+      JOIN
+          cargo ON usuario.fkCargo = cargo.idCargo
+      JOIN
+          endereco ON empresa.fkEndereco = endereco.idEndereco
+      WHERE
+          idEmpresa = ${idEmpresa};`
+          console.log("Executando a instrução SQL: \n" + instrucao);
+          return database.executar(instrucao);
 
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
     instrucao = `
