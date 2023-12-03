@@ -5,6 +5,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -15,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AppDuck {
-
+    public static Log log = new Log();
     public static void main(String[] args) {
         Looca looca = new Looca();
         ConexaoBanco conexao = new ConexaoBanco();
@@ -25,8 +26,10 @@ public class AppDuck {
         inserirDadosMetrica(con, looca, timer);
         pausarProcessos(looca, con);
         Integer opcao;
+
         do {
             System.out.println("""
+                                                              
                     +---------------------------------+
                     |      BEM VINDO DUCKTETIVE       |   
                     +---------------------------------+
@@ -41,13 +44,16 @@ public class AppDuck {
                 case 1:
                     System.out.println();
                     logar(con, in, looca, timer);
+                    log.gravar("Metodo main() caiu no caso 1 na linha 42", "system");
                     break;
                 case 2:
                     System.out.println("Saindo....");
                     System.exit(0);
+                    log.gravar("Metodo main() caiu no caso 2 na linha 46", "system");
                     break;
                 default:
                     System.out.println("Invalido");
+                    log.gravar("Metodo main() ouve uma exeção, usuário inseriu valor invalido", "erro");
             }
 
         } while (opcao != 2);
@@ -60,18 +66,23 @@ public class AppDuck {
             @Override
             public void run() {
                 String serial = null;
-                for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
-                    if (disco.getBytesDeEscritas() != null) {
-                        serial = disco.getSerial();
+                try {
+                    for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
+                        if (disco.getBytesDeEscritas() != null) {
+                            serial = disco.getSerial();
+                        }
                     }
+                    log.gravar("Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72", "system");
+                }catch (ArithmeticException e){
+                    log.gravar("Falha ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72", "erro");
                 }
-
                 List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
 
                 if (!config.isEmpty()) {
+                    log.gravar("Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79", "system");
                     List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), config.get(0).fkServidor);
                     if (servidoresAtivos.get(0).getStatus().equals("Ativo")) {
-
+                        log.gravar("Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82","system");
                         Integer idServidor = servidoresAtivos.get(0).getIdServidor();
 
                         List<ParametroAlerta> parametroAlertas = con.query("SELECT * FROM ParametroAlerta WHERE fkServidor = ?;", new BeanPropertyRowMapper<>(ParametroAlerta.class), (idServidor));
@@ -95,70 +106,107 @@ public class AppDuck {
                         con.update(sql, valorCpu, dataFormatada, 1, servidoresAtivos.get(0).getIdServidor(), 2);
 
                         // SLACK CPU
-                        try {
-                            verificarLimite(servidoresAtivos.get(0).getNome(), valorCpu, parametroAlertas.get(0).getMaximo(), "CPU", config2.get(0));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
+//                        try {
+//                            verificarLimite(servidoresAtivos.get(0).getNome(), valorCpu, parametroAlertas.get(0).getMaximo(), "CPU", config2.get(0));
+//                            log.gravar("Exito ao executar verificarLimite() na linha 107 a 115", "system");
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }catch (ArithmeticException e){
+//                            log.gravar("Erro ao executar verificarLimite() na linha 107 a 115", "erro");
+//                        }
 
 
                         // INSERT RAM
                         long valorRam = looca.getMemoria().getEmUso();
-                        con.update(sql, valorRam, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 1);
-
-                        // SLACK RAM
                         try {
-                            verificarLimite(servidoresAtivos.get(0).getNome(), valorRam, parametroAlertas.get(1).getMaximo(), "RAM", config2.get(1));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                            con.update(sql, valorRam, dataFormatada, 2, servidoresAtivos.get(0).getIdServidor(), 1);
+                            log.gravar("Exito ao executar update()  na linha 122", "system");
+                        }catch (ArithmeticException e){
+                            log.gravar("Erro ao executar update() na linha 122", "erro");
                         }
+                        // SLACK RAM
+//                        try {
+//                            verificarLimite(servidoresAtivos.get(0).getNome(), valorRam, parametroAlertas.get(1).getMaximo(), "RAM", config2.get(1));
+//                            log.gravar("Exito ao executar verificarLimite() na linha 129", "system");
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }catch (ArithmeticException e){
+//                            log.gravar("Erro ao executar verificarLimite() na linha 129", "erro");
+//                        }
 
                         // INSERT DISCO
-                        for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
+                        try {
+                            for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
 
-                            long tamanhoTotal = disco.getBytesDeEscritas();
+                                long tamanhoTotal = disco.getBytesDeEscritas();
 
-                            con.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
-
-                            // SLACK DISCO
-                            try {
-                                verificarLimite(servidoresAtivos.get(0).getNome(), tamanhoTotal, parametroAlertas.get(2).getMaximo(), "DISCO", config2.get(2));
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
+                                try {
+                                    con.update(sql, tamanhoTotal, dataFormatada, 3, servidoresAtivos.get(0).getIdServidor(), 1);
+                                    log.gravar("Exito ao executa update() na linha 146", "system");
+                                }catch (ArithmeticException e){
+                                    log.gravar("Erro ao executar update() na linha 146", "erro");
+                                }
+                                // SLACK DISCO
+//                                try {
+//                                    verificarLimite(servidoresAtivos.get(0).getNome(), tamanhoTotal, parametroAlertas.get(2).getMaximo(), "DISCO", config2.get(2));
+//                                    log.gravar("Exito ao executar verificarLimite() na linha 149", "system");
+//                                } catch (IOException e) {
+//                                    throw new RuntimeException(e);
+//                                } catch (InterruptedException e) {
+//                                    throw new RuntimeException(e);
+//                                }catch (ArithmeticException e){
+//                                    log.gravar("Erro ao executar verificarLimite() na linha 149", "erro");
+//                                }
                             }
+                            log.gravar("Exito ao executar o for na linha 141", "system");
+                        }catch (ArithmeticException e){
+                            log.gravar("Erro ao executar o for na linha 141","erro");
                         }
 
                         // INSERT REDE
-                        for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
-                            if (r.getPacotesRecebidos() != 0) {
-                                long valorRede = r.getBytesRecebidos();
+                        try {
+                            for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
+                                if (r.getPacotesRecebidos() != 0) {
+                                    long valorRede = r.getBytesRecebidos();
 
-                                con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 1);
-
-                                // SLACK REDE
-                                try {
-                                    verificarLimite(servidoresAtivos.get(0).getNome(), valorRede, parametroAlertas.get(3).getMinimo(), "REDE", config2.get(3));
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
+                                    try {
+                                        con.update(sql, valorRede, dataFormatada, 4, servidoresAtivos.get(0).getIdServidor(), 1);
+                                        log.gravar("Exito ao executar update() na linha 175", "system");
+                                    }catch (ArithmeticException e){
+                                        log.gravar("Erro ao executar update() na linha 175",  "erro");
+                                    }
+                                    // SLACK REDE
+//                                    try {
+//                                        verificarLimite(servidoresAtivos.get(0).getNome(), valorRede, parametroAlertas.get(3).getMinimo(), "REDE", config2.get(3));
+//                                        log.gravar("Exito ao executar verificarLimite() na linha 178", "system");
+//                                    } catch (IOException e) {
+//                                        throw new RuntimeException(e);
+//                                    } catch (InterruptedException e) {
+//                                        throw new RuntimeException(e);
+//                                    }catch (ArithmeticException e){
+//                                        log.gravar("Erro ao executar verificarLimite() na linha 178", "erro");
+//                                    }
                                 }
                             }
+                            log.gravar("Exito ao executar o for na linha 170", "system");
+                        }catch (ArithmeticException e){
+                            log.gravar("Erro ao executar o for na linha 170", "erro");
                         }
 
                         // INSERT PROCESSOS && SLACK PROCESSOS
                         try {
                             monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
+                            log.gravar("Exito ao executar monitorarProcessos() na linha 201", "system");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
+                        }catch (ArithmeticException e){
+                            log.gravar("Erro ao executar monitorarProcessos() na linha 201", "erro");
                         }
 
                     }
@@ -175,6 +223,7 @@ public class AppDuck {
         Usuario usuario;
         while (!email.contains("@")) {
             System.out.println("Email invalido! Deve conter '@'");
+            log.gravar("Usuario inseriu valor incorreto na email", "erro");
             email = leitor.nextLine();
         }
 
@@ -189,19 +238,29 @@ public class AppDuck {
 
             // Convertendo bytes para representação hexadecimal
             StringBuilder hexStringBuilder = new StringBuilder();
-            for (byte hashByte : hashBytes) {
-                hexStringBuilder.append(String.format("%02x", hashByte));
+            try {
+                for (byte hashByte : hashBytes) {
+                    hexStringBuilder.append(String.format("%02x", hashByte));
+                }
+                log.gravar("Exito ao executar o for na linha 241", "system");
+            }catch (ArithmeticException e){
+                log.gravar("Erro ao executar o for na linha 241", "erro");
             }
 
             senha = hexStringBuilder.toString();
+            log.gravar("Exito ao executar a codificação na linha 233", "system");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+        }catch (ArithmeticException e){
+            log.gravar("Erro ao executar a codificação na linha 233", "erro");
         }
 
 
         List<Usuario> usuarios = con.query("SELECT idUsuario ,email, senha, nome, sobrenome, fkEmpresa, ativo, fkCargo FROM Usuario WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper<>(Usuario.class), email, senha);
         if (usuarios.size() > 0) {
+            log.gravar("Exito ao executar a condição da linha 259", "system");
             if (usuarios.get(0).getFkCargo() != 3) {
+                log.gravar("Exito ao executar a condição na linha 261", "system");
                 System.out.println("Bem vindo " + usuarios.get(0).getNome());
                 Integer opcaoAdm;
                 do {
@@ -216,15 +275,22 @@ public class AppDuck {
                     opcaoAdm = in.nextInt();
                     switch (opcaoAdm) {
                         case 1:
+                            log.gravar("O metodo logar() caiu no caso 1 na linha 276", "system");
                             String serial2 = null;
-                            for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
-                                if (disco.getBytesDeEscritas() != null) {
-                                    serial2 = disco.getSerial();
+                            try {
+                                for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
+                                    if (disco.getBytesDeEscritas() != null) {
+                                        serial2 = disco.getSerial();
+                                    }
                                 }
+                                log.gravar("Exito ao executar o for na linha 280", "system");
+                            }catch (ArithmeticException e){
+                                log.gravar("Erro ao executar o for na linha 280", "erro");
                             }
                             List<Servidor> servidorsAtivo = con.query("SELECT serialDisco, idServidor, nome, fkStatusServ FROM Configuracao c JOIN Servidor s ON c.fkServidor = s.idServidor WHERE c.serialDisco = ? AND s.fkStatusServ = 1;", new BeanPropertyRowMapper<>(Servidor.class), serial2);
 
                             if (servidorsAtivo.isEmpty() || servidorsAtivo.get(0).getFkStatusServ() != 1) {
+                                log.gravar("Exito ao executar condição na linha 290", "system");
                                 List<Servidor> servidores = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor JOIN Empresa ON Servidor.fkEmpresa = Empresa.idEmpresa JOIN Usuario ON Usuario.fkEmpresa = Empresa.idEmpresa WHERE Usuario.idUsuario = ? AND Servidor.fkStatusServ != 1;", new BeanPropertyRowMapper<>(Servidor.class), usuarios.get(0).getIdUsuario());
 
                                 System.out.println(servidores);
@@ -236,54 +302,90 @@ public class AppDuck {
 
                                 List<Servidor> servidoresAtivos = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor WHERE Servidor.idServidor = ?;", new BeanPropertyRowMapper<>(Servidor.class), idAtivar);
                                 String serial = null;
-                                for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
-                                    if (disco.getBytesDeEscritas() != null) {
-                                        serial = disco.getSerial();
+                                try {
+                                    for (Disco disco : looca.getGrupoDeDiscos().getDiscos()) {
+                                        if (disco.getBytesDeEscritas() != null) {
+                                            serial = disco.getSerial();
+                                        }
                                     }
+                                    log.gravar("Exito ao executar o for na linha 304", "system");
+                                }catch (ArithmeticException e){
+                                    log.gravar("Erro ao executar o for na linha 304", "erro");
                                 }
                                 long redeTotal = 0;
                                 String nomeRede = null;
-                                for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
-                                    redeTotal = r.getBytesRecebidos() + r.getBytesEnviados();
-                                    nomeRede = r.getNomeExibicao();
+                                try {
+                                    for (RedeInterface r : looca.getRede().getGrupoDeInterfaces().getInterfaces()) {
+                                        redeTotal = r.getBytesRecebidos() + r.getBytesEnviados();
+                                        nomeRede = r.getNomeExibicao();
+                                    }
+                                    log.gravar("Exito ao executar o for na linha 316", "system");
+                                }catch (ArithmeticException a){
+                                    log.gravar("Erro ao executar o for na linha 316", "erro");
                                 }
                                 List<Config> config = con.query("SELECT * FROM Configuracao WHERE serialDisco LIKE ?;", new BeanPropertyRowMapper<>(Config.class), serial);
                                 if (config.isEmpty()) {
+                                    log.gravar("Exito ao executar a condição na linha 325", "system");
                                     String sqlConfig = "INSERT INTO Configuracao (fkComponente, fkServidor, tamanhoTotal,serialDisco, cpuLogica, cpuFisica, nomeRede) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
                                     // CONFIGS
                                     //CPU
-                                    con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null, null, looca.getProcessador().getNumeroCpusLogicas(), looca.getProcessador().getNumeroCpusFisicas(), null);
+                                    try {
+                                        con.update(sqlConfig, 1, servidoresAtivos.get(0).getIdServidor(), null, null, looca.getProcessador().getNumeroCpusLogicas(), looca.getProcessador().getNumeroCpusFisicas(), null);
+                                        log.gravar("Exito ao executr update() de config na linha 332", "system");
+                                    }catch (ArithmeticException e){
+                                        log.gravar("Erro ao executar update() de config na linha 332",  "erro");
+                                    }
                                     //RAM
-                                    con.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), looca.getMemoria().getTotal(), null, null, null, null);
+                                    try {
+                                        con.update(sqlConfig, 2, servidoresAtivos.get(0).getIdServidor(), looca.getMemoria().getTotal(), null, null, null, null);
+                                        log.gravar("Exito ao executar o update() de config na linha 339", "system");
+                                    }catch (ArithmeticException e){
+                                        log.gravar("Erro ao executar o update() de config na linha 339", "erro");
+                                    }
                                     //DISCO
-                                    con.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), looca.getGrupoDeDiscos().getTamanhoTotal(), serial, null, null, null);
+                                    try {
+                                        con.update(sqlConfig, 3, servidoresAtivos.get(0).getIdServidor(), looca.getGrupoDeDiscos().getTamanhoTotal(), serial, null, null, null);
+                                        log.gravar("Exito ao executar o update() de config na linha 346", "system");
+                                    }catch (ArithmeticException e){
+                                        log.gravar("Erro ao executar o update() de config na linha 346", "erro");
+                                    }
                                     //REDE
-                                    con.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), redeTotal, null, null, null, nomeRede);
-
+                                    try {
+                                        con.update(sqlConfig, 4, servidoresAtivos.get(0).getIdServidor(), redeTotal, null, null, null, nomeRede);
+                                        log.gravar("Exito ao executar o update() de config na linha 353", "system");
+                                    }catch (ArithmeticException e){
+                                        log.gravar("Erro ao executar o update() de config na linha 353", "erro");
+                                    }
 
                                 }
                                 System.out.println(servidoresAtivos.get(0));
+                                log.gravar("Exito ao ativar o servidor", "system");
                                 break;
                             } else {
                                 System.out.println("Este servidor já está ativo! Para alterar Desative em sua Dashboard");
+                                log.gravar("Erro ao ativar o servidor, servidor ja ativo", "erro");
                                 break;
                             }
 
                         case 2:
+                            log.gravar("O metodo logar caiu no caso 2 na linha 371", "system");
                             List<Servidor> servidores2 = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor JOIN Empresa ON Servidor.fkEmpresa = Empresa.idEmpresa JOIN Usuario ON Usuario.fkEmpresa = Empresa.idEmpresa WHERE Usuario.idUsuario = ? AND Servidor.fkStatusServ != 1;", new BeanPropertyRowMapper<>(Servidor.class), usuarios.get(0).getIdUsuario());
                             System.out.println(servidores2);
                             break;
                         case 3:
+                            log.gravar("O metodo logar() caiu no caso 3 na linha 375", "system");
                             System.out.println("Saindo....");
                             System.exit(0);
                             break;
                         default:
+                            log.gravar("Usuario inseriu valor invalido nos casos da linha 380", "erro");
                             System.out.println("Invalido");
                     }
 
                 } while (opcaoAdm != 3);
             } else {
+                log.gravar("Caiu no else do metodo logar() na linha 386", "system");
                 System.out.println("Bem vindo " + usuarios.get(0).getNome());
                 Integer opcaoEstag;
                 do {
@@ -298,29 +400,36 @@ public class AppDuck {
 
                     switch (opcaoEstag) {
                         case 1:
+                            log.gravar("Caiu no caso 1 do metodo logar() na linha 401","system");
                             List<Servidor> servidores = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor JOIN Empresa ON Servidor.fkEmpresa = Empresa.idEmpresa JOIN Usuario ON Usuario.fkEmpresa = Empresa.idEmpresa WHERE Usuario.idUsuario = ? AND Servidor.fkStatusServ != 1;", new BeanPropertyRowMapper<>(Servidor.class), usuarios.get(0).getIdUsuario());
                             System.out.println(servidores);
                             break;
                         case 2:
+                            log.gravar("Caiu no caso 2 do metodo logar() na linha 406", "system");
                             System.out.println("Saindo....");
+                            log.gravar("Usuario fez logout", "system");
                             System.exit(0);
                             break;
                         default:
+                            log.gravar("Usurio inseriu um valor invalido para os casos na linha 412", "erro");
                             System.out.println("Invalido");
                     }
                 } while (opcaoEstag != 2);
             }
         } else {
             System.out.println("Email ou senha invalidos!");
-
+            log.gravar("Usuario informou informações invalidar na hora do login como senha ou email","erro");
         }
     }
 
 
     public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor) throws IOException, InterruptedException {
+        log.gravar("Executando o metodo monitoraProcessos()", "system");
         List<ProcessoI> processos = con.query("SELECT * FROM Processo WHERE fkAcaoProcesso = 3;", new BeanPropertyRowMapper<>(ProcessoI.class));
 
         if (!processos.isEmpty()){
+            log.gravar("Exito ao executar a condição no metodo monitoraProcesso() na linha 429", "system");
+            try {
                 for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
 
                     if (processoLooca.getUsoCpu() > cpuLimite || processoLooca.getUsoMemoria() > ramLimite) {
@@ -329,9 +438,9 @@ public class AppDuck {
                         Boolean existeNome = processos.stream().noneMatch(processoI -> processoI.getNome().equals(processoLooca.getNome()));
 
 
-                        if (processoLooca.getPid() != 0){
+                        if (processoLooca.getPid() != 0) {
                             System.out.println("IF DO != 0");
-                            if (existePid || existeNome){
+                            if (existePid || existeNome) {
                                 System.out.println("IF DO EXISTE POR NOME ");
                                 // Processo não encontrado no banco de dados, insira no banco e envie mensagem
                                 String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -342,12 +451,15 @@ public class AppDuck {
                                         processoLooca.getNome(), consumoCpu, consumoRam,
                                         servidor, 1, 3);
 
-                                BotSlack botSlack = new BotSlack();
-                                try {
-                                    botSlack.msgProcesso(processoLooca.getNome(), nomeServidor);
-                                } catch (IOException | InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
+//                                BotSlack botSlack = new BotSlack();
+//                                try {
+//                                    botSlack.msgProcesso(processoLooca.getNome(), nomeServidor);
+//                                    log.gravar("Exito ao executar botSlack na linha 455", "system");
+//                                } catch (IOException | InterruptedException e) {
+//                                    throw new RuntimeException(e);
+//                                }catch (ArithmeticException e){
+//                                    log.gravar("Erro ao executar botSlack na linha 455", "erro");
+//                                }
                                 break;
                             }
                             break;
@@ -355,37 +467,51 @@ public class AppDuck {
                         break;
                     }
                 }
-
+                log.gravar("Exito ao executar o for do metodo monitoraProcesso() na linha 432", "system");
+            }catch (ArithmeticException e){
+                log.gravar("Erro ao executar o for do metodo monitoraProcesso() na linha 432","erro");
+            }
         } else {
-            for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
+            log.gravar("Condição teve exito ao cair no else na linha 473", "system");
+            try {
+                for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
 
-                if (processoLooca.getUsoCpu() > cpuLimite || processoLooca.getUsoMemoria() > ramLimite) {
-                    System.out.println("ANTES DA PRIMEIRA VEZ");
-                    System.out.println(processoLooca);
-                    if (processoLooca.getPid() != 0) {
-                        System.out.println("IF DO != 0 PRIMEIRA VEZ");
-                        // Processo não encontrado no banco de dados, insira no banco e envie mensagem
-                        String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    if (processoLooca.getUsoCpu() > cpuLimite || processoLooca.getUsoMemoria() > ramLimite) {
+                        System.out.println("ANTES DA PRIMEIRA VEZ");
+                        System.out.println(processoLooca);
+                        log.gravar("Exito ao executar a condiçao na linha 478", "system");
+                        if (processoLooca.getPid() != 0) {
+                            log.gravar("Caiu na condição na linha 482","systemi");
+                            System.out.println("IF DO != 0 PRIMEIRA VEZ");
+                            // Processo não encontrado no banco de dados, insira no banco e envie mensagem
+                            String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-                        Double consumoRam = processoLooca.getUsoMemoria();
-                        Double consumoCpu = processoLooca.getUsoCpu();
+                            Double consumoRam = processoLooca.getUsoMemoria();
+                            Double consumoCpu = processoLooca.getUsoCpu();
 
-                        con.update(sql, processoLooca.getPid(),
-                                processoLooca.getNome(), consumoCpu, consumoRam,
-                                servidor, 1, 3);
+                            con.update(sql, processoLooca.getPid(),
+                                    processoLooca.getNome(), consumoCpu, consumoRam,
+                                    servidor, 1, 3);
 
-                        BotSlack botSlack = new BotSlack();
-                        try {
-                            botSlack.msgProcesso(processoLooca.getNome(), nomeServidor);
-                        } catch (IOException | InterruptedException e) {
-                            throw new RuntimeException(e);
+//                            BotSlack botSlack = new BotSlack();
+//                            try {
+//                                botSlack.msgProcesso(processoLooca.getNome(), nomeServidor);
+//                                log.gravar("Exito ao executar o botSlack na linha 495", "system");
+//                            } catch (IOException | InterruptedException e) {
+//                                throw new RuntimeException(e);
+//                            }catch (ArithmeticException e){
+//                                log.gravar("Erro ao executar o botSlack na linha 495", "erro");
+//                            }
+
+                            break; // Saia do loop interno após encontrar e processar um processo
                         }
+                        break;
 
-                        break; // Saia do loop interno após encontrar e processar um processo
                     }
-                    break;
-
                 }
+                log.gravar("Exito ao executar o for na linha 476", "system");
+            }catch (ArithmeticException e){
+                log.gravar("Erro ao executar o for na linha 476", "erro");
             }
         }
 
@@ -393,14 +519,18 @@ public class AppDuck {
 
 
     public static void verificarLimite(String servidor, long valorCaptura, Double limite, String componente, Config config) throws IOException, InterruptedException {
+        log.gravar("Executando o metodo verificarLimite()","system");
         final Boolean[] timeoutAtivo = {false};
         Double porcetagem = 0.0;
         if (componente.equals("RAM")) {
             porcetagem = (double) valorCaptura / config.getTamanhoTotal() * 100;
+            log.gravar("Fazendo o calculo da memoria ram", "system");
         } else if (componente.equals("DISCO")) {
             porcetagem = (double) valorCaptura / config.getTamanhoTotal() * 100;
+            log.gravar("Fazendo o calculo do disco", "system");
         } else if (componente.equals("REDE")) {
             porcetagem = (double) valorCaptura / config.getTamanhoTotal() * 100;
+            log.gravar("Fazendo o calculo da rede", "system");
         }
 
         if (porcetagem >= limite) {
@@ -416,34 +546,45 @@ public class AppDuck {
                         timeoutAtivo[0] = false;
                     }
                 }, 1000, 5000); // 5000 milissegundos = 5 segundos
+                log.gravar("Exito ao executar a condição de porcentagem na linha 533", "system");
             }
         }
 
     }
 
     public static void pausarProcessos(Looca looca, JdbcTemplate con) {
+        log.gravar("Executando o metodo pausarProcessos()","system");
         List<ProcessoI> processos = con.query("SELECT * FROM Processo WHERE fkAcaoProcesso != 3;", new BeanPropertyRowMapper<>(ProcessoI.class));
         if (processos.size() > 0) {
+            log.gravar("Executando a condição na linha 557","system");
             String nomeProcesso = processos.get(0).getNome();
-            for (Processo p : looca.getGrupoDeProcessos().getProcessos()) {
+            try {
+                for (Processo p : looca.getGrupoDeProcessos().getProcessos()) {
 
-                if (p.getNome().equals(nomeProcesso)) {
+                    if (p.getNome().equals(nomeProcesso)) {
+                        log.gravar("Exito ao executar condição do metodo pausarProcesso na linha 563","system");
+                        String pId = String.valueOf(p.getPid());
+                        if (looca.getSistema().getSistemaOperacional().equals("Windows")) {
+                            log.gravar("Exito ao executar a condição do metodo pausarProcesso() na linha 566","system");
+                            kilProcessWindows(pId);
 
-                    String pId = String.valueOf(p.getPid());
-                    if (looca.getSistema().getSistemaOperacional().equals("Windows")) {
-                        kilProcessWindows(pId);
+                        } else {
+                            log.gravar("Exito ao executar a condição else do metodo pausarProcesso() na linha 570","system");
+                            pauseProcessUbuntu(pId);
 
-                    } else {
-                        pauseProcessUbuntu(pId);
-
-                        resumeProcessUbuntu(pId);
+                            resumeProcessUbuntu(pId);
+                        }
                     }
                 }
+                log.gravar("Exito ao executar o for do metodo pausarProcesso() na linha 561", "system");
+            }catch (ArithmeticException e){
+                log.gravar("Erro ao executar for do metodo pausarProcesso() na linha 561","erro");
             }
         }
     }
 
     public static void kilProcessWindows(String pId) {
+        log.gravar("Executando o metodo kilProcessWindows", "system");
         String processoParaEncerrar = pId;
 
         try {
@@ -453,15 +594,21 @@ public class AppDuck {
             int exitCode = process.waitFor();
             if (exitCode == 0) {
                 System.out.println("Processo encerrado com sucesso.");
+                log.gravar("Exito ao executar a condição do metodo kilProcessWindows() na linha 594","system");
             } else {
                 System.out.println("Erro ao encerrar o processo. Código de saída: " + exitCode);
+                log.gravar("Exito ao executar a condição else do metodo kilProcessWindows() na linha 597", "system");
             }
+            log.gravar("Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589", "system");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }catch (ArithmeticException e){
+            log.gravar("Erro ao executar o ProcessBuilder no metodo kilProcessWindows() na linha 589", "erro");
         }
     }
 
     public static void pauseProcessUbuntu(String pid) {
+        log.gravar("Executando o metodoo pauseProcessUbuntu()","system");
         try {
             // Construa o comando para pausar o processo
             String[] command = {"kill", "-STOP", pid};
@@ -472,15 +619,20 @@ public class AppDuck {
 
             if (exitCode == 0) {
                 System.out.println("Processo com PID " + pid + " pausado com sucesso.");
+                log.gravar("Exito ao executar condição do metodo pauseProcessUbuntu() na linha 619","system");
             } else {
                 System.out.println("Erro ao pausar o processo com PID " + pid + ". Código de saída: " + exitCode);
+                log.gravar("Exito ao executar a codição else do metodo pauseProcessUbuntu() na linha 622", "system");
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }catch (ArithmeticException e){
+            log.gravar("Erro ao executar a pauseProcessUbuntu()", "erro");
         }
     }
 
     public static void resumeProcessUbuntu(String pid) {
+        log.gravar("Executando o metodo resumeProcessUbuntu()","system");
         try {
             // Construa o comando para continuar o processo
             String[] command = {"kill", "-CONT", pid};
@@ -491,11 +643,15 @@ public class AppDuck {
 
             if (exitCode == 0) {
                 System.out.println("Processo com PID " + pid + " continuado com sucesso.");
+                log.gravar("Exito ao executar a condição do metodo resumeProcessUbuntu() na linha 643","system");
             } else {
                 System.out.println("Erro ao continuar o processo com PID " + pid + ". Código de saída: " + exitCode);
+                log.gravar("Exito ao executar a condição else do metodo resumeProcessUbuntu() na linha 646","system");
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }catch (ArithmeticException e){
+            log.gravar("Erro ao executar o metodo resumeProcessUbuntu()","system");
         }
     }
 

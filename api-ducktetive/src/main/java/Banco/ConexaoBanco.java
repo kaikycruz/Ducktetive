@@ -3,6 +3,10 @@ package Banco;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class ConexaoBanco {
     private JdbcTemplate conexaoBanco;
     // ALTERAR DEV PARA INSERIR NO BANCO
@@ -19,13 +23,13 @@ public class ConexaoBanco {
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
             dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Ducktetive");
             dataSource.setUsername("root");
-            dataSource.setPassword("997849791abc");
+            dataSource.setPassword("2077");
 
             conexaoBanco = new JdbcTemplate(dataSource);
         } else {
             BasicDataSource dataSourceAWS = new BasicDataSource();
             dataSourceAWS.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            dataSourceAWS.setUrl("jdbc:sqlserver://54.174.254.124;" +
+            dataSourceAWS.setUrl("jdbc:sqlserver://3.232.45.65;" +
                     "database=Ducktetive;" +
                     "user=sa;" +
                     "password=urubu100;" +
