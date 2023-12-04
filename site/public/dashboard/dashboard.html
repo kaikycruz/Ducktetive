@@ -1300,7 +1300,7 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
 
             percDisco.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
 
-            estimativaDisco.innerHTML = `${(novoRegistro[0].total / (novoRegistro[0].valor / novoRegistro[0].total)).toFixed(0)}`
+            estimativaDisco.innerHTML = `${((novoRegistro[0].total / 1073741824.0).toFixed(2) / (novoRegistro[0].valor / novoRegistro[0].total)).toFixed(0)}`
             myChartDisco.update();
           }
 
