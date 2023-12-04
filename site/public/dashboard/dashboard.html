@@ -271,7 +271,7 @@
                             </span>
                         </div>
                         
-                        <div class="disco-cards-kpi" id="cpu-frequency">
+                        <div class="disco-cards-kpi" id="rede-frequency">
                             <span class="kpi-title">
                                 Pacotes Recebidos 
                             </span>
@@ -769,7 +769,7 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
              
             if (
             novoRegistro[0].momento_grafico ==
-            dados.labels[dados.labels.length - 1]
+            dados.labels[dados.labels.length]
           ) {
             console.log(
               "---------------------------------------------------------------"
@@ -783,10 +783,11 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
             console.log(dados.labels[dados.labels.length - 1]);
             console.log(
               "---------------------------------------------------------------"
-              
             );
+
           } else {
             // tirando e colocando valores no gráfico
+            
              dados.labels.shift(); 
              dados.labels.push(novoRegistro[0].momento_grafico);
 
@@ -967,7 +968,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)); // incluir uma nova medida de umidade
+            dados.datasets[0].data.push(((novoRegistro[0].total / 1073741824.0).toFixed(2)) - ((novoRegistro[0].valor / 1073741824.0).toFixed(2))); // incluir uma nova medida de umidade
 
 
             totalRam.innerHTML = `${(novoRegistro[0].total / 1073741824.0).toFixed(2)}GB`
@@ -1290,7 +1291,7 @@ function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].valor); 
+            dados.datasets[0].data.push((novoRegistro[0].valor / 1073741824.0).toFixed(2)); 
             checarParametrosDISCO(novoRegistro[0].valor)
 
 
@@ -1369,16 +1370,7 @@ let dados = {
       borderColor: "rgba(255,124,51,1)",
       tension: 0.7,
       borderWidth: 4,
-      yAxisID: 'y',
-    },
-    {
-      label: "Recebido",
-      data: [],
-      fill: false,
-      borderColor: "rgba(255,124,51,1)",
-      tension: 0.7,
-      borderWidth: 4,
-      yAxisID: 'y1',
+     
     },
   ],
 };
@@ -1393,9 +1385,7 @@ console.log(resposta);
 for (i = 0; i < resposta.length; i++) {
   var registro = resposta[i];
   labels.push(registro.momento_grafico);
-  dados.datasets[0].data.push(registro.valor);
-  dados.datasets[1].data.push(registro.valorTeste);
-  
+  dados.datasets[0].data.push(registro.valor); 
 }
 
 console.log("----------------------------------------------");
@@ -1410,32 +1400,6 @@ console.log("----------------------------------------------");
 const configRede = {
   type: "line",
   data: dados,
-  data: dados,
-  options: {
-    responsive: true,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    stacked: false,
-    scales: {
-      y: {
-        type: 'linear',
-        display: true,
-        position: 'left',
-      },
-      y1: {
-        type: 'linear',
-        display: true,
-        position: 'right',
-
-        // grid line settings
-        grid: {
-          drawOnChartArea: false, // only want the grid lines for one axis to show up
-        },
-      },
-    }
-  },
 };
 
 // Adicionando gráfico criado em div na tela
@@ -1486,10 +1450,7 @@ function atualizarGraficoRede(idMetrica, dados, myChartRede) {
             dados.labels.push(novoRegistro[0].momento_grafico);
 
             dados.datasets[0].data.shift(); 
-            dados.datasets[0].data.push(novoRegistro[0].valor);
-
-            dados.datasets[0].data.shift(); 
-            dados.datasets[0].data.push(novoRegistro[0].valorTeste); 
+            dados.datasets[0].data.push(novoRegistro[0].valor); 
 
             nomeRede.innerHTML = `${novoRegistro[0].nomeRede}`
             pacotesRecebidos.innerHTML = `${novoRegistro[0].valor}`

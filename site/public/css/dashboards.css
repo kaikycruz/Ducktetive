@@ -457,7 +457,7 @@ a {
 
 
 #disco-frequency {
-  background-color: rgb(225, 213, 81);
+  background-color: rgb(86, 225, 81);
   color: #ffffff;
 }
 
@@ -1102,4 +1102,8 @@ span div span b {
 .dashboard-content #users-list .user .userData .nameProcesso {
   padding-left: 15px;
   width: 75px;
+}
+
+#rede-frequency {
+  background-color: #c9c9c9;
 }
