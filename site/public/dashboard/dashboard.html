@@ -970,8 +970,8 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
 
 
-            totalRam.innerHTML = `${novoRegistro[0].total}GB`
-            ramEmUso.innerHTML = `${novoRegistro[0].valor}GB`
+            totalRam.innerHTML = `${novoRegistro[0].total / 1073741824.0}GB`
+            ramEmUso.innerHTML = `${novoRegistro[0].valor / 1073741824.0}GB`
             percUsoRam.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
             checarParametrosRAM(`${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`)
 

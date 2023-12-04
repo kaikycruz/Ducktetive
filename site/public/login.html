@@ -73,10 +73,8 @@
     async function entrar() {
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
-        alert(senhaVar)
         var senhaVar = senhaParaSHA256(senhaVar);
 
-        alert(senhaVar)
     
         if (emailVar == "" || senhaVar == "") {
             alertify.error('Preencha todos os campos');
