@@ -431,29 +431,37 @@ public class AppDuck {
         if (!processos.isEmpty()){
             log.gravar("Exito ao executar a condição no metodo monitoraProcesso() na linha 429", "system");
             try {
-                for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
+                List<Processo> listaProcessos = new ArrayList<>();
+                for (Processo pLooca: looca.getGrupoDeProcessos().getProcessos()) {
+                    if (pLooca.getPid() != 0) {
+                        listaProcessos.add(pLooca);
+                    }
+                }
 
-                    Double usoRam = processoLooca.getUsoMemoria() / 1073741824.0;
-                    Double usoCpu = processoLooca.getUsoCpu() ;
-
-
+                for (int i = 0; i < listaProcessos.size(); i++) {
+                    Double usoRam = listaProcessos.get(i).getUsoMemoria() / 1073741824.0;
+                    Double usoCpu = listaProcessos.get(i).getUsoCpu() ;
                     Double porcemtagemRam = usoRam / totalRam * 100;
 
                     if (usoCpu > (cpuLimite / 2) || porcemtagemRam > (ramLimite / 2)){
 
-                        Boolean existePid = processos.stream().noneMatch(processoI -> processoI.getpId().equals(processoLooca.getPid()));
-                        Boolean existeNome = processos.stream().noneMatch(processoI -> processoI.getNome().equals(processoLooca.getNome()));
-
-
-                        if (processoLooca.getPid() != 0) {
-                            if (existePid || existeNome) {
+                        if (listaProcessos.get(i).getPid() != 0) {
+                            Boolean existePid = true;
+                            Boolean existeNome =  true;
+                            for (ProcessoI processoI: processos) {
+                                if (processoI.getNome().equals(listaProcessos.get(i).getNome()) || processoI.getpId().equals(listaProcessos.get(i).getNome())){
+                                    existePid = false;
+                                    existeNome = false;
+                                }
+                            }
+                            if (existePid && existePid) {
                                 // Processo não encontrado no banco de dados, insira no banco e envie mensagem
                                 String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-                                Double consumoRam = processoLooca.getUsoMemoria();
-                                Double consumoCpu = processoLooca.getUsoCpu();
-                                con.update(sql, processoLooca.getPid(),
-                                        processoLooca.getNome(), consumoCpu, consumoRam,
+                                Double consumoRam = listaProcessos.get(i).getUsoMemoria();
+                                Double consumoCpu = listaProcessos.get(i).getUsoCpu();
+                                con.update(sql, listaProcessos.get(i).getPid(),
+                                        listaProcessos.get(i).getNome(), consumoCpu, consumoRam,
                                         servidor, 1, 3);
 
 //                                BotSlack botSlack = new BotSlack();
@@ -479,23 +487,29 @@ public class AppDuck {
         } else {
             log.gravar("Condição teve exito ao cair no else na linha 473", "system");
             try {
-                for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
-                    Double usoRam = processoLooca.getUsoMemoria() / 1073741824.0;
-                    Double porcemtagemRam = usoRam / totalRam * 100;
-                    Double usoCpu = processoLooca.getUsoCpu() ;
 
-                    if (processoLooca.getUsoCpu() > (cpuLimite / 2) || porcemtagemRam > (ramLimite / 3)) {
+                List<Processo> listaProcessos = new ArrayList<>();
+                for (Processo pLooca: looca.getGrupoDeProcessos().getProcessos()) {
+                    if (pLooca.getPid() != 0) {
+                        listaProcessos.add(pLooca);
+                    }
+                }
+                for (int i = 0; i < listaProcessos.size(); i++) {
+                    Double usoRam = listaProcessos.get(i).getUsoMemoria() / 1073741824.0;
+                    Double porcemtagemRam = usoRam / totalRam * 100;
+
+                    if (listaProcessos.get(i).getUsoCpu() > (cpuLimite / 2) || porcemtagemRam > (ramLimite / 2)) {
                         log.gravar("Exito ao executar a condiçao na linha 478", "system");
-                        if (processoLooca.getPid() != 0) {
+                        if (listaProcessos.get(i).getPid() != 0) {
                             log.gravar("Caiu na condição na linha 482","systemi");
                             // Processo não encontrado no banco de dados, insira no banco e envie mensagem
                             String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-                            Double consumoRam = processoLooca.getUsoMemoria();
-                            Double consumoCpu = processoLooca.getUsoCpu();
+                            Double consumoRam = listaProcessos.get(i).getUsoMemoria();
+                            Double consumoCpu = listaProcessos.get(i).getUsoCpu();
 
-                            con.update(sql, processoLooca.getPid(),
-                                    processoLooca.getNome(), consumoCpu, consumoRam,
+                            con.update(sql, listaProcessos.get(i).getPid(),
+                                    listaProcessos.get(i).getNome(), consumoCpu, consumoRam,
                                     servidor, 1, 3);
 
 //                            BotSlack botSlack = new BotSlack();
