@@ -616,10 +616,10 @@ public class AppDuck {
 
             int exitCode = process.waitFor();
             if (exitCode == 0) {
-                System.out.println("Processo encerrado com sucesso.");
+//                System.out.println("Processo encerrado com sucesso.");
                 log.gravar("Exito ao executar a condição do metodo kilProcessWindows() na linha 594","system");
             } else {
-                System.out.println("Erro ao encerrar o processo. Código de saída: " + exitCode);
+//                System.out.println("Erro ao encerrar o processo. Código de saída: " + exitCode);
                 log.gravar("Exito ao executar a condição else do metodo kilProcessWindows() na linha 597", "system");
             }
             log.gravar("Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589", "system");
