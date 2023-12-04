@@ -12,7 +12,7 @@ public class ConexaoBanco {
     // ALTERAR DEV PARA INSERIR NO BANCO
     // dev = true; <- INSERINDO LOCAL
     // dev = false; < - INSERINDO SQL Server
-    private Boolean dev = true;
+    private Boolean dev = false;
 
 
     public ConexaoBanco() {
