@@ -787,7 +787,7 @@ function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
             );
           } else {
             // tirando e colocando valores no gráfico
-            dados.labels.shift(); 
+             dados.labels.shift(); 
              dados.labels.push(novoRegistro[0].momento_grafico);
 
             dados.datasets[0].data.shift(); 
@@ -967,7 +967,7 @@ function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
             dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
             dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push((novoRegistro[0].valor / 1073741824.0).toFixed(2)); // incluir uma nova medida de umidade
+            dados.datasets[0].data.push(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)); // incluir uma nova medida de umidade
 
 
             totalRam.innerHTML = `${(novoRegistro[0].total / 1073741824.0).toFixed(2)}GB`

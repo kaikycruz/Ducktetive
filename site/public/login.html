@@ -126,11 +126,11 @@
             console.log(JSON.stringify(json.ativo));
 
 
-            if(sessionStorage.USUARIO_ATIVO == '1'){
+            if(sessionStorage.USUARIO_ATIVO == '1' || sessionStorage.USUARIO_ATIVO == 'true'){
                 setTimeout(() => {
                   window.location = "./dashboard/servidores.html";
                 }, 2000);
-            }else if(sessionStorage.USUARIO_ATIVO == '0'){
+            }else if(sessionStorage.USUARIO_ATIVO == '0' || sessionStorage.USUARIO_ATIVO == 'false'){
                 Swal.fire({
                     title: "Sua conta foi desativada",
                     text: "Você deseja reativar a sua conta?",
