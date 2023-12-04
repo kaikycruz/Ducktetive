@@ -113,8 +113,8 @@ function buscarUltimasMedidasDISCO(idServidor) {
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    FORMAT(configuracao.tamanhoTotal / 1000000000, '0.00') as total,
-    FORMAT(m.valor / 10000000000, '0.00') AS valor,
+    configuracao.tamanhoTotal as total,
+    m.valor AS valor,
     FORMAT(datahora, 'HH:mm:ss') AS momento_grafico
 FROM
     metrica m
@@ -132,8 +132,8 @@ ORDER BY
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    FORMAT(configuracao.tamanhoTotal/ 1000000000, 2) as total,
-    FORMAT(m.valor / 10000000000, 2) AS valor,
+    configuracao.tamanhoTotalas total,
+    m.valor AS valor,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
@@ -323,8 +323,8 @@ function buscarMedidasEmTempoRealDISCO(idServidor) {
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    FORMAT(configuracao.tamanhoTotal / 1000000000, 2) AS total,
-    FORMAT(m.valor / 10000000000, 2) AS valor,
+    configuracao.tamanhoTotal AS total,
+    m.valor AS valor,
     FORMAT(datahora, 'HH:mm:ss') AS momento_grafico
 FROM
     metrica m
@@ -342,8 +342,8 @@ ORDER BY
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    FORMAT(configuracao.tamanhoTotal/ 1000000000, 2) as total,
-    FORMAT(m.valor / 10000000000, 2) AS valor,
+    configuracao.tamanhoTotal as total,
+    m.valor AS valor,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM
     metrica m
