@@ -1,0 +1,1 @@
+[2023_12_4 - 2:56]  Erro ao ativar o servidor, servidor ja ativo

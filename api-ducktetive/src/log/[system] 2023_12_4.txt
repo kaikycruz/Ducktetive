@@ -4054,3 +4054,1394 @@
 [2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
 [2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
 [2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:1]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:1]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:1]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:1]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:1]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:1]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:1]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:1]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:50]  Executando o metodo pausarProcessos()
+[2023_12_4 - 2:50]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Executando o metodo pausarProcessos()
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 241
+[2023_12_4 - 2:56]  Exito ao executar a codificação na linha 233
+[2023_12_4 - 2:56]  Exito ao executar a condição da linha 259
+[2023_12_4 - 2:56]  Exito ao executar a condição na linha 261
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  O metodo logar() caiu no caso 1 na linha 276
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 280
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 2:56]  Exito ao executar update()  na linha 122
+[2023_12_4 - 2:56]  Exito ao executa update() na linha 146
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 141
+[2023_12_4 - 2:56]  Exito ao executar update() na linha 175
+[2023_12_4 - 2:56]  Exito ao executar o for na linha 170
+[2023_12_4 - 2:56]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 2:56]  Exito ao executar a condição no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 2:56]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 2:56]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 2:56]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 2:56]  Exito ao executar a condição do metodo inserirDadosMetrica() > run(), na linha 79
