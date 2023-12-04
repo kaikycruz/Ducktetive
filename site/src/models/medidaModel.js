@@ -132,7 +132,7 @@ ORDER BY
     configuracao.cpuLogica,
     configuracao.cpuFisica,
     configuracao.nomeRede,
-    configuracao.tamanhoTotalas total,
+    configuracao.tamanhoTotal as total,
     m.valor AS valor,
     DATE_FORMAT(datahora, '%H:%i:%s') AS momento_grafico
 FROM

@@ -4054,3 +4054,368 @@
 [2023_12_4 - 2:1]  Exito ao executar a condiÁ„o no metodo monitoraProcesso() na linha 429
 [2023_12_4 - 2:1]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
 [2023_12_4 - 2:1]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 10:54]  Executando o metodo pausarProcessos()
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Executando a condiÁ„o na linha 557
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo kilProcessWindows() na linha 594
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar condiÁ„o do metodo pausarProcesso na linha 563
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o do metodo pausarProcesso() na linha 566
+[2023_12_4 - 10:54]  Executando o metodo kilProcessWindows
+[2023_12_4 - 10:54]  Exito ao executar a condiÁ„o else do metodo kilProcessWindows() na linha 597
+[2023_12_4 - 10:54]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_4 - 10:54]  Exito ao executar o for do metodo pausarProcesso() na linha 561
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for na linha 241
+[2023_12_4 - 10:54]  Exito ao executar a codificaÁ„o na linha 233
+[2023_12_4 - 10:54]  Metodo main() caiu no caso 1 na linha 42
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:54]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Executando o metodo pausarProcessos()
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Executando a condiÁ„o na linha 557
+[2023_12_4 - 10:57]  Exito ao executar o for do metodo pausarProcesso() na linha 561
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:57]  Exito ao executar o for na linha 241
+[2023_12_4 - 10:57]  Exito ao executar a codificaÁ„o na linha 233
+[2023_12_4 - 10:57]  Metodo main() caiu no caso 1 na linha 42
+[2023_12_4 - 10:58]  Executando o metodo pausarProcessos()
+[2023_12_4 - 10:58]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:58]  Executando a condiÁ„o na linha 557
+[2023_12_4 - 10:58]  Exito ao executar o for do metodo pausarProcesso() na linha 561
+[2023_12_4 - 10:58]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:58]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:58]  Exito ao executar o for na linha 241
+[2023_12_4 - 10:58]  Exito ao executar a codificaÁ„o na linha 233
+[2023_12_4 - 10:58]  Metodo main() caiu no caso 1 na linha 42
+[2023_12_4 - 10:58]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:58]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 10:59]  Executando o metodo pausarProcessos()
+[2023_12_4 - 10:59]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Executando o metodo pausarProcessos()
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 241
+[2023_12_4 - 11:11]  Exito ao executar a codifica√ß√£o na linha 233
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o da linha 259
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o na linha 261
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  O metodo logar() caiu no caso 1 na linha 276
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 280
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMetrica() > run(), na linha 79
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o do metodo inserirDadosMatrica() > run(), na linha 82
+[2023_12_4 - 11:11]  Exito ao executar update()  na linha 122
+[2023_12_4 - 11:11]  Exito ao executa update() na linha 146
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 141
+[2023_12_4 - 11:11]  Exito ao executar update() na linha 175
+[2023_12_4 - 11:11]  Exito ao executar o for na linha 170
+[2023_12_4 - 11:11]  Executando o metodo monitoraProcessos()
+[2023_12_4 - 11:11]  Exito ao executar a condi√ß√£o no metodo monitoraProcesso() na linha 429
+[2023_12_4 - 11:11]  Exito ao executar o for do metodo monitoraProcesso() na linha 432
+[2023_12_4 - 11:11]  Exito ao executar monitorarProcessos() na linha 201
+[2023_12_4 - 11:11]  O metodo logar() caiu no caso 3 na linha 375

@@ -1,0 +1,4 @@
+[2023_12_4 - 10:54]  Usuario informou informações invalidar na hora do login como senha ou email
+[2023_12_4 - 10:57]  Usuario informou informações invalidar na hora do login como senha ou email
+[2023_12_4 - 10:58]  Usuario informou informações invalidar na hora do login como senha ou email
+[2023_12_4 - 11:11]  Erro ao ativar o servidor, servidor ja ativo
