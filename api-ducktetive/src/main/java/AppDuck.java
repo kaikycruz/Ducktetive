@@ -199,7 +199,7 @@ public class AppDuck {
 
                         // INSERT PROCESSOS && SLACK PROCESSOS
                         try {
-                            monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome());
+                            monitoraProcessos(looca, parametroAlertas.get(0).getMaximo(), parametroAlertas.get(1).getMaximo(), servidoresAtivos.get(0).getIdServidor(), con, servidoresAtivos.get(0).getNome(), config2.get(1).getTamanhoTotal());
                             log.gravar("Exito ao executar monitorarProcessos() na linha 201", "system");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -423,25 +423,30 @@ public class AppDuck {
     }
 
 
-    public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor) throws IOException, InterruptedException {
+    public static void monitoraProcessos(Looca looca, Double cpuLimite, Double ramLimite, Integer servidor, JdbcTemplate con, String nomeServidor, Long tamanhoRam) throws IOException, InterruptedException {
         log.gravar("Executando o metodo monitoraProcessos()", "system");
         List<ProcessoI> processos = con.query("SELECT * FROM Processo WHERE fkAcaoProcesso = 3;", new BeanPropertyRowMapper<>(ProcessoI.class));
+        Double totalRam = tamanhoRam / 1073741824.0;
 
         if (!processos.isEmpty()){
             log.gravar("Exito ao executar a condição no metodo monitoraProcesso() na linha 429", "system");
             try {
                 for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
 
-                    if (processoLooca.getUsoCpu() > cpuLimite || processoLooca.getUsoMemoria() > ramLimite) {
+                    Double usoRam = processoLooca.getUsoMemoria() / 1073741824.0;
+                    Double usoCpu = processoLooca.getUsoCpu() ;
+
+
+                    Double porcemtagemRam = usoRam / totalRam * 100;
+
+                    if (usoCpu > (cpuLimite / 2) || porcemtagemRam > (ramLimite / 2)){
 
                         Boolean existePid = processos.stream().noneMatch(processoI -> processoI.getpId().equals(processoLooca.getPid()));
                         Boolean existeNome = processos.stream().noneMatch(processoI -> processoI.getNome().equals(processoLooca.getNome()));
 
 
                         if (processoLooca.getPid() != 0) {
-                            System.out.println("IF DO != 0");
                             if (existePid || existeNome) {
-                                System.out.println("IF DO EXISTE POR NOME ");
                                 // Processo não encontrado no banco de dados, insira no banco e envie mensagem
                                 String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -475,14 +480,14 @@ public class AppDuck {
             log.gravar("Condição teve exito ao cair no else na linha 473", "system");
             try {
                 for (Processo processoLooca : looca.getGrupoDeProcessos().getProcessos()) {
+                    Double usoRam = processoLooca.getUsoMemoria() / 1073741824.0;
+                    Double porcemtagemRam = usoRam / totalRam * 100;
+                    Double usoCpu = processoLooca.getUsoCpu() ;
 
-                    if (processoLooca.getUsoCpu() > cpuLimite || processoLooca.getUsoMemoria() > ramLimite) {
-                        System.out.println("ANTES DA PRIMEIRA VEZ");
-                        System.out.println(processoLooca);
+                    if (processoLooca.getUsoCpu() > (cpuLimite / 2) || porcemtagemRam > (ramLimite / 3)) {
                         log.gravar("Exito ao executar a condiçao na linha 478", "system");
                         if (processoLooca.getPid() != 0) {
                             log.gravar("Caiu na condição na linha 482","systemi");
-                            System.out.println("IF DO != 0 PRIMEIRA VEZ");
                             // Processo não encontrado no banco de dados, insira no banco e envie mensagem
                             String sql = "INSERT INTO Processo (pId, nome, consumoCPU, consumoMem, fkServidor, fkStatusProce, fkAcaoProcesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
