@@ -578,8 +578,12 @@ public class AppDuck {
             log.gravar("Executando a condição na linha 557","system");
             String nomeProcesso = processos.get(0).getNome();
             try {
-                for (Processo p : looca.getGrupoDeProcessos().getProcessos()) {
+                List<Processo> listaProcessos = new ArrayList<>();
+                for (Processo pLooca: looca.getGrupoDeProcessos().getProcessos()) {
+                        listaProcessos.add(pLooca);
+                }
 
+                for (Processo p : listaProcessos) {
                     if (p.getNome().equals(nomeProcesso)) {
                         log.gravar("Exito ao executar condição do metodo pausarProcesso na linha 563","system");
                         String pId = String.valueOf(p.getPid());
