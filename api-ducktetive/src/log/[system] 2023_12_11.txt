@@ -1,0 +1,56 @@
+[2023_12_11 - 20:33]  Executando o metodo pausarProcessos()
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Executando a condição na linha 557
+[2023_12_11 - 20:33]  Exito ao executar condição do metodo pausarProcesso na linha 563
+[2023_12_11 - 20:33]  Exito ao executar a condição do metodo pausarProcesso() na linha 566
+[2023_12_11 - 20:33]  Executando o metodo kilProcessWindows
+[2023_12_11 - 20:33]  Exito ao executar a condição else do metodo kilProcessWindows() na linha 597
+[2023_12_11 - 20:33]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_11 - 20:33]  Exito ao executar condição do metodo pausarProcesso na linha 563
+[2023_12_11 - 20:33]  Exito ao executar a condição do metodo pausarProcesso() na linha 566
+[2023_12_11 - 20:33]  Executando o metodo kilProcessWindows
+[2023_12_11 - 20:33]  Exito ao executar a condição else do metodo kilProcessWindows() na linha 597
+[2023_12_11 - 20:33]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_11 - 20:33]  Exito ao executar condição do metodo pausarProcesso na linha 563
+[2023_12_11 - 20:33]  Exito ao executar a condição do metodo pausarProcesso() na linha 566
+[2023_12_11 - 20:33]  Executando o metodo kilProcessWindows
+[2023_12_11 - 20:33]  Exito ao executar a condição else do metodo kilProcessWindows() na linha 597
+[2023_12_11 - 20:33]  Exito ao executar ProcessBilder no metodo kilProcessWindows() na linha 589
+[2023_12_11 - 20:33]  Exito ao executar o for do metodo pausarProcesso() na linha 561
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for na linha 241
+[2023_12_11 - 20:33]  Exito ao executar a codificação na linha 233
+[2023_12_11 - 20:33]  Metodo main() caiu no caso 1 na linha 42
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:33]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:36]  Executando o metodo pausarProcessos()
+[2023_12_11 - 20:36]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:36]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72
+[2023_12_11 - 20:36]  Exito ao executar o for na linha 241
+[2023_12_11 - 20:36]  Exito ao executar a codificação na linha 233
+[2023_12_11 - 20:36]  Exito ao executar a condição da linha 259
+[2023_12_11 - 20:36]  Exito ao executar a condição na linha 261
+[2023_12_11 - 20:36]  O metodo logar caiu no caso 2 na linha 371
+[2023_12_11 - 20:36]  Metodo main() caiu no caso 1 na linha 42
+[2023_12_11 - 20:36]  Exito ao executar o for no metodo inserirDadosMetrica() > run(), na linha 68 a 72

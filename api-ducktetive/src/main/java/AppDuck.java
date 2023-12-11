@@ -265,12 +265,13 @@ public class AppDuck {
                 Integer opcaoAdm;
                 do {
                     System.out.println("""
-                            +---------------------------------+
-                            | ESCOLHA UMA DAS OPÇÕES:         |
-                            | 1) Ativar Servidor              |
-                            | 2) Exibir Servidores Inativos   |
-                            | 3) Sair                         |
-                            +---------------------------------+       
+                            +------------------------------------+
+                            | ESCOLHA UMA DAS OPÇÕES:            |
+                            | 1) Ativar Servidor                 |
+                            | 2) Exibir Servidores Inativos      |
+                            | 3) Exibir Servidores em Manutenção |
+                            | 4) Sair                            |
+                            +------------------------------------+       
                             """);
                     opcaoAdm = in.nextInt();
                     switch (opcaoAdm) {
@@ -374,6 +375,11 @@ public class AppDuck {
                             System.out.println(servidores2);
                             break;
                         case 3:
+                            log.gravar("O metodo logar caiu no caso 2 na linha 371", "system");
+                            List<Servidor> servidores3 = con.query("SELECT Servidor.idServidor, Servidor.nome, StatusServidor.nome AS status FROM Servidor JOIN StatusServidor ON Servidor.fkStatusServ = StatusServidor.idStatusServidor JOIN Empresa ON Servidor.fkEmpresa = Empresa.idEmpresa JOIN Usuario ON Usuario.fkEmpresa = Empresa.idEmpresa WHERE Usuario.idUsuario = ? AND Servidor.fkStatusServ = 3;", new BeanPropertyRowMapper<>(Servidor.class), usuarios.get(0).getIdUsuario());
+                            System.out.println(servidores3);
+                            break;
+                        case 4:
                             log.gravar("O metodo logar() caiu no caso 3 na linha 375", "system");
                             System.out.println("Saindo....");
                             System.exit(0);
