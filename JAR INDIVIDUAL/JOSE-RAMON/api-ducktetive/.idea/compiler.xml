@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-looca" />
+        <module name="sistema-nowl" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-looca" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
