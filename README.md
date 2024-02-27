@@ -6,10 +6,6 @@
 
 Nosso sistema contem algumas features como:
 
-+ Dashboard intertiva
-+ Analise meticulosa
-+ Monitoramento do hardware
-+ Alertas de invasão
 
 # Como nos organizamos
 
