@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;500;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto+Serif:wght@400;500;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-top{
+    background-color: white;
+    height: 80px;
+    padding: 0 10%;
+}
+
+.navegation{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    color: white;
+    font-weight: 100;
+
+}
+
+.nav-ul{
+    display: flex;
+    gap: 20px;
+
+}
+
+.list-ul{
+    list-style: none;
+    
+}
+
+.list-ul a:hover {
+    border-bottom: 1px solid white;
+}
+#logo{
+    position: relative;
+    left: 30px;
+}
+#logoCadastro{
+    position: relative;
+    right: 50px;
+}
+
+.agora {
+    border-bottom: 0.5px solid white;
+}
+
+.navegation .nav-ul .list-logo{
+    height: 60px;
+    
+}
+
+.navegation .nav-ul a{
+    text-decoration: none;
+    color: #FFFFFF;
+    
+}
+
+.section-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin: 30px;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#form-login {
+    justify-content: center;
+}
+
+.section-banner .container .img-banner{
+    justify-content: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.section-banner .container .img-banner h1{
+    margin-bottom: 20px;
+
+}
+
+.section-banner .container .img-banner img{
+    height: 80px;
+
+}
+.container-form {
+    width: 90vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-login{
+    justify-content: center;
+    
+}
+
+#email_input{
+    margin-bottom: 30px;
+}
+
+.section-banner .container .login-form{
+    height: fit-content;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.section-banner .container .login-form .form{
+    width:fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-banner .container .login-form .form2{
+    width:fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-text{
+    height: 40px;
+    width: 380px;
+    border: 1px solid #FF7C33;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+
+.login-options a{
+    text-decoration: none;
+    color: #FF7C33;
+}
+
+
+.remember-login{
+    display: flex;
+}
+
+.login-options p{
+    font-size: 12px;
+}
+
+.section-banner .container .login-form .login-options{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.buttons-form{
+    margin: 15px;
+    text-align: center;
+    
+}
+
+.buttons-form p{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #FF7C33;
+}
+
+.buttons-form .button{
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    border: #FF7C33 1px solid;
+}
+
+.buttons-form .button-login{
+    background-color: #FF7C33;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+
+.buttons-form .button-cadastrar{
+    background-color: #FFFFFF;
+    color: #FF7C33;
+}
+
+.button-login:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #FF7C33;
+    cursor: pointer;
+  }
+
+  .button-cadastrar:hover {
+    background-color: #FF7C33; /* Green */
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .buttons-form .button-register{
+    margin-top: 20px;
+    background-color: #FF7C33;
+    color: #FFFFFF;
+}
+.button-register:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #FF7C33;
+    cursor: pointer;
+  }
+
+
+
+/* Botão de suporte */
+
+#floatButton{
+    height: 100px;
+    width: 100px;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+    border: #000000 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#supportIcon{
+    height: 75px;
+}
+
+  .footer{
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    height: fit-content;
+    background-color: #FF7C33;
+    padding: 60px 10%;; 
+    margin-top: 80px;
+}
+
+.footer .container_rodape {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .section {
+    display: flex;
+}
+
+.footer .section .img-footer{
+    height: 80px;
+    margin-right: 40px;
+}
+
+.footer .section ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 100;
+}
+
+.footer .section ul li{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 100;
+}
+
+.footer .section .back-top{
+    height: 100px;
+    width: 100px;
+    border: 0 solid;
+    border-radius: 50px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .section .back-top .seta-icon{
+    height: 25%;
+    text-align: center;
+}
+
+section {
+    margin-left: 50px;
+    font-family: 'Montserrat', serif;
+}
+
+.footer .container_rodape .contato{
+    color: #FFFFFF;
+}
+.footer .container_rodape .contato p{
+    margin-bottom: 10px;
+}
+.footer .container_rodape .contato .infos{
+    display: flex;
+    align-items: center;
+}
+
+.footer .container_rodape .contato .infos li{
+    display: flex;
+    align-items: center;
+}
+
+.footer .container_rodape .contato #img-footer-telefone{
+    height: 25px;
+    margin-bottom: 10px;
+
+}
+.footer .container_rodape .contato #img-footer-mail{
+    height: 20px;
+
+    
+}
+
+footer .container_rodape .contato #img-footer-home{
+    height: 20px;
+
+    
+}
+
+footer .container_rodape .contato #home{
+    margin-top: 10px;
+
+    
+}
+
+
+#ESCONDIDO1{
+    font-weight: bold;
+    color: #FF7C33;
+}
+
+#ESCONDIDO2{
+    color: white;
+}
+
+#login-forma{
+    font-weight: bold;
+    color: #FF7C33;
+}

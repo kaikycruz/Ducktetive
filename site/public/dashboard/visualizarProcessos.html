@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ducktetive | Dashboards</title>
+
+  <link rel="stylesheet" href="../css/dashboards.css" />
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+
+  <!-- scripts do Chart.js - 2022-1 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!--FONT AWESOME-->
+  <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../src\images\ducktetive.png " />
+
+  <!-- Sweet Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body onload="payload()">
+  <main class="dashboard-main">
+    <aside class="aside-bar-menu" style="">
+      <div id="logo-ducktetive">
+        <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+      </div>
+      </a>
+      <hr />
+      <div id="dashboard-menu">
+        <div class="top-items">
+          <div class="dash-item">
+            <a href="servidores.html">
+              <div class="menu">
+                <div class="icon">
+                  <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                </div>
+                <p class="item-text">Servidores</p>
+              </div>
+            </a>
+          </div>
+          <a href="dashboard.html?id=" id="linkDashboard">
+            <div class="dash-item">
+              <div class="menu">
+                <div class="icon">
+                  <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                </div>
+                <p class="item-text">Dashboard</p>
+              </div>
+            </div>
+          </a>
+          <a href="visualizarProcessos.html">
+            <div class="dash-item">
+              <div class="menu" id="selected">
+                <div class="icon">
+                  <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                </div>
+                <p class="item-text">Processos</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="bottom-items">
+          <div class="dash-item">
+            <a href="visualizarUsuarios.html">
+              <div class="menu">
+                <div class="icon">
+                  <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                </div>
+                <p class="item-text">Gerenciar contas</p>
+              </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../alteracaoDeDados.html">
+                <div class="menu">
+                  <div class="icon">
+                    <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+                </div>
+              </a>
+            </div>
+            <div class="bottom-items">
+              <div class="dash-item">
+                <a href="../registroUsuario.html">
+                  <div class="menu">
+                    <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Criar usuario</p>
+                  </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../login.html">
+                    <div class="menu" onclick="sessionStorage.clear()">
+                      <div class="icon">
+                        <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Logout</p>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+    </aside>
+    <section class="dashboard-content listagem-de-servidores" id="dashboard-home" style="display: block">
+      <div class="dados-do-servidor">
+        <div class="servHeader">
+          <div id="titulo-pagina">
+            <p class="titulo" id="tituloPagina">Servidores da DUCKTETIVE</p>
+            <p class="subtitulo">Painel de gerenciamento de processos</p>
+          </div>
+          <div class="servButtons">
+            <!-- <div class="buscar">
+              <input type="text" class="buscar">
+              <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
+            </div>
+            <div id="filtrarServidores">
+              <img src="../src/images/Dashboard/icons/contexto 1.png">
+            </div> -->
+            <div id="user-data">
+              <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
+            </div>
+            <div id="dadosUsuario">
+              <span id="b_usuario"></span><br>
+              <span id="cargo_usuario"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div id="headerUserList"></div>
+      <div id="users-list">
+
+        <div class="user" id="usersListHeader">
+          <ul class="userData header">
+            <li class="data pid">PID</li>
+            <li class="data nameProcesso">Nome</li>
+            <li class="data cpu">Consumo CPU</li>
+            <li class="data ram">Consumo RAM</li>
+            <li class="data status">Ação</li>
+          </ul>
+        </div>
+        <div class="user" id="usersList">
+          
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
+
+<script>
+  var listaDeServidor;
+  var quantidadeDeServidor = 0;
+
+  function payload() {
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+    const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+    const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+    b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()}`;
+    cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()}`;
+
+    var paginaDashboard = document.getElementById(`linkDashboard`);
+    paginaDashboard.href = `dashboard.html?id=${id}`
+
+    buscarProcessos();
+
+    tituloPagina.innerHTML = `Processos da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
+    console.log(cargo_usuario)
+    if (CARGO_USUARIO.toUpperCase() != "DONO") {
+      document.getElementById("criarUsuario").style.display = "none";
+    }
+
+
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+
+    if (sessionStorage.FOTO_PERFIL == 'null'){
+
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+    //user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+    }
+
+    // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
+    //   document.getElementById("criarServidor").style.display = "none";
+    // }
+
+  }
+
+  function criarProcesso(
+    idProcesso,
+    PID,
+    nome,
+    cpu,
+    RAM
+  ) {
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+
+    listaDeServidores = document.querySelector("#usersList");
+    listaDeServidores.insertAdjacentHTML(
+      "beforeend",
+      `
+      
+    <ul class="userData">
+        <li class="data pid">${PID}</li>
+        <li class="data nameProcesso">${nome}</li>
+        <li class="data cpu">${cpu}</li>
+        <li class="data ram">${RAM}</li>
+        <li class="data status"> <div id="status">Matar</div> <div class="userStatus matar" id="userStatus" onclick="alterarStatusProcesso(${`1`}, ${idProcesso}, ${id})"><img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+        </div></li>
+    </ul>
+
+    
+
+    
+    `
+    );
+  }
+
+  function buscarProcessos() {
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    var idServidorVar = id;
+    var idAcaoProcesso = 1;
+
+    if (idServidorVar == "") {
+      alertify.error("Preencha todos os campos");
+      return false;
+    }
+
+    fetch("/usuarios/buscarProcessos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+            console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length;
+            if (quantidadeDeServidor > 0) {
+              console.log(
+                "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                quantidadeDeServidor
+              );
+
+              listaDeServidores = document.querySelector("#usersList");
+              listaDeServidores.innerHTML = ``
+              for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i]);
+                var idProcesso = JSON.stringify(json[i].idProcesso);
+                var pId = JSON.stringify(json[i].pId);
+                var nome = JSON.stringify(json[i].nome);
+                var consumoCPU = JSON.stringify(json[i].consumoCPU);
+                var consumoMem = JSON.stringify(json[i].consumoMem);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor);
+
+
+                if (ativo == 1) {
+                  var ativo = "Ativo"
+                  console.log(`22323`)
+                } else if (ativo == 0) {
+                  var ativo = "Inativo"
+                }
+
+                var pId = JSON.stringify(json[i].pId).substring(1, JSON.stringify(json[i].pId).length - 1);
+                var nome = JSON.stringify(json[i].nome).substring(1, JSON.stringify(json[i].nome).length - 1);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
+
+
+                criarProcesso(
+                  idProcesso,
+                  pId,
+                  nome,
+                  arredondarNumeros(consumoCPU),
+                  arredondarNumeros(consumoMem)
+
+
+                );
+              }
+            }
+            console.log(JSON.stringify(json[1].idServidor));
+            console.log(
+              "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            );
+          });
+        } else {
+          console.log("teste");
+          throw alertify.error(
+            "Erro ao realizar login, verifique suas credenciais"
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+  }
+
+  function alterarStatusProcesso(idAcaoProcesso, idProcesso, idServidor) {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idAcaoProcessoVar = idAcaoProcesso
+    var idprocessoVar = idProcesso
+    var idServidorVar = idServidor
+
+    if (
+      idAcaoProcessoVar == "" ||
+      idprocessoVar == "" ||
+      idServidorVar == ""
+    ) {
+      alertify.error('Escreva os dados em todos os campos');
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/alterarStatusProcesso", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/processo.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+        idAcaoProcessoServer: idAcaoProcessoVar,
+        idProcessoServer: idprocessoVar,
+        idServidorServer: idServidorVar
+
+
+        //   nomeprocessoServer: nomeprocessoVar,
+        //   sobrenomeprocessoServer: sobrenomeprocessoVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          location.reload()
+        } else {
+          console.log('teste')
+          throw alertify.error('Ocorreu um erro com a atualização dos dados');
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
+  }
+
+
+  function arredondarNumeros(numeroQuebrado) {
+    var numero = Number(numeroQuebrado)
+
+    return parseFloat(numero.toFixed(2))
+  }
+
+  //var listaUsuarios = document.getElementById('usersList')
+  //var itens = listaUsuarios.getElementsByClassName('userData');
+  //itens[1]
+  //itens[1].getElementsByClassName('name')
+  //itens[1].getElementsByClassName('name')[0].value
+  //itens[1].getElementsByClassName('name')[0]
+  //itens[1].getElementsByClassName('name')[0].innerHTML
+
+  var intervalo = setInterval(buscarProcessos, 5000);
+
+</script>

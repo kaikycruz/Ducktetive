@@ -1,0 +1,356 @@
+/* pagina mural */
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: #d9d9d9;
+    /* color of the tracking area */
+    border-radius: 5px;
+
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #FF7C33;
+    /* color of the scroll thumb */
+    /* creates padding around scroll thumb */
+    border-radius: 5px;
+
+}
+
+/* Side-bar */
+
+hr {
+    background-color: #D9D9D9;
+    height: 2px;
+    border: none;
+}
+
+.dashboard-main {
+    display: flex;
+}
+
+.aside-bar-menu {
+    background-color: #FFFFFF;
+    width: 35vh;
+    height: 100vh;  
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.icon{
+    pointer-events: none;
+}
+.item-text{
+    pointer-events: none;
+}
+.aside-bar-menu #logo-ducktetive {
+    margin: 1vh;
+    text-align: center;
+}
+
+.aside-bar-menu #logo-ducktetive #duck-logo-dashboard {
+    height: 50px;
+}
+
+.dashboard-main #user-data {
+    margin: 1vh 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.dashboard-main #userData #user_picture {
+    height: 90px;
+    width: 90px;
+}
+
+#user-name {
+    font-weight: bold;
+    color: #313131;
+    font-size: 2.8vh;
+}
+
+#user-role {
+    font-weight: bold;
+    color: #757575;
+}
+
+#dashboard-menu {
+    margin-top: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 2vh;
+}
+
+#dash-title {
+    color: #757575;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+#dashboard-menu .dash-item {
+    display: flex;
+    height: 5vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.dash-item :hover {
+    background-color: rgba(255, 124, 51, 0.11);
+
+}
+
+#dashboard-menu .dash-item .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    height: 100%;
+
+}
+
+#dashboard-menu .dash-item .menu .icon {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+}
+
+#dashboard-menu .dash-item .icon .icon-menu {
+    height: 19px;
+}
+
+#ram-icon {
+    width: 19px;
+
+}
+
+
+#dashboard-menu .dash-item .item-text {
+    color: #757575;
+    font-weight: bold;
+    width: 75%;
+    text-align: start;
+}
+
+
+
+#alerts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 2vh;
+}
+
+#alert-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    width: 100%;
+    display: block;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.content-alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 124, 51, 0.11);
+    height: 10vh;
+    width: 75%;
+    border-radius: 25px;
+    margin-bottom: 1vh;
+    padding: 2vh;
+}
+
+.content-alert div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+
+
+}
+
+.content-alert #alert-status-healthy {
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: rgb(0, 255, 0);
+    margin-right: 10px;
+}
+
+.content-alert #alert-status-attention {
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: yellow;
+    margin-right: 10px;
+}
+
+.content-alert #alert-status-critic {
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: red;
+    margin-right: 10px;
+}
+
+.alert-title {
+    font-weight: bold;
+    color: #757575;
+}
+
+.alert-message {
+    color: #757575;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* Final Side-bar */
+
+.dashboard-content {
+    background-color: #FF7C33;
+    background-color: rgba(255, 124, 51, 0.11);
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding-left: 45vh;
+    /* height: 100vh; */
+    /* comentamos o codigo acima para que a tela fique adaptiva*/
+}
+
+.dashboard-content-usuarios {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 2%;
+    width: 92%;
+    height: 100vh;
+}
+
+.titulos-usuarios {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    color: #FF7C33;
+    padding-bottom: 1%;
+    width: 100%;
+    height: 10vh;
+    border-bottom: 2px rgb(213, 213, 213) solid ;
+}
+
+.indicadores-usuarios-nome {
+    display: flex;
+    align-items: end;
+    width: 21%;
+    height: 10vh;
+}
+
+.indicadores-usuarios-email {
+    display: flex;
+    align-items: end;
+    width: 35%;
+    height: 10vh;
+}
+
+.indicadores-usuarios-cargo {
+    display: flex;
+    align-items: end;
+    width: 19%;
+    height: 10vh;
+}
+
+.indicadores-usuarios-cidade {
+    display: flex;
+    align-items: end;
+    width: 18%;
+    height: 10vh;
+}
+
+.indicadores-usuarios-status {
+    display: flex;
+    align-items: end;
+    width: 7%;
+    height: 10vh;
+}
+
+.conteudo-usuarios {
+    display: flex;
+    flex-direction: column;
+    color: #757575;
+    padding-top: 2vh;
+    width: 100%;
+    height: 100vh;
+}
+
+.usuarios {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 6%;
+}
+
+.usuarios-nome {
+    width: 21%;
+}
+
+.usuarios-email {
+    width: 35%;
+}
+
+.usuarios-cargo {
+    width: 19%;
+}
+
+.usuarios-cidade {
+    width: 18%;
+}
+
+.usuarios-status {
+    background-color: #06D30E;
+    text-align: center;
+    border-radius: 20px;
+    color: #FFFFFF;
+    height: 3vh;
+    width: 7%;
+}
+
+.usuarios-status-inativo {
+    background-color: #FF0000;
+    text-align: center;
+    border-radius: 20px;
+    color: #FFFFFF;
+    height: 3vh;
+    width: 7%;
+}

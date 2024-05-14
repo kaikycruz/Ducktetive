@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar servidor</title>
+    <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+</head>
+<body onload="buscarParametros(), payload()">
+
+    <main id="main">
+        <div id="central-logo">
+            <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
+        </div>
+        <div>
+            <h2>CADASTRAR SERVIDOR</h2>
+        </div>
+        <aside class="aside-bar-menu" style="">
+            <div id="logo-ducktetive">
+              <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+            </div>
+            </a>
+            <hr/>
+            <div id="dashboard-menu">
+              <div class="dash-item">
+                  <div class="menu" id="selected">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Servidores</p>
+                  </div>
+              </div>
+              
+              <div class="bottom-items">
+                <div class="dash-item" id="gerenciarContas">
+                  <a href="dashboard/visualizarUsuarios.html" >
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Gerenciar contas</p>
+                    </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../alteracaoDeDados.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Editar conta</p>
+                  </div></a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item" id="criarUsuario">
+                  <a href="../registroUsuario.html" >
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Criar usuario</p>
+                  </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../login.html">
+                  <div class="menu" onclick="sessionStorage.clear()">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Logout</p>
+                  </div></a>
+              </div>
+              
+              </div>
+          </aside>
+        <div class="content">
+            <div class="nomeServer">
+                <span class="tilte">Nome do servidor</span>
+                <input type="text" id="nomeServidor_input">
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações do processador</h3>
+                <h6>informe a temperatura maxima e minima que o processdor poderá atingir em graus celsius</h6>
+                <div>
+                    <span>
+                        Maximo temperatura
+                        <input placeholder="00.00" id="inputValorMaxCPU_input">
+                    </span>
+                    <span>
+                        Minimo temperatura
+                        <input placeholder="00.00" id="inputValorMinCPU_input">
+                    </span>
+                </div>
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações da Memoria ram</h3>
+                <h6>Informe a quantidade de memoria maxima que o seu sisema deve usar em Mbps</h6>
+                <div>
+                    <span>
+                        Maximo de uso
+                        <input placeholder="0000Mbps" id="inputValorMaxRAM_input">
+                    </span>
+                    <span>
+                        Minimo de uso
+                        <input placeholder="0000Mbps" id="inputValorMinRAM_input">
+                    </span>
+                </div>
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações do disco</h3>
+                <h6>Informe a quantidade maxima que podera utilizar do disco em seu sistema</h6>
+                <div>
+                    <span>
+                        Maximo de uso
+                        <input placeholder="0000Mb" id="inputValorMaxDisco_input">
+                    </span>
+                </div>
+            </div>
+            <div class="dadosComponente">
+                <h3>Informações de rede</h3>
+                <h6>Informe a quantidade maxima de bandalarga que seu sistema podera consumir</h6>
+                <div>
+                    <span>
+                        Minimo de uso
+                        <input placeholder="0000Mbps" id="inputValorMaxRede_input">
+                    </span>
+                </div>
+            </div>
+
+            <button class="button" onclick="alterarDadosServidor()">Editar servidor</button>
+                <br>
+
+        </div>
+    </main>
+        
+</body>
+</html>
+
+
+</html>
+
+<script>
+
+    function payload(){
+        if(sessionStorage.MAXIMO_CPU != undefined &&
+        sessionStorage.MINIMO_CPU != undefined &&
+        sessionStorage.MAXIMO_RAM != undefined &&
+        sessionStorage.MINIMO_RAM != undefined &&
+        sessionStorage.MAXIMO_DISCO != undefined &&
+        sessionStorage.MAXIMO_REDE != undefined){
+            inputValorMaxCPU_input.value = `${sessionStorage.MAXIMO_CPU}.0`
+            inputValorMinCPU_input.value = `${sessionStorage.MINIMO_CPU}.0`
+            inputValorMaxRAM_input.value = `${sessionStorage.MAXIMO_RAM}.0`
+            inputValorMinRAM_input.value = `${sessionStorage.MINIMO_RAM}.0`
+            inputValorMaxDisco_input.value = `${sessionStorage.MAXIMO_DISCO}.0`
+            inputValorMaxRede_input.value = `${sessionStorage.MAXIMO_REDE}.0`
+        }else{
+            inputValorMaxCPU_input.value = `0.0`
+            inputValorMinCPU_input.value = `0.0`
+            inputValorMaxRAM_input.value = `0.0`
+            inputValorMinRAM_input.value = `0.0`
+            inputValorMaxDisco_input.value = `0.0`
+            inputValorMaxRede_input.value = `0.0`
+        }
+
+        if (sessionStorage.CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+        document.getElementById("gerenciarContas").style.display = "none";
+    }
+    }
+
+    function alterarDadosServidor() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    console.log(`servidor ${id}`)
+    var idServidorVar = id
+    var idEmpresaVar = sessionStorage.ID_EMPRESA
+    var idEnderecoVar = sessionStorage.ID_ENDERECO
+
+    var nomeServidorVar = nomeServidor_input.value;
+    var maximoCPUVar = inputValorMaxCPU_input.value;
+    var minimoCPUVar = inputValorMinCPU_input.value;
+    var maximoRAMVar = inputValorMaxRAM_input.value;
+    var minimoRAMVar = inputValorMinRAM_input.value;
+    var maximoDiscoVar = inputValorMaxDisco_input.value;
+    var maximoRedeVar = inputValorMaxRede_input.value;
+    if (
+        idServidorVar == "" ||
+        idEmpresaVar == "" ||
+        nomeServidorVar == "" ||
+        maximoCPUVar == "" ||
+        minimoCPUVar == "" ||
+        maximoRAMVar == "" ||
+        minimoRAMVar == "" ||
+        maximoDiscoVar == "" ||
+        maximoRedeVar == "" 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/alterarDadosServidor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        idServidorServer: idServidorVar,
+        idEnderecoServer: idEnderecoVar,
+        idEmpresaServer: idEmpresaVar,
+        nomeServidorServer: nomeServidorVar,
+        maximoCPUServer: maximoCPUVar,
+        minimoCPUServer: minimoCPUVar,
+        maximoRAMServer: maximoRAMVar,
+        minimoRAMServer: minimoRAMVar,
+        maximoDiscoerver: maximoDiscoVar,
+        maximoRedeServer: maximoRedeVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            setTimeout(() => {
+              window.location = "dashboard/servidores.html";
+            }, "2000");
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            cardErro.style.display = "block";
+
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de servidores...";
+
+            setTimeout(() => {
+              window.location = "dashboard/servidores.html";
+            }, "2000");
+          });
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+
+    function buscarParametros() {
+        const pegaURL = new URL(window.location)
+        const id = pegaURL.searchParams.get('id')
+
+        var idEmpresaVar = id;
+
+        if (idEmpresaVar == "" ) {
+            window.location = "login.html";
+        }
+
+        fetch("/usuarios/buscarParametros", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DOS PARAMETROS");
+        console.log(JSON.stringify(json));
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            var nomeServidor = JSON.stringify(json[0].nome)
+            //console.log(nomeDoServidor);
+            var maximoCPU = JSON.stringify(json[0].maximo)
+            var minimoCPU = JSON.stringify(json[0].minimo)
+            var maximoRAM = JSON.stringify(json[1].maximo)
+            var minimoRAM = JSON.stringify(json[1].minimo)
+            var maximoDisco = JSON.stringify(json[2].maximo)
+            var maximoRede = JSON.stringify(json[3].maximo)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
+        console.log("maximoCPU:", maximoCPU, "minimoCPU:", minimoCPU, "maximoRAM:", maximoRAM, "minimoRAM:", minimoRAM, "maximoDisco:", maximoDisco, "maximoRede:", maximoRede);
+
+        var nomeDoServidorAjustado = JSON.stringify(json[0].nome)
+        nomeServidor_input.value = nomeDoServidorAjustado.substring(1, nomeDoServidorAjustado.length - 1);
+
+        inputValorMaxCPU_input.value = `${maximoCPU}.0`
+        inputValorMinCPU_input.value = `${minimoCPU}.0`
+        inputValorMaxRAM_input.value = `${maximoRAM}.0`
+        inputValorMinRAM_input.value = `${minimoRAM}.0`
+        inputValorMaxDisco_input.value = `${maximoDisco}.0`
+        inputValorMaxRede_input.value = `${maximoRede}.0`
+
+
+
+        });
+        } else {
+            //throw alertify.error('Erro ao realizar login, verifique suas credenciais');
+        }
+        })
+        .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+        });
+        
+    }
+
+</script>

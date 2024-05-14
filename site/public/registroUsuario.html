@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro de usuario</title>
+    <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
+
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
+</head>
+<body onload="payload()">
+
+    <main id="main-register">
+      <aside class="aside-bar-menu" style="">
+        <div id="logo-ducktetive">
+          <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+        </div>
+        </a>
+        <hr/>
+        <div id="dashboard-menu">
+          <div class="dash-item">
+            <a href="dashboard/servidores.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Servidores</p>
+              </div></a>
+          </div>
+          
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="dashboard/visualizarUsuarios.html">
+                <div class="menu">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Gerenciar contas</p>
+                </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../alteracaoDeDados.html">
+              <div class="menu" >
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+              </div></a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <div class="menu" id="selected">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Criar usuario</p>
+              </div>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="login.html">
+                <div class="menu" onclick="sessionStorage.clear()">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Logout</p>
+                </div></a>
+          </div>
+          
+          </div>
+      </aside>
+        <div id="central-logo">
+            <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
+        </div>
+        <h2 class="titulo-do-formulario">CADASTRO DE USUÁRIO</h2>
+        <div class="form">
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="nome_input">Nome</label><br>
+                        <input type="text" name="nome" id="nome_input" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="sobrenome_input">Sobrenome</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome_input" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="email_input" >Email</label><br>
+                    <input type="email" id="email_input" class="form-field" required>
+                    <p class="form-tips">Recomendamos um endereço de e-mail comercial.</p>
+            </div>
+
+            <div class="field-form">
+                <div class="field-father">
+                  <div class="fild-child">
+                    <label class="form-title" for="cargo_input">Cargo</label><br>
+                    <select name="cargo" id="cargo_input" class="form-field half" >
+                        <option value="">Selecione uma opção...</option>
+                        <option value="1" >Dono</option>
+                        <option value="2">Analista</option>
+                        <option value="3">Estagiario</option>
+                    </select>
+                </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="empresa_input">Empresa</label><br>
+                        <input type="text" name="empresa" id="empresa_input" class="form-field half" disabled>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="field-form">
+              <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
+              <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
+                  <option value="">Selecione uma opção...</option>
+                  <option value="1">Nome do primeiro animal de estimação que teve</option>
+                  <option value="2">Nome de solteiro da sua mãe</option>
+                  <option value="3">Cidade em que nasceu</option>
+              </select>
+              <br>
+              <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
+          </div>
+
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="input_password">Senha</label><br>
+                <input type="password" id="input_password" class="form-field" required>
+                <p class="form-tips">O comprimento minimo da senha é de 8 digitos.</p>
+            </div>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="input_confirm_password">Confirmar senha</label><br>
+                <input type="password" id="input_confirm_password" class="form-field" required>
+            </div>
+            <br>
+            <button class="button" onclick="cadastrar()">Criar conta</button>
+            <br>
+            <br><br>
+        </div>
+    </main>
+
+</body>
+</html>
+
+
+</html>
+
+<script>
+      function payload() {
+        empresa_input.value = sessionStorage.NOME_FANTASIA_USUARIO
+      }
+
+
+    function cadastrar() {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nomeUsuarioVar = nome_input.value
+      var sobrenomeUsuarioVar = sobrenome_input.value
+      var emailVar = email_input.value
+      var cargoVar = cargo_input.value
+      var empresaVar = empresa_input.value
+      var idEmpresaVar = sessionStorage.ID_EMPRESA
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+
+      var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
+      var senhaVar = input_password.value
+
+      var confirmacaoSenhaVar = input_confirm_password.value
+      
+
+      if (
+        nomeUsuarioVar == "" ||
+        sobrenomeUsuarioVar == "" ||
+        emailVar == "" ||
+        cargoVar == "" ||
+        empresaVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
+        perguntaDeSegurancaVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+        ) {
+        alertify.error('Escreva os dados em todos os campos');
+  
+        return false;
+      } 
+  
+      senhaVar = senhaParaSHA256(senhaVar)
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrarUsuario", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
+
+          nomeUsuarioServer: nomeUsuarioVar,
+          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+          emailServer: emailVar,
+          cargoServer: cargoVar,
+          opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+          senhaServer: senhaVar,
+          empresaServer : empresaVar,
+          idEmpresaServer : idEmpresaVar
+
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+
+  
+            alertify.success('Cadastro realizado com sucesso!');
+  
+
+          } else {
+            console.log('teste')
+            throw alertify.error('Usuário já cadastrado! Tente redefinir a sua senha');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
+  
+    function listar() {
+      fetch("/empresas/listar", {
+        method: "GET",
+      })
+        .then(function (resposta) {
+          resposta.json().then((empresas) => {
+            empresas.forEach((empresa) => {
+              listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+            });
+          });
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    }
+  
+    function sumirMensagem() {
+      cardErro.style.display = "none";
+    }
+
+    function senhaParaSHA256(text) {
+    // Calcular o hash SHA-256 usando CryptoJS
+    var hash = CryptoJS.SHA256(text);
+
+    // Retornar o hash como uma string hexadecimal
+    return hash.toString(CryptoJS.enc.Hex);
+}
+  </script>

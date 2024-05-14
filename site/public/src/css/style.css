@@ -1,0 +1,1501 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+ body{
+    overflow: scroll;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#aCadastre{
+    color: white;
+}
+
+#aCadastro2{
+    color: white;
+}
+
+#aCadastro2:hover{
+    color: #FF7C33;
+}
+
+#nav{
+    padding: 20px;
+}
+
+#sectionMain{
+    max-width: 1300px;
+    margin: auto;
+    height: 100%;
+}
+.buttonClick{
+    cursor: pointer;
+}
+hr{
+    border: 0.5px solid #D9D9D9;
+}
+
+#cardsBenefits{
+    margin-bottom: 60px;
+}
+
+#equipe{
+    margin: 60px 0px 60px 0px;
+}
+
+#solucao{
+    margin: 40px 0px;
+}
+.subtitleSolucao .titles{
+    border-bottom: 5px solid #FF7C33;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+#articleBannerDucktetive #banner{
+    height: 5000px;
+    width: 850px;
+    background-image: url(../images/backgroung\ banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+    padding: 0 60px;
+}  
+
+#sobreADuck #content #contentText span{
+    color: #757575;
+    font-weight: bold;
+}
+
+.valores p{
+    color: #757575;
+    font-weight: bold;
+}
+
+#solucao p, li {
+    color: #757575;
+    font-weight: bold;
+}
+.subtitleSolucao{
+    display: flex;
+    justify-content: center;
+}
+#solucaoTitle{  
+    color: #313131;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.buttonDuck{
+    background-color: #ffffff;
+    color: #565656;
+    border-radius: 7px;
+    border-style: none;
+    height: 40px;
+    width: 80px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media(max-width: 690px){
+    
+    #section {
+        width: 100%;
+        height: 80vh;
+    }
+    
+    #main{
+        margin-top: 40px;
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    
+    #containerLeft {
+   
+        height: max-content;
+        margin-left: 20px;
+    }
+    #containerRight{
+        width: 100%;
+        justify-content: center;
+    }
+    #leftTitle {
+        color: #313131;
+        font-size: 20px;    
+        border-left: 5px solid #FF7C33;
+        padding-left: 15px;
+    }
+    #leftTitle span {
+        color: #FF7C33;
+    }   
+    #leftDescription {
+        color: #757575;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .leftButtons{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+   
+    #buttonSaiba{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 10px 20px;
+        border-radius: 15px;   
+    }
+    #buttonSaiba:hover{
+        background-color: #FF7C33;
+        color: #ffffff;
+    }
+    #buttonCadastre:hover{
+        background-color: #ffffff;
+        color: #FF7C33;
+    }
+    
+    #buttonCadastre{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        padding: 10px 20px;
+        border-radius: 15px;
+    }
+    #containerRight {
+        width: 40%;
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #securityImg img {
+        width: 250px;
+        height: 250px;
+    }
+    #buttonEntrar{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 8px 15px;
+        border-radius: 15px;
+    }
+
+    #buttonEntrarDesktop:hover{
+        cursor: pointer;
+        text-decoration: #FF7C33;
+    }
+
+    #aEntrar{
+        text-decoration: none;
+    }
+
+    
+}
+
+@media (min-width: 391px) {
+    #section {
+        width: 100%;
+        height: 500px;
+    }
+    #main{
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    #containerLeft {
+        height: max-content;
+        margin-left: 20px;
+    }
+    #leftTitle {
+        font-size: 32px;
+        color: #313131;
+        border-left: 8px solid #FF7C33;
+        padding-left: 15px;
+    }
+    #leftTitle span {
+        color: #FF7C33;
+    }   
+    #leftDescription {
+        color: #757575;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        font-size: 22px;
+        margin-left: 20px;
+    }
+    .leftButtons {
+        padding: 15px;
+    }
+    #buttonSaiba{
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 15px 32px;
+        border-radius: 10px;
+        margin-right: 15px;
+    }
+
+    #buttonSaiba:hover{
+        background-color: #FF7C33;
+        color: #ffffff;
+    }
+    #buttonCadastre:hover{
+        background-color: #ffffff;
+        color: #FF7C33;
+    }
+
+    #buttonCadastre{
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        padding: 15px 32px;
+        border-radius: 10px;
+    }
+    #containerRight {
+        width: 40%;
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #securityImg img {
+        width: 300px;
+    }
+    #articleBannerDucktetive{
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+    }
+
+    
+    
+    #articleBannerDucktetive #banner #bannerText{
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 50px;
+        /* width: 400px; */
+    }
+    
+    #articleBannerDucktetive #banner #bannerText p{
+        padding: 40px;
+    }
+    
+    .button{
+        background-color: #ffffff;
+        color: #565656;
+        border-radius: 15px;
+        border-style: none;
+        height: 100px;
+        width: 300px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #articleBannerDucktetive #banner{
+        display: flex;
+        justify-content: center;
+        background-color: #ffffff;
+        height: 75px;
+        width: 100%;
+        border-radius: 15px;
+        margin: 0px;
+        padding: 15px 40px;
+        max-width: 550px;
+    }
+    #articleBannerDucktetive #banner #bannerText{
+        font-weight: bold;
+        font-size: 22px;
+
+        /* width: 400px; */
+    }
+    #articleBannerDucktetive #banner #bannerText p{
+        padding: 0 15px 0 0;
+    }
+    .button{
+        background-color: #ffffff;
+        color: #565656;
+        border-radius: 7px;
+        border-style: none;
+        height: 35px;
+        width: 125px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #cardsBenefits{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+    #cardsBenefits .cards{
+        padding: 15px;
+        border: 1px solid #FF7C33;
+        border-radius: 15px;
+        height: 300px;
+        width: 380px;
+        pad: 102px;
+        display: flex;
+        padding: 20px;
+        
+        
+    }
+    #cardsBenefits .cards .cardsContent .cardTitle{
+        margin-top: 15px;
+        font-weight: bold;
+        
+    }
+    #cardsBenefits .cards .cardsContent .cardText{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #757575;
+        font-weight: bold;
+        
+    }
+    #cardsBenefits .cards .cardsContent .cardFooter{
+        padding-top: 30px;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #FF7C33;
+
+
+    }
+
+    #sobreADuck{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1100px;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+    
+    #cardsBenefits .cards .cardImage{
+        height: 50px;
+    }
+
+    
+    #sobreADuck #content #contentText{
+        width: 50%;
+        margin-top: 20px;
+    }
+
+    #sobreADuck #content{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap:wrap;
+    }
+
+    #sobreADuck #content #duckTetive{
+        height: 250px;
+    }
+
+    
+    #sobreADuck .titles{
+        margin: 40px 0px 20px 0px;
+        border-bottom: 5px solid #FF7C33;
+        width: fit-content;
+        font-size: 32px;
+    }
+    #sobreADuck .subTitle{
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    #cardsValor{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        margin: 60px 0px;
+        flex-wrap: wrap;
+      }
+    .valores{
+        border: 1px solid #D9D9D9;
+        border-radius: 15px;
+        height: 320px;
+        width: 250px;
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .valores img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 5px;
+    }
+    .valores h2 {
+        margin-bottom: 15px;
+    }
+    .valores p {
+        text-align: center;
+    }
+    #equipe{
+        max-width: 1300px;
+    }
+
+    #equipe #cards{
+        margin: 20px 120px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .titles{
+        text-align: center;
+    }
+    #equipe #cards .cardEquipe{
+        border: 1px solid #D9D9D9;
+        border-radius: 15px;
+        width: 250px;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px 0px;
+    }
+
+    #equipe #cards .cardEquipe .nomeColaborador{
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0px;
+    }
+
+    #equipe #cards .cardEquipe .fotoColaborador{
+        height: 200px;
+        border-radius: 100px;
+    }
+    #iconesColaborador{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .iconesColaborador{
+        height: 40px;
+    }
+
+    #solucao{
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #solucaoContainer{
+        margin-top: 30px;
+        padding: 18px;
+    }
+
+    
+    
+    #solucaoImgDashboard{
+        display: flex;
+        justify-content: center;
+    }
+    #solucaoImgDashboard #quadrado {
+        max-width: 600px;
+        max-height: 300px;
+        height: 30vi;
+        width: 60vi;
+        background-color: #757575;
+        border-radius: 32px;
+        margin: 20px 0;
+    }
+    #solucaoParagrafo{
+        border-left: 5px solid #FF7C33;
+        padding-left: 15px;
+        max-width: 800px;
+        font-size: 24px;
+    }
+    #solucaoShild{
+        display: flex;
+        justify-content: center;
+        margin: 20px 0px;
+    }
+    #solucaoTop #listaSolucao{
+        width: 50%;
+    }
+    #duckShield{
+        height: 120px; 
+    }
+
+    li {
+        list-style: none;
+        list-style-type: none;
+        font-size: 18px;
+      }
+      #listaSolucao li::before {
+        content: '•';
+        color: #FF7C33;
+        display: inline-block;
+        height: 4px;
+        width: 4px;
+      }
+
+      #footer{
+        background-color: #FF7C33;
+        height: fit-content;
+        padding: 40px;
+         
+    }
+
+    #footer a{
+        text-decoration: none;
+        color: #ffffff;
+
+    }
+
+    .divisaoAssuntos{
+        margin-bottom: 10px;
+    }
+
+    #footer #sectionFooter{
+        max-width: 1100px;
+        margin: auto;  
+    }
+    #footer .containerFooter{
+        
+        display: flex;
+        justify-content: space-between;
+        
+    }
+
+    #subtitleFooter{
+        color: #ffffff;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+    #subtitleFooter p{
+        font-size: 46px;
+    }
+
+    #footer .containerFooter #buttonUp{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        width: 75px;
+        background-color: #ffffff;
+        border-radius: 60px;
+    }
+
+    #footer .footerList #footerUL{
+        margin-top: 10px;
+        display: flex;
+        justify-content: start;
+        gap: 40px;
+        
+        
+    }
+
+    #footer .footerList #footerUL .footerList{
+        color: #ffffff;
+        list-style: none;
+        font-weight: 500;
+        margin: 10px 0px;
+        font-size: 24px;
+        font-size: 120%;
+        text-align: center;
+        
+    }
+
+
+    #footer .footerList #footerUL .footerList  li{
+        color: #ffffff;
+        font-weight: 400;
+     }
+
+    #footer .footerList #footerUL .footerList div{
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .arrowFooter{
+        display: none;
+    }
+
+    #footerDown{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 60px;
+    }
+
+    #footerDown #logos{
+        display: flex;
+        gap: 10px;
+    }
+
+    #footerLogo{
+        height: 60px;
+    }
+    .logos{
+        height: 30px;
+    }
+
+    #direitosDuck{
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #header #nav #navHigher{
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    #buttonsNav{
+        display: none;
+    }
+
+   
+    #header #nav #navHigher #logoNav{
+        height: 55px;
+    }
+    #listaMenu{
+        display: none;
+    }
+    #menuFechar{
+        height: 30px;
+        display: none;
+    }
+    #menuAbrir{
+        height: 30px;
+        display: none;
+    }
+    #headerContatos{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    #buttonEntrar{
+        display: none;
+    }
+    #telefone, #envelope{
+        height: 20px;
+    }
+    #numeroTelefone{
+        color: #FF7C33;
+        font-weight: bold;
+    }
+    #enderecoEmail{
+        color: #757575;
+        font-weight: bold;
+        text-align: start;
+
+    }
+    .contactGroup{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+    }
+
+    #menuNav{
+        display: flex;
+        justify-content:space-between;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    #optionsNav{
+        display: flex;
+        align-items: center;
+    }
+
+    #menuNav #optionsNav ul{
+        display: flex;
+        gap: 20px;
+    }
+
+    #buttonsMenu{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        font-weight: bold;
+        color: #757575;
+
+    }
+    #buttonsMenu .button{
+        height: 50px;
+        border-radius: 10px;
+        border: 2px solid #FF7C33;
+        width: 140px;
+        padding: 5px;
+
+    }
+
+    #buttonsMenu #buttonSobAtaque{
+        background-color: #ffffff;
+        color: #FF7C33;
+    }
+
+    #buttonsMenu #buttonCadastreNav{
+        color: #ffffff;
+        background-color: #FF7C33;
+
+    }
+
+    #buttonsMenu #buttonContato{
+        display: none;
+    }
+    #listaMenu a {
+        text-decoration: none;
+    }
+
+}
+
+@media(max-width: 768px){
+    
+    #headerContatos{
+        background-color: #565656;
+        display: none;
+    }
+    #navOculta {
+        height: 0;
+        width: 93vw;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        transition: 0.5s;
+        position: absolute;
+        margin-top: 30px;
+    }
+    #buttonsNav{
+        display: flex;
+        gap: 40px;
+    }
+    #buttonEntrar{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 8px 15px;
+        border-radius: 15px; 
+        display: block;
+        width: 100px;
+    }
+    #listaMenu{
+        display: none;
+        height: fit-content;
+        width: 100%;
+    }
+    #listaMenu ul { 
+        width: 100%;
+        list-style: none;
+        color: #757575;
+        height: fit-content;
+    }
+    #listaMenu li {
+        list-style: none;
+        border-bottom: 1px solid #D9D9D9;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+    }
+    .arrowOption{
+        height: 15px;
+    }
+    #buttonsMenu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 25%;
+        gap: 40px;
+    }
+    #buttonSobAtaque{
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;
+    }
+    #buttonCadastreNav{
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;
+    }
+    #buttonContato{
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;  
+    }
+    .button{
+        font-size: 10px;
+        width: 140px;
+        height: 60px;
+    }
+    #menuNav{
+        display: flex;
+        justify-content:space-between;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+    #menuFechar{
+        height: 30px;
+        display: none;
+    }
+    #menuAbrir{
+        margin-top: 10px;
+        display: flex;
+        cursor: pointer;
+    }
+    #section {
+        width: 100%;
+        height: 80vh;
+    }
+    #main{
+        margin-top: 40px;
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    #containerLeft {
+        height: max-content;
+        margin-left: -6px;
+    }
+    #containerRight{
+        width: 100%;
+        justify-content: center;
+    }
+    #leftTitle {
+        color: #313131;
+        font-size: 20px;    
+        border-left: 5px solid #FF7C33;
+        padding-left: 15px;
+    }
+    #leftTitle span {
+        color: #FF7C33;
+    }   
+    #leftDescription {
+        color: #757575;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .leftButtons{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+    #listaMenu a {
+        text-decoration: none;
+    }
+}
+
+
+/* Responsivo*/
+@media (max-width: 390px) {
+    #navOculta {
+        height: 0;
+        width: 100vw;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        transition: 0.5s;
+        position: absolute;
+        margin-top: 30px;
+        left: 0;
+    }
+    #buttonsNav{
+        display: flex;
+        gap: 20px;
+    }
+    #buttonEntrar{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 8px 15px;
+        border-radius: 15px; 
+        width: 75px;
+    }
+    #listaMenu{
+        display: none;
+        height: fit-content;
+        width: 100%;
+        padding: 0px 20px;
+    }
+    #listaMenu ul { 
+        width: 100%;
+        list-style: none;
+        color: #757575;
+        height: fit-content;
+    }
+    #listaMenu a {
+        text-decoration: none;
+    }
+    #listaMenu li {
+        list-style: none;
+        border-bottom: 1px solid #D9D9D9;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+    }
+    
+    .arrowOption{
+        height: 15px;
+    }
+    #buttonsMenu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 25%;
+        gap: 40px;
+    }
+    #buttonSobAtaque{
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;
+    }
+    #buttonCadastreNav{
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;
+    }
+    #buttonContato{
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        border-radius: 15px;  
+    }
+    .button{
+        font-size: 10px;
+        width: 140px;
+        height: 60px;
+    }
+    #menuNav{
+        justify-content: center;
+    }
+    #menuFechar{
+        height: 30px;
+        display: none;
+    }
+    #menuAbrir{
+        margin-top: 10px;
+        display: flex;
+        cursor: pointer;
+    }
+    #section {
+        width: 100%;
+        height: 80vh;
+    }
+    #main{
+        margin-top: 40px;
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    #containerLeft {
+        height: max-content;
+        margin-left: -6px;
+    }
+    #containerRight{
+        width: 100%;
+        justify-content: center;
+    }
+    #leftTitle {
+        color: #313131;
+        font-size: 20px;    
+        border-left: 5px solid #FF7C33;
+        padding-left: 15px;
+    }
+    #leftTitle span {
+        color: #FF7C33;
+    }   
+    #leftDescription {
+        color: #757575;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .leftButtons{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+   
+    #buttonSaiba{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #FF7C33;
+        border: 2px solid #FF7C33;
+        padding: 10px 20px;
+        border-radius: 15px;   
+    }
+    #buttonSaiba:hover{
+        background-color: #FF7C33;
+        color: #ffffff;
+    }
+    #buttonCadastre:hover{
+        background-color: #ffffff;
+        color: #FF7C33;
+    }
+
+    #buttonCadastre{
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #FF7C33;
+        color: #ffffff;
+        border: 2px solid #FF7C33;
+        padding: 10px 20px;
+        border-radius: 15px;
+    }
+    #containerRight {
+        width: 40%;
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #securityImg img {
+        width: 250px;
+        height: 250px;
+    }
+
+    #articleBannerDucktetive{
+        display: flex;
+        justify-content: center;
+
+    }
+    
+    #articleBannerDucktetive #banner{
+        background-color: #ffffff;
+        color: #ffffff;
+        height: 75px;
+        width: 250px;
+        border-radius: 15px;
+        margin: 0px;
+        margin: 40px 0;
+    }
+    #articleBannerDucktetive #banner #bannerText{
+        font-weight: bold;
+        font-size: 16px;
+        
+        /* width: 400px; */
+    }
+    #articleBannerDucktetive #banner #bannerText p{
+        padding: 0 16px 0 0;
+    }
+
+    .buttonDuck{
+        background-color: #ffffff;
+        color: #565656;
+        border-radius: 7px;
+        border-style: none;
+        height: 40px;
+        width: 80px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .button{
+        background-color: #ffffff;
+        color: #565656;
+        border-radius: 7px;
+        border-style: none;
+        height: 40px;
+        width: 240px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #cardsBenefits{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+    }
+    #cardsBenefits .cards{
+        padding: 15px;
+        border: 1px solid #FF7C33;
+        border-radius: 15px;
+        height: 300px;
+        width: 250px;
+        pad: 102px;
+        display: flex;
+        padding: 20px;
+        
+    }
+    #sobreADuck #content #contentText{
+        padding: 0px 20px;
+        margin-top: 20px;
+    }
+
+    #sobreADuck #content #contentText #subTitle{
+        font-size: 24px;
+    }
+
+    #sobreADuck #content{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap:wrap;
+    }
+
+    #cardsBenefits .cards .cardsContent .cardTitle{
+        margin-top: 15px;
+        font-weight: bold;
+        
+    }
+    #cardsBenefits .cards .cardsContent .cardText{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: #757575;
+        font-weight: bold;
+    }
+    #cardsBenefits .cards .cardsContent .cardFooter{
+        padding-top: 30px;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #FF7C33;
+
+
+    }
+
+    #cardsBenefits .cards .cardImage{
+        height: 50px;
+    }
+
+    #sobreADuck{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sobreADuck #content{
+        margin: 20px;
+    }
+    
+    #sobreADuck #content #duckTetive{
+        margin-top: 40px;
+        height: 100%;
+    }
+
+    
+    #sobreADuck .titles{
+        margin: 40px 0px 20px 0px;
+        border-bottom: 5px solid #FF7C33;
+        width: fit-content;
+    }
+    #sobreADuck .subTitle{
+        font-weight: bold;
+        font-size: 24px;
+    }
+    #cardsValor{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        margin: 40px 0px;
+          }
+    .valores{
+        border: 1px solid #D9D9D9;
+        border-radius: 15px;
+        height: 330px;
+        width: 250px;
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .valores img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 5px;
+    }
+    .valores h2 {
+        margin-bottom: 15px;
+    }
+    .valores p {
+        text-align: center;
+    }
+
+   
+    #equipe #cards{
+        margin: 20px 0px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .titles{
+        text-align: center;
+    }
+    #equipe #cards .cardEquipe{
+        border: 1px solid #D9D9D9;
+        border-radius: 15px;
+        width: 125px;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px 0px;
+    }
+
+    #equipe #cards .cardEquipe .nomeColaborador{
+        font-size: 12px;
+        font-weight: bold;
+        margin: 10px 0px;
+    }
+
+    #equipe #cards .cardEquipe .fotoColaborador{
+        height: 100px;
+    }
+    #iconesColaborador{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
+    .iconesColaborador{
+        height: 25px;
+    }
+    #solucao{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #solucaoContainer{
+
+        padding: 18px;
+    }
+    #solucaoImgDashboard #quadrado {
+        height: 150px;
+        background-color: #757575;
+        border-radius: 32px;
+        margin: 20px 0;
+    }
+    #solucaoParagrafo{
+        border-left: 5px solid #FF7C33;
+        padding-left: 15px;
+    }
+    
+    
+
+    li {
+        list-style: none;
+        list-style-type: none;
+      }
+    #listaSolucao li::before {
+        content: '•';
+        color: #FF7C33;
+        display: inline-block;
+        height: 4px;
+        width: 4px;
+      }
+      #solucaoShild{
+        display: flex;
+        justify-content: center;
+        margin: 20px 0px;
+    }
+      #duckShield{
+        height: 100px; 
+    }
+
+
+
+    #header #nav #navHigher #logoNav{
+        height: 50px;
+    }
+
+    #header #nav #navHigher #menuNav{
+        height: 40px;
+    }
+
+    #header #nav #navHigher{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    
+
+    #footer{
+        background-color: #FF7C33;
+        height: fit-content;
+        padding: 40px;
+        
+    }
+    #footer .containerFooter{
+        
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #subtitleFooter{
+        color: #ffffff;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+    #subtitleFooter p{
+        font-size: 32px;
+    }
+
+    #footer .containerFooter #buttonUp{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        background-color: #ffffff;
+        border-radius: 30px;
+    }
+
+    #footer .footerList #footerUL{
+        margin-top: 30px;
+        
+    }
+
+    #footer .footerList #footerUL .footerList{
+        color: #ffffff;
+        list-style: none;
+        font-weight: 500;
+        margin: 10px 0px;
+        font-size: 18px;
+        border-top: 2px solid #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 30px;
+        
+    }
+
+    #footer .footerList #footerUL .footerList div{
+        width: 100%;
+    }
+
+    #footer .footerList #footerUL .footerList .listMenuFooter .listMenu{
+        display: none;
+    }
+
+    .arrowFooter{
+        transform: rotate(180deg) 2;
+    }
+
+    #footerDown{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 60px;
+    }
+
+    #footerDown #logos{
+        display: flex;
+        gap: 5px;
+    }
+
+    #footerLogo{
+        height: 40px;
+    }
+
+    #direitosDuck{
+        color: #ffffff;
+        font-size: 9px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+
+}
+
+

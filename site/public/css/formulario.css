@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&family=Outfit:wght@400;700&family=Roboto:wght@100;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1300px;
+    min-height: 679px;
+    margin: auto;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* side bar menu */
+
+#dashboard-menu {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 12px;
+    height: 80%;
+  }
+
+  #dashboard-menu .dash-item {
+    display: flex;
+    height: 5vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+.aside-bar-menu {
+    background-color: #F8F8F8;
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+  .icon {
+    pointer-events: none;
+  }
+  .item-text {
+    pointer-events: none;
+  }
+  .aside-bar-menu #logo-ducktetive {
+    margin: 25px;
+    text-align: center;
+  }
+  
+  .aside-bar-menu #logo-ducktetive #duck-logo-dashboard {
+    height: 50px;
+  }
+  
+  #dashboard-menu .dash-item .menu {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    gap: 15px;
+    height: 40px;
+    border-radius: 15px;
+  }
+
+  #dashboard-menu .dash-item #selected{
+    background: rgb(238,238,238);
+    background: linear-gradient(90deg, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 90%, rgba(255,124,51,1) 90%);
+  }
+  
+  #dashboard-menu .dash-item #selected .item-text{
+    color: #ff7c33;
+  
+  }
+  #dashboard-menu .dash-item .menu :hover {
+    background-color: rgba(255, 89, 0, 0.11);
+  }
+  
+  #dashboard-menu .dash-item .menu .icon {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  #dashboard-menu .dash-item .icon .icon-menu {
+    height: 19px;
+  }
+  
+  #ram-icon {
+    width: 19px;
+  }
+  
+  #dashboard-menu .dash-item .item-text {
+    color: #757575;
+    font-weight: bold;
+    width: 75%;
+    text-align: start;
+  }
+
+  .bottom-items{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+
+  
+
+  /* side bar menu */
+
+
+#central-logo #top-logo{
+    height: 150px;
+}
+
+#userPicture{
+    margin-bottom: 30px;
+    background-color: #FF7C33;
+    border-radius: 100px;
+    height: 120px;
+    width: 120px;
+    text-decoration: none;
+    font-size: 10px;
+}
+#userPicture:hover{
+    background-color: #757575;
+}
+
+#imagemCarregada::file-selector-button {
+    display: none;
+
+  }
+
+  #imagemCarregada{
+    display: block;
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+    font-size: 0px;
+    position: absolute;
+
+  }
+
+#userPicture img{
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+    
+    position: relative;
+
+}
+
+
+#central-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px;
+}
+
+.titulo-do-formulario{
+    text-align: center;
+    color: #FF7C33;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.sub-titulo{
+    color: #FF7C33;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.field-form{
+    margin-bottom: 20px;
+}
+
+.field-margin{
+    margin-top: 15px;
+}
+
+.form-title{
+    font-weight: bold;
+    color: #FF7C33;
+}
+
+.form-field{
+    width: 433px;
+    height: 30px;
+    border: #FF7C33 1px solid;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0px 10px;
+    color: #757575;
+}
+
+#opcoesPerguntasDeSeguranca{
+    width: 454px;
+    height: 30px;
+    border: #FF7C33 1px solid;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0px 10px;
+    color: #757575;
+}
+
+.half{
+    width: 185px;
+}
+
+#cargo{
+    width: 207px;
+}
+
+#perguntaDeSeguranca{
+    width: 455px;
+}
+
+.blocked{
+    background-color: #d9d9d9;
+}
+
+.field-father{
+    display: flex;
+    justify-content: space-between;
+    width: 455px;
+}
+
+#password-login{
+    margin-bottom: 5px;
+
+} 
+
+.form-forgot-password{
+    width: 455px;
+}
+
+.form-forgot-password #forgot-password{
+    text-align: end;
+}
+
+.form-tips{
+    color: #757575;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+}
+
+#forgot-anchor{
+    color: #757575;
+    font-weight: 400;
+}
+
+#forgot-anchor:hover{
+    color: #FF7C33;
+    font-weight: 400;
+}
+
+a{
+    color: #FF7C33;
+    text-decoration: none;
+}
+
+.form-remember-me{
+    width: 455px;
+    display: flex;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+#checkbox-text{
+    font-size: 14px;
+    color: #757575;
+}
+
+.button{
+    background-color: #FF7C33;
+    width: 455px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.button:hover{
+    background-color: #ee7432;
+
+}
+
+.terms-of-use{
+    width: 455px;
+    font-size: 14px;
+    color: #757575;
+    margin: 20px 0;
+}
+
+.terms-of-use p span{
+    color: #FF7C33;
+    text-decoration: underline;
+}
+
+.terms-of-use p span :hover{
+    color: #ee7432;
+
+}
+
+.already-account-or-not{
+    text-align: center;
+    width: 465px;
+    font-size: 14px;
+    color: #757575;
+
+}
+
+.already-account-or-not p span{
+    color: #FF7C33;
+}
+
+.already-account-or-not p span :hover{
+    color: #ee7432;
+
+}
+
+.footer{
+    background-color: #ffffff;
+    display: flex;
+    color: #757575;
+    font-weight: 700;
+    align-items: center;
+    padding: 0  30px;
+    height: 5vh;
+    justify-content: start;
+    margin: auto;
+    border-top: #d9d9d9 1px solid;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+#footer-list{
+    display: flex;
+    gap: 20px;
+}
+
+#footer-list a{
+    color: #757575;
+}
+
+#footer-list span{
+    color: #FF7C33;
+}
+
+#footer-list .list{
+    list-style: none;
+}
+
+.titulo-formulario-campos {
+    display: flex;
+    color: #FF7C33;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+
+@media(max-width: 690px){
+    .form-field, .button, .form-forgot-password, .form-remember-me, .terms-of-use{
+        width: 250px;
+    }
+
+    #footer-list a{
+        font-size: 12px;
+    }
+
+
+    #footer-list{
+        gap: 8px;
+    }
+
+    #card-form{
+        max-width: 390px;
+    }
+
+    .field-father{
+        display: block;
+        width: fit-content;
+    }
+    .fild-child{
+        width: fit-content;
+    }
+    .sub-titulo{
+    }
+
+    .form{
+        display: block;
+        width: 300px;
+    }
+    .already-account-or-not{
+        width: 300px;
+    }
+}
+
+/* tela de adicionar servidor */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.nomeServer {
+    display: flex;
+    flex-direction: column;
+}
+
+.content div{
+    margin-bottom: 3vh;
+}
+
+.content span{
+    font-weight: bold;
+    color: #FF7C33;
+}
+
+.content h6{
+    color: #FF7C33;
+    margin-bottom: 2vh;
+}
+
+.content .dadosComponente{
+    width: 50vh;
+    margin-bottom: 1vh;
+}
+
+.content .dadosComponente div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .dadosComponente h3{
+    color: #FF7C33; 
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.content .dadosComponente span{
+    display: flex;
+    flex-direction: column;
+}
+
+.content input{
+    border: solid #FF7C33 1px;
+    border-radius: 5px; 
+    height: 4vh;
+    width: 23vh;
+    margin-top: 0.5rem;
+}
+
+.content #NomeServidor{
+    width: 50vh;
+}
+
+#main div h2{
+    color: #FF7C33;
+    text-align: center;
+    margin-bottom: 2vh;
+}

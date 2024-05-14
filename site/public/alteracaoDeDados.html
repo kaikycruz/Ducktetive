@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="icon" href="src\images\ducktetive.png">
+    <link rel="stylesheet" href="css/formulario.css">
+    <script src="site/alertify/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="site/alertify/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="site/alertify/css/themes/default.min.css" />
+
+    <!-- Sweet Alert -->
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+    
+</head>
+<body onload="payload()">
+
+    <main id="main">
+      <aside class="aside-bar-menu" style="">
+        <div id="logo-ducktetive">
+          <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+        </div>
+        </a>
+        <hr/>
+        <div id="dashboard-menu">
+          <div class="dash-item">
+            <a href="dashboard/servidores.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Servidores</p>
+              </div>
+            </a>
+          </div>
+          
+          <div class="bottom-items">
+            <div class="dash-item" id="gerenciarContas">
+              <a href="dashboard/visualizarUsuarios.html">
+                <div class="menu">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Gerenciar contas</p>
+                </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <div class="menu" id="selected">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+              </div>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item" id="criarUsuario">
+              <a href="registroUsuario.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Criar usuario</p>
+              </div></a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="login.html">
+                <div class="menu" onclick="sessionStorage.clear()">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Logout</p>
+                </div></a>
+          </div>
+          
+          </div>
+      </aside>
+        <div id="central-logo">
+            <img src="src/images/DUCKTETIVE3.png" alt="" id="top-logo" >
+        </div>
+        <h2 class="titulo-do-formulario">ALTERAÇÃO DE DADOS CADASTRAIS</h2>
+        
+        <div id="userPicture">
+          <label for="imagemCarregada"><div id="user-data" >
+            <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
+          </div></label>
+          
+          <input type="file" accept="image/*" id="imagemCarregada" onchange="carregarImagem()">
+        
+
+          
+      </div>
+        <div class="form">
+            <h2 class="sub-titulo">Dados do usuário</h2>
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_nome_usuario">Nome</label><br>
+                        <input type="text" name="nome" id="input_nome_usuario" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_sobrenome_usuario">Sobrenome</label><br>
+                        <input type="text" name="sobrenome" id="input_sobrenome_usuario" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form" id="password-login">
+                <label class="form-title" for="input_email" >Email</label><br>
+                    <input type="email" id="input_email" class="form-field" required>
+                    <p class="form-tips">Recomendamos um endereço de e-mail comercial.</p>
+            </div>
+
+            <div class="field-form">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cargo">Cargo</label><br>
+                        <input type="text" name="cargo" id="input_cargo" class="form-field half blocked" disabled>
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_telefone">Telefone</label><br>
+                        <input type="text" name="empresa" id="input_telefone" class="form-field half">
+                    </div>
+                </div>
+
+
+                <br><br>
+            <h2 class="sub-titulo empresa">Dados da empresa</h2>
+            <div class="field-form empresa" id="password-login">
+                <label class="form-title" for="input_razao_social" >Razão Social</label><br>
+                    <input type="email" id="input_razao_social" class="form-field" required>
+            </div>
+            <div class="field-form empresa">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_nome_fantasia">Nome Fantasia</label><br>
+                        <input type="text" name="nome" id="input_nome_fantasia" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cnpj">CNPJ</label><br>
+                        <input type="text" name="sobrenome" id="input_cnpj" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form empresa">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cep" onclick="capturarCEP()">CEP</label><br>
+                        <input type="text" name="nome" id="input_cep" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_endereco">Endereço</label><br>
+                        <input type="text" name="sobrenome" id="input_endereco" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form empresa">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_numero">Número</label><br>
+                        <input type="text" name="nome" id="input_numero" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_bairro">Bairro</label><br>
+                        <input type="text" name="sobrenome" id="input_bairro" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form empresa">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_cidade">Cidade</label><br>
+                        <input type="text" name="nome" id="input_cidade" class="form-field half">
+                    </div>
+                    <div class="fild-child">
+                        <label class="form-title" for="input_estado">Estado</label><br>
+                        <input type="text" name="sobrenome" id="input_estado" class="form-field half">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="field-form empresa">
+                <div class="field-father">
+                    <div class="fild-child">
+                        <label class="form-title" for="input_complemento">Complemento</label><br>
+                        <input type="text" name="nome" id="input_complemento" class="form-field half">
+                    </div>
+
+                </div>
+                
+            </div>
+                
+            </div>
+
+            <div class="field-form">
+                <label class="form-title" for="input_pergunta_de_seguranca">Pergunta de segurança</label><br>
+                <select name="perguntaDeSeguranca" id="opcoesPerguntasDeSeguranca" class="form-field">
+                    <option value="">Selecione uma opção...</option>
+                    <option value="1">Nome do primeiro animal de estimação que teve</option>
+                    <option value="2">Nome de solteiro da sua mãe</option>
+                    <option value="3">Cidade em que nasceu</option>
+                </select>
+                <br>
+                <input type="text" id="input_pergunta_de_seguranca" class="form-field" required>
+            </div>
+            <br>
+            <button class="button" onclick="alterar()">Alterar Dados</button>
+            <br>
+            <div class="terms-of-use" style="text-align: center;">
+                <p>Quero desativar este usuario: <span><a onclick="confirmarExclusao()">Desativar conta.</a></span></p>
+            </div>
+            <br><br>
+        </div>
+    </main>
+
+</body>
+</html>
+
+
+</html>
+
+<script>
+    var fotoUsuario;
+
+    function payload(){        
+        const ID_USUARIO = sessionStorage.ID_USUARIO;
+        const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+        const TELEFONE_USUARIO = sessionStorage.TELEFONE_USUARIO;
+        const EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
+        const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+        const RESPOSTA_SEGURANCA_USUARIO = sessionStorage.RESPOSTA_SEGURANCA_USUARIO;
+        const RAZAO_SOCIAL_USUARIO = sessionStorage.RAZAO_SOCIAL_USUARIO;
+        const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        const CNPJ_USUARIO = sessionStorage.CNPJ_USUARIO;
+        const LOGRADOURO_USUARIO = sessionStorage.LOGRADOURO_USUARIO;
+        const NUMERO_USUARIO = sessionStorage.NUMERO_USUARIO;
+        const BAIRRO_USUARIO = sessionStorage.BAIRRO_USUARIO;
+        const CEP_USUARIO = sessionStorage.CEP_USUARIO;
+        const COMPLEMENTO_USUARIO = sessionStorage.COMPLEMENTO_USUARIO;
+        const CIDADE_USUARIO = sessionStorage.CIDADE_USUARIO;
+        const ESTADO_USUARIO = sessionStorage.ESTADO_USUARIO;
+
+        input_nome_usuario.value = `${NOME_USUARIO.toUpperCase()}`;
+        input_sobrenome_usuario.value = `${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+
+        input_telefone.value = `${sessionStorage.TELEFONE_USUARIO.toUpperCase()}`;
+        input_email.value = `${sessionStorage.EMAIL_USUARIO.toUpperCase()}`;
+        input_cargo.value = `${sessionStorage.CARGO_USUARIO.toUpperCase()}`;
+        input_razao_social.value = `${sessionStorage.RAZAO_SOCIAL_USUARIO.toUpperCase()}`;
+        input_nome_fantasia.value = `${sessionStorage.NOME_FANTASIA_USUARIO.toUpperCase()}`;
+        input_cnpj.value = `${sessionStorage.CNPJ_USUARIO.toUpperCase()}`;
+        input_endereco.value = `${sessionStorage.LOGRADOURO_USUARIO.toUpperCase()}`;
+        input_numero.value = `${sessionStorage.NUMERO_USUARIO.toUpperCase()}`;
+        input_bairro.value = `${sessionStorage.BAIRRO_USUARIO.toUpperCase()}`;
+        input_cep.value = `${sessionStorage.CEP_USUARIO.toUpperCase()}`;
+        input_complemento.value = `${sessionStorage.COMPLEMENTO_USUARIO.toUpperCase()}`;
+        input_cidade.value = `${sessionStorage.CIDADE_USUARIO.toUpperCase()}`;
+        input_estado.value = `${sessionStorage.ESTADO_USUARIO.toUpperCase()}`;
+
+        if (sessionStorage.CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+        document.getElementById("gerenciarContas").style.display = "none";
+        }
+        
+        var baseStr64 = sessionStorage.FOTO_PERFIL;
+        user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+        
+        if(CARGO_USUARIO != "Dono" ){
+
+          var divs = document.getElementsByClassName("empresa");
+
+          for (var i = 0; i < divs.length; i++) {
+            divs[i].style.display = "none";
+          }
+        }
+
+
+    }
+
+    function alterar() {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var fotoUsuarioVar = fotoUsuario
+      var idUsuarioVar = sessionStorage.ID_USUARIO
+      var nomeUsuarioVar = input_nome_usuario.value
+      var sobrenomeUsuarioVar = input_sobrenome_usuario.value
+      var emailVar = input_email.value
+      var telefoneVar = input_telefone.value
+
+      var razaoSocialVar = input_razao_social.value
+      var nomeFantasiaVar = input_nome_fantasia.value
+      var cnpjVar = input_cnpj.value
+
+      var cepVar = input_cep.value
+      var enderecoVar = input_endereco.value
+      var numeroVar = input_numero.value
+      var bairroVar = input_bairro.value
+      var cidadeVar = input_cidade.value
+      var estadoVar = input_estado.value
+      var complementoVar = input_complemento.value
+
+      var opcoesPerguntasDeSegurancaVar = opcoesPerguntasDeSeguranca.value
+      var perguntaDeSegurancaVar = input_pergunta_de_seguranca.value
+      
+
+      if (
+        idUsuarioVar == ""||
+        razaoSocialVar == "" ||
+        nomeFantasiaVar == "" ||
+        cnpjVar == "" ||
+        cepVar == "" ||
+        enderecoVar == "" ||
+        numeroVar == "" ||
+        bairroVar == "" ||
+        cidadeVar == "" ||
+        estadoVar == "" ||
+        nomeUsuarioVar == "" ||
+        sobrenomeUsuarioVar == "" ||
+        emailVar == "" ||
+        opcoesPerguntasDeSegurancaVar == "" |
+        perguntaDeSegurancaVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+  
+        return false;
+      } 
+
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/alterarDados", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
+          enderecoServer: enderecoVar,
+          numeroServer: numeroVar,
+          bairroServer: bairroVar,
+          cepServer: cepVar,
+          complementoServer: complementoVar,
+          cidadeServer: cidadeVar,
+          estadoServer: estadoVar,
+
+          razaoSocialServer: razaoSocialVar,
+          nomeFantasiaServer: nomeFantasiaVar,
+          cnpjServer: cnpjVar,
+
+          idUsuarioServer:idUsuarioVar,
+          nomeUsuarioServer: nomeUsuarioVar,
+          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+          emailServer: emailVar,
+          telefoneServer: telefoneVar,
+          opcoesPerguntasDeSegurancaServer: opcoesPerguntasDeSegurancaVar,
+          perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+          fotoUsuarioServer: fotoUsuarioVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+
+  
+            alertify.success('Alteração realizado com sucesso! Redirecionando para tela de Login...');
+
+            setTimeout(() => {
+                sessionStorage.clear();
+                 window.location = "login.html";
+            }, "2000");
+  
+
+          } else {
+            console.log('teste')
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
+
+    function confirmarExclusao(){
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          excluirConta()
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+        }
+      });
+    }
+
+    function excluirConta() {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var idUsuarioVar = sessionStorage.ID_USUARIO
+      
+
+      if (
+        idUsuarioVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+        return false;
+      } 
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/excluirConta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+          
+          
+          idUsuarioServer:idUsuarioVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+
+  
+            alertify.success('Alteração realizado com sucesso! Redirecionando para tela de Login...');
+
+            setTimeout(() => {
+                sessionStorage.clear();
+                 window.location = "login.html";
+            }, "2000");
+  
+
+          } else {
+            console.log('teste')
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
+
+    function mostrarFoto(){
+      var imagem = document.getElementById("imagemCarregada").files[0].name;
+      alert(imagem)
+    }
+
+    function carregarImagem() {
+            const inputFile = document.getElementById('imagemCarregada');
+            const imagemRenderizada = document.getElementById('userPicture');
+            // Verifica se um arquivo foi selecionado
+            if (inputFile.files.length > 0) {
+                const imagem = inputFile.files[0];
+
+                // Cria um novo leitor de arquivos
+                const reader = new FileReader();
+
+                // Configura a função de retorno de chamada quando a leitura estiver concluída
+                reader.onloadend = function () {
+                    // O resultado da leitura está disponível em reader.result
+                    const buffer = new Uint8Array(reader.result);
+
+                    // Exibe a imagem renderizada no HTML
+                    const imagemElement = document.createElement('img');
+                    imagemElement.src = `data:image/jpeg;base64,${arrayBufferToBase64(buffer)}`;
+                    imagemRenderizada.innerHTML = ''; // Limpa qualquer imagem anterior
+                    imagemRenderizada.appendChild(imagemElement);
+                    // Use o buffer conforme necessário (por exemplo, envie para o servidor)
+                    console.log('Buffer:', buffer);
+                    exibirImagem(buffer)
+                };
+
+                // Lê o conteúdo do arquivo como um buffer
+                reader.readAsArrayBuffer(imagem);
+            } else {
+                alert('Selecione uma imagem antes de carregar.');
+            }
+        }
+
+        
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            fotoUsuario = btoa(binary)
+            alert(fotoUsuario)
+            return btoa(binary);
+        }
+
+      
+
+</script>

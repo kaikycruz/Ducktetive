@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ducktetive | Dashboards</title>
+
+    <link rel="stylesheet" href="../css/dashboards.css" />
+    <link rel="stylesheet" href="../css/alertas.css">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script
+      src="https://kit.fontawesome.com/9f7414eb10.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="../src\images\ducktetive.png " />
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
+  </head>
+
+  <body onload="payload()">
+    <main class="dashboard-main">
+      <aside class="aside-bar-menu" style="">
+        <div id="logo-ducktetive">
+          <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+        </div>
+        </a>
+        <hr/>
+        <div id="dashboard-menu">
+          <div class="dash-item">
+              <div class="menu" id="selected">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Servidores</p>
+              </div>
+          </div>
+          
+          <div class="bottom-items">
+            <div class="dash-item" id="gerenciarContas">
+              <a href="visualizarUsuarios.html" >
+                <div class="menu">
+                    <div class="icon">
+                        <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                    </div>
+                    <p class="item-text">Gerenciar contas</p>
+                </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../alteracaoDeDados.html">
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Editar conta</p>
+              </div></a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item" id="criarUsuario">
+              <a href="../registroUsuario.html" >
+              <div class="menu">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Criar usuario</p>
+              </div>
+            </a>
+          </div>
+          <div class="bottom-items">
+            <div class="dash-item">
+              <a href="../login.html">
+              <div class="menu" onclick="sessionStorage.clear()">
+                  <div class="icon">
+                      <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                  </div>
+                  <p class="item-text">Logout</p>
+              </div></a>
+          </div>
+          
+          </div>
+      </aside>
+      <section
+        class="dashboard-content listagem-de-servidores"
+        id="dashboard-home"
+        style="display: block"
+      >
+      <div class="dados-do-servidor">
+        <div class="servHeader">
+          <div id="titulo-pagina">
+          <p class="titulo" id="tituloPagina">Servidores da DUCKTETIVE</p>
+          <p class="subtitulo">Painel de gerenciamento de servidores</p>
+          </div>
+            <div class="servButtons">
+                <!-- <div class="buscar">
+                  <input type="text" class="buscar">
+                  <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
+                </div> -->
+                <!-- <div id="filtrarServidores">
+                  <img src="../src/images/Dashboard/icons/contexto 1.png">
+                </div> -->
+                <div id="user-data" >
+                  <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
+                </div>
+                <div id="dadosUsuario">
+                  <span id="b_usuario"></span><br>
+                  <span id="cargo_usuario"></span>
+                </div>
+            </div>
+      </div>
+        
+      </div>
+        <div id="headerServerList"></div>
+        <div id="server-list">
+          
+            
+            
+            
+            
+
+          
+          <div class="serverCard createServer" onclick="redirecionarUsuario()" id="criarServidor">
+            +
+          </div>
+        </div>
+        </div>
+      </section>
+    </main>
+    
+    <div id="containerAlerts">
+            
+    </div>
+    
+  </body>
+</html>
+
+<script>
+  var listaDeServidor;
+  var quantidadeDeServidor = 0;
+
+  function payload() {
+    const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+    const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+    const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+    if (sessionStorage.CARGO_USUARIO.toUpperCase() != "DONO"){
+        document.getElementById("criarUsuario").style.display = "none";
+        document.getElementById("gerenciarContas").style.display = "none";
+    }
+    b_usuario.innerHTML = `${NOME_USUARIO}`;
+    cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+
+    tituloPagina.innerHTML = `Servidores da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
+    
+    if (sessionStorage.FOTO_PERFIL == 'null'|| sessionStorage.FOTO_PERFIL =='[object Object]'){
+
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+      user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+    }
+    buscarServidores();
+
+    headerServerList.innerHTML = `<h2>Servidores da ${NOME_FANTASIA_USUARIO}</h2>
+        `;
+    console.log(cargo_usuario + `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasds`)
+    user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    // if(CARGO_USUARIO.toUpperCase() != "DONO" || CARGO_USUARIO.toUpperCase() != "ANALISTA"){
+    //   document.getElementById("criarServidor").style.display = "none";
+    // }
+  }
+
+  function redirecionarUsuario() {
+    if (sessionStorage.CARGO_USUARIO == "Estagiario") {
+      Swal.fire({
+        title: "Você não tem permissão para isso...",
+        text: "Apenas usuarios Donos e Analistas podem cadastrar servidores",
+        icon: "error",
+      });
+    } else {
+      setTimeout(() => {
+        window.location = "../cadastrarNovoServidor.html";
+      }, 1);
+    }
+  }
+
+  function criarServidor(
+    idServidor,
+    nomeServidor,
+    endereco,
+    numeroEndereco,
+    cidade,
+    statusServidor
+  ) {
+    listaDeServidores = document.querySelector("#server-list");
+    listaDeServidores.insertAdjacentHTML(
+      "afterbegin",
+      `
+      
+      <div class="serverCard" >
+            <div class="serverGeneral">
+              <!--<div class="serverStatus">
+                <div class="statusServer ${statusServidor}"></div>
+                <div id="statusServer">Alerta</div>
+              </div> -->
+              <br><br>
+              <a href="dashboard.html?id=${idServidor}">
+              <div class="serverData">
+                <p class="nomeServidor">${nomeServidor}</p>
+                <p class="idServidor">#${idServidor}</p>
+              </div>
+              </a>
+              <div class="serverLocation">
+                <p class="serverEndereco">${cidade} - SP</p>
+              </div>
+            </div>
+            <div class="serverActions">
+              <div class="buttons">
+                <a href="../editarServidor.html?id=${idServidor}">
+                  <div class="cardEdit">
+                    <img src="../src/images/Dashboard/icons/editar.png" id="imgEdit">
+                  </div>
+                </a>
+                <a href="">
+                <div class="cardoStatus" onclick="alterarStatusServidor(${idServidor})">
+                  <img src="../src/images/Dashboard/icons/atencao 1.png" id="imgEdit">
+                </div>
+                </a>
+                <a href="">
+                  <div class="cardRemove" onclick="excluirServidor(${idServidor})">
+                    <img src="../src/images/Dashboard/icons/x.png" id="imgEdit">
+                  </div>
+                </a>
+              </div>
+              <div class="serverStatus">
+                <div class="statusServer ${statusServidor}"></div>
+                <div id="statusServer">${statusServidor}</div>
+              </div>
+            </div>
+
+    
+    `
+    );
+  }
+
+  function buscarServidores() {
+    var idEmpresaVar = sessionStorage.ID_EMPRESA;
+
+    if (idEmpresaVar == "") {
+      alertify.error("Preencha todos os campos");
+      return false;
+    }
+
+    fetch("/usuarios/buscarServidores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idEmpresaServer: idEmpresaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+            console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length;
+            if (quantidadeDeServidor > 0) {
+              console.log(
+                "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                quantidadeDeServidor
+              );
+
+              for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i]);
+                var idEmpresa = JSON.stringify(json[i].idEmpresa);
+                var idServidor = JSON.stringify(json[i].idServidor);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor);
+                var logradouro = JSON.stringify(json[i].logradouro);
+                var numero = JSON.stringify(json[i].numero);
+                var cidade = JSON.stringify(json[i].cidade);
+                var statusServidor = JSON.stringify(json[i].statusServidor);
+
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
+                var logradouro = JSON.stringify(json[i].logradouro).substring(1, JSON.stringify(json[i].logradouro).length - 1);
+                var numero = JSON.stringify(json[i].numero).substring(1, JSON.stringify(json[i].numero).length - 1);
+                var cidade = JSON.stringify(json[i].cidade).substring(1, JSON.stringify(json[i].cidade).length - 1);
+                var statusServidor = JSON.stringify(json[i].statusServidor).substring(1, JSON.stringify(json[i].statusServidor).length - 1);
+                
+
+                criarServidor(
+                  idServidor,
+                  nomeServidor,
+                  logradouro,
+                  numero,
+                  cidade,
+                  statusServidor
+                );
+              }
+            }
+            console.log(JSON.stringify(json[1].idEmpresa));
+            console.log(
+              "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            );
+          });
+        } else {
+          console.log("teste");
+          throw alertify.error(
+            "Erro ao realizar login, verifique suas credenciais"
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  
+
+  function excluirServidor(idServidor) {  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var idServidorVar = idServidor
+      
+
+      if (
+        idServidorVar == ""
+      ) {
+        alertify.error('Escreva os dados em todos os campos');
+        return false;
+      } 
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/excluirServidor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+        //   nomeFantasiaServer: nomeFantasiaVar,
+        //   cnpjServer: cnpjVar,
+
+        idServidorServer:idServidorVar
+
+        //   nomeUsuarioServer: nomeUsuarioVar,
+        //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+        //   emailServer: emailVar,
+        //   cargoServer: 'Dono',
+        //   telefoneServer: telefoneVar,
+        //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+        //   senhaServer: senhaVar
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            location.reload()
+          } else {
+            console.log('teste')
+            throw alertify.error('Ocorreu um erro com a atualização dos dados');
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+  
+      return false;
+    }
+
+  function alterarStatusServidor(idServidor) {  
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idServidorVar = idServidor
+    
+
+    if (
+      idServidorVar == ""
+    ) {
+      alertify.error('Escreva os dados em todos os campos');
+      return false;
+    } 
+
+    if(statusServer.value == "Inativo"){
+      ale
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/alterarStatusServidor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+      //   nomeFantasiaServer: nomeFantasiaVar,
+      //   cnpjServer: cnpjVar,
+
+      idServidorServer:idServidorVar
+
+      //   nomeUsuarioServer: nomeUsuarioVar,
+      //   sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+      //   emailServer: emailVar,
+      //   cargoServer: 'Dono',
+      //   telefoneServer: telefoneVar,
+      //   perguntaDeSegurancaServer: perguntaDeSegurancaVar,
+      //   senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          location.reload()
+        } else {
+          console.log('teste')
+          throw alertify.error('Ocorreu um erro com a atualização dos dados');
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
+  }
+
+function carregarImagem() {
+            const inputFile = sessionStorage.FOTO_PERFIL;
+            const imagemRenderizada = document.getElementById('user-data');
+            // Verifica se um arquivo foi selecionado
+            if (inputFile.files.length > 0) {
+                const imagem = inputFile.files[0];
+
+                // Cria um novo leitor de arquivos
+                const reader = new FileReader();
+
+                // Configura a função de retorno de chamada quando a leitura estiver concluída
+                reader.onloadend = function () {
+                    // O resultado da leitura está disponível em reader.result
+                    const buffer = new Uint8Array(reader.result);
+
+                    // Exibe a imagem renderizada no HTML
+                    const imagemElement = document.createElement('img');
+                    imagemElement.src = `data:image/jpeg;base64,${arrayBufferToBase64(buffer)}`;
+                    imagemRenderizada.innerHTML = ''; // Limpa qualquer imagem anterior
+                    imagemRenderizada.appendChild(imagemElement);
+                    // Use o buffer conforme necessário (por exemplo, envie para o servidor)
+                    console.log('Buffer:', buffer);
+                    exibirImagem(buffer)
+                };
+
+                // Lê o conteúdo do arquivo como um buffer
+                reader.readAsArrayBuffer(imagem);
+            } else {
+                alert('Selecione uma imagem antes de carregar.');
+            }
+}
+
+async function alertarUsuario(criticidade, componente, metrica){
+  listaDeServidores = document.querySelector("#containerAlerts");
+  listaDeServidores.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div class="alerta">
+      <div class="alertIcon ${criticidade}">
+      </div>
+      <div class="alertDescription">
+        O componente: <span class="componenteAlert">${componente}</span> está em niveis criticos: <span class="componenteAlert">${metrica}</span> <br> 
+      <a href=""><span class="actionProcess">Veja os processos! </span></a>
+      </div>
+      
+    </div>
+    `)
+    
+    
+}
+
+function limparAlerta() {
+  var listaDeServidores = document.querySelector("#containerAlerts");
+
+  // Verificar se há filhos para remover
+  if (listaDeServidores.children.length > 0) {
+    // Remover a última div filho
+    listaDeServidores.removeChild(listaDeServidores.lastElementChild);
+    setTimeout(limparAlerta, 5000)
+  }
+}
+setInterval(limparAlerta, 5000)
+
+
+
+</script>

@@ -1,0 +1,53 @@
+#containerAlerts{
+    height: fit-content;
+    position: fixed;
+    right: 0px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+.alerta{
+    display: flex;
+    background-color: #ffffff;
+    height: 80px;
+    width: 300px;
+    border-radius: 25px;
+    align-items: center;
+    border: 2px solid #f4f4f4;
+}
+
+.alerta .alertIcon{
+    height: 35px;
+    width: 50px;
+    margin: 0px 15px 0px 15px;
+    border-radius: 50px;
+}
+
+.componenteAlert{
+    color: #ffcf26;
+    display: inline;
+    font-weight: bold;
+}
+
+
+.alertDescription .actionProcess{
+    font-weight: bold;
+    color: #757575;
+}
+
+.aviso {
+    background-color: #ffcf26;
+    color: #ffffff;
+}
+.critico{
+    background-color: rgb(202, 31, 31);
+    color: #ffffff !important;
+
+}
+.saudavel{
+    background-color: #4ff154; 
+    color: #ffffff !important;
+
+}

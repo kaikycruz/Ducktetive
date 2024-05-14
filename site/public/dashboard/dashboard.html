@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ducktetive | Dashboards</title>
+
+    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="../css/alertas.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="../src\images\ducktetive.png ">
+
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body onload="payload()">
+
+    <main class="dashboard-main">
+        <aside class="aside-bar-menu" style="">
+            <div id="logo-ducktetive">
+              <img src="../src/images/DUCKTETIVE2.png" id="duck-logo-dashboard" />
+            </div>
+            </a>
+            <hr/>
+        <div id="dashboard-menu">
+            <div class="top-items">
+                <div class="dash-item">
+                    <a href="servidores.html">
+                    <div class="menu">
+                        <div class="icon">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                        </div>
+                      <p class="item-text">Servidores</p>
+                    </div></a>
+                </div>
+                <div class="dash-item">
+                    <div class="menu" id="selected">
+                        <div class="icon">
+                          <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                        </div>
+                      <p class="item-text">Dashboard</p>
+                    </div>
+                </div>
+                <a href="visualizarProcessos.html?id=" id="linkProcessos">
+                <div class="dash-item">
+                  <div class="menu" >
+                      <div class="icon">
+                        <img src="../src/images/Dashboard/icons/servidores.png" alt="" class="icon-menu">
+                      </div>
+                    <p class="item-text">Processos</p>
+                  </div>
+              </div></a>
+            </div>
+            
+              
+              
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="visualizarUsuarios.html">
+                    <div class="menu">
+                        <div class="icon">
+                            <img src="../src/images/Dashboard/icons/do-utilizador 1.png" alt="" class="icon-menu">
+                        </div>
+                        <p class="item-text">Gerenciar contas</p>
+                    </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../alteracaoDeDados.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/pessoas 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Editar conta</p>
+                  </div></a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../registroUsuario.html">
+                  <div class="menu">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/adicionar-usuario 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Criar usuario</p>
+                  </div>
+                </a>
+              </div>
+              <div class="bottom-items">
+                <div class="dash-item">
+                  <a href="../login.html">
+                  <div class="menu" onclick="sessionStorage.clear()">
+                      <div class="icon">
+                          <img src="../src/images/Dashboard/icons/sair 1.png" alt="" class="icon-menu">
+                      </div>
+                      <p class="item-text">Logout</p>
+                  </div></a>
+              </div>
+              
+              </div>
+          </aside>
+        <section class="dashboard-content" id="dashboard-home" style="display: block;">
+            
+            <div class="dados-do-servidor">
+                <div class="servHeader">
+                  <div id="titulo-pagina">
+                  <p class="titulo" id="tituloPagina">Servidores da {Undefined}</p>
+                  <p class="subtitulo">Painel de gerenciamento de servidores</p>
+                  </div>
+                    <div class="servButtons">
+                        <!-- <div class="buscar">
+                          <input type="text" class="buscar">
+                          <img src="../src/images/Dashboard/icons/lupa.png" id="imgLupa">
+                        </div>
+                        <div id="filtrarServidores">
+                          <img src="../src/images/Dashboard/icons/contexto 1.png">
+                        </div> -->
+                        <div id="user-data" >
+                          <img src="../src/images/Dashboard/userProfile.png" alt="" id="user_picture">
+                        </div>
+                        <div id="dadosUsuario">
+                          <span id="b_usuario"></span><br>
+                          <span id="cargo_usuario"></span>
+                        </div>
+                    </div>
+              </div>
+                
+              </div>
+
+            <div id="cards">
+
+            
+                <div class="cpu-cards">
+                    <div class="KPI-cards">
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                PROCESSADORES LÓGICOS
+                            </span>
+                            <span id="procLogCPU" class="kpi-content">
+                                  
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                PROCESSADORES FÍSICOS
+                            </span>
+                            <span id="procFisCPU" class="kpi-content">
+                                
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi" id="cpu-frequency">
+                            <span  class="kpi-title">
+                                Percentual de uso
+                            </span>
+                            <span id="percUsoCpu" class="kpi-content">
+                            <span id="valorCPU">%</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cpuCharts">
+                        <div class="uso_cpu" style="width: 764px;">
+                            <span>Uso de CPU</span>
+                            <canvas id="uso_cpu" style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ramCharts">
+                    <div class="KPI-ram">
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                Total
+                            </span>
+                            <span id="totalRam"class="kpi-content">
+                                
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi">
+                            <span class="kpi-title">
+                                Em uso
+                            </span>
+                            <span id="ramEmUso" class="kpi-content">
+                                
+                            </span>
+                        </div>
+                        <div class="CPU-cards-kpi" id="ram-frequency">
+                            <span class="kpi-title">
+                                Percentual de uso
+                            </span>
+                            <span id="percUsoRam" class="kpi-content">
+                                
+                            </span>
+                        </div>
+                    </div>  
+                    <span>Uso de RAM</span>
+
+                    <div class="ram-use" style="width: 764px;">
+                        <canvas id="uso_ramBarra" style="display: block; box-sizing: border-box; height: 200px; width: 1500px;"></canvas>
+                    </div>
+                    <span>Uso de RAM</span>
+
+                    <div class="ram-use" style="width: 764px">
+                        <canvas id="uso_ramLinha" style="display: block; box-sizing: border-box; height: 200px; width: 1500px;"></canvas>
+                    </div>
+
+                </div>
+
+                <div class="discoCharts">
+                    <div class="KPI-cards">
+                        <div class="disco-cards-kpi">
+                            <span class="kpi-content read-write">
+                                Total : <span id="totalDisco"></span> 
+                            </span>
+                            <span class="kpi-content read-write">
+                                Disponivel : <span id="disponivelDisco"></span>
+                            </span>
+                            <span class="kpi-content read-write">
+                                Percentual de uso: <span id="percDisco"></span>
+                            </span>
+                            
+                            
+                        </div>
+                        <div class="disco-cards-kpi" id="disco-frequency">
+                            <span class="kpi-title">
+                                Baseado em seu uso 
+                            </span>
+                            <span class="kpi-title">
+                                Disco vai estourar em 
+                            </span>
+                            <span id="estimativaDisco" class="kpi-content">
+                               
+                            </span>
+                    </div>
+                    
+                    </div>
+                    <div class="cpuCharts">
+                        <div class="cpu-use" style="width: 764px;">
+                            <span>Uso de Disco</span>
+                            <canvas id="uso_disco" style="display: block; box-sizing: border-box; height: 550px; width: 1350px;"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="redeCharts">
+                    <div class="KPI-cards">
+                        <div class="disco-cards-kpi">
+                            <span class="kpi-content read-write">
+                                Nome Rede:
+                            </span>
+                            <span id="nomeRede" class="kpi-content read-write">
+                                
+                            </span>
+                        </div>
+                        
+                        <div class="disco-cards-kpi" id="rede-frequency">
+                            <span class="kpi-title">
+                                Pacotes Recebidos 
+                            </span>
+                            <span id="pacotesRecebidos" class="kpi-content">
+                               
+                            </span>
+                    </div>
+                    
+                    </div>
+                    <div class="cpuCharts">
+                      <div class="cpu-use" style="width: 764px;">
+                          <span>Uso de Rede</span>
+                          <canvas id="uso_rede" style="display: block; box-sizing: border-box; height: 500px; width: 1500px;"></canvas>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+        <!-- CPU - KAIKY -->
+        <section class="dashboard-content" id="dashboard-CPU" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - CPU</h2>
+            <div class="cpu-content">
+                <h3>AMD Ryzen 5 5500U- 8 cores 8 threads</h3>
+                <div class="campo-grafico" id="campo_grafico">
+                    <div class="graficos">
+                        <canvas id="grafico_cpu"></canvas>
+                    </div>
+                </div>
+                <div class="uso-cpu">
+                    <div id="div_kpi_cpu">
+                        <h1>Detalhes da Cpu</h1>
+                        <div class="utilizacao-velocidade">
+                            <span>
+                                <p>
+                                    Utilização:
+                                </p>
+                                <h3>20%</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Velocidade:
+                                </p>
+                                <h3>2.71 Ghz</h3>
+                            </span>
+
+                        </div>
+                        <p>
+                            Processos:
+                        <h3>244</h3>
+                        </p>
+                        <p>
+                            Tempo Ligado:
+                        <h3>1:12:31:28</h3>
+                        </p>
+                        <span>
+                            <div>
+                                <span>
+                                    <p>Velocidade base</p>
+                                    <p><b>2.10 Ghz</b></p>
+                                </span>
+                                <span>
+                                    <p>Cores</p>
+                                    <p><b>8</b></p>
+                                </span>
+
+                                <span>
+                                    <p>Threads</p>
+                                    <p><b>8</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L1 Cache</p>
+                                    <p><b>384 KB</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L2 Cache</p>
+                                    <p><b>3.0 MB</b></p>
+                                </span>
+
+                                <span>
+                                    <p>L3 Cache</p>
+                                    <p><b>8.0 MB</b></p>
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="grafico-detalhes">
+                        <canvas id="detalhes_cpu"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- RAM - ZAPATTA -->
+        <section class="dashboard-content" id="dashboard-RAM" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - RAM</h2>
+            <div class="conteudo-ram">
+                <div class="area-grafico-ram">
+                    <h3>Uso da memória</h3>
+                    <div class="grafico-ram">
+                        <canvas id="grafico-ram"
+                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="indicadores-grafico-ram">
+                    <div class="indicadores-ram">
+                        <h3>Detalhes da memória</h3>
+                        <div class="indicadores-medicao">
+                            <span>
+                                <p>
+                                    Capacidade:
+                                </p>
+                                <h3>128 GB</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Em uso:
+                                </p>
+                                <h3>102,4 GB</h3>
+                            </span>
+                            <span>
+                                <p>
+                                    Disponível:
+                                </p>
+                                <h3>25,6 GB</h3>
+                            </span>
+                        </div>
+                        <span>
+                            <p>
+                                Em cache:
+                            </p>
+                            <h3>12,3 GB</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Processos em fila:
+                            </p>
+                            <h3>2500</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Frequência:
+                            </p>
+                            <h3>6400 Mhz</h3>
+                        </span>
+                        <span>
+                            <p>
+                                Porcentagem de uso:
+                            </p>
+                            <h3>80%</h3>
+                        </span>
+                        </span>
+                    </div>
+                    <div class="grafico-barra-individual1">
+                        <span>Memória 1:</span>
+                        <canvas id="grafico1-ram-barra"
+                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                    </div>
+                    <div class="grafico-barra-individual2">
+                        <span>Memória 2:</span>
+                        <canvas id="grafico2-ram-barra"
+                            style="display: block; box-sizing: border-box; height: 370px; width: 160px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ARMAZENAMENTO - ZAPATTA -->
+        <section class="dashboard-content" id="dashboard-HD" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - HD</h2>
+            <div class="conteudo-armazenamento">
+                <div class="area-grafico01-armazenamento">
+                    <h2>Uso do armazenamento</h2>
+                    <div class="armazenamento-grafico01">
+                        <canvas id="grafico01-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 300px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="area-grafico02-armazenamento">
+                    <h2>Taxa de transferência de disco</h2>
+                    <div class="armazenamento-grafico02">
+                        <canvas id="grafico02-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 100px; width: 1200px;"></canvas>
+                    </div>
+                </div>
+                <div class="area-bottom-indicadores-grafico03">
+                    <div class="indicadores">
+                        <div class="indicadores-titulo">
+                            <h2>Detalhes do armazenamento</h2>
+                        </div>
+                        <div class="indicadores-armazenamento">
+                            <div class="dados-indicadores">
+                                <span>
+                                    <p>
+                                        Capacidade:
+                                    </p>
+                                    <h3>9.768 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Em uso:
+                                    </p>
+                                    <h3>7.170 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Disponível:
+                                    </p>
+                                    <h3>73,4% / 2.598 GB</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Tempo de atividade:
+                                    </p>
+                                    <h3>70%</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Taxa de transferência:
+                                    </p>
+                                    <h3>600 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Velocidade de leitura:
+                                    </p>
+                                    <h3>30 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Velogicade de gravação:
+                                    </p>
+                                    <h3>472 Kb/s</h3>
+                                </span>
+                                <span>
+                                    <p>
+                                        Tipo:
+                                    </p>
+                                    <h3>SSD M.2 NVMe</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-grafico03-armazenamento">
+                        <h2>Taxa de transferência de disco</h2>
+                        <canvas id="grafico03-armazenamento"
+                            style="display: block; box-sizing: border-box; height: 200px; width: 700px;"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- REDE - GUSTAVO -->
+        <section class="dashboard-content" id="dashboard-REDE" style="display: none;">
+            <h2 class="dashboard-title">Overview California_Server - REDE</h2>
+            <div class="dash-uso-rede">
+                <div id="div_kpi_rede">
+                    <h2>Detalhes da rede</h2>
+                    <p>
+                        Frequência:
+                    <h3>5.0 Ghz</h3>
+                    </p>
+                    <p>
+                        Tipo de conexão:
+                    <h3>Ethernet</h3>
+                    </p>
+                    <p>
+                        Velocidade de Download:
+                    <h3>5000Mb/ps</h3>
+                    </p>
+                    <p>
+                        Velociade de Upload:
+                    <h3>4000Mb/ps</h3>
+                    </p>
+                    <h2>Dados</h2>
+                    <span>
+                        <div>
+                            <p>Enviados:</p>
+                            <h3>3500Mb/ps</h3>
+                        </div>
+                        <div>
+                            <p>Recebidos:</p>
+                            <h3>4300Mb/ps</h3>
+                        </div>
+                    </span>
+                </div>
+                <div>
+                    <canvas id="grafico-rede" class="canvas-rede"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- <script src="../js/dashDinamica.js"></script>  -->
+  <!--<script src="../js/graficos.js"></script>-->
+  <div id="containerAlerts">
+            
+  </div>
+</body>
+
+</html>
+
+<script>    
+
+    function payload(){
+        const NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        const SOBRENOME_NOME_USUARIO = sessionStorage.SOBRENOME_NOME_USUARIO;
+        const CARGO_USUARIO = sessionStorage.CARGO_USUARIO;
+        const NOME_FANTASIA_USUARIO = sessionStorage.NOME_FANTASIA_USUARIO;
+        b_usuario.innerHTML = `${NOME_USUARIO.toUpperCase()} ${SOBRENOME_NOME_USUARIO.toUpperCase()}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO.toUpperCase()} - ${NOME_FANTASIA_USUARIO.toUpperCase()}`;
+    
+        b_usuario.innerHTML = `${NOME_USUARIO}`;
+        cargo_usuario.innerHTML = `${CARGO_USUARIO}`;
+
+        tituloPagina.innerHTML = `Servidores da ${sessionStorage.NOME_FANTASIA_USUARIO}`;
+
+
+        buscarParametroServidores()
+        
+    
+
+    const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+
+    var paginaProcessos = document.getElementById(`linkProcessos`);
+    paginaProcessos.href = `visualizarProcessos.html?id=${id}`
+    console.log(`servidor ${id}`)
+    //buscarUltimasMedidas(id)
+     obterDadosGraficoCPU(id)
+     obterDadosGraficoRAM(id)
+     obterDadosGraficoRAMlinha(id)
+     obterDadosGraficoDisco(id)
+     obterDadosGraficoRede(id)
+    
+    var baseStr64 = sessionStorage.FOTO_PERFIL;
+    if (sessionStorage.FOTO_PERFIL == 'null'){
+
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+
+    }else{
+      // user_picture.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+      user_picture.innerHTML = `<img src="../src/images/Dashboard/userProfile.png">`
+    }
+
+    }
+
+    // function buscarUltimasMedidasCPU(id) {
+    //     var idServidorVar = id;
+
+    //     if (
+    //     idServidorVar == ""
+    //   ) {
+    //     alertify.error('Escreva os dados em todos os campos');
+    //     return false;
+    //   } 
+  
+    //   fetch("/medidas/buscarUltimasMedidasCPU", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       idServidorServer:idServidorVar
+    //     }),
+    //   })
+    //     .then(function (resposta) {
+    //       console.log("resposta: ", resposta);
+  
+    //       if (resposta.ok) {
+    //         console.log('dados corretos')
+    //       } else {
+    //         console.log('Ocorreu um erro com a atualização dos dados')
+    //       }
+    //     })
+    //     .catch(function (resposta) {
+    //       console.log(`#ERRO: ${resposta}`);
+
+    //     });
+  
+    //   return false;
+    // }
+  
+
+// Dados CPU
+
+
+
+function obterDadosGraficoCPU(idMetrica) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarUltimasMedidasCPU`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    })
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoCPU(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGraficoCPU(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+      {
+        label: "CPU",
+        data: [],
+        fill: false,
+        borderColor: "rgba(255,124,51,1)",
+        tension: 0.7,
+        borderWidth: 4
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
+  }
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configCPU = {
+    type: "line",
+    data: dados,
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartCPU = new Chart(document.getElementById(`uso_cpu`), configCPU);
+
+  setTimeout(() => atualizarGraficoCPU(idMetrica, dados, myChartCPU), 2000);
+}
+
+function atualizarGraficoCPU(idMetrica, dados, myChartCPU) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarMedidasEmTempoRealCPU`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          //obterdados(idMetrica);;
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+             
+            if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+
+          } else {
+            // tirando e colocando valores no gráfico
+            
+             dados.labels.shift(); 
+             dados.labels.push(novoRegistro[0].momento_grafico);
+
+            dados.datasets[0].data.shift(); 
+            dados.datasets[0].data.push(novoRegistro[0].valor);
+
+            procLogCPU.innerHTML = `${novoRegistro[0].cpuLogica}`
+            procFisCPU.innerHTML = `${novoRegistro[0].cpuFisica}`
+            valorCPU.innerHTML = `${novoRegistro[0].valor}%`
+            checarParametrosCPU(novoRegistro[0].valor)
+
+
+            myChartCPU.update();
+            
+          }
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoCPU(idMetrica, dados, myChartCPU),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Graficos RAM deitado
+
+function obterDadosGraficoRAM(idMetrica) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarUltimasMedidasRAM`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoRAM(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGraficoRAM(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+    {
+        label: "em uso",
+        data: [],
+        backgroundColor: "rgba(255,124,51,0.4)", // Cor de fundo para a barra
+        borderColor: "rgba(255,124,51,0.4)", // Cor da borda da barra
+        borderWidth: 1,
+
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
+  }
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configRAMdeitada = {
+    type: "bar",
+    data: dados,
+    options: {
+    indexAxis: "y", // Mudança para o eixo y para sobrepor as barras
+    barPercentage: 100, // Ajuste para sobrepor as barras
+    scales: {
+      x: {
+        beginAtZero: true,
+      },
+      y: {
+        beginAtZero: true,
+        max: totalRam,
+      },
+    },
+  },
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartRAMdeitada = new Chart(
+    document.getElementById(`uso_ramBarra`),
+    configRAMdeitada
+  );
+
+  setTimeout(
+    () => atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada),
+    2000
+  );
+}
+
+function atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarMedidasEmTempoRealRAM`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          //obterdados(idMetrica);;
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+              
+            );
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            dados.datasets[0].data.push(((novoRegistro[0].total / 1073741824.0).toFixed(2)) - ((novoRegistro[0].valor / 1073741824.0).toFixed(2))); // incluir uma nova medida de umidade
+
+
+            totalRam.innerHTML = `${(novoRegistro[0].total / 1073741824.0).toFixed(2)}GB`
+            ramEmUso.innerHTML = `${(novoRegistro[0].valor / 1073741824.0).toFixed(2)}GB`
+            percUsoRam.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
+            checarParametrosRAM(`${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`)
+
+            myChartRAMdeitada.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoRAM(idMetrica, dados, myChartRAMdeitada),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ram linha
+
+function obterDadosGraficoRAMlinha(idMetrica) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarUltimasMedidasRAM`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoRAMlinha(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGraficoRAMlinha(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+      {
+        label: "RAM",
+        data: [],
+        fill: false,
+        borderColor: "rgba(255,124,51,1)",
+        tension: 0.7,
+        borderWidth: 4
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
+  }
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configRAMlinha = {
+    type: "line",
+    data: dados,
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartRAMlinha = new Chart(
+    document.getElementById(`uso_ramLinha`),
+    configRAMlinha
+  );
+
+  setTimeout(
+    () => atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha),
+    2000
+  );
+}
+
+function atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarMedidasEmTempoRealRAM`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          //obterdados(idMetrica);;
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            dados.datasets[0].data.push(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)); // incluir uma nova medida de umidade
+            checarParametrosRAM(Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100))
+
+            //  dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+            //  dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+            myChartRAMlinha.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoRAMlinha(idMetrica, dados, myChartRAMlinha),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// grafico disco
+
+function obterDadosGraficoDisco(idMetrica) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarUltimasMedidasDISCO`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGraficoDisco(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGraficoDisco(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+  // Criando estrutura para plotar gráfico - labels
+  let labels = [];
+
+  // Criando estrutura para plotar gráfico - dados
+  let dados = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Disco",
+        data: [],
+        fill: false,
+        borderColor: "rgba(255,124,51,1)",
+        tension: 0.7,
+        borderWidth: 4
+      },
+    ],
+  };
+
+  console.log("----------------------------------------------");
+  console.log(
+    'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+  );
+  console.log(resposta);
+
+  // Inserindo valores recebidos em estrutura para plotar o gráfico
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.momento_grafico);
+    dados.datasets[0].data.push(registro.valor);
+    // dados.datasets[1].data.push(registro.temperatura);
+  }
+
+  console.log("----------------------------------------------");
+  console.log("O gráfico será plotado com os respectivos valores:");
+  console.log("Labels:");
+  console.log(labels);
+  console.log("Dados:");
+  console.log(dados.datasets);
+  console.log("----------------------------------------------");
+
+  // Criando estrutura para plotar gráfico - configCPU
+  const configDisco = {
+    type: "line",
+    data: dados,
+  };
+
+  // Adicionando gráfico criado em div na tela
+  let myChartDisco = new Chart(
+    document.getElementById(`uso_disco`),
+    configDisco
+  );
+
+  setTimeout(() => atualizarGraficoDisco(idMetrica, dados, myChartDisco), 2000);
+}
+
+function atualizarGraficoDisco(idMetrica, dados, myChartDisco) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarMedidasEmTempoRealDISCO`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          //obterdados(idMetrica);;
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            dados.datasets[0].data.push((novoRegistro[0].valor / 1073741824.0).toFixed(2)); 
+            checarParametrosDISCO(novoRegistro[0].valor)
+
+
+            totalDisco.innerHTML = `${(novoRegistro[0].total / 1073741824.0).toFixed(2)}GB`
+
+            disponivelDisco.innerHTML = `${((novoRegistro[0].total - novoRegistro[0].valor)/ 1073741824.0).toFixed(2)}GB`
+
+            percDisco.innerHTML = `${Math.round((novoRegistro[0].valor / novoRegistro[0].total) * 100)}%`
+
+            estimativaDisco.innerHTML = `${((novoRegistro[0].total / 1073741824.0).toFixed(2) / (novoRegistro[0].valor / novoRegistro[0].total)).toFixed(0)}`
+            myChartDisco.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoDisco(idMetrica, dados, myChartDisco),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoDisco(idMetrica, dados, myChartDisco),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// grafico REDE
+
+function obterDadosGraficoRede(idMetrica) {
+    var idServidorVar = idMetrica
+  fetch(`/medidas/buscarUltimasMedidasREDE`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+          plotarGraficoRede(resposta, idMetrica);
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGraficoRede(resposta, idMetrica) {
+  console.log("iniciando plotagem do gráfico...");
+
+// Criando estrutura para plotar gráfico - labels
+let labels = [];
+// Criando estrutura para plotar gráfico - dados
+let dados = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Enviado",
+      data: [],
+      fill: false,
+      borderColor: "rgba(255,124,51,1)",
+      tension: 0.7,
+      borderWidth: 4,
+     
+    },
+  ],
+};
+
+console.log("----------------------------------------------");
+console.log(
+  'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+);
+console.log(resposta);
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+  var registro = resposta[i];
+  labels.push(registro.momento_grafico);
+  dados.datasets[0].data.push(registro.valor); 
+}
+
+console.log("----------------------------------------------");
+console.log("O gráfico será plotado com os respectivos valores:");
+console.log("Labels:");
+console.log(labels);
+console.log("Dados:");
+console.log(dados.datasets);
+console.log("----------------------------------------------");
+
+// Criando estrutura para plotar gráfico - configCPU
+const configRede = {
+  type: "line",
+  data: dados,
+};
+
+// Adicionando gráfico criado em div na tela
+let myChartRede = new Chart(document.getElementById(`uso_rede`), configRede);
+
+setTimeout(() => atualizarGraficoRede(idMetrica, dados, myChartRede), 2000);
+}
+
+function atualizarGraficoRede(idMetrica, dados, myChartRede) {
+  var idServidorVar = idMetrica
+  fetch(`/medidas/buscarMedidasEmTempoRealREDE`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          //obterdados(idMetrica);;
+          // alertar(novoRegistro, idMetrica);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          if (
+            novoRegistro[0].momento_grafico ==
+            dados.labels[dados.labels.length - 1]
+          ) {
+            console.log(
+              "---------------------------------------------------------------"
+            );
+            console.log(
+              "Como não há dados novos para captura, o gráfico não atualizará."
+            );
+            console.log("Horário do novo dado capturado:");
+            console.log(novoRegistro[0].momento_grafico);
+            console.log("Horário do último dado capturado:");
+            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(
+              "---------------------------------------------------------------"
+            );
+          } else {
+            
+            dados.labels.shift(); 
+            dados.labels.push(novoRegistro[0].momento_grafico);
+
+            dados.datasets[0].data.shift(); 
+            dados.datasets[0].data.push(novoRegistro[0].valor); 
+
+            nomeRede.innerHTML = `${novoRegistro[0].nomeRede}`
+            pacotesRecebidos.innerHTML = `${novoRegistro[0].valor}`
+            
+            checarParametrosREDE(novoRegistro[0].valor)
+
+            myChartRede.update();
+          }
+          proximaAtualizacao = setTimeout(
+            () => atualizarGraficoRede(idMetrica, dados, myChartRede),
+            2000
+          );
+        });
+      } else {
+        console.error("Nenhum dado encontrado ou erro na API");
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(
+          () => atualizarGraficoRede(idMetrica, dados, myChartRede),
+          2000
+        );
+      }
+    })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+
+
+function verificarParametros(){
+
+}
+
+
+async function alertarUsuario(criticidade, componente, metrica){
+  listaDeServidores = document.querySelector("#containerAlerts");
+  listaDeServidores.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div class="alerta">
+      <div class="alertIcon ${criticidade}">
+      </div>
+      <div class="alertDescription">
+        O componente: <span class="componenteAlert">${componente}</span> está em niveis criticos: <span class="componenteAlert">${metrica}</span> <br> 
+      <a href=""><span class="actionProcess">Veja os processos! </span></a>
+      </div>
+      
+    </div>
+    `)
+    
+    
+}
+
+function limparAlerta() {
+  var listaDeServidores = document.querySelector("#containerAlerts");
+
+  // Verificar se há filhos para remover
+  if (listaDeServidores.children.length > 0) {
+    // Remover a última div filho
+    listaDeServidores.removeChild(listaDeServidores.lastElementChild);
+    setTimeout(limparAlerta, 5000)
+  }
+}
+setInterval(limparAlerta, 5000)
+
+function buscarParametroServidores() {
+  const pegaURL = new URL(window.location)
+    const id = pegaURL.searchParams.get('id')
+    var idServidorVar = id;
+
+    if (idServidorVar == "") {
+      alertify.error("Preencha todos os campos");
+      return false;
+    }
+
+    fetch("/usuarios/buscarParametroServidores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idServidorServer: idServidorVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log("JSON COM OS DADOS DO USUÁRIO");
+            console.log(JSON.stringify(json));
+            quantidadeDeServidor = json.length;
+            if (quantidadeDeServidor > 0) {
+              console.log(
+                "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                quantidadeDeServidor
+              );
+
+              for (let i = 0; i < json.length; i++) {
+                JSON.stringify(json[i]);
+                var idServidor = JSON.stringify(json[i].idServidor);
+                var nomeServidor = JSON.stringify(json[i].nomeServidor);
+                var maximoCPU = JSON.stringify(json[i].maximoCPU);
+                var minimoCPU = JSON.stringify(json[i].minimoCPU);
+                var maximoRAM = JSON.stringify(json[i].maximoRAM);
+                var minimoRAM = JSON.stringify(json[i].minimoRAM);
+                var maximoDISCO = JSON.stringify(json[i].maximoDISCO);
+                var maximoREDE = JSON.stringify(json[i].maximoREDE);
+
+
+                var nomeServidor = JSON.stringify(json[i].nomeServidor).substring(1, JSON.stringify(json[i].nomeServidor).length - 1);
+                // var maximoCPU = JSON.stringify(json[i].maximoCPU).substring(1, JSON.stringify(json[i].maximoCPU).length - 1);
+                // var minimoCPU = JSON.stringify(json[i].minimoCPU).substring(1, JSON.stringify(json[i].minimoCPU).length - 1);
+                // var maximoRAM = JSON.stringify(json[i].maximoRAM).substring(1, JSON.stringify(json[i].maximoRAM).length - 1);
+                // var minimoRAM = JSON.stringify(json[i].minimoRAM).substring(1, JSON.stringify(json[i].minimoRAM).length - 1);
+                // var maximoDISCO = JSON.stringify(json[i].maximoDISCO).substring(1, JSON.stringify(json[i].maximoDISCO).length - 1);
+                // var maximoREDE = JSON.stringify(json[i].maximoREDE).substring(1, JSON.stringify(json[i].maximoREDE).length - 1);               
+                sessionStorage.maximoCPU = JSON.stringify(json[i].maximoCPU)
+                sessionStorage.minimoCPU = Number( minimoCPU)
+                sessionStorage.maximoRAM = Number( maximoRAM)
+                sessionStorage.minimoRAM = Number( minimoRAM)
+                sessionStorage.maximoDISCO = Number( maximoDISCO)
+                sessionStorage.maximoREDE = Number( maximoREDE)
+                
+
+                alertarUsuario(``)
+
+              }
+            }
+            console.log(
+              "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            );
+          });
+        } else {
+          console.log("teste");
+          throw alertify.error(
+            "Erro ao realizar login, verifique suas credenciais"
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+
+  function checarParametrosCPU(CPU){
+    var cardCPU = document.getElementById('cpu-frequency');
+    var metrica = CPU
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+
+    
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+
+
+
+    if(metrica > parametroMaximoCPU || metrica < parametroMinimoCPU){
+      if (cardCPU.classList.contains('aviso')) {
+          cardCPU.classList.replace('aviso', 'critico')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('saudavel', 'critico')
+        }else{
+          cardCPU.classList.add('critico');
+
+        }
+      alertarUsuario(`critico`, `CPU`, `${metrica}`)
+      
+    }else if(metrica < SegundoQuartilCPU || metrica > TerceiroQuartilCPU){
+      alertarUsuario(`aviso`, `CPU`, `${metrica}`)
+
+      if (cardCPU.classList.contains('critico')) {
+          cardCPU.classList.replace('critico', 'aviso')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('saudavel', 'aviso')
+        }else{
+          cardCPU.classList.add('aviso');
+
+        }
+    }else if(metrica > SegundoQuartilRAM && metrica < TerceiroQuartilRAM){
+      if (cardCPU.classList.contains('critico')) {
+          cardCPU.classList.replace('critico', 'saudavel')
+        }else if (cardCPU.classList.contains('saudavel')){
+          cardCPU.classList.replace('aviso', 'saudavel')
+        }else{
+          cardCPU.classList.add('saudavel');
+
+        }
+    }
+   
+
+
+  }
+  function checarParametrosRAM(RAM){
+    var cardRAM = document.getElementById('ram-frequency');
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+    if(RAM > parametroMaximoRAM || RAM < parametroMinimoRAM){
+      if (cardRAM.classList.contains('aviso')) {
+          cardRAM.classList.replace('aviso', 'critico')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('saudavel', 'critico')
+        }else{
+          cardRAM.classList.add('critico');
+
+        }
+      alertarUsuario(`critico`, `RAM`, `${RAM}`)
+    }else if(RAM < SegundoQuartilRAM || RAM > TerceiroQuartilRAM){
+      if (cardRAM.classList.contains('critico')) {
+          cardRAM.classList.replace('critico', 'aviso')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('saudavel', 'aviso')
+        }else{
+          cardRAM.classList.add('aviso');
+
+        }
+      alertarUsuario(`aviso`, `RAM`, `${RAM}`)
+    }else if(RAM > SegundoQuartilRAM && RAM < TerceiroQuartilRAM){
+      if (cardRAM.classList.contains('critico')) {
+          cardRAM.classList.replace('critico', 'saudavel')
+        }else if (cardRAM.classList.contains('saudavel')){
+          cardRAM.classList.replace('aviso', 'saudavel')
+        }else{
+          cardRAM.classList.add('saudavel');
+
+        }
+    }
+   
+
+  }
+  function checarParametrosDISCO(DISCO){
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+
+    if(DISCO > parametroMaximoDISCO){
+      alertarUsuario(`critico`, `DISCO`, `${DISCO}`)
+    }
+  }
+  function checarParametrosREDE(REDE){
+    var parametroMaximoCPU = Number(sessionStorage.maximoCPU)
+    var parametroMinimoCPU = Number(sessionStorage.minimoCPU)
+    var parametroMaximoRAM = Number(sessionStorage.maximoRAM)
+    var parametroMinimoRAM = Number(sessionStorage.minimoRAM)
+    var parametroMaximoDISCO = Number(sessionStorage.maximoDISCO)
+    var parametroMaximoREDE = Number(sessionStorage.maximoREDE)
+
+    var SegundoQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) + parametroMinimoCPU
+    var TerceiroQuartilCPU = ((parametroMaximoCPU - parametroMinimoCPU)/4) * 2 + parametroMinimoCPU
+    var SegundoQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) + parametroMinimoRAM
+    var TerceiroQuartilRAM = ((parametroMaximoRAM - parametroMinimoRAM)/4) * 2 + parametroMinimoRAM
+
+    if(REDE < parametroMaximoREDE*1.20){
+      alertarUsuario(`aviso`, `REDE`, `${REDE}`)
+    }else if(REDE < parametroMaximoREDE){
+      alertarUsuario(`critico`, `REDE`, `${REDE}`)
+    }
+  }
+
+</script>
